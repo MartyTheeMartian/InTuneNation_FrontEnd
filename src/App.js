@@ -8,8 +8,20 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          
+      <div className="page">
+
+      {/* <NavbarClass>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/secondPage">Search people</Link></li>
+          <li><Link to="/register">Register</Link></li>
+        </ul>
+      </NavbarClass> */}
+
+
+
+          <Route exact path='/' />
+          <Route path='/secondPage' />
         </div>
       </Router>
     );
