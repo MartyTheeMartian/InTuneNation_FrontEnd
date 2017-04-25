@@ -19,7 +19,10 @@ class Home extends Component {
   render() {
     return (
       <div className="row">
-        <div className="container"></div>
+        <div className="container">
+          <h1 className="text-center">Intervalicity</h1>
+          <h3 className="text-center">Sing In The Moment</h3>
+        </div>
       </div>
     );
   }

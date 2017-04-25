@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,18 +23,26 @@ class NavBar extends Component {
       <div className="navbar navbar-default">
         <div className="row">
           <div className="col-md-4">
-            <button className="btn btn-primary btn-lg active">Back</button>
-            <button className="btn btn-primary btn-lg active">Profile</button>
+            <Link to="/interface">
+              <button className="btn btn-primary btn-lg active">Back</button>
+            </Link>
+            <Link to="/profile">
+              <button className="btn btn-primary btn-lg active">Profile</button>
+            </Link>
           </div>
 
           <div className="navbar-header col-md-4">
             <h1 className="text-center">Intervalicity</h1>
           </div>
           <div className="col-md-2">
-            <button className="btn btn-primary btn-lg active">Sign-Up</button>
+            <Link to="/signup">
+              <button className="btn btn-primary btn-lg active">Sign-Up</button>
+            </Link>
           </div>
           <div className="col-md-2">
-            <button className="btn btn-primary btn-lg active">Log-In</button>
+            <Link to="/login">
+              <button className="btn btn-primary btn-lg active">Log-In</button>
+            </Link>
           </div>
         </div>
       </div>
