@@ -24,9 +24,9 @@ class LogIn extends Component {
             <h2 className="text-center">Log In</h2>
           </div>
           <div className="col-md-12 centered well well-lg">
-            <div className="col-md-12 well well-lg">
-              <h3 className="text-center">Log In with Google</h3>
-            </div>
+            <button className="btn btn-info">
+              Log In with Google
+            </button>
             <div className="col-md-12">
               <h4 className="text-center"> or </h4>
             </div>
@@ -37,26 +37,23 @@ class LogIn extends Component {
                     <h3>Email</h3>
                   </div>
                   <div className="col-md-8">
-                    <input></input>
+                    <input name="email" type="email" className="form-control"/>
                   </div>
                 </div>
-
                 <div className="row">
                   <div className="col-md-4">
                     <h3>Password</h3>
                   </div>
                   <div className="col-md-8">
-                    <input></input>
+                    <input name="password" type="text" className="form-control"/>
                   </div>
                 </div>
                 <div className="row">
-                  <input type="submit" />
+                  <button type="submit" className="btn btn-default">Log In</button>
                 </div>
               </form>
             </div>
           </div>
-
-
         </div>
       </div>
     );
