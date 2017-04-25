@@ -3,3 +3,11 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+footer {
+  background-color: lightBlue;
+  position: fixed;
+  height: 80px;
+  bottom: 0;
+  width: 100%;
+}
