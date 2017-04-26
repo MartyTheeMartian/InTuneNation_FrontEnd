@@ -5,6 +5,7 @@ export const captureReducer = (state = {capture: false}, action) => {
 
   switch (action.type) {
     case 'TOGGLE_CAPTURE':
+      return action;
       console.log(state);
     default:
       return state;

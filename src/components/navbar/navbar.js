@@ -25,7 +25,7 @@ class NavBar extends Component {
         <Navbar.Header>
           <Navbar.Brand>
             <LinkContainer to="/interface">
-              <a href="#">Picth Play Percision</a>
+              <a href="#">Intervalicity</a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle />

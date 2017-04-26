@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { pushNoteToArray } from '../../actions';
 
 
+
+
+
 const mapStateToProps = (state, ownProps) => {
   return {
 
@@ -19,7 +22,6 @@ class Piano extends Component {
 
   handleClick(note) {
     console.log(note);
-
   }
 
   render() {
