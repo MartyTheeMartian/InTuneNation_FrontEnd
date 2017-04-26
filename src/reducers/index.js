@@ -2,11 +2,9 @@ import { combineReducers } from 'redux';
 import captureReducer from './interface';
 
 
-const pppApp = combineReducers ({
-
+const rootReducer = combineReducers ({
   captureReducer
-
 
 });
 
-export default pppApp;
+export default rootReducer;

@@ -20,7 +20,7 @@ class Home extends Component {
     return (
       <div className="row">
         <div className="container">
-          <h1 className="text-center">Intervalicity</h1>
+          <h1 className="text-center">Intervalicity teach you to sing like prop</h1>
           <h3 className="text-center">Sing In The Moment</h3>
         </div>
       </div>
