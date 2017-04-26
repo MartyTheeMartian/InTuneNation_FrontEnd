@@ -21,7 +21,7 @@ class NavBar extends Component {
     return (
 
       <div className="navbar navbar-default">
-        <div className="row">
+        <div id="nav" className="row">
           <div className="col-md-4">
             <Link to="/interface">
               <button className="btn btn-primary btn-lg active">Back</button>

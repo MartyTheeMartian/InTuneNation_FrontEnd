@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import OctaveButtons from './octaveButtons';
 import NoteIndicator from './noteIndicator';
 import Piano from './piano';
+import CaptureButtons from './captureButtons';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,6 +26,7 @@ class Interface extends Component {
         <OctaveButtons />
         <Piano />
         <NoteIndicator />
+        <CaptureButtons />
       </div>
     );
   }
