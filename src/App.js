@@ -23,6 +23,7 @@ class App extends Component {
           <Route exact path="/interface" component={Interface} />
           <Route exact path="/profile" component={Profile} />
           <Route path="/" component={Footer} />
+          <Route path="/" component={Footer} />
 
         </div>
       </Router>
