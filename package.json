@@ -5,6 +5,7 @@
   "dependencies": {
     "materialize-css": "^0.98.2",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.30.10",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
@@ -16,6 +17,8 @@
     "semantic-ui-react": "^0.68.2"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-rallycoding": "^3.2.0",
     "react-scripts": "0.9.5"
   },
   "scripts": {

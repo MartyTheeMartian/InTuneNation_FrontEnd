@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Card, Icon, Image, Grid, Button, Segment} from 'semantic-ui-react';
+// import {Card, Icon, Image, Grid, Button, Segment} from 'semantic-ui-react';
 import dog from './dog.jpg'
+import {Button, Thumbnail, Col, Row, Grid} from 'react-bootstrap';
 const mapStateToProps = (state, ownProps) => {
   return {};
 };
@@ -15,63 +16,39 @@ class Profile extends Component {
 
   render() {
     return (
-      <Grid celled>
-        <Grid.Row>
-          <Grid.Column width={3}>
-
-            <Card>
-              <Image src={dog}/>
-              <Card.Content>
-                <Card.Header>
-                  Matthew
-                </Card.Header>
-                <Card.Meta>
-                  <span className='date'>
-                    Joined in 2015
-                  </span>
-                </Card.Meta>
-                <Card.Description>
-                  Matthew is a musician living in San Francisco.
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <a>
-                  <Icon name='user'/>
-                  22 Friends
-                </a>
-              </Card.Content>
-            </Card>
-
-          </Grid.Column>
-
-          <Grid.Column width={13}>
-            <Grid.Row>
-              <Grid columns='equal'>
-                <Grid.Column>
-                  <Button inverted color='blue'>Scores</Button>
-                </Grid.Column>
-                <Grid.Column>
-                  <Button inverted color='blue'>Graphs</Button>
-                </Grid.Column>
-                <Grid.Column>
-                  <Button inverted color='blue'>Graphs</Button>
-                </Grid.Column>
-                <Grid.Column>
-                <Button inverted color='blue'>Graphs</Button>
-                </Grid.Column>
-              </Grid>
-            </Grid.Row>
-              <Grid.Row>
-
-              </Grid.Row>
-            {/* <Grid columns='equal'>
-              <Button inverted color='blue'>Scores</Button>
-              <Button inverted color='blue'>Graphs</Button>
-            </Grid> */}
-
-          </Grid.Column>
-
-        </Grid.Row>
+      <Grid>
+        <Row>
+          <Col xs={6} md={4}>
+            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+              <h3>Thumbnail label</h3>
+              <p>Description</p>
+              <p>
+                <Button bsStyle="primary">Button</Button>&nbsp;
+                <Button bsStyle="default">Button</Button>
+              </p>
+            </Thumbnail>
+          </Col>
+          <Col xs={6} md={4}>
+            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+              <h3>Thumbnail label</h3>
+              <p>Description</p>
+              <p>
+                <Button bsStyle="primary">Button</Button>&nbsp;
+                <Button bsStyle="default">Button</Button>
+              </p>
+            </Thumbnail>
+          </Col>
+          <Col xs={6} md={4}>
+            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+              <h3>Thumbnail label</h3>
+              <p>Description</p>
+              <p>
+                <Button bsStyle="primary">Button</Button>&nbsp;
+                <Button bsStyle="default">Button</Button>
+              </p>
+            </Thumbnail>
+          </Col>
+        </Row>
       </Grid>
     );
   }

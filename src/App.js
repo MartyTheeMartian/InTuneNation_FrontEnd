@@ -7,10 +7,18 @@ import LogIn from './components/logIn/logIn';
 import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Grid, Col } from 'react-bootstrap';
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
 
-class App extends Component {
+class PPP extends Component {
   render() {
     return (
       <Router>
@@ -31,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default PPP;
