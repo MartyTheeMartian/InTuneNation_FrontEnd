@@ -7,7 +7,6 @@ import LogIn from './components/logIn/logIn';
 import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
 
-import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Grid, Col } from 'react-bootstrap';
 import './App.css';
