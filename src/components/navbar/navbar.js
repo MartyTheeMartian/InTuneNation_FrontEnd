@@ -73,7 +73,7 @@ class NavBar extends Component {
             <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
 
-            <NavItem> Intervalicity</NavItem>
+            {/* <NavItem> Intervalicity</NavItem> */}
 
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Sign up</MenuItem>
@@ -84,8 +84,12 @@ class NavBar extends Component {
             </NavDropdown>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
+            <LinkContainer to="/signup">
+              <NavItem eventKey={1} href="#">Sign up</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/login'>
+              <NavItem eventKey={2} href="#">Sign in</NavItem>
+            </LinkContainer>
           </Nav>
 
         </Navbar.Collapse>
