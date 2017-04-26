@@ -29,6 +29,9 @@ class NavBar extends Component {
             <Link to="/profile">
               <button className="btn btn-primary btn-lg active">Profile</button>
             </Link>
+            <Link to="/community">
+              <button className="btn btn-primary btn-lg active">Community</button>
+            </Link>
           </div>
 
           <div className="navbar-header col-md-4">

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-// import {Card, Icon, Image, Grid, Button, Segment} from 'semantic-ui-react';
-import dog from './dog.jpg'
+import mathew from '../../assets/matthew.png'
 import {Button, Thumbnail, Col, Row, Grid} from 'react-bootstrap';
 const mapStateToProps = (state, ownProps) => {
   return {};
@@ -29,7 +28,7 @@ class Profile extends Component {
             </Thumbnail>
           </Col>
           <Col xs={6} md={4}>
-            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+            <Thumbnail src={mathew} alt="242x200">
               <h3>Thumbnail label</h3>
               <p>Description</p>
               <p>
@@ -39,7 +38,7 @@ class Profile extends Component {
             </Thumbnail>
           </Col>
           <Col xs={6} md={4}>
-            <Thumbnail src="/assets/thumbnaildiv.png" alt="242x200">
+            <Thumbnail src={mathew} alt="242x200">
               <h3>Thumbnail label</h3>
               <p>Description</p>
               <p>
