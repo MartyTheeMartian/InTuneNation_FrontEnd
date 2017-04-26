@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer className="navbar-fixed-bottom">
         <div className="container">
-          <h3>Pitch Play Precision Co.</h3>
+          <h3>Pitch Play Precision</h3>
         </div>
       </footer>
     );
