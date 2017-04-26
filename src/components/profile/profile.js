@@ -1,47 +1,81 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {Card, Icon, Image, Grid, Button, Segment} from 'semantic-ui-react';
+import dog from './dog.jpg'
 const mapStateToProps = (state, ownProps) => {
-  return {
-
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
+  return bindActionCreators({}, dispatch);
 };
-
 
 class Profile extends Component {
 
   render() {
     return (
-< div className = "ui card" > <div className="content">
-  <div className="right floated meta">14h</div>
-  <img className="ui avatar image" src="/images/avatar/large/elliot.jpg"/>
-    Elliot
-  </div>
-  <div className="image">
-    <img/></div>
-    <div className="content">
-      <span className="right floated">
-        <i className="heart outline like icon"></i>
-        17 likes
-      </span>
-      <i className="comment icon"></i>
-      3 comments
-    </div>
-    <div className="extra content">
-      <div className="ui large transparent left icon input">
-        <i className="heart outline icon"></i>
-        <input type="text" placeholder="Add Comment..." /></div>
-      </div>
-    </div>
+      <Grid celled>
+        <Grid.Row>
+          <Grid.Column width={3}>
+
+            <Card>
+              <Image src={dog}/>
+              <Card.Content>
+                <Card.Header>
+                  Matthew
+                </Card.Header>
+                <Card.Meta>
+                  <span className='date'>
+                    Joined in 2015
+                  </span>
+                </Card.Meta>
+                <Card.Description>
+                  Matthew is a musician living in San Francisco.
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a>
+                  <Icon name='user'/>
+                  22 Friends
+                </a>
+              </Card.Content>
+            </Card>
+
+          </Grid.Column>
+
+          <Grid.Column width={13}>
+            <Grid.Row>
+              <Grid columns='equal'>
+                <Grid.Column>
+                  <Button inverted color='blue'>Scores</Button>
+                </Grid.Column>
+                <Grid.Column>
+                  <Button inverted color='blue'>Graphs</Button>
+                </Grid.Column>
+                <Grid.Column>
+                  <Button inverted color='blue'>Graphs</Button>
+                </Grid.Column>
+                <Grid.Column>
+                <Button inverted color='blue'>Graphs</Button>
+                </Grid.Column>
+              </Grid>
+            </Grid.Row>
+              <Grid.Row>
+
+              </Grid.Row>
+            {/* <Grid columns='equal'>
+              <Button inverted color='blue'>Scores</Button>
+              <Button inverted color='blue'>Graphs</Button>
+            </Grid> */}
+
+          </Grid.Column>
+
+        </Grid.Row>
+      </Grid>
     );
   }
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
