@@ -1,7 +1,8 @@
 
-export const pushNoteToArray = () => {
+export const pushNoteToArray = (noteObj) => {
   return {
-    type: 'NOTE_TO_ARRAY'
+    type: 'NOTE_TO_ARRAY',
+    payload: noteObj
   };
 };
 

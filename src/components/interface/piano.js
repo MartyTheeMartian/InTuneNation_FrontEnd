@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushNoteToArray } from '../../actions';
-import getFrequency from '../../audio/frequencies';
+import { octaveReducer } from '../../reducers';
+import getFrequencyAndKeyNum from '../../audio/frequencies';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const ctx = new AudioContext();
@@ -37,22 +38,38 @@ osc.start(0);
 
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state);
   return {
-
+    octave: state.octaveReducer.current,
+    capture: state.captureReducer.capture
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
+  return bindActionCreators ({pushNoteToArray}, dispatch);
 };
 
 
 class Piano extends Component {
 
-  handleClick(note) {
-    console.log(note);
+  handleClick = (note) => {
+    
+    let freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
+    let keyNum = freqAndKeyNum.keyNum;
 
-    osc.frequency.value = getFrequency(note);
+    let noteObj = {
+      noteName: note,
+      octave: this.props.octave,
+      keyNum: keyNum
+    };
+
+    console.log(noteObj);
+
+    if (this.props.capture) {
+      this.props.pushNoteToArray(noteObj);
+    }
+
+    osc.frequency.value = freqAndKeyNum.frequency;
     gainNode.gain.value = 0.25;
 
     setTimeout(() => {

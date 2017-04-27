@@ -3,9 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
-
+    octave: state.octaveReducer.current
   };
 };
 
@@ -25,6 +26,10 @@ class NoteIndicator extends Component {
     return (
       <div className="container">
         <div sytle={style}>{this.props.note}</div>
+        <div className="row">
+          <span>Ocative</span>
+        </div>
+
       </div>
     );
   }

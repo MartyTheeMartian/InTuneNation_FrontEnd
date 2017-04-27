@@ -26,8 +26,8 @@ class Interface extends Component {
       <div className="container">
         <OctaveButtons />
         <Piano />
-        <NoteIndicator />
         <CaptureButtons />
+        <NoteIndicator />
       </div>
     );
   }

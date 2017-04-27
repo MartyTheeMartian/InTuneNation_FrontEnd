@@ -6,9 +6,9 @@ import { captureReducer } from '../../reducers';
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
-    captureText: state.captureReducer.captureText
+    captureText: state.captureReducer.captureText,
+    disabled: state.captureReducer.disabled
   };
 };
 
@@ -19,12 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
 class CaptureButtons extends Component {
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick () {
+  handleClick = () =>  {
     this.props.toggleCapture();
   }
 
@@ -32,7 +27,7 @@ class CaptureButtons extends Component {
     return (
       <div className="row">
           <div className="col-md-6">
-            <button onClick={this.handleClick} className="btn btn-primary btn-lg active">{this.props.captureText}</button>
+            <button onClick={this.handleClick} className="btn btn-primary btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
           </div>
       </div>
     );

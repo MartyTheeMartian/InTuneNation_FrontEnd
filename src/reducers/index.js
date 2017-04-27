@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { captureReducer } from './interface';
+import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
 
 
 const rootReducer = combineReducers ({
-  captureReducer
+  notesArrayReducer, 
+  captureReducer,
+  octaveReducer
 
 });
 
