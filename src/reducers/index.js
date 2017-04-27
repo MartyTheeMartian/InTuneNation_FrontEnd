@@ -4,7 +4,6 @@ import captureReducer from './interface';
 
 const rootReducer = combineReducers ({
   captureReducer
-
 });
 
 export default rootReducer;
