@@ -1,12 +1,14 @@
 
-export const captureReducer = (state = {capture: false}, action) => {
-
-  console.log('Yo');
+export const captureReducer = (state = {capture: false, captureText: 'Capture Keyboard'}, action) => {
 
   switch (action.type) {
     case 'TOGGLE_CAPTURE':
-      return action;
-      console.log(state);
+      if (state.capture) {
+        return {capture: false, captureText: 'Capture Keyboard'};
+      }
+      else {
+        return {capture: true, captureText: 'End Capture'};
+      }
     default:
       return state;
   }

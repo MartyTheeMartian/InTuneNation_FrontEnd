@@ -7,6 +7,7 @@ import Piano from './piano';
 import CaptureButtons from './captureButtons';
 
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
 

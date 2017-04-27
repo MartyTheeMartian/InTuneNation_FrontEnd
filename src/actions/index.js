@@ -1,6 +1,4 @@
 
-
-
 export const pushNoteToArray = () => {
   return {
     type: 'NOTE_TO_ARRAY'
@@ -8,8 +6,14 @@ export const pushNoteToArray = () => {
 };
 
 export const toggleCapture = () => {
-  console.log('Actions');
   return {
     type: 'TOGGLE_CAPTURE'
+  };
+};
+
+export const shiftOctaves = (direction) => {
+  return {
+    type: 'SHIFT_OCTAVES',
+    payload: direction
   };
 };
