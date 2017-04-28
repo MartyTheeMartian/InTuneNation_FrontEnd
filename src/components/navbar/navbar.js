@@ -84,12 +84,12 @@ class NavBar extends Component {
               <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
 
-                  <div class="modal-header">
+                  {/* <div class="modal-header"> */}
                     {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button> */}
 
-                  </div>
+                  {/* </div> */}
 
 
                     <LogIn/>
