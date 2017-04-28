@@ -6,8 +6,8 @@ body {
 
 footer {
   background-color: lightBlue;
-  position: fixed;
-  height: 80px;
+  position: static;
+  height: 20px;
   bottom: 0;
   width: 100%;
 }
