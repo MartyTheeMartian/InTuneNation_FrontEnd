@@ -25,7 +25,7 @@ class NoteIndicator extends Component {
 
     return (
       <div className="container">
-        <div sytle={style}>{this.props.note}</div>
+        <div style={style}>{this.props.note}</div>
         <div className="row">
           <span>Ocative</span>
         </div>

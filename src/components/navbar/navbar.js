@@ -62,16 +62,16 @@ class NavBar extends Component {
               Log in
             </button>
 
-            <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
 
-                  <div class="modal-header">
+                  {/* <div class="modal-header"> */}
                     {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
                       {/* <span aria-hidden="true">&times;</span>
                     </button> */}
 
-                  </div>
+                  {/* </div> */}
 
 
                     <SignUp/>
@@ -80,7 +80,7 @@ class NavBar extends Component {
               </div>
             </div>
 
-            <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
 

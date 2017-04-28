@@ -12,9 +12,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators ({ toggleCapture }, dispatch);
-// };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators ({ toggleCapture }, dispatch);
+};
 
 
 class CaptureButtons extends Component {
@@ -35,4 +35,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect (mapStateToProps, { toggleCapture })(CaptureButtons);
+export default connect (mapStateToProps, mapDispatchToProps)(CaptureButtons);
