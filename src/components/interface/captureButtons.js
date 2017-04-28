@@ -2,35 +2,32 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleCapture } from '../../actions';
+import { captureReducer } from '../../reducers';
 
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    // capture: state.interface.capture
+    captureText: state.captureReducer.captureText,
+    disabled: state.captureReducer.disabled
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({ toggleCapture }, dispatch);
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators ({ toggleCapture }, dispatch);
+// };
 
 
 class CaptureButtons extends Component {
 
-  constructor(props) {
-    super(props);
-    this.button = 'Capture Keyboard';
-  }
-
-  handleClick () {
-    toggleCapture();
+  handleClick = () =>  {
+    this.props.toggleCapture();
   }
 
   render() {
     return (
       <div className="row">
           <div className="col-md-6">
-            <button onClick={this.handleClick} className="btn btn-primary btn-lg active">{this.button}</button>
+            <button onClick={this.handleClick} className="btn btn-primary btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
           </div>
       </div>
     );
@@ -38,4 +35,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(CaptureButtons);
+export default connect (mapStateToProps, { toggleCapture })(CaptureButtons);
