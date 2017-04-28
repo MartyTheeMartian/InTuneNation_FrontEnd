@@ -7,6 +7,7 @@ import Piano from './piano';
 import CaptureButtons from './captureButtons';
 
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
 
@@ -25,8 +26,8 @@ class Interface extends Component {
       <div className="container">
         <OctaveButtons />
         <Piano />
-        <NoteIndicator />
         <CaptureButtons />
+        <NoteIndicator />
       </div>
     );
   }

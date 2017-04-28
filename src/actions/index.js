@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter as Router,
   Route,
@@ -7,18 +8,19 @@ import {
 } from 'react-router-dom'
 
 
-export const pushNoteToArray = () => {
+export const pushNoteToArray = (noteObj) => {
   return {
-    type: 'NOTE_TO_ARRAY'
+    type: 'NOTE_TO_ARRAY',
+    payload: noteObj
   };
 };
 
 export const toggleCapture = () => {
-  console.log('Actions');
   return {
     type: 'TOGGLE_CAPTURE'
   };
 };
+
 
 // export const logUserIn = (email, password) => {
 //   return {
@@ -29,3 +31,10 @@ export const toggleCapture = () => {
 //     }
 //   };
 // };
+
+export const shiftOctaves = (direction) => {
+  return {
+    type: 'SHIFT_OCTAVES',
+    payload: direction
+  };
+};
