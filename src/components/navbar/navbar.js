@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
-import LogIn from '../logIn/logIn.js'
-import SignUp from '../signUp/signUp.js'
+import LogIn from '../logIn/logIn.js';
+import SignUp from '../signUp/signUp';
+
 const mapStateToProps = (state, ownProps) => {
   return {};
 };
@@ -28,20 +29,16 @@ class NavBar extends Component {
           </Navbar.Brand>
           <Navbar.Toggle/>
         </Navbar.Header>
-
         <Navbar.Collapse>
 
           <Nav>
             <LinkContainer to="/profile">
-              <NavItem eventKey={1} href="#">
-                Personal Profile</NavItem>
+              <NavItem eventKey={1} href="#"> Personal Profile</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/community">
               <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
-
-            {/* <NavItem> Intervalicity</NavItem> */}
 
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Sign up</MenuItem>
@@ -51,9 +48,8 @@ class NavBar extends Component {
               <MenuItem eventKey={3.3}>Separated link</MenuItem>
             </NavDropdown>
           </Nav>
-          <Nav pullRight>
-            {/* <LinkContainer to="/signup"> */}
 
+          <Nav pullRight>
             <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
               Sign up
             </button>
@@ -84,12 +80,12 @@ class NavBar extends Component {
               <div className="modal-dialog modal-lg" role="document">
                 <div className="modal-content">
 
-                  <div class="modal-header">
+                  {/* <div class="modal-header"> */}
                     {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button> */}
 
-                  </div>
+                  {/* </div> */}
 
 
                     <LogIn/>
@@ -101,9 +97,7 @@ class NavBar extends Component {
           </Nav>
 
         </Navbar.Collapse>
-
       </Navbar>
-
     );
   }
 

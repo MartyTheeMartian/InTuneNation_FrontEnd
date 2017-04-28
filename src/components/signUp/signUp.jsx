@@ -2,42 +2,43 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
+import { signUserUp } from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    formData: state.signupForm
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({signUserUp}, dispatch);
 };
 
 
 class SignUp extends Component {
 
   onSubmit(props) {
-      console.log(props);
+      console.log('what is form', this.state);
+      event.preventDefault();
+      const user = this.props;
+      this.props.signUserUp(user.email, user.firstName, user.lastName, user.password)
       // this.props.createPost(props)
       //   .then(() => {
       //     //blog post has been created, navigate the user to the index
       //     //We navigate by calling this.context.router.push with the new path to navigate to.
       //     this.context.router.push('/');
     }
-
-
   render() {
     // handleSubmit(e) {
       //do stuff here
     // }
     const {handleSubmit, pristine, reset, submitting} = this.props;
-
     return (
-
       <div className="container">
         {/* <div>
             <h2 className="text-center">Sign Up</h2>
           </div> */}
         <div className="col-md-9 centered well well-lg">
-
           <button type="button" class="close " data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -46,7 +47,6 @@ class SignUp extends Component {
               Sign Up with Google
             </button>
           </div>
-
           <div className="col-md-9">
             <h4 className="text-center">
               or
@@ -98,6 +98,6 @@ class SignUp extends Component {
   }
 
 }
-SignUp = reduxForm({form: 'Signup'})(SignUp);
+SignUp = reduxForm({ form: 'signup' })(SignUp);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

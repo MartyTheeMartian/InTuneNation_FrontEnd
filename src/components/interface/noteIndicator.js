@@ -6,7 +6,15 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    octave: state.octaveReducer.current
+    octave: state.octaveReducer.current,
+    keyStrokeEvents: state.keyStrokeEvents,
+    vocalInputResults: state.vocalInputResults,
+    exerciseScores: state.exerciseScores,
+    greenTime: state.greenTime,
+    targetNote: state.targetNote,
+    targetNoteIndex: state.targetNoteIndex,
+    sungNote: state.sungNote,
+    recordingStatus: state.recordingStatus
   };
 };
 
@@ -27,9 +35,8 @@ class NoteIndicator extends Component {
       <div className="container">
         <div style={style}>{this.props.note}</div>
         <div className="row">
-          <span>Ocative</span>
+          <span>Octave</span>
         </div>
-
       </div>
     );
   }
