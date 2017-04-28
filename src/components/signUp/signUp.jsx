@@ -18,16 +18,12 @@ const mapDispatchToProps = (dispatch) => {
 class SignUp extends Component {
 
   onSubmit(props) {
-      console.log('what is form', this.state);
-      event.preventDefault();
-      const user = this.props;
-      this.props.signUserUp(user.email, user.firstName, user.lastName, user.password)
-      // this.props.createPost(props)
-      //   .then(() => {
-      //     //blog post has been created, navigate the user to the index
-      //     //We navigate by calling this.context.router.push with the new path to navigate to.
-      //     this.context.router.push('/');
+    console.log('what is form', this.state);
+    event.preventDefault();
+    const user = this.props;
+    this.props.signUserUp(user.email, user.firstName, user.lastName, user.password);
     }
+
   render() {
     // handleSubmit(e) {
       //do stuff here
@@ -93,11 +89,9 @@ class SignUp extends Component {
           </div>
         </div>
       </div>
-
     );
   }
-
 }
-SignUp = reduxForm({ form: 'signup' })(SignUp);
+SignUp = reduxForm({ form: 'signup', })(SignUp);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
