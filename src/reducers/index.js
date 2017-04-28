@@ -8,12 +8,12 @@ import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
 import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
 import { Field, reduxForm } from 'redux-form';
-import { reducer as reduxFormReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
-  form: reduxFormReducer,
-  notesArrayReducer, 
+  form: formReducer,
+  notesArrayReducer,
   captureReducer,
   octaveReducer,
   greenTimeReducer,

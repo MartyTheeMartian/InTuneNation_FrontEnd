@@ -17,6 +17,7 @@ export const toggleCapture = () => {
 };
 
 export const signUserUp = (email, firstName, lastName, password) => {
+  console.log('am I here?');
   return {
     type:'SIGN_USER_UP',
     payload: {
