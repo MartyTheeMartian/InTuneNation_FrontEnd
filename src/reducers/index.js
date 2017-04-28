@@ -7,9 +7,12 @@ import vocalInputReducer from './vocalInputResults_reducer';
 import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
 import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
+import { Field, reduxForm } from 'redux-form';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
+  form: reduxFormReducer,
   notesArrayReducer, 
   captureReducer,
   octaveReducer,
@@ -21,5 +24,6 @@ const rootReducer = combineReducers({
   vocalInputReducer,
   recordingStatusReducer
 });
+
 
 export default rootReducer;

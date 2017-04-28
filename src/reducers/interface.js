@@ -1,9 +1,5 @@
 import initialState from './initialState';
-
 export const notesArrayReducer = (state = initialState.notesArray, action) => {
-
-  console.log(action);
-
   switch (action.type) {
     case 'NOTE_TO_ARRAY':
       return [...state, action.payload];
@@ -13,7 +9,6 @@ export const notesArrayReducer = (state = initialState.notesArray, action) => {
 };
 
 export const captureReducer = (state = initialState.capture, action) => {
-
   switch (action.type) {
     case 'TOGGLE_CAPTURE':
       if (!state.capture) {
@@ -22,14 +17,12 @@ export const captureReducer = (state = initialState.capture, action) => {
       else if (state.capture) {
         return {capture: false, captureText: 'Capture Keyboard', disabled: 'disabled'};
       }
-
     default:
       return state;
   }
 };
 
 export const octaveReducer = (state = initialState.octave, action) => {
-
   switch (action.type) {
     case 'SHIFT_OCTAVES':
       if (action.payload === '+' && state.current === 4) {

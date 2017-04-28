@@ -5,6 +5,7 @@ import { pushNoteToArray,
          toggleCapture,
          toggleAudioCapture
        } from '../../actions';
+import { captureReducer } from '../../reducers';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -24,29 +25,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators ({toggleAudioCapture, toggleCapture}, dispatch);
 };
-
-
+    
 class CaptureButtons extends Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
 
   handleClick = () =>  {
     this.props.toggleCapture();
-
-  // handleClick(id) {
-    // toggleCapture();
-//     console.log('click');
-//     switch(id) {
-//       case 1:
-//       case 2:
-//       case 3:
-//       case 4:
-//       case 5:
-//       default:
-//         break;
-    }
+  }
 
   render() {
     return (
@@ -60,13 +44,10 @@ class CaptureButtons extends Component {
               Recording Status: { this.props.recordingStatus }
             </p>
           </div>
-{/* //           <div className="col-md3">
-//             <button onClick={this.handleClick(5)} className="btn btn-primary btn-lg active">Reset Key Events</button>
-//           </div> */}
       </div>
     );
   }
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(CaptureButtons);
+export default connect (mapStateToProps, { toggleCapture })(CaptureButtons);
