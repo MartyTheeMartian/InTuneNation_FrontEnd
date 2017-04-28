@@ -1,4 +1,3 @@
-
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +20,17 @@ export const toggleCapture = () => {
   };
 };
 
+export const signUserUp = (email, firstName, lastName, password) => {
+  return {
+    type:'SIGN_USER_UP',
+    payload: {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      password: password
+    }
+  };
+};
 
 // export const logUserIn = (email, password) => {
 //   return {
