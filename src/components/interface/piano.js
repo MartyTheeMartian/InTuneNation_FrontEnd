@@ -2,23 +2,80 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { pushNoteToArray } from '../../actions';
+import { octaveReducer } from '../../reducers';
+import getFrequencyAndKeyNum from '../../audio/frequencies';
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const ctx = new AudioContext();
+const osc = ctx.createOscillator();
+const gainNode = ctx.createGain();
+const distortion = ctx.createWaveShaper();
+
+function makeDistortionCurve(amount) {
+  var k = typeof amount === 'number' ? amount : 50,
+    n_samples = 44100,
+    curve = new Float32Array(n_samples),
+    deg = Math.PI / 180,
+    i = 0,
+    x;
+  for ( ; i < n_samples; ++i ) {
+    x = i * 2 / n_samples - 1;
+    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
+  }
+  return curve;
+};
+
+osc.connect(gainNode);
+osc.connect(distortion);
+gainNode.connect(ctx.destination);
+distortion.connect(ctx.destination);
+osc.connect(ctx.destination);
+osc.type = 'square';
+osc.frequency.value = 0;
+gainNode.gain.value = 0;
+distortion.curve = makeDistortionCurve(666);
+osc.start(0);
 
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state);
   return {
-
+    octave: state.octaveReducer.current,
+    capture: state.captureReducer.capture
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
+  return bindActionCreators ({pushNoteToArray}, dispatch);
 };
 
 
 class Piano extends Component {
 
-  handleClick(note) {
-    console.log(note);
+  handleClick = (note) => {
+    
+    let freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
+    let keyNum = freqAndKeyNum.keyNum;
+
+    let noteObj = {
+      noteName: note,
+      octave: this.props.octave,
+      keyNum: keyNum
+    };
+
+    console.log(noteObj);
+
+    if (this.props.capture) {
+      this.props.pushNoteToArray(noteObj);
+    }
+
+    osc.frequency.value = freqAndKeyNum.frequency;
+    gainNode.gain.value = 0.25;
+
+    setTimeout(() => {
+      gainNode.gain.value = 0;
+      osc.frequency.value = 0;
+    }, 700);
 
   }
 
@@ -26,18 +83,18 @@ class Piano extends Component {
     return (
       <div className="row">
         <div className="octave">
-          <div onClick={() => this.handleClick('C')} id="C" className="white-key" ></div>
-          <div onClick={() => this.handleClick('C# / Db')} id="Cs" className="black-key" ></div>
-          <div onClick={() => this.handleClick('D')} id="D" className="white-key" ></div>
-          <div onClick={() => this.handleClick('D# / Eb')} id="Ds" className="black-key" ></div>
-          <div onClick={() => this.handleClick('E')} id="E" className="white-key" ></div>
-          <div onClick={() => this.handleClick('F')} id="F" className="white-key" ></div>
-          <div onClick={() => this.handleClick('F# / Gb')} id="Fs" className="black-key" ></div>
-          <div onClick={() => this.handleClick('G')} id="G" className="white-key" ></div>
-          <div onClick={() => this.handleClick('G# / Ab')} id="Gs" className="black-key" ></div>
-          <div onClick={() => this.handleClick('A')} id="A" className="white-key" ></div>
-          <div onClick={() => this.handleClick('A# / Bb')} id="As" className="black-key" ></div>
-          <div onClick={() => this.handleClick('B')} id="B" className="white-key" ></div>
+          <div onClick={() => this.handleClick('C')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('D')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('E')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('F')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('G')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('A')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('B')} className="white-key" ></div>
         </div>
       </div>
     );
