@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp';
-
 
 const mapStateToProps = (state, ownProps) => {
   return {};
@@ -86,9 +85,7 @@ class NavBar extends Component {
             </div>
           </Nav>
         </Navbar.Collapse>
-
       </Navbar>
-
     );
   }
 
