@@ -7,10 +7,11 @@ import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
 
 const rootReducer = combineReducers ({
   form: reduxFormReducer,
-  notesArrayReducer, 
+  notesArrayReducer,
   captureReducer,
   octaveReducer
-
 });
+
+console.log('what is the rootReducer', rootReducer);
 
 export default rootReducer;
