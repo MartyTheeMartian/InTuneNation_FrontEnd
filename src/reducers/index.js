@@ -13,7 +13,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
   form: reduxFormReducer,
-  notesArrayReducer, 
+  notesArrayReducer,
   captureReducer,
   octaveReducer,
   greenTimeReducer,
@@ -22,7 +22,7 @@ const rootReducer = combineReducers({
   targetNoteIndexReducer,
   sungNoteReducer,
   vocalInputReducer,
-  recordingStatusReducer
+  recordingStatusReducer,
 });
 
 

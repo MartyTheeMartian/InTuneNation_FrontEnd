@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { pushNoteToArray } from '../../actions';
+import { pushKeyEventToArray } from '../../actions';
 import { octaveReducer } from '../../reducers';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
 
@@ -46,19 +46,27 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({pushNoteToArray}, dispatch);
+  return bindActionCreators({ pushKeyEventToArray }, dispatch);
 };
 
 
 class Piano extends Component {
+  constructor(props) {
+    super();
+  }
 
-  handleClick = (note) => {
-    
-    let freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
-    let keyNum = freqAndKeyNum.keyNum;
+  handleClick = (noteNamesArray) => {
+
+    const freqAndKeyNum = getFrequencyAndKeyNum(noteNamesArray, this.props.octave);
+    console.log(noteNamesArray);
+    console.log(this.props.octave);
+    console.log(getFrequencyAndKeyNum);
+    console.log(freqAndKeyNum);
+    console.log(getFrequencyAndKeyNum(noteNamesArray, this.props.octave));
+    const keyNum = freqAndKeyNum.keyNum;
 
     let noteObj = {
-      noteName: note,
+      noteNamesArray,
       octave: this.props.octave,
       keyNum: keyNum
     };
@@ -66,7 +74,7 @@ class Piano extends Component {
     console.log(noteObj);
 
     if (this.props.capture) {
-      this.props.pushNoteToArray(noteObj);
+      this.props.pushKeyEventToArray(noteObj);
     }
 
     osc.frequency.value = freqAndKeyNum.frequency;
@@ -83,18 +91,18 @@ class Piano extends Component {
     return (
       <div className="row">
         <div className="octave">
-          <div onClick={() => this.handleClick('C')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('D')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('E')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('F')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('G')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('A')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('B')} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['c'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['c#','db'])} className="black-key" ></div>
+          <div onClick={() => this.handleClick(['d'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['d#', 'eb'])} className="black-key" ></div>
+          <div onClick={() => this.handleClick(['e'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['f'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['f#', 'gb'])} className="black-key" ></div>
+          <div onClick={() => this.handleClick(['g'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['g#', 'ab'])} className="black-key" ></div>
+          <div onClick={() => this.handleClick(['a'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick(['a#', 'bb'])} className="black-key" ></div>
+          <div onClick={() => this.handleClick(['b'])} className="white-key" ></div>
         </div>
       </div>
     );
@@ -102,4 +110,4 @@ class Piano extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Piano);
+export default connect(mapStateToProps, mapDispatchToProps)(Piano);

@@ -3,22 +3,26 @@ export default {
   capture: {
     capture: false,
     captureText: 'Capture Keyboard',
-    disabled: ""
+    disabled: '',
   },
   octave: {
     current: 4,
-    up: "",
-    down: ""
+    up: '',
+    down: '',
   },
   keyStrokeEvents: [],
   vocalInputResults: [],
   exerciseScores: [],
   greenTime: {
     accumulated: 0,
-    required: 500
+    required: 500,
   },
   targetNote: null,
   targetNoteIndex: 0,
-  sungNote: null,
-  recordingStatus: false
-}
+  sungNote: {
+    frequency: null,
+    name: null,
+    centDiff: null,
+  },
+  recordingStatus: false,
+};

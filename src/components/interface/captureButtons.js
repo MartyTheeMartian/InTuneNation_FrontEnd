@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { pushNoteToArray,
-         toggleCapture,
-         toggleAudioCapture
+import { toggleCapture,
+         toggleAudioCapture,
        } from '../../actions';
-import { captureReducer } from '../../reducers';
+// import { captureReducer } from '../../reducers';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state/* , ownProps*/) => {
   return {
     captureText: state.captureReducer.captureText,
     disabled: state.captureReducer.disabled,
@@ -18,14 +17,14 @@ const mapStateToProps = (state, ownProps) => {
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNote,
-    recordingStatus: state.recordingStatus
+    recordingStatus: state.recordingStatus,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({toggleAudioCapture, toggleCapture}, dispatch);
+  return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch);
 };
-    
+
 class CaptureButtons extends Component {
 
   handleClick = () =>  {
@@ -50,4 +49,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect (mapStateToProps, { toggleCapture })(CaptureButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(CaptureButtons);

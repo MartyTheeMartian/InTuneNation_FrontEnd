@@ -33,15 +33,16 @@ if(window.innerWidth <= 420 && window.innerWidth > 375){
 
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state);
   return ({
-    keyStrokeEvents: state.keyStrokeEvents,
-    vocalInputResults: state.vocalInputResults,
-    exerciseScores: state.exerciseScores,
+    keyStrokeEvents: state.keyStrokeEventsReducer,
+    vocalInputResults: state.vocalInputResultsReducer,
+    exerciseScores: state.exerciseScoresReducer,
     // greenTime: state.greenTime,
-    targetNote: state.targetNote,
-    targetNoteIndex: state.targetNoteIndex,
-    sungNote: state.sungNote,
-    recordingStatus: state.recordingStatus
+    targetNote: state.targetNoteReducer,
+    targetNoteIndex: state.targetNoteIndexReducer,
+    sungNote: state.sungNoteReducer,
+    recordingStatus: state.recordingStatusReducer,
   });
 };
 
@@ -53,6 +54,7 @@ const mapDispatchToProps = (dispatch) => {
 class TuningIndicator extends Component {
   constructor(props) {
     super();
+    this.props = props;
     this.options = {
       isInnerNumbers: false,
       aperture: 180,
@@ -66,33 +68,35 @@ class TuningIndicator extends Component {
       centralCircleRadius: 10,
       marks: ["-50c b", null, "-40", null, "-30", null , "-20", "-15", "-10", "-5", "C", "5", "10", "15", "20", null, "30", null , "40", null, "50c #"],
       contentWidth: contWidth, svgContainerWidth: contWidth, svgContainerHeight: contHeight,
-      arrowValue: 96/180, // THIS VALUE MUST REACT TO CURRENT SUNG PITCH
+      arrowValue: ((180*((this.props.sungNote.centDiff + 50)/100))/180) || 90/180, // THIS VALUE MUST REACT TO CURRENT SUNG PITCH
       gaugeCenterLineHeight: centerLineHeight,
-      ranges: [{
-        start: 0,
-        end: 36/180,
-        color: "#f3595b"
-      },
-      {
-        start: 36/180,
-        end: 72/180,
-        color: "#ffc875"
-      },
-      {
-        start: 72/180,
-        end: 108/180,
-        color: "#83d7c0"
-      },
-      {
-        start: 108/180,
-        end: 144/180,
-        color: "#ffc875"
-      },
-      {
-        start: 144/180,
-        end: 180/180,
-        color: "#f3595b"
-      }]
+      ranges: [
+        {
+          start: 0,
+          end: 36/180,
+          color: "#f3595b",
+        },
+        {
+          start: 36/180,
+          end: 72/180,
+          color: "#ffc875",
+        },
+        {
+          start: 72/180,
+          end: 108/180,
+          color: "#83d7c0",
+        },
+        {
+          start: 108/180,
+          end: 144/180,
+          color: "#ffc875",
+        },
+        {
+          start: 144/180,
+          end: 180/180,
+          color: "#f3595b",
+        },
+      ],
     };
   }
 
