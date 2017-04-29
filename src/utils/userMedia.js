@@ -1,6 +1,7 @@
 import teoria from 'teoria';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
+import ReactGauge from 'react-gauge-capacity';
 
 import { setKeyEventAsTargetNote,
           incrementGreenTime,
@@ -35,16 +36,16 @@ function centDiffInGreen(cD) { return (cD<-40 && cD>40); }
 function centDiffInYellow(cD) { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
 function centDiffInRed(cD) { return (cD > -15 && cD < 15); }
 
-const green = (targetNoteNames, sungNote, fq) => {
-  return (centDiffInGreen(getCentDiff(fq)) && targetNoteNames.includes(sungNote.name));
+const green = (targetNoteName, sungNoteName, fq) => {
+  return (centDiffInGreen(getCentDiff(fq)) && targetNoteName === sungNoteName);
 };
 
-const yellow = (targetNoteNames, sungNote, fq) => {
-  return (centDiffInYellow(getCentDiff(fq)) && targetNoteNames.includes(sungNote.name));
+const yellow = (targetNoteName, sungNoteName, fq) => {
+  return (centDiffInYellow(getCentDiff(fq)) && targetNoteName === sungNoteName);
 };
 
-const red = (targetNoteNames, sungNote, fq) => {
-  return !targetNoteNames.includes(sungNote.name) ? true : centDiffInRed(getCentDiff(fq));
+const red = (targetNoteName, sungNoteName, fq) => {
+  return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
 };
 
 
@@ -62,7 +63,6 @@ export default getUserMedia({ video: false, audio: true })
       // the underlying audio data is not copied or modified.)
       const raw = MicrophoneStream.toRaw(chunk);
       const pitch = new PitchAnalyzer(44100);
-      // console.log(chunk);
       pitch.input(raw);
       pitch.process();
       const tone = pitch.findTone();
@@ -70,49 +70,49 @@ export default getUserMedia({ video: false, audio: true })
         const freq = tone.freq;
         const sungNote = {
           frequency: freq,
-          name: getNameAccidental(freq),
+          name: getNameAccidentalOctave(freq),
           centDiff: getCentDiff(freq),
+          arrowValue: ((180*((getCentDiff(freq) + 50)/100))/180),
         };
         dispatch(setSungNote(sungNote));
-        // // const db = tone.db;
-        // // const note = getNote(freq);
-        // const state = getState();
-        // const keyStrokeEvents = state.keyStrokeEventsReducer;
-        // const targetNoteIndex = state.targetNoteIndexReducer;
-        // dispatch(setKeyEventAsTargetNote(keyStrokeEvents[targetNoteIndex]))
+        // const db = tone.db;
+        // const note = getNote(freq);
+        const keyEvents = getState().keyEventsReducer;
+        const targetNoteIndex = getState().targetNoteIndexReducer;
+        dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]))
         // const targetNoteNames = state.targetNoteReducer.noteNamesArray;
-        // // const targetNoteWithAccidental = state.targetNote
-        // // const green = (fq, targetNote) => {
-        // //   return (tar)
-        // // }
-        // // const greenTime = state.greenTime;
-        // // const targetNote = state.targetNote;
-        // // const exerciseScores = state.exerciseScores;
+        const targetNoteName = getState().targetNoteReducer.tNote;
+        const sungNoteName = getState().sungNoteReducer.name;
+        console.log(sungNoteName);
+        const greenTime = getState().greenTimeReducer;
+        // const exerciseScores = state.exerciseScores;
         // // const keyStrokeEvents = stat
-        //
-        // if (state.greenTime.accumulated !== state.greenTime.required) {
-        //   dispatch(pushScoreToExerciseScoresArray());
-        //   if (state.exerciseScores.length === state.keyStrokeEvents.length) {
-        //     // POST SCORES TO DB
-        //     dispatch(resetTargetNoteIndex());
-        //     dispatch(toggleAudioCapture());
-        //   } else {
-        //     dispatch(resetGreenTime());
-        //     dispatch(resetScore());
-        //     dispatch(incrementTargetNoteIndex());
-        //   }
-        // } else {
-        //   if (!green(targetNoteNames, sungNote, freq)) {
-        //     dispatch(resetGreenTime());
-        //     if (red(targetNoteNames, sungNote, freq)) {
-        //       dispatch(decrementScore(5));
-        //     } else if (yellow(freq)) {
-        //       dispatch(decrementScore(0.25));
-        //     }
-        //   } else {
-        //     dispatch(incrementGreenTime());
-        //   }
-        // }
+        console.log(getState().scoreReducer);
+        if (greenTime.accumulated === greenTime.required) {
+          const finalScore = getState().scoreReducer;
+          dispatch(pushScoreToExerciseScoresArray(finalScore));
+          // if (getState().exerciseScoresReducer.length === keyEvents.length) {
+          //   // POST SCORES TO DB
+          //   dispatch(resetTargetNoteIndex());
+          //   dispatch(toggleAudioCapture());
+          // } else {
+          //   dispatch(resetGreenTime());
+          //   dispatch(resetScore());
+          //   dispatch(incrementTargetNoteIndex());
+          // }
+        } else {
+          if (green(targetNoteName, sungNoteName, freq)) {
+            dispatch(incrementGreenTime());
+            console.log(getState().greenTime.accumulated);
+          } else {
+            dispatch(incrementGreenTime());
+            if (red(targetNoteName, sungNoteName, freq)) {
+              dispatch(decrementScore(5));
+            } else if (yellow(targetNoteName, sungNoteName, freq)) {
+              dispatch(decrementScore(2.5));
+            }
+          }
+        }
 
  // dispatch to the store //As singing, get guage to reflect where you are in RGY
         console.log(getPreciseNotePlusCentDiffPlusFreq(freq));

@@ -54,6 +54,7 @@ export const toggleAudioCapture = () => {
 };
 
 export const incrementGreenTime = () => {
+  console.log('GREEN TIME INCREMENTED!!');
   return {
     type: 'INCREMENT_GREEN_TIME',
   };

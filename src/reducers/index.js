@@ -6,6 +6,7 @@ import sungNoteReducer from './sungNote_reducer';
 import vocalInputReducer from './vocalInputResults_reducer';
 import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
+import scoreReducer from './score_reducer';
 import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
 import { Field, reduxForm } from 'redux-form';
 import { reducer as reduxFormReducer } from 'redux-form';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   captureReducer,
   octaveReducer,
   greenTimeReducer,
+  scoreReducer,
   keyEventsReducer,
   targetNoteReducer,
   targetNoteIndexReducer,

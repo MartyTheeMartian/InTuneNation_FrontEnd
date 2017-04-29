@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { pushKeyEventToArray } from '../../actions';
+import { pushNoteToArray, pushKeyEventToArray } from '../../actions';
 import { octaveReducer } from '../../reducers';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
 
@@ -55,20 +55,18 @@ class Piano extends Component {
     super();
   }
 
-  handleClick = (noteNamesArray) => {
+  handleClick = (note) => {
 
-    const freqAndKeyNum = getFrequencyAndKeyNum(noteNamesArray, this.props.octave);
-    console.log(noteNamesArray);
-    console.log(this.props.octave);
-    console.log(getFrequencyAndKeyNum);
-    console.log(freqAndKeyNum);
-    console.log(getFrequencyAndKeyNum(noteNamesArray, this.props.octave));
+    const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
+    console.log(getFrequencyAndKeyNum(note, this.props.octave));
     const keyNum = freqAndKeyNum.keyNum;
+    const tNote = freqAndKeyNum.tNote;
 
     let noteObj = {
-      noteNamesArray,
+      noteName: note,
       octave: this.props.octave,
-      keyNum: keyNum
+      keyNum: keyNum,
+      tNote: tNote,
     };
 
     console.log(noteObj);
@@ -91,18 +89,18 @@ class Piano extends Component {
     return (
       <div className="row">
         <div className="octave">
-          <div onClick={() => this.handleClick(['c'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['c#','db'])} className="black-key" ></div>
-          <div onClick={() => this.handleClick(['d'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['d#', 'eb'])} className="black-key" ></div>
-          <div onClick={() => this.handleClick(['e'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['f'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['f#', 'gb'])} className="black-key" ></div>
-          <div onClick={() => this.handleClick(['g'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['g#', 'ab'])} className="black-key" ></div>
-          <div onClick={() => this.handleClick(['a'])} className="white-key" ></div>
-          <div onClick={() => this.handleClick(['a#', 'bb'])} className="black-key" ></div>
-          <div onClick={() => this.handleClick(['b'])} className="white-key" ></div>
+          <div onClick={() => this.handleClick('C')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('D')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('E')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('F')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('G')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('A')} className="white-key" ></div>
+          <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
+          <div onClick={() => this.handleClick('B')} className="white-key" ></div>
         </div>
       </div>
     );

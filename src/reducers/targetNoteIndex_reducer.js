@@ -1,7 +1,7 @@
 import initialState from './initialState';
 
 const targetNoteIndexReducer = (state = initialState.targetNoteIndex, action) => {
-  console.log('React/src/reducers/vocalInputResults_reducer.js/vocalInputReducer()');
+  // console.log('React/src/reducers/vocalInputResults_reducer.js/vocalInputReducer()');
   switch (action.type) {
     case 'INCREMENT_TARGET_NOTE_INDEX':
       return state.targetNoteIndex + 1;

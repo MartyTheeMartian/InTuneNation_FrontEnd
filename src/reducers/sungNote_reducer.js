@@ -1,7 +1,7 @@
 import initialState from './initialState';
 
 const sungNoteReducer = (state = initialState.sungNote, action) => {
-  console.log('React/src/reducers/vocalInputResults_reducer.js/vocalInputReducer()');
+  // console.log('React/src/reducers/vocalInputResults_reducer.js/vocalInputReducer()');
   switch (action.type) {
     case 'SET_SUNG_NOTE':
       return action.payload;
@@ -10,6 +10,7 @@ const sungNoteReducer = (state = initialState.sungNote, action) => {
         frequency: null,
         name: null,
         centDiff: null,
+        arrowValue: 90/180,
       };
     default:
       return state;

@@ -6,7 +6,7 @@ export default {
     disabled: '',
   },
   octave: {
-    current: 4,
+    current: 3,
     up: '',
     down: '',
   },
@@ -15,7 +15,7 @@ export default {
   exerciseScores: [],
   greenTime: {
     accumulated: 0,
-    required: 500,
+    required: 5,
   },
   targetNote: null,
   targetNoteIndex: 0,
@@ -23,6 +23,7 @@ export default {
     frequency: null,
     name: null,
     centDiff: null,
+    arrowValue: 90/180,
   },
   recordingStatus: false,
 };
