@@ -7,13 +7,14 @@ import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
 import exerciseScoresReducer from './exerciseScores_reducer';
-import { captureReducer, octaveReducer } from './interface';
+import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import { Field, reduxForm } from 'redux-form';
 import { reducer as reduxFormReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
   form: reduxFormReducer,
+  currentNoteReducer,
   captureReducer,
   octaveReducer,
   greenTimeReducer,

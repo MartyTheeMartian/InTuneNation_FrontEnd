@@ -1,5 +1,14 @@
 import initialState from './initialState';
 
+export const currentNoteReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'CURRENT_NOTE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const captureReducer = (state = initialState.capture, action) => {
   switch (action.type) {
     case 'TOGGLE_CAPTURE':

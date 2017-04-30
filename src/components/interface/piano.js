@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { pushNoteToArray, pushKeyEventToArray } from '../../actions';
+import { connect as reactConnect } from 'react-redux';
+import { pushKeyEventToArray, currentNote } from '../../actions';
 import { octaveReducer } from '../../reducers';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
+import getDistortionCurve from '../../audio/distort';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const ctx = new AudioContext();
@@ -11,30 +12,32 @@ const osc = ctx.createOscillator();
 const gainNode = ctx.createGain();
 const distortion = ctx.createWaveShaper();
 
-function makeDistortionCurve(amount) {
-  var k = typeof amount === 'number' ? amount : 50,
-    n_samples = 44100,
-    curve = new Float32Array(n_samples),
-    deg = Math.PI / 180,
-    i = 0,
-    x;
-  for ( ; i < n_samples; ++i ) {
-    x = i * 2 / n_samples - 1;
-    curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
-  }
-  return curve;
-};
+
+// osc.connect(gainNode);
+// osc.connect(distortion);
+// gainNode.connect(ctx.destination);
+// distortion.connect(ctx.destination);
+// osc.connect(ctx.destination);
+
+// gainNode.connect(ctx.destination);
+// osc.connect(ctx.destination);
+// osc.connect(gainNode);
+// osc.type = 'sine';
+// osc.frequency.value = 0;
+// gainNode.gain.value = 0;
+// distortion.curve = makeDistortionCurve(666);
+// distortion.oversample = '4x';
+// osc.start();
+
 
 osc.connect(gainNode);
-osc.connect(distortion);
 gainNode.connect(ctx.destination);
-distortion.connect(ctx.destination);
-osc.connect(ctx.destination);
 osc.type = 'square';
+osc.connect(ctx.destination);
 osc.frequency.value = 0;
 gainNode.gain.value = 0;
-distortion.curve = makeDistortionCurve(666);
-osc.start(0);
+osc.start();
+
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -46,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ pushKeyEventToArray }, dispatch);
+  return bindActionCreators({ pushKeyEventToArray, currentNote }, dispatch);
 };
 
 
@@ -56,9 +59,9 @@ class Piano extends Component {
   }
 
   handleClick = (note) => {
-
+    this.props.currentNote(note);
+    
     const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
-    console.log(getFrequencyAndKeyNum(note, this.props.octave));
     const keyNum = freqAndKeyNum.keyNum;
     const tNote = freqAndKeyNum.tNote;
 
@@ -76,7 +79,7 @@ class Piano extends Component {
     }
 
     osc.frequency.value = freqAndKeyNum.frequency;
-    gainNode.gain.value = 0.25;
+    gainNode.gain.value = 0.2;
 
     setTimeout(() => {
       gainNode.gain.value = 0;
@@ -108,4 +111,4 @@ class Piano extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Piano);
+export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);

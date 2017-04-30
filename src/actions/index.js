@@ -1,6 +1,14 @@
 import teoria from 'teoria';
 
+export const currentNote = (note) => {
+  return {
+    type: 'CURRENT_NOTE',
+    payload: note
+  };
+};
+
 export const pushKeyEventToArray = (noteObj) => {
+
   return {
     type: 'ADD_KEY_EVENT',
     payload: noteObj,

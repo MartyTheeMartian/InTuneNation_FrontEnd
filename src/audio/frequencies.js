@@ -79,11 +79,11 @@ function getFrequencyAndKeyNum(note, octave) {
       case 'G# / Ab':
         return { frequency: 830.61, keyNum: 60, tNote: 'g#5' };
       case 'A':
-        return { frequency: 880.00, keyNum: 29, tNote: 'a5' };
+        return { frequency: 880.00, keyNum: 61, tNote: 'a5' };
       case 'A# / Bb':
-        return { frequency: 932.33, keyNum: 29, tNote: 'a#5' };
+        return { frequency: 932.33, keyNum: 62, tNote: 'a#5' };
       case 'B':
-        return { frequency: 987.77, keyNum: 29, tNote: 'b5' };
+        return { frequency: 987.77, keyNum: 63, tNote: 'b5' };
       default:
         break;
     }

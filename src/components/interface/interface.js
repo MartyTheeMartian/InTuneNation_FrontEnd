@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import OctaveButtons from './octaveButtons';
 import NoteIndicator from './noteIndicator';
+import TargetNoteIndicator from './targetNoteIndicator';
 import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
@@ -37,6 +38,7 @@ class Interface extends Component {
         <OctaveButtons />
         <Piano />
         <NoteIndicator />
+        <TargetNoteIndicator />
         <TuningIndicator />
         <CaptureButtons />
       </div>
