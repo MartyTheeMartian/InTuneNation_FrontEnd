@@ -1,30 +1,27 @@
-import PitchAnalyzer from '../../pitch-js/pitch.js';
 import teoria from 'teoria';
-var getUserMedia = require('get-user-media-promise');
-var MicrophoneStream = require('microphone-stream');
 
-export const pushNoteToArray = (noteObj) => {
+export const pushKeyEventToArray = (noteObj) => {
   return {
-    type: 'NOTE_TO_ARRAY',
-    payload: noteObj
+    type: 'ADD_KEY_EVENT',
+    payload: noteObj,
   };
 };
 
 export const toggleCapture = () => {
   return {
-    type: 'TOGGLE_CAPTURE'
+    type: 'TOGGLE_CAPTURE',
   };
 };
 
 export const signUserUp = (email, firstName, lastName, password) => {
   return {
-    type:'SIGN_USER_UP',
+    type: 'SIGN_USER_UP',
     payload: {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      password: password
-    }
+      email,
+      firstName,
+      lastName,
+      password,
+    },
   };
 };
 
@@ -41,7 +38,7 @@ export const signUserUp = (email, firstName, lastName, password) => {
 export const shiftOctaves = (direction) => {
   return {
     type: 'SHIFT_OCTAVES',
-    payload: direction
+    payload: direction,
   };
 };
 
@@ -49,75 +46,74 @@ export const toggleAudioCapture = () => {
   console.log('React/src/actions/index/activateVocalInput()');
   return {
     type: 'TOGGLE_AUDIO_CAPTURE',
-  }
-}
+  };
+};
 
 export const incrementGreenTime = () => {
+  console.log('GREEN TIME INCREMENTED!!');
   return {
-    type: 'INCREMENT_GREEN_TIME'
-  }
-}
+    type: 'INCREMENT_GREEN_TIME',
+  };
+};
 
 export const resetGreenTime = () => {
   return {
-    type: 'RESET_GREEN_TIME'
-  }
-}
+    type: 'RESET_GREEN_TIME',
+  };
+};
 
 export const changeGreenTimeRequirement = (amount) => {
   return {
     type: 'CHANGE_GREEN_TIME_REQUIREMENT',
     amount: amount
-  }
-}
+  };
+};
 
 export const decrementScore = (amount) => {
   return {
     type: 'DECREMENT_SCORE',
-    amount: amount
-  }
-}
+    amount: amount,
+  };
+};
 
 export const resetScore = () => {
   return {
     type: 'RESET_SCORE'
-  }
-}
+  };
+};
 
 export const setKeyEventAsTargetNote = (keyEvent) => {
   return {
     type: 'SET_KEY_EVENT_AS_TARGET_NOTE',
-    payload: keyEvent
-  }
-}
+    payload: keyEvent,
+  };
+};
 
 export const setSungNote = (note) => {
   return {
     type: 'SET_SUNG_NOTE',
-    payload: note
-  }
-}
+    payload: note,
+  };
+};
 
 export const incrementTargetNoteIndex = () => {
   return {
-    type: 'INCREMENT_TARGET_NOTE_INDEX'
-  }
-}
+    type: 'INCREMENT_TARGET_NOTE_INDEX',
+  };
+};
 
 export const resetTargetNoteIndex = () => {
   return {
-    type: 'RESET_TARGET_NOTE_INDEX'
-  }
-}
+    type: 'RESET_TARGET_NOTE_INDEX',
+  };
+};
 
 export const pushScoreToExerciseScoresArray = (score) => {
   return {
     type: 'PUSH_SCORE_TO_EXERCISE_SCORES_ARRAY',
-    payload: score
-  }
-}
-
-
+    payload: score,
+  };
+};
 
 // teoria functions for music theory
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
