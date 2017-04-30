@@ -9,7 +9,8 @@ import greenTimeReducer from './greenTime_reducer';
 import { captureReducer, octaveReducer, notesArrayReducer } from './interface';
 import { Field, reduxForm } from 'redux-form';
 import { reducer as formReducer } from 'redux-form';
-import  signup  from './signup-login';
+import  signup  from './signUp';
+import login from './login';
 
 console.log('did i import signup?', signup);
 const rootReducer = combineReducers({
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   sungNoteReducer,
   vocalInputReducer,
   recordingStatusReducer,
-  signup: signup
+  signup: signup,
+  login: login,
 });
 
 

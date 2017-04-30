@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
-import LogIn from '../logIn/logIn.js';
+import LogIn from '../logIn/logIn';
 import SignUp from '../signUp/signUp';
 
 const mapStateToProps = (state, ownProps) => {
@@ -80,10 +80,7 @@ class NavBar extends Component {
 
             <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog " role="document">
-                <div className="modal-content" style={{
-                  margin: 5,
-                  border: 'grey solid 5px'
-                }}>
+                <div className="modal-content" >
                   {/* <div class="modal-header"> */}
                   {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>

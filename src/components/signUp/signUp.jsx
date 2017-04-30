@@ -41,9 +41,9 @@ class SignUp extends Component {
         </button>
 
         <div className="signup-modal-or-decorate">
-          <div className="signup-modal-or-decorate-lineL">you should'n see this long long string</div>
+          <div className="signup-modal-or-decorate-lineL">you shouldn't see this long long string</div>
           <span>or</span>
-          <div className="signup-modal-or-decorate-lineR">you should'n see this long long string</div>
+          <div className="signup-modal-or-decorate-lineR">you shouldn't see this long long string</div>
         </div>
 
         <form onSubmit={handleSubmit(this.onSubmit)}>
@@ -58,7 +58,7 @@ class SignUp extends Component {
 
           <div className="signup-modal-foot-btn">
             <button type="button" className="btn btn-danger" type="submit">
-              <h5>Submit</h5>
+              <h5>Sign Up</h5>
             </button>
             <button type="button" className="btn btn-default" data-dismiss="modal">
               <h5>Close</h5>

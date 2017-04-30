@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import mathew from '../../assets/matthew.png'
+import mathew from '../../assets/img/matthew.png'
 import {
   Button,
   Thumbnail,
