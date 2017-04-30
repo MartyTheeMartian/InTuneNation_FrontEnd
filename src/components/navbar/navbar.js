@@ -26,11 +26,11 @@ class NavBar extends Component {
     };
 
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar  collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <LinkContainer to="/interface">
-              <a href="#">Intervalicity</a>
+              <a href="#"><span className="navbar-left">Intervalicity</span></a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle/>
@@ -47,49 +47,47 @@ class NavBar extends Component {
               <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
 
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+            {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Sign up</MenuItem>
               <MenuItem eventKey={3.2}>Log in</MenuItem>
               <MenuItem eventKey={3.3}>Something else here</MenuItem>
               <MenuItem divider/>
               <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
 
           <Nav pullRight>
-            <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
-              Sign up
-            </button>
+              <NavItem  href="#" data-toggle="modal" data-target="#myModal1">Sign Up</NavItem>
 
-            <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
-              Log in
-            </button>
+              <NavItem  href="#" data-toggle="modal" data-target="#myModal2">Log In </NavItem>
 
-            <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  {/* <div class="modal-header"> */}
-                  {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
-                  {/* <span aria-hidden="true">&times;</span>
+
+              <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div className="modal-dialog" role="document">
+                  <div className="modal-content">
+                    {/* <div class="modal-header"> */}
+                    {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
+                    {/* <span aria-hidden="true">&times;</span>
                     </button> */}
-                  {/* </div> */}
-                  <SignUp/>
+                    {/* </div> */}
+                    <SignUp/>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog " role="document">
-                <div className="modal-content" >
-                  {/* <div class="modal-header"> */}
-                  {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div className="modal-dialog " role="document">
+                  <div className="modal-content">
+                    {/* <div class="modal-header"> */}
+                    {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button> */}
-                  {/* </div> */}
-                  <LogIn/>
+                    {/* </div> */}
+                    <LogIn/>
+                  </div>
                 </div>
               </div>
-            </div>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
