@@ -3,6 +3,14 @@ import teoria from 'teoria';
 var getUserMedia = require('get-user-media-promise');
 var MicrophoneStream = require('microphone-stream');
 
+
+export const currentNote = (note) => {
+  return {
+    type: 'CURRENT_NOTE',
+    payload: note
+  };
+};
+
 export const pushNoteToArray = (noteObj) => {
   return {
     type: 'NOTE_TO_ARRAY',

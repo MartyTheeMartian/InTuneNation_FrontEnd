@@ -1,4 +1,15 @@
 import initialState from './initialState';
+
+
+export const currentNoteReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'CURRENT_NOTE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const notesArrayReducer = (state = initialState.notesArray, action) => {
   switch (action.type) {
     case 'NOTE_TO_ARRAY':
