@@ -1,7 +1,6 @@
 import initialState from './initialState';
 
 const greenTimeReducer = (state = initialState.greenTime, action) => {
-  // console.log('React/src/reducers/vocalInputResults_reducer.js/vocalInputReducer()');
   switch (action.type) {
     case 'INCREMENT_GREEN_TIME':
       return {

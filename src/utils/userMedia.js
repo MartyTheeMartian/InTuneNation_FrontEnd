@@ -1,7 +1,6 @@
 import teoria from 'teoria';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
-import ReactGauge from 'react-gauge-capacity';
 
 import { setKeyEventAsTargetNote,
           incrementGreenTime,
@@ -18,8 +17,9 @@ import { setKeyEventAsTargetNote,
 const getUserMedia = require('get-user-media-promise');
 const MicrophoneStream = require('microphone-stream');
 
-const { dispatch, getState, } = store;
+const { dispatch, getState } = store;
 
+// TEORIA HELPERS
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
@@ -32,9 +32,9 @@ function getPreciseNotePlusCentDiffPlusFreq(freq) {
   const result = getPreciseNotePlusCentDiff(freq);
   return result.concat(freq);
 }
-function centDiffInGreen(cD) { return (cD<-40 && cD>40); }
+function centDiffInRed(cD) { return (cD<-40 && cD>40); }
 function centDiffInYellow(cD) { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
-function centDiffInRed(cD) { return (cD > -15 && cD < 15); }
+function centDiffInGreen(cD) { return (cD > -15 && cD < 15); }
 
 const green = (targetNoteName, sungNoteName, fq) => {
   return (centDiffInGreen(getCentDiff(fq)) && targetNoteName === sungNoteName);
@@ -48,7 +48,7 @@ const red = (targetNoteName, sungNoteName, fq) => {
   return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
 };
 
-
+// MICROPHONE INPUT CODE
 export default getUserMedia({ video: false, audio: true })
   .then((stream) => {
     const opts = { bufferSize: 4096 };
@@ -75,76 +75,39 @@ export default getUserMedia({ video: false, audio: true })
           arrowValue: ((180*((getCentDiff(freq) + 50)/100))/180),
         };
         dispatch(setSungNote(sungNote));
-        // const db = tone.db;
-        // const note = getNote(freq);
         const keyEvents = getState().keyEventsReducer;
         const targetNoteIndex = getState().targetNoteIndexReducer;
         dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]))
-        // const targetNoteNames = state.targetNoteReducer.noteNamesArray;
         const targetNoteName = getState().targetNoteReducer.tNote;
         const sungNoteName = getState().sungNoteReducer.name;
-        console.log(sungNoteName);
         const greenTime = getState().greenTimeReducer;
-        // const exerciseScores = state.exerciseScores;
-        // // const keyStrokeEvents = stat
-        console.log(getState().scoreReducer);
         if (greenTime.accumulated === greenTime.required) {
           const finalScore = getState().scoreReducer;
           dispatch(pushScoreToExerciseScoresArray(finalScore));
-          // if (getState().exerciseScoresReducer.length === keyEvents.length) {
-          //   // POST SCORES TO DB
-          //   dispatch(resetTargetNoteIndex());
-          //   dispatch(toggleAudioCapture());
-          // } else {
-          //   dispatch(resetGreenTime());
-          //   dispatch(resetScore());
-          //   dispatch(incrementTargetNoteIndex());
-          // }
+          if (getState().exerciseScoresReducer.length === keyEvents.length) {
+            // POST SCORES TO DB
+            console.log('TIME TO POST TO DB');
+            dispatch(resetTargetNoteIndex());
+            dispatch(toggleAudioCapture());
+          } else {
+            dispatch(resetGreenTime());
+            dispatch(resetScore());
+            dispatch(incrementTargetNoteIndex());
+          }
         } else {
           if (green(targetNoteName, sungNoteName, freq)) {
             dispatch(incrementGreenTime());
-            console.log(getState().greenTime.accumulated);
           } else {
-            dispatch(incrementGreenTime());
+            // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(5));
+              dispatch(decrementScore(0.5));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(2.5));
+              dispatch(decrementScore(0.25));
             }
           }
         }
-
- // dispatch to the store //As singing, get guage to reflect where you are in RGY
         console.log(getPreciseNotePlusCentDiffPlusFreq(freq));
-        // get targetNote
-        // read it dynamically
-        // hold for timeRequirement
-        // if (teoria.note.fromKey(Math.round(note)).name()==='c') {
-        //   freqArray.push(freq);
-        // // }
-        // if (freqArray.length===10) {
-        //   var newArr = [];
-        //   var sum = freqArray.reduce((sum, item) => { return sum + item });
-        //   newArr.push(sum/freqArray.length);
-        //   freqArray = newArr;
-        //   // console.log('avg of ten:', getPreciseNotePlusCentDiffPlusFreq(freqArray[0]));
-        //   freqArray = [];
-        // }
-        // console.log('freqArray', freqArray);
-        // console.log(teoria.note(teoria.note.fromFrequency(Math.round(freq)[note])).name());
-
-        // function getNote(frequency, reference) {
-        //   if (!frequency) return null;
-        //   reference = reference || 440;
-        //   return 69 + 12 * Math.log(frequency / reference) / Math.LN2;
-        // }
-
-        // dispatch an action to record captured info
       }
-
-
-    // or pipe it to another stream
-    // micStream.pipe(micInput);
     }).catch((error) => {
       console.log(error);
     });

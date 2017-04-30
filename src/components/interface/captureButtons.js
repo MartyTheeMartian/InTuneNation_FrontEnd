@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { toggleCapture,
          toggleAudioCapture,
        } from '../../actions';
-// import { captureReducer } from '../../reducers';
 
 const mapStateToProps = (state/* , ownProps*/) => {
   return {

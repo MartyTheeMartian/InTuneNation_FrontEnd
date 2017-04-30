@@ -1,8 +1,4 @@
 import teoria from 'teoria';
-// import PitchAnalyzer from '../../pitch-js/pitch';
-
-// var getUserMedia = require('get-user-media-promise');
-// var MicrophoneStream = require('microphone-stream');
 
 export const pushKeyEventToArray = (noteObj) => {
   return {

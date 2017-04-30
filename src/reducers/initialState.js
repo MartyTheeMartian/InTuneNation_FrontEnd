@@ -1,22 +1,21 @@
 export default {
-  notesArray: [],
   capture: {
     capture: false,
     captureText: 'Capture Keyboard',
     disabled: '',
   },
   octave: {
-    current: 3,
+    current: 4,
     up: '',
     down: '',
   },
   keyStrokeEvents: [],
-  vocalInputResults: [],
   exerciseScores: [],
   greenTime: {
     accumulated: 0,
-    required: 5,
+    required: 1,
   },
+  score: 100,
   targetNote: null,
   targetNoteIndex: 0,
   sungNote: {

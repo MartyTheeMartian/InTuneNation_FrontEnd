@@ -1,14 +1,5 @@
 import initialState from './initialState';
 
-export const notesArrayReducer = (state = initialState.keyStrokeEvents, action) => {
-  switch (action.type) {
-    case 'NOTE_TO_ARRAY':
-      return [...state, action.payload];
-    default:
-      return state;
-  }
-};
-
 export const captureReducer = (state = initialState.capture, action) => {
   switch (action.type) {
     case 'TOGGLE_CAPTURE':
