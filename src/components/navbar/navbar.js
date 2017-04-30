@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp';
@@ -19,6 +19,12 @@ class NavBar extends Component {
 
   render() {
 
+    const style1 = {
+      border: 'solid grey 5px',
+      margin: '50px',
+      padding: '0'
+    };
+
     return (
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
@@ -33,7 +39,8 @@ class NavBar extends Component {
 
           <Nav>
             <LinkContainer to="/profile">
-              <NavItem eventKey={1} href="#"> Personal Profile</NavItem>
+              <NavItem eventKey={1} href="#">
+                Personal Profile</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/community">
@@ -59,27 +66,30 @@ class NavBar extends Component {
             </button>
 
             <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                  <div class="modal-header">
-                    {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
-                      {/* <span aria-hidden="true">&times;</span>
+                  {/* <div class="modal-header"> */}
+                  {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
+                  {/* <span aria-hidden="true">&times;</span>
                     </button> */}
-                  </div>
-                    <SignUp/>
+                  {/* </div> */}
+                  <SignUp/>
                 </div>
               </div>
             </div>
 
             <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog modal-lg" role="document">
-                <div className="modal-content">
+              <div className="modal-dialog " role="document">
+                <div className="modal-content" style={{
+                  margin: 5,
+                  border: 'grey solid 5px'
+                }}>
                   {/* <div class="modal-header"> */}
-                    {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button> */}
                   {/* </div> */}
-                    <LogIn/>
+                  <LogIn/>
                 </div>
               </div>
             </div>

@@ -24,20 +24,20 @@ export const signUserUp = (email, firstName, lastName, password) => {
       email: email,
       firstName: firstName,
       lastName: lastName,
-      password: password
+      password: password,
     }
   };
 };
 
-// export const logUserIn = (email, password) => {
-//   return {
-//     type: 'LOG_USER_IN',
-//     payload: {
-//       email: email,
-//       password: password
-//     }
-//   };
-// };
+export const logUserIn = (email, password) => {
+  return {
+    type: 'LOG_USER_IN',
+    payload: {
+      email: email,
+      password: password
+    }
+  };
+};
 
 export const shiftOctaves = (direction) => {
   return {

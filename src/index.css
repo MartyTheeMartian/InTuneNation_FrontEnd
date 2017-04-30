@@ -16,12 +16,11 @@ footer {
   width: 100%
 }
 
-.white-key{
-  height:260px;
-  border:1px
-  solid #000;
-  background-color:#FFF;
-  z-index:1;
+.white-key {
+  height: 260px;
+  border: 1px solid #000;
+  background-color: #FFF;
+  z-index: 1;
 }
 
 .black-key {
@@ -41,5 +40,54 @@ footer {
   cursor: pointer;
   box-sizing: border-box;
   display: inline-block;
-  border-radius:5px;
+  border-radius: 5px;
+}
+
+#signUpForm {
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+#googleSignUp {
+  margin: 10px;
+}
+
+.sign-up-modal {
+  width: auto !important;
+}
+
+.orbutton {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.logInGoogle {
+  margin: 1px;
+  padding: 1px;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  padding: 5px;
+  margin: auto;
+}
+
+
+/*.formMargin {
+  border: solid grey 5px;
+  margin: 2px;
+  padding: 0;
+}*/
+
+#personalSignUp {
+  margin-left: 7px;
+  margin-right: 7px;
+  padding: 0px;
 }
