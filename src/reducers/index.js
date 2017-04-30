@@ -3,6 +3,7 @@ import keyEventsReducer from './keyEvents_reducer';
 import targetNoteReducer from './targetNote_reducer';
 import targetNoteIndexReducer from './targetNoteIndex_reducer';
 import sungNoteReducer from './sungNote_reducer';
+import vocalInputReducer from './vocalInputResults_reducer';
 import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
@@ -15,7 +16,7 @@ import login from './login';
 
 console.log('did i import signup?', signup);
 const rootReducer = combineReducers({
-  form: reduxFormReducer,
+  form: formReducer,
   currentNoteReducer,
   captureReducer,
   octaveReducer,
