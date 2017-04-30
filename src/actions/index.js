@@ -31,7 +31,7 @@ export const signUserUp = (email, firstName, lastName, password) => {
 
 export const logUserIn = (email, password) => {
   return {
-    type: 'LOG_USER_IN',
+    type: 'LOG_IN',
     payload: {
       email: email,
       password: password

@@ -20,7 +20,7 @@ class LogIn extends Component {
   onSubmit = (value) => {
     // value.preventDefault();
     const user = value;
-    this.props.logUserIn(user.email, user.firstName, user.lastName, user.password);
+    this.props.logUserIn(user.email, user.password);
   }
   // doSubmit = (e) => {
   //   e.preventDefault();
@@ -51,9 +51,8 @@ class LogIn extends Component {
 
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="signin-modal-content">
-
-            <Field name="email" component="input" type="email" placeholder="Email" className="signin-modal-content-detail" required />
-            <Field name="password" component="input" type="password" placeholder="Passwords" className="signin-modal-content-detail" required />
+            <Field name="email" component="input" type="email" placeholder="Email" className="signin-modal-content-detail" required/>
+            <Field name="password" component="input" type="password" placeholder="Passwords" className="signin-modal-content-detail" required/>
           </div>
           <div className="signin-modal-foot-btn">
             <button type="button" className="btn btn-danger " type="submit">
@@ -66,6 +65,7 @@ class LogIn extends Component {
             </div>
           </div>
         </form>
+
       </div>
     );
   }
