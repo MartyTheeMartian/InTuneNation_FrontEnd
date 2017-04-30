@@ -35,7 +35,7 @@ class LogIn extends Component {
         <button className="btn signin-modal-btn-google">
           <div className="signin-modal-btn-google-inside">
             <img src={google_logo}></img>
-            <span>Sign in with Google</span>
+            <span>Log in with Google</span>
           </div>
         </button>
 
