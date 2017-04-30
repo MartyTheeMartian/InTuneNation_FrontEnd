@@ -30,14 +30,21 @@ class TargetNoteIndicator extends Component {
   render() {
 
     return (
-      <div className="container">
-        <div className="row">
-          <div>
-            <h3>Target Note</h3>
-          </div>
-          <div style={style}>{this.props.currentNote}</div>
-          <div>
-            <span>Octave {this.props.octave}</span>
+      <div className="col-sm-4 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4>Target Note</h4>
+            <div style={style}>
+              <h2>{this.props.currentNote}</h2>
+            </div>
+            <div>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <span className="badge">{this.props.octave}</span>
+                  Octave
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

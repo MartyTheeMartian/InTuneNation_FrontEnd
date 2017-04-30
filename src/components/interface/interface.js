@@ -37,8 +37,10 @@ class Interface extends Component {
       <div className="container">
         <OctaveButtons />
         <Piano />
-        <NoteIndicator />
-        <TargetNoteIndicator />
+        <div className="row">
+          <NoteIndicator />
+          <TargetNoteIndicator />
+        </div>
         <TuningIndicator />
         <CaptureButtons />
       </div>
