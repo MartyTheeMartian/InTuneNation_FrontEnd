@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect as reactConnect } from 'react-redux';
-import { pushNoteToArray, currentNote } from '../../actions';
+import { pushKeyEventToArray, currentNote } from '../../actions';
 import { octaveReducer } from '../../reducers';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
 import getDistortionCurve from '../../audio/distort';
@@ -49,31 +49,33 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({pushNoteToArray, currentNote}, dispatch);
+  return bindActionCreators({ pushKeyEventToArray, currentNote }, dispatch);
 };
 
 
 class Piano extends Component {
+  constructor(props) {
+    super();
+  }
 
   handleClick = (note) => {
-
     this.props.currentNote(note);
-
-    let freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
-    let keyNum = freqAndKeyNum.keyNum;
-    let tNote = freqAndKeyNum.tNote;
+    
+    const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
+    const keyNum = freqAndKeyNum.keyNum;
+    const tNote = freqAndKeyNum.tNote;
 
     let noteObj = {
       noteName: note,
       octave: this.props.octave,
       keyNum: keyNum,
-      tNote: tNote
+      tNote: tNote,
     };
 
     console.log(noteObj);
 
     if (this.props.capture) {
-      this.props.pushNoteToArray(noteObj);
+      this.props.pushKeyEventToArray(noteObj);
     }
 
     osc.frequency.value = freqAndKeyNum.frequency;
@@ -109,4 +111,4 @@ class Piano extends Component {
 
 }
 
-export default reactConnect (mapStateToProps, mapDispatchToProps)(Piano);
+export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);

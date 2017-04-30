@@ -13,31 +13,25 @@ import CaptureButtons from './captureButtons';
 // import Mike from '../../../../vendors/mike-js/index.js';
 // import PitchAnalyzer from '../../../../vendors/pitch-js/src/pitch.js';
 
-
-
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state/* , ownProps */) => {
   return {
-    keyStrokeEvents: state.keyStrokeEvents,
-    vocalInputResults: state.vocalInputResults,
-    exerciseScores: state.exerciseScores,
-    greenTime: state.greenTime,
-    targetNote: state.targetNote,
-    targetNoteIndex: state.targetNoteIndex,
-    sungNote: state.sungNote,
-    recordingStatus: state.recordingStatus
+    keyStrokeEvents: state.keyStrokeEventsReducer,
+    vocalInputResults: state.vocalInputResultsReducer,
+    exerciseScores: state.exerciseScoresReducer,
+    greenTime: state.greenTimeReducer,
+    targetNote: state.targetNoteReducer,
+    targetNoteIndex: state.targetNoteIndexReducer,
+    sungNote: state.sungNoteReducer,
+    recordingStatus: state.recordingStatusReducer,
   };
 };
 
-
-
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
+  return bindActionCreators({}, dispatch);
 };
 
 
 class Interface extends Component {
-
   render() {
     return (
       <div className="container">
@@ -54,4 +48,4 @@ class Interface extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Interface);
+export default connect(mapStateToProps, mapDispatchToProps)(Interface);
