@@ -33,11 +33,12 @@ class CaptureButtons extends Component {
   render() {
     return (
       <div className="row">
-          <div className="col-md-6">
+          <div className="col-sm-6 col-md-4">
             <button onClick={this.handleClick} className="btn btn-primary btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
-          <div className="col-md3">
-            <button onClick={this.props.toggleAudioCapture} className="btn btn-primary btn-lg active">Toggle Audio Input</button>
+
           </div>
+          <div className="col-sm-6 col-md-4">
+            <button onClick={this.props.toggleAudioCapture} className="btn btn-primary btn-lg active">Toggle Audio Input</button>
             <p>
               Recording Status: { this.props.recordingStatus }
             </p>
