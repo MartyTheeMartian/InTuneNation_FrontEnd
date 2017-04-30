@@ -32,7 +32,7 @@ class NavBar extends Component {
           <Navbar.Brand>
             <LinkContainer to="/interface">
               <a href="#">
-                <span className="navbar-left">Pitch Play</span>
+                <span className="navbar-left">Intervalicity</span>
               </a>
             </LinkContainer>
           </Navbar.Brand>
@@ -57,22 +57,21 @@ class NavBar extends Component {
             </NavDropdown> */}
           </Nav>
           <Nav pullRight>
-            <div className="headIcon">
-              <div className="fa fa-user-circle "></div>
-            </div>
-            <NavItem href="#" data-toggle="modal" data-target="#myModal1">
-              <div>Sign Up</div>
+              {/* <div className="fa fa-user-circle headIcon"></div> */}
+            <NavItem href="" data-toggle="modal" data-target="#myModal1">
+              <span className="navbar-right">Sign Up</span>
             </NavItem>
-            <NavItem href="#" data-toggle="modal" data-target="#myModal2">Log In
+            <NavItem href="" data-toggle="modal" data-target="#myModal2" >
+              <span className="navbar-right" >Log In</span>
             </NavItem>
-            <div className="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
                   <SignUp/>
                 </div>
               </div>
             </div>
-            <div className="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog " role="document">
                 <div className="modal-content">
                   <LogIn/>

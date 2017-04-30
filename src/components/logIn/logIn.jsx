@@ -41,11 +41,11 @@ class LogIn extends Component {
 
         <div className="signin-modal-or-decorate">
           <div className="signin-modal-or-decorate-lineL">
-            you shouldn't see this long long string
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           </div>
           <span>or</span>
           <div className="signin-modal-or-decorate-lineR">
-            you shouldn't see this long long string
+            >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           </div>
         </div>
 
@@ -55,7 +55,7 @@ class LogIn extends Component {
             <Field name="password" component="input" type="password" placeholder="Passwords" className="signin-modal-content-detail" required/>
           </div>
           <div className="signin-modal-foot-btn">
-            <button type="button" className="btn btn-danger " type="submit">
+            <button type="button" className="btn btn-info" type="submit">
               <h5>Sign in</h5>
             </button>
             <div className="signin-modal-foot-btn">

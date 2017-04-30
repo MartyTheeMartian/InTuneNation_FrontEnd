@@ -1,8 +1,13 @@
-.navbar-left a {
+.navbar-left {
   color: #888 !important;
 }
 
 .headIcon {
   margin: 15px 0 0 0;
 float: left;
+}
+
+.navbar-right {
+  color: 	#666666 !important;
+  font-size: medium;
 }
