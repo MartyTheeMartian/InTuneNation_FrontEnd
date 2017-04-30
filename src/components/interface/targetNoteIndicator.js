@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
+
 const mapStateToProps = (state, ownProps) => {
   return {
     currentNote: state.currentNoteReducer,
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-class NoteIndicator extends Component {
+class TargetNoteIndicator extends Component {
 
 
   render() {
@@ -32,7 +33,7 @@ class NoteIndicator extends Component {
       <div className="col-sm-4 col-md-4">
         <div class="thumbnail">
           <div class="caption">
-            <h4>Note Indicator</h4>
+            <h4>Target Note</h4>
             <div style={style}>
               <h2>{this.props.currentNote}</h2>
             </div>
@@ -52,6 +53,6 @@ class NoteIndicator extends Component {
 
 }
 
-let style = { backgroundColor: '' };
+let style = {backgroundColor: ''};
 
-export default connect (mapStateToProps, mapDispatchToProps)(NoteIndicator);
+export default connect (mapStateToProps, mapDispatchToProps)(TargetNoteIndicator);

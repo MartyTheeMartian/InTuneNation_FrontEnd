@@ -3,29 +3,45 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import OctaveButtons from './octaveButtons';
 import NoteIndicator from './noteIndicator';
+import TargetNoteIndicator from './targetNoteIndicator';
+import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
 
+// import ReactWebAudio from 'react-webaudio';
+// var ReactWebAudio = require('react-webaudio')
+// import Mike from '../../../../vendors/mike-js/index.js';
+// import PitchAnalyzer from '../../../../vendors/pitch-js/src/pitch.js';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state/* , ownProps */) => {
   return {
-
+    keyStrokeEvents: state.keyStrokeEventsReducer,
+    vocalInputResults: state.vocalInputResultsReducer,
+    exerciseScores: state.exerciseScoresReducer,
+    greenTime: state.greenTimeReducer,
+    targetNote: state.targetNoteReducer,
+    targetNoteIndex: state.targetNoteIndexReducer,
+    sungNote: state.sungNoteReducer,
+    recordingStatus: state.recordingStatusReducer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
+  return bindActionCreators({}, dispatch);
 };
 
 
 class Interface extends Component {
-
   render() {
     return (
       <div className="container">
         <OctaveButtons />
         <Piano />
-        <NoteIndicator />
+        <div className="row">
+          <NoteIndicator />
+          <TargetNoteIndicator />
+        </div>
+        <TuningIndicator />
         <CaptureButtons />
       </div>
     );
@@ -34,4 +50,4 @@ class Interface extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(Interface);
+export default connect(mapStateToProps, mapDispatchToProps)(Interface);

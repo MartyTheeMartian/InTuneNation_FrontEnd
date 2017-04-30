@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+.signin-modal {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-modal-btn-google {
+  background: #fff;
+  padding: 12px 24px;
+  border: 2px solid #444;
+}
+
+.signin-modal-btn-google-inside{
+  display: flex;
+  justify-content: center;
+}
+
+.signin-modal-btn-google-inside img{
+  height: 18px;
+  width: 18px;
+  margin: 0 10px 0 0;
+}
+
+.signin-modal-btn-google-inside span {
+  font-family: 'Rubik';
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.signin-modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-modal-content-detail {
+  height: 40px;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  padding: 1px 8px;
+  margin: 0 0 8px 0;
+}
+
+.signin-modal-foot-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.signin-modal-foot-btn button {
+  margin: 0 0 8px 0;
+}
+
+.signin-modal-foot-btn button h5 {
+  font-family: 'Rubik';
+  font-size: 16px;
+  font-weight: bold;
+}
+.signin-modal-or-decorate {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0;
+  position: relative;
+}
+
+.signin-modal-or-decorate-lineL {
+  position: absolute;
+  top: -8px;
+  left: 0px;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
+.signin-modal-or-decorate-lineR {
+  position: absolute;
+  top: -8px;
+  right: 0px;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.signin-modal-or-decorate span {
+  font-family: 'Rubik';
+  font-size: 16px;
+  color: #888;
+  font-weight: bold;
+}

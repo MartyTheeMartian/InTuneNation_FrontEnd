@@ -1,36 +1,47 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { toggleCapture } from '../../actions';
+import { toggleCapture,
+         toggleAudioCapture,
+       } from '../../actions';
 
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state/* , ownProps*/) => {
   return {
-    // capture: state.interface.capture
+    captureText: state.captureReducer.captureText,
+    disabled: state.captureReducer.disabled,
+    keyStrokeEvents: state.keyStrokeEvents,
+    vocalInputResults: state.vocalInputResults,
+    exerciseScores: state.exerciseScores,
+    greenTime: state.greenTime,
+    targetNote: state.targetNote,
+    targetNoteIndex: state.targetNoteIndex,
+    sungNote: state.sungNote,
+    recordingStatus: state.recordingStatus,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({ toggleCapture }, dispatch);
+  return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch);
 };
-
 
 class CaptureButtons extends Component {
 
-  constructor(props) {
-    super(props);
-    this.button = 'Capture Keyboard';
-  }
-
-  handleClick () {
-    toggleCapture();
+  handleClick = () =>  {
+    this.props.toggleCapture();
   }
 
   render() {
     return (
       <div className="row">
-          <div className="col-md-6">
-            <button onClick={this.handleClick} className="btn btn-primary btn-lg active">{this.button}</button>
+          <div className="col-sm-6 col-md-4">
+            <button onClick={this.handleClick} className="btn btn-primary btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
+
+          </div>
+          <div className="col-sm-6 col-md-4">
+            <button onClick={this.props.toggleAudioCapture} className="btn btn-primary btn-lg active">Toggle Audio Input</button>
+            <p>
+              Recording Status: { this.props.recordingStatus }
+            </p>
           </div>
       </div>
     );
@@ -38,4 +49,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(CaptureButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(CaptureButtons);
