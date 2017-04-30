@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {LinkContainer} from 'react-router-bootstrap';
 import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
-import LogIn from '../logIn/logIn.js';
+import LogIn from '../logIn/logIn';
 import SignUp from '../signUp/signUp';
-
+import music from '../../assets/img/music.jpg'
+import profile from '../../assets/img/profile-icon.png'
 const mapStateToProps = (state, ownProps) => {
   return {};
 };
@@ -19,83 +20,65 @@ class NavBar extends Component {
 
   render() {
 
+    const style1 = {
+      border: 'solid grey 5px',
+      margin: '50px',
+      padding: '0'
+    };
+
     return (
-      <Navbar inverse collapseOnSelect>
+      <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <LinkContainer to="/interface">
-              <a href="#">Intervalicity</a>
+              <a href="#">
+                <span className="navbar-left">Intervalicity</span>
+              </a>
             </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle/>
         </Navbar.Header>
         <Navbar.Collapse>
-
           <Nav>
             <LinkContainer to="/profile">
-              <NavItem eventKey={1} href="#"> Personal Profile</NavItem>
+              <NavItem eventKey={1} href="#">
+                Personal Profile</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/community">
               <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
-
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+            {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Sign up</MenuItem>
               <MenuItem eventKey={3.2}>Log in</MenuItem>
               <MenuItem eventKey={3.3}>Something else here</MenuItem>
               <MenuItem divider/>
               <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
-
           <Nav pullRight>
-            <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
-              Sign up
-            </button>
-
-            <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
-              Log in
-            </button>
-
+              {/* <div className="fa fa-user-circle headIcon"></div> */}
+            <NavItem href="" data-toggle="modal" data-target="#myModal1">
+              <span className="navbar-right">Sign Up</span>
+            </NavItem>
+            <NavItem href="" data-toggle="modal" data-target="#myModal2" >
+              <span className="navbar-right" >Log In</span>
+            </NavItem>
             <div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-dialog" role="document">
                 <div className="modal-content">
-
-                  {/* <div class="modal-header"> */}
-                    {/* <button type="button" class="close " data-dismiss="modal" aria-label="Close" > */}
-                      {/* <span aria-hidden="true">&times;</span>
-                    </button> */}
-
-                  {/* </div> */}
-
-
-                    <SignUp/>
-
+                  <SignUp/>
                 </div>
               </div>
             </div>
-
             <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog modal-lg" role="document">
+              <div className="modal-dialog " role="document">
                 <div className="modal-content">
-
-                  {/* <div class="modal-header"> */}
-                    {/* <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button> */}
-
-                  {/* </div> */}
-
-
-                    <LogIn/>
-
+                  <LogIn/>
                 </div>
               </div>
             </div>
-
           </Nav>
-
         </Navbar.Collapse>
       </Navbar>
     );

@@ -2,102 +2,74 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
-import { signUserUp } from '../../actions';
+import {signUserUp} from '../../actions';
+import {LinkContainer} from 'react-router-bootstrap';
+import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('what is state in store?', state);
   return {
-    formData: state.signupForm
+    // formData: state.signupForm
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({signUserUp}, dispatch);
+  return bindActionCreators({
+    signUserUp
+  }, dispatch);
 };
-
 
 class SignUp extends Component {
 
-  onSubmit(props) {
-      console.log('what is form', this.state);
-      event.preventDefault();
-      const user = this.props;
-      this.props.signUserUp(user.email, user.firstName, user.lastName, user.password)
-      // this.props.createPost(props)
-      //   .then(() => {
-      //     //blog post has been created, navigate the user to the index
-      //     //We navigate by calling this.context.router.push with the new path to navigate to.
-      //     this.context.router.push('/');
-    }
-  render() {
-    // handleSubmit(e) {
-      //do stuff here
-    // }
-    const {handleSubmit, pristine, reset, submitting} = this.props;
-    return (
-      <div className="container">
-        {/* <div>
-            <h2 className="text-center">Sign Up</h2>
-          </div> */}
-        <div className="col-md-9 centered well well-lg">
-          <button type="button" class="close " data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div>
-            <button className="btn btn-info">
-              Sign Up with Google
-            </button>
-          </div>
-          <div className="col-md-9">
-            <h4 className="text-center">
-              or
-            </h4>
-          </div>
-          <div className="col-md-12 well well-lg">
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <div className="row">
-                <div className="col-md-4">
-                  <h5>First Name</h5>
-                </div>
-                <div className="col-md-8">
-                  <input name="firstName" type="text" className="form-control"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <h5>Last Name</h5>
-                </div>
-                <div className="col-md-8">
-                  <input name="lastName" type="text" className="form-control"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <h5>Email</h5>
-                </div>
-                <div className="col-md-8">
-                  <input name="email" type="text" className="form-control"/>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <h5>Password</h5>
-                </div>
-                <div className="col-md-8">
-                  <input name="password" type="text" className="form-control"/>
-                </div>
-              </div>
-              <div className="row">
-                <button type="submit" className="btn btn-default">Sign Up</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-    );
+  onSubmit = (value) => {
+    console.log('what is value?', value);
+    // event.preventDefault();
+    const user = value;
+    this.props.signUserUp(user.email, user.firstName, user.lastName, user.password);
+    // console.log('did prop,', this.props);
   }
 
+  render() {
+    const {handleSubmit, pristine, reset, submitting} = this.props;
+    return (
+      <div className="signup-modal">
+        <button className="btn signup-modal-btn-google">
+          <div className="signup-modal-btn-google-inside">
+            <img src={google_logo}></img>
+            <span>Sign Up with Google</span>
+          </div>
+        </button>
+
+        <div className="signup-modal-or-decorate">
+          <div className="signup-modal-or-decorate-lineL">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
+          <span>or</span>
+          <div className="signup-modal-or-decorate-lineR">>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
+        </div>
+
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <div className="signup-modal-content">
+
+            <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
+            <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
+            <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
+            <Field name="password" component="input" type="password" placeholder="Passwords" className="signup-modal-content-detail" required/>
+            <Field name="confirmPassword" component="input" type="password" placeholder="Confirm passwords" className="signup-modal-content-detail" required/>
+          </div>
+
+          <div className="signup-modal-foot-btn">
+            <button type="button" className="btn btn-info" type="submit">
+              <h5>Sign Up</h5>
+            </button>
+            <button type="button" className="btn btn-default" data-dismiss="modal">
+              <h5>Close</h5>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    );
+  }
 }
-SignUp = reduxForm({ form: 'signup' })(SignUp);
+SignUp = reduxForm({form: 'signup'})(SignUp);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
