@@ -7,26 +7,20 @@ import {LinkContainer} from 'react-router-bootstrap';
 import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('what is state in store?', state);
   return {
     // formData: state.signupForm
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    signUserUp
-  }, dispatch);
+  return bindActionCreators({ signUserUp }, dispatch);
 };
 
 class SignUp extends Component {
 
   onSubmit = (value) => {
-    console.log('what is value?', value);
-    // event.preventDefault();
     const user = value;
     this.props.signUserUp(user.email, user.firstName, user.lastName, user.password);
-    // console.log('did prop,', this.props);
   }
 
   render() {
