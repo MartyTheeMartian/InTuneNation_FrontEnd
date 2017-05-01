@@ -32,7 +32,7 @@ class NoteIndicator extends Component {
       <div className="col-sm-3 col-md-3">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h4>Note Indicator</h4>
+            <h4>Currently Sung Note</h4>
           </div>
           <div className="panel-body">
             <h2>{this.props.currentNote}</h2>

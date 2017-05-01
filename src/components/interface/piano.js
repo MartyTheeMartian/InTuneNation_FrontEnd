@@ -67,9 +67,6 @@ class Piano extends Component {
       ...this.state, style: styleClicked
     });
 
-
-
-
     const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
     const keyNum = freqAndKeyNum.keyNum;
     const tNote = freqAndKeyNum.tNote;
