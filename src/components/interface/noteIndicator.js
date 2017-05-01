@@ -29,23 +29,22 @@ class NoteIndicator extends Component {
   render() {
 
     return (
-      <div className="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
+      <div className="col-sm-3 col-md-3">
+        <div className="panel panel-default">
+          <div className="panel-heading">
             <h4>Note Indicator</h4>
-            <div style={style}>
-              <h2>{this.props.currentNote}</h2>
-            </div>
-            <div>
-              <ul className="list-group">
-                <li className="list-group-item">
-                  <span className="badge">{this.props.octave}</span>
-                  Octave
-                </li>
-              </ul>
-            </div>
+          </div>
+          <div className="panel-body">
+            <h2>{this.props.currentNote}</h2>
+            <ul className="list-group">
+              <li className="list-group-item">
+                <span className="badge">{this.props.octave}</span>
+                Octave
+              </li>
+            </ul>
           </div>
         </div>
+
       </div>
     );
   }

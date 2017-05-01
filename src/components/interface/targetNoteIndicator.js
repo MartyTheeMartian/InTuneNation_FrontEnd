@@ -30,9 +30,9 @@ class TargetNoteIndicator extends Component {
   render() {
 
     return (
-      <div className="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
+      <div className="col-sm-3 col-md-3">
+        <div className="thumbnail">
+          <div className="caption">
             <h4>Target Note</h4>
             <div style={style}>
               <h2>{this.props.currentNote}</h2>
