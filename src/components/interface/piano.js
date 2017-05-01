@@ -57,15 +57,18 @@ class Piano extends Component {
 
   constructor(props) {
     super(props);
-    this.props.style;
+    this.state = {...this.state, style: null};
   }
 
   handleClick = (note) => {
     this.props.currentNote(note);
 
-    // console.log(this.props);
-    //
-    // this.props.style = styleClicked;
+    this.setState({
+      ...this.state, style: styleClicked
+    });
+
+
+
 
     const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
     const keyNum = freqAndKeyNum.keyNum;
@@ -98,7 +101,7 @@ class Piano extends Component {
     return (
       <div className="row">
         <div className="octave">
-          <div onClick={() => this.handleClick('C')} className="white-key" style={this.props.style} ></div>
+          <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
           <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
           <div onClick={() => this.handleClick('D')} className="white-key" ></div>
           <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
@@ -117,6 +120,6 @@ class Piano extends Component {
 
 }
 
-const styleClicked = { backgroundColor: 'red' };
+const styleClicked = { backgroundColor: '#2f8aaf' };
 
 export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);
