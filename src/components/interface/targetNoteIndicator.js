@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
-
 const mapStateToProps = (state, ownProps) => {
   return {
     currentNote: state.currentNoteReducer,

@@ -20,9 +20,7 @@ const mapStateToProps = (state/* , ownProps*/) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch); };
 
 class CaptureButtons extends Component {
 

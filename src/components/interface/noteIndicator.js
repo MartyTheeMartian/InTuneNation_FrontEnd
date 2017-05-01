@@ -13,15 +13,19 @@ const mapStateToProps = (state, ownProps) => {
     greenTime: state.greenTime,
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
-    sungNote: state.sungNote,
+    sungNote: state.sungNoteReducer,
     recordingStatus: state.recordingStatus
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators ({}, dispatch); };
 
+const renderSungNote = (note) => {
+  if (note === undefined) {
+    return "Start singing!"
+  }
+  return note.name;
+}
 
 class NoteIndicator extends Component {
 
@@ -35,13 +39,7 @@ class NoteIndicator extends Component {
             <h4>Currently Sung Note</h4>
           </div>
           <div className="panel-body">
-            <h2>{this.props.currentNote}</h2>
-            <ul className="list-group">
-              <li className="list-group-item">
-                <span className="badge">{this.props.octave}</span>
-                Octave
-              </li>
-            </ul>
+            <h2>{renderSungNote(this.props.sungNote)}</h2>
           </div>
         </div>
 

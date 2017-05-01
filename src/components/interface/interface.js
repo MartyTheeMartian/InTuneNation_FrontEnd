@@ -7,6 +7,7 @@ import TargetNoteIndicator from './targetNoteIndicator';
 import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
+import ScoreBox from './scoreBox';
 
 // import ReactWebAudio from 'react-webaudio';
 // var ReactWebAudio = require('react-webaudio')
@@ -26,9 +27,7 @@ const mapStateToProps = (state/* , ownProps */) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 
 class Interface extends Component {
@@ -40,6 +39,7 @@ class Interface extends Component {
         <div className="row">
           <NoteIndicator />
           <TargetNoteIndicator />
+          <ScoreBox />
         </div>
         <TuningIndicator />
         <CaptureButtons />
