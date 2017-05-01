@@ -14,7 +14,7 @@ import { reducer as formReducer } from 'redux-form';
 import  signup  from './signUp';
 import login from './login';
 
-console.log('did i import signup?', signup);
+
 const rootReducer = combineReducers({
   form: formReducer,
   currentNoteReducer,

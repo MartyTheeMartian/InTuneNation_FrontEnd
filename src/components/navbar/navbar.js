@@ -42,7 +42,7 @@ class NavBar extends Component {
           <Nav>
             <LinkContainer to="/profile">
               <NavItem eventKey={1} href="#">
-                Personal Profile</NavItem>
+                Profile</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/community">
