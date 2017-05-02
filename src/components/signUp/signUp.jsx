@@ -1,20 +1,14 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {signUserUp} from '../../actions';
-import {LinkContainer} from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { signUserUp } from '../../actions';
+// import { LinkContainer } from 'react-router-bootstrap';
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    // formData: state.signupForm
-  };
-};
+const mapStateToProps = (state, ownProps) => { return state; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ signUserUp }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp }, dispatch); };
 
 class SignUp extends Component {
 
@@ -24,7 +18,7 @@ class SignUp extends Component {
   }
 
   render() {
-    const {handleSubmit, pristine, reset, submitting} = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <div className="signup-modal">
         <button className="btn signup-modal-btn-google">
@@ -64,6 +58,7 @@ class SignUp extends Component {
     );
   }
 }
-SignUp = reduxForm({form: 'signup'})(SignUp);
+
+SignUp = reduxForm({ form: 'signup' })(SignUp);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

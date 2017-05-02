@@ -16,13 +16,11 @@ const mapStateToProps = (state/* , ownProps*/) => {
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNote,
-    recordingStatus: state.recordingStatus,
+    recordingStatus: state.recordingStatusReducer,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, toggleCapture }, dispatch); };
 
 class CaptureButtons extends Component {
 
@@ -31,6 +29,7 @@ class CaptureButtons extends Component {
   }
 
   render() {
+    console.log(this.props.recordingStatus);
     return (
       <div className="row">
           <div className="col-sm-6 col-md-4">

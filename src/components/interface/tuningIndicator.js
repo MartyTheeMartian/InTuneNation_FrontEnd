@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { pushNoteToArray,
         toggleAudioCapture } from '../../actions';
 
-import ReactGauge from 'react-gauge-capacity';
+import ReactGauge from '../../utils/react-gauge-capacity/lib/react-gauge.js';
 let contWidth = 360;
 let contHeight = 200;
 let gaugeRadius = 125;

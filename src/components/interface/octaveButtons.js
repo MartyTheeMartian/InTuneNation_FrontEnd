@@ -2,30 +2,23 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { shiftOctaves } from '../../actions';
-import { octaveReducer } from '../../reducers';
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     octave: state.octaveReducer.current,
     up: state.octaveReducer.up,
-    down: state.octaveReducer.down
+    down: state.octaveReducer.down,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({shiftOctaves}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators ({ shiftOctaves }, dispatch); };
 
 
 class OctaveButtons extends Component {
 
-  handleClick (direction) {
-
-    this.props.shiftOctaves(direction);
-
-    console.log(this.props.octave);
-
+  handleClick(direction) {
+    this.props.shiftOctaves(direction); // console.log(this.props.octave);
   }
 
   render() {
@@ -43,4 +36,4 @@ class OctaveButtons extends Component {
 
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(OctaveButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(OctaveButtons);
