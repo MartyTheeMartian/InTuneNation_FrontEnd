@@ -25,5 +25,6 @@ export default {
     arrowValue: 90/180,
   },
   recordingStatus: false,
+  user: {},
   userId: null,
 };
