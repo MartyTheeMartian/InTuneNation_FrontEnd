@@ -1,3 +1,5 @@
+import { reducer as formReducer } from 'redux-form';
+// import { reducer as formReducer } from 'redux-form';
 import { combineReducers } from 'redux';
 import keyEventsReducer from './keyEvents_reducer';
 import targetNoteReducer from './targetNote_reducer';
@@ -8,9 +10,7 @@ import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
 import exerciseScoresReducer from './exerciseScores_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
-import { Field, reduxForm } from 'redux-form';
-import { reducer as formReducer } from 'redux-form';
-import  signupReducer  from './signUp';
+import signupReducer from './signUp';
 import loginReducer from './login';
 
 const rootReducer = combineReducers({

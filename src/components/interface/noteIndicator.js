@@ -14,24 +14,19 @@ const mapStateToProps = (state, ownProps) => {
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatus
+    recordingStatus: state.recordingStatus,
   };
 };
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators ({}, dispatch); };
 
 const renderSungNote = (note) => {
-  if (note === undefined) {
-    return "Start singing!"
-  }
+  if (note === undefined) { return "Start singing!"; }
   return note.name;
 }
 
 class NoteIndicator extends Component {
-
-
   render() {
-
     return (
       <div className="col-sm-3 col-md-3">
         <div className="panel panel-default">
@@ -42,13 +37,9 @@ class NoteIndicator extends Component {
             <h2>{renderSungNote(this.props.sungNote)}</h2>
           </div>
         </div>
-
       </div>
     );
   }
-
 }
-
-let style = { backgroundColor: '' };
 
 export default connect (mapStateToProps, mapDispatchToProps)(NoteIndicator);
