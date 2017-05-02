@@ -20,7 +20,8 @@
     "redux-form": "^6.6.3",
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.2.0",
-    "teoria": "^2.2.2"
+    "teoria": "^2.2.2",
+    "vexflow": "^1.2.83"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

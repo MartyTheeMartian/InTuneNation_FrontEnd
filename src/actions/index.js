@@ -1,9 +1,7 @@
-import teoria from 'teoria';
-
 export const currentNote = (note) => {
   return {
     type: 'CURRENT_NOTE',
-    payload: note
+    payload: note,
   };
 };
 
@@ -38,8 +36,8 @@ export const logUserIn = (email, password) => {
   return {
     type: 'USER_LOG_IN',
     payload: {
-      email: email,
-      password: password
+      email,
+      password,
     }
   };
 };
@@ -52,14 +50,12 @@ export const shiftOctaves = (direction) => {
 };
 
 export const toggleAudioCapture = () => {
-  console.log('React/src/actions/index/activateVocalInput()');
   return {
     type: 'TOGGLE_AUDIO_CAPTURE',
   };
 };
 
 export const incrementGreenTime = () => {
-  console.log('GREEN TIME INCREMENTED!!');
   return {
     type: 'INCREMENT_GREEN_TIME',
   };
@@ -74,20 +70,20 @@ export const resetGreenTime = () => {
 export const changeGreenTimeRequirement = (amount) => {
   return {
     type: 'CHANGE_GREEN_TIME_REQUIREMENT',
-    amount: amount
+    amount,
   };
 };
 
 export const decrementScore = (amount) => {
   return {
     type: 'DECREMENT_SCORE',
-    amount: amount,
+    amount,
   };
 };
 
 export const resetScore = () => {
   return {
-    type: 'RESET_SCORE'
+    type: 'RESET_SCORE',
   };
 };
 
@@ -123,17 +119,3 @@ export const pushScoreToExerciseScoresArray = (score) => {
     payload: score,
   };
 };
-
-// teoria functions for music theory
-function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
-function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
-function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
-function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
-function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiffPlusFreq(freq) {
-  const result = getPreciseNotePlusCentDiff(freq);
-  return result.concat(freq);
-}

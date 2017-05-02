@@ -26,7 +26,7 @@ function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(fre
 function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
+// function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiffPlusFreq(freq) {
   const result = getPreciseNotePlusCentDiff(freq);

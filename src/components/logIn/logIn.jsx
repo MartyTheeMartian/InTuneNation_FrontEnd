@@ -5,15 +5,9 @@ import { Field, reduxForm } from 'redux-form';
 import { logUserIn } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
+const mapStateToProps = (state) => { return {}; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    logUserIn
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn }, dispatch); };
 
 class LogIn extends Component {
 
@@ -27,7 +21,7 @@ class LogIn extends Component {
   //   this.prop.handleSubmit(e);
   // }
   render() {
-    const {handleSubmit, pristine, reset, submitting} = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
 

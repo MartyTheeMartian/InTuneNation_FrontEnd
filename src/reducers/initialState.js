@@ -26,4 +26,5 @@ export default {
   },
   recordingStatus: false,
   user: {},
+  userId: null,
 };
