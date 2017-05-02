@@ -1,30 +1,26 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {LinkContainer} from 'react-router-bootstrap';
-import {Navbar, NavItem, NavDropdown, MenuItem, Nav} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import LogIn from '../logIn/logIn';
 import SignUp from '../signUp/signUp';
-import music from '../../assets/img/music.jpg'
-import profile from '../../assets/img/profile-icon.png'
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
+// import music from '../../assets/img/music.jpg'
+// import profile from '../../assets/img/profile-icon.png'
+const mapStateToProps = (state) => { return state; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class NavBar extends Component {
 
   render() {
 
-    const style1 = {
-      border: 'solid grey 5px',
-      margin: '50px',
-      padding: '0'
-    };
+    // const style1 = {
+    //   border: 'solid grey 5px',
+    //   margin: '50px',
+    //   padding: '0'
+    // };
 
     return (
       <Navbar collapseOnSelect>
@@ -36,7 +32,7 @@ class NavBar extends Component {
               </a>
             </LinkContainer>
           </Navbar.Brand>
-          <Navbar.Toggle/>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
@@ -67,14 +63,14 @@ class NavBar extends Component {
             <div className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                  <SignUp/>
+                  <SignUp />
                 </div>
               </div>
             </div>
             <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog " role="document">
                 <div className="modal-content">
-                  <LogIn/>
+                  <LogIn />
                 </div>
               </div>
             </div>
