@@ -320,8 +320,6 @@ var ReactGauge = React.createClass({
 
 			return result;
 		};
-		console.log('this.state.arrowValue', this.state.arrowValue);
-		console.log('this.props.arrowValue', this.props.arrowValue);
 
 		return (
 			React.createElement('svg', {

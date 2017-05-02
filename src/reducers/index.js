@@ -10,8 +10,8 @@ import exerciseScoresReducer from './exerciseScores_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import { Field, reduxForm } from 'redux-form';
 import { reducer as formReducer } from 'redux-form';
-import  signup  from './signUp';
-import login from './login';
+import  signupReducer  from './signUp';
+import loginReducer from './login';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -26,8 +26,8 @@ const rootReducer = combineReducers({
   targetNoteIndexReducer,
   sungNoteReducer,
   recordingStatusReducer,
-  signup,
-  login,
+  signupReducer,
+  loginReducer,
 });
 
 
