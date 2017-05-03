@@ -8,20 +8,20 @@ import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
 import Community from './components/profile/community';
 
-import { connect } from 'react-redux';
-import { Grid, Col } from 'react-bootstrap';
+// import { connect } from 'react-redux';
+// import { Grid, Col } from 'react-bootstrap';
 import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  // Link
 } from 'react-router-dom';
 
 
 class PPP extends Component {
   render() {
     return (
-      
+
       <Router>
         <div className="App">
 

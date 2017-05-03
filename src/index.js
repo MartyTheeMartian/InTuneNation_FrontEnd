@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import App from './App';
 import '../src/assets/css/main.css';
-import { Provider } from 'react-redux';
 import getUserMedia from './utils/userMedia';
 import store from './store'
 

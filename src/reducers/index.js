@@ -8,7 +8,6 @@ import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
 import exerciseScoresReducer from './exerciseScores_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
-import { Field, reduxForm } from 'redux-form';
 import { reducer as formReducer } from 'redux-form';
 import  signupReducer  from './signUp';
 import loginReducer from './login';

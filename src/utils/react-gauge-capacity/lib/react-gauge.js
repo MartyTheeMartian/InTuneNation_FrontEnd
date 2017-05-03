@@ -248,7 +248,7 @@ var ReactGauge = React.createClass({
 
 				var gaugeCenter = '', adjustCenterLabel = 0;
 
-				if(indexValue == parseInt(array.length/2)){
+				if(indexValue === parseInt(array.length/2, 10)){
 					gaugeCenter = " gauge-center-label";
 					adjustCenterLabel = 8;
 				}

@@ -2,13 +2,11 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {
-  Button,
-  Thumbnail,
   Col,
   Row,
   Grid,
   Navbar,
-  Table
+  Table,
 } from 'react-bootstrap';
 
 const mapStateToProps = (state, ownProps) => {

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect as reactConnect } from 'react-redux';
 import { pushKeyEventToArray, currentNote } from '../../actions';
-import { octaveReducer } from '../../reducers';
+// import { octaveReducer } from '../../reducers';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
-import getDistortionCurve from '../../audio/distort';
+// import getDistortionCurve from '../../audio/distort';
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const ctx = new AudioContext();
 const osc = ctx.createOscillator();
 const gainNode = ctx.createGain();
-const distortion = ctx.createWaveShaper();
+// const distortion = ctx.createWaveShaper();
 
 
 // osc.connect(gainNode);
@@ -38,10 +38,7 @@ osc.frequency.value = 0;
 gainNode.gain.value = 0;
 osc.start();
 
-
-
-const mapStateToProps = (state, ownProps) => {
-  console.log(state);
+const mapStateToProps = (state) => {
   return {
     octave: state.octaveReducer.current,
     capture: state.captureReducer.capture
@@ -52,6 +49,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ pushKeyEventToArray, currentNote }, dispatch);
 };
 
+const styleClicked = { backgroundColor: '#2f8aaf' };
 
 class Piano extends Component {
 
@@ -74,15 +72,13 @@ class Piano extends Component {
     let noteObj = {
       noteName: note,
       octave: this.props.octave,
-      keyNum: keyNum,
-      tNote: tNote,
+      keyNum,
+      tNote,
     };
 
     console.log(noteObj);
 
-    if (this.props.capture) {
-      this.props.pushKeyEventToArray(noteObj);
-    }
+    if (this.props.capture) { this.props.pushKeyEventToArray(noteObj); }
 
     osc.frequency.value = freqAndKeyNum.frequency;
     gainNode.gain.value = 0.2;
@@ -116,7 +112,5 @@ class Piano extends Component {
   }
 
 }
-
-const styleClicked = { backgroundColor: '#2f8aaf' };
 
 export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);

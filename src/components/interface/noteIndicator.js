@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentNote: state.currentNoteReducer,
     octave: state.octaveReducer.current,
@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators ({}, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 const renderSungNote = (note) => {
   if (note === undefined) {
@@ -28,10 +28,7 @@ const renderSungNote = (note) => {
 }
 
 class NoteIndicator extends Component {
-
-
   render() {
-
     return (
       <div className="col-sm-3 col-md-3">
         <div className="panel panel-default">
@@ -42,13 +39,9 @@ class NoteIndicator extends Component {
             <h2>{renderSungNote(this.props.sungNote)}</h2>
           </div>
         </div>
-
       </div>
     );
   }
-
 }
-
-let style = { backgroundColor: '' };
 
 export default connect (mapStateToProps, mapDispatchToProps)(NoteIndicator);

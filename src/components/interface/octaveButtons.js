@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { shiftOctaves } from '../../actions';
-import { octaveReducer } from '../../reducers';
+// import { octaveReducer } from '../../reducers';
 
 
 const mapStateToProps = (state, ownProps) => {

@@ -5,18 +5,17 @@ const greenTimeReducer = (state = initialState.greenTime, action) => {
     case 'INCREMENT_GREEN_TIME':
       return {
         accumulated: state.accumulated + 1,
-        required: state.required
+        required: state.required,
       };
-      console.log(state);
     case 'RESET_GREEN_TIME':
       return {
         accumulated: 0,
-        required: state.required
+        required: state.required,
       };
     case 'CHANGE_GREEN_TIME_REQUIREMENT':
       return {
         accumulated: state.accumulated,
-        required: action.amount
+        required: action.amount,
       };
     default:
       return state;

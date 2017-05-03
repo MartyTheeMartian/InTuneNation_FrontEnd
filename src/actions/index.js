@@ -1,4 +1,3 @@
-import teoria from 'teoria';
 
 export const currentNote = (note) => {
   return {
@@ -123,17 +122,3 @@ export const pushScoreToExerciseScoresArray = (score) => {
     payload: score,
   };
 };
-
-// teoria functions for music theory
-function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
-function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
-function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
-function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
-function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiffPlusFreq(freq) {
-  const result = getPreciseNotePlusCentDiff(freq);
-  return result.concat(freq);
-}

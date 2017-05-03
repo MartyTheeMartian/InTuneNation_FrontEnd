@@ -27,6 +27,4 @@ class ScoreBox extends Component {
 
 }
 
-let style = {backgroundColor: ''};
-
 export default connect(mapStateToProps, mapDispatchToProps)(ScoreBox);

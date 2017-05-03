@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentNote: state.currentNoteReducer,
     octave: state.octaveReducer.current,
@@ -12,9 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 const renderKeyEventNotesAsTargetNotes = (keyEvents, targetNoteIndex) => {
   if (!keyEvents) { return '' } else {
@@ -47,7 +45,5 @@ class TargetNoteIndicator extends Component {
   }
 
 }
-
-let style = {backgroundColor: ''};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TargetNoteIndicator);
