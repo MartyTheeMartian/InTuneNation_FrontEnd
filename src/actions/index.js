@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import axios from 'axios';
 
 export const currentNote = (note) => {
   return {
@@ -21,18 +22,44 @@ export const toggleCapture = () => {
   };
 };
 
-export const signUserUp = (email, firstName, lastName, password) => {
-  return {
-    type:'USER_SIGN_UP',
-    payload: {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-    }
-
-  };
+export const signUserUp = (user) => {
+  console.log('actions/signUserUp');
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     console.log('response === ', response);
+     return response;
+   }).catch((err) => {
+     console.error(err);
+   })
+  //  return fetch(API_URL, {
+  //    mode: 'no-cors',
+  //    method: 'POST',
+  //    headers: {
+  //      'Accept': 'application/json',
+  //      'Content-Type': 'application/json',
+  //       body: JSON.stringify(user)
+  //    }
+  //  })
+  //  .then((res) => {
+  //    console.log('res === ',res);
+  //    console.log('res.body === ', res.body);
+  //    console.log('res.json === ', res.json);
+  //    return res.json();
+  //  })
+  //  .catch((err) => {
+  //    console.log(err);
+  //  });
 };
+
+export const postSignUp = (user) => {
+  console.log('postSignUp');
+  return {
+    type: 'SIGN_UP',
+    payload: signUserUp(user),
+  }
+}
 
 export const logUserIn = (email, password) => {
   return {
@@ -121,3 +148,12 @@ export const pushScoreToExerciseScoresArray = (score) => {
     payload: score,
   };
 };
+
+
+// user signup / login related action tasks
+export const postNewUserToBackEndAfterSignUp = (email, firstName, lastName, password) => {
+  return {
+    type: 'POST_NEW_USER_TO_BACK_END_AFTER_SIGN_UP',
+    payload: userInfo,
+  }
+}

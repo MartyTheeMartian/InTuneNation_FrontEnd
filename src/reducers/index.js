@@ -9,8 +9,8 @@ import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
 import exerciseScoresReducer from './exerciseScores_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
-import signupReducer  from './signUp';
-import loginReducer from './login';
+import signupReducer from './signUp';
+// import loginReducer from './login';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   sungNoteReducer,
   recordingStatusReducer,
   signupReducer,
-  loginReducer,
+  // loginReducer,
 });
 
 
