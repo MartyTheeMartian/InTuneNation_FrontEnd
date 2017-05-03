@@ -2,20 +2,36 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { signUserUp } from '../../actions';
+import { postSignUp } from '../../actions';
 // import { LinkContainer } from 'react-router-bootstrap';
 
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => { return state; };
+const mapStateToProps = (state, ownProps) => {
+  console.log('state === ', state);
+  return {
+    firstName: state.signupReducer.firstName,
+    lastName: state.signupReducer.lastName,
+    email: state.signupReducer.email,
+    passport: state.signupReducer.passport,
+    };
+};
 
-const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp }, dispatch); };
+const mapDispatchToProps = (dispatch) => {return bindActionCreators({ postSignUp }, dispatch); };
 
 class SignUp extends Component {
 
   onSubmit = (value) => {
     const user = value;
-    this.props.signUserUp(user.email, user.firstName, user.lastName, user.password);
+    const info = {
+     email: user.email,
+     firstName: user.firstName,
+     lastName: user.lastName,
+     password: user.password,
+   };
+    console.log('info ===', info);
+    this.props.postSignUp(info);
+
   }
 
   render() {
@@ -46,7 +62,7 @@ class SignUp extends Component {
           </div>
 
           <div className="signup-modal-foot-btn">
-            <button type="button" className="btn btn-info" type="submit">
+            <button type="button" className="btn btn-info" type="submit" >
               <h5>Sign Up</h5>
             </button>
             <button type="button" className="btn btn-default" data-dismiss="modal">
@@ -60,6 +76,6 @@ class SignUp extends Component {
   }
 }
 
-SignUp = reduxForm({ form: 'signup' })(SignUp);
+let SignUpWithForm = reduxForm({ form: 'signup' })(SignUp);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpWithForm);

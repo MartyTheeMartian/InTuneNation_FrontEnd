@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { logUserIn } from '../../actions';
+import { postLogIn } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state) => { return {}; };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn }, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ postLogIn }, dispatch); };
 
 class LogIn extends Component {
 
   onSubmit = (value) => {
     // value.preventDefault();
     const user = value;
-    this.props.logUserIn(user.email, user.password);
+    this.props.postLogIn(user);
   }
   // doSubmit = (e) => {
   //   e.preventDefault();

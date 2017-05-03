@@ -1,4 +1,28 @@
 /*eslint-disable*/
+import axios from 'axios';
+
+const signUserUp = (user) => {
+  const API_URL = 'https://ppp-capstone-music.herokuapp.com/user/signup';
+    return axios
+    .post(API_URL, user)
+    .then(response => {
+      return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+      });
+};
+
+const logUserIn = (user) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     return response;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
 
 export const currentNote = (note) => {
   return {
@@ -21,28 +45,27 @@ export const toggleCapture = () => {
   };
 };
 
-export const signUserUp = (email, firstName, lastName, password) => {
+// export const signUserUp = (user) => {
+//   return {
+//     type: 'USER_SIGN_UP',
+//     payload: fetchSignUpUser(user)
+//   }
+// };
+
+export const postSignUp = (user) => {
+  console.log('postSignUp');
   return {
-    type:'USER_SIGN_UP',
-    payload: {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-    }
+    type: 'USER_SIGN_UP',
+    payload: signUserUp(user),
+  }
+}
 
-  };
-};
-
-export const logUserIn = (email, password) => {
+export const postLogIn = (user) => {
   return {
     type: 'USER_LOG_IN',
-    payload: {
-      email,
-      password,
-    }
+    payload: logUserIn(user)
   };
-};
+}
 
 export const shiftOctaves = (direction) => {
   return {
@@ -120,4 +143,11 @@ export const pushScoreToExerciseScoresArray = (score) => {
     type: 'PUSH_SCORE_TO_EXERCISE_SCORES_ARRAY',
     payload: score,
   };
+};
+
+export const postNewUserToBackEndAfterSignUp = (email, firstName, lastName, password)=>{
+  return {
+    type:'POST_NEW_USER_TO_BACK_END_AFTER_SIGN_UP',
+    payload: userInfo,
+  }
 };

@@ -75,7 +75,7 @@ class Piano extends Component {
       tNote,
     };
 
-    console.log(noteObj);
+    // console.log(noteObj);
 
     if (this.props.capture) { this.props.pushKeyEventToArray(noteObj); }
 
