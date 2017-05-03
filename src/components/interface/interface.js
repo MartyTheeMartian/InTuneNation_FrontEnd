@@ -35,13 +35,15 @@ class Interface extends Component {
     return (
       <div className="container">
         <OctaveButtons />
-        <Piano />
+        <div className="row">
+          <Piano />
+          <TuningIndicator />
+        </div>
         <div className="row">
           <NoteIndicator />
           <TargetNoteIndicator />
           <ScoreBox />
         </div>
-        <TuningIndicator />
         <CaptureButtons />
       </div>
     );

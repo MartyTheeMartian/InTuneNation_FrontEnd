@@ -91,21 +91,19 @@ class Piano extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="octave">
-          <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
-          <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('D')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('E')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('F')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('G')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('A')} className="white-key" ></div>
-          <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
-          <div onClick={() => this.handleClick('B')} className="white-key" ></div>
-        </div>
+      <div className="col-lg-7 col-md-6 col-sm-9 col-xs-12">
+        <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
+        <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
+        <div onClick={() => this.handleClick('D')} className="white-key" ></div>
+        <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
+        <div onClick={() => this.handleClick('E')} className="white-key" ></div>
+        <div onClick={() => this.handleClick('F')} className="white-key" ></div>
+        <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
+        <div onClick={() => this.handleClick('G')} className="white-key" ></div>
+        <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
+        <div onClick={() => this.handleClick('A')} className="white-key" ></div>
+        <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
+        <div onClick={() => this.handleClick('B')} className="white-key" ></div>
       </div>
     );
   }

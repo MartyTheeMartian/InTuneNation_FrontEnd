@@ -1,7 +1,7 @@
 export default {
   capture: {
     capture: false,
-    captureText: 'Capture Keyboard',
+    captureText: 'Capture',
     disabled: '',
   },
   octave: {
