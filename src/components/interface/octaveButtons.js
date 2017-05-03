@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { shiftOctaves, toggleCapture } from '../../actions';
 
-
 const mapStateToProps = (state) => {
   return {
     captureText: state.captureReducer.captureText,

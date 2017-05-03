@@ -29,7 +29,6 @@ class CaptureButtons extends Component {
   }
 
   render() {
-    console.log(this.props.recordingStatus);
     return (
       <div className="row">
           <div className="col-sm-6 col-md-4">

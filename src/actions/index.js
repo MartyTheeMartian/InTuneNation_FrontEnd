@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 export const currentNote = (note) => {
   return {
     type: 'CURRENT_NOTE',

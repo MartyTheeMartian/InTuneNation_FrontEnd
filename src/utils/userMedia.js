@@ -23,7 +23,7 @@ const { dispatch, getState } = store;
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
+// function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
 // function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }

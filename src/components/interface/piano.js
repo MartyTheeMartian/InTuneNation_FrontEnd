@@ -71,8 +71,8 @@ class Piano extends Component {
     let noteObj = {
       noteName: note,
       octave: this.props.octave,
-      keyNum: keyNum,
-      tNote: tNote,
+      keyNum,
+      tNote,
     };
 
     console.log(noteObj);

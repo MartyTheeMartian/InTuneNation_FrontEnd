@@ -13,12 +13,15 @@ import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
 import Community from './components/profile/community';
 
+// import { connect } from 'react-redux';
+// import { Grid, Col } from 'react-bootstrap';
 import './App.css';
 
 
 class PPP extends Component {
   render() {
     return (
+
       <Router>
         <div className="App">
 

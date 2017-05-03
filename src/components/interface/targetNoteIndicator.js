@@ -43,9 +43,6 @@ class TargetNoteIndicator extends Component {
       </div>
     );
   }
-
 }
-
-// let style = {backgroundColor: ''};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TargetNoteIndicator);
