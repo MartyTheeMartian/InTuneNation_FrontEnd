@@ -1,7 +1,7 @@
 export default {
   capture: {
     capture: false,
-    captureText: 'Capture Keyboard',
+    captureText: 'Capture',
     disabled: '',
   },
   octave: {
@@ -25,4 +25,5 @@ export default {
     arrowValue: 90/180,
   },
   recordingStatus: false,
+  userId: null,
 };

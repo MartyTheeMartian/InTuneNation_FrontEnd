@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { pushNoteToArray,
         toggleAudioCapture } from '../../actions';
 
-import ReactGauge from 'react-gauge-capacity';
+import ReactGauge from '../../utils/react-gauge-capacity/lib/react-gauge.js';
 let contWidth = 360;
 let contHeight = 200;
 let gaugeRadius = 125;
@@ -95,7 +95,7 @@ class TuningIndicator extends Component {
       ],
     };
     return (
-      <div className="container">
+      <div className="col-lg-5 col-md-6 col-sm-9 col-xs-12 ">
         <ReactGauge {...options} />
       </div>
     );

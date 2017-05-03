@@ -1,5 +1,4 @@
-const signup = (state = {}, action) => {
-  console.log('am I here???????????');
+const signupReducer = (state = {}, action) => {
   switch (action.type) {
     case 'USER_SIGN_UP':
       return {...state, ...action.payload };
@@ -8,4 +7,4 @@ const signup = (state = {}, action) => {
   }
 }
 
-export default signup;
+export default signupReducer;

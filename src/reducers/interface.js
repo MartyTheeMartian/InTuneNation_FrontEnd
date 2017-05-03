@@ -15,7 +15,7 @@ export const captureReducer = (state = initialState.capture, action) => {
       if (!state.capture) {
         return { capture: true, captureText: 'End Capture' };
       } else if (state.capture) {
-        return { capture: false, captureText: 'Capture Keyboard', disabled: 'disabled' };
+        return { capture: false, captureText: 'Capture', disabled: 'disabled' };
       }
       break;
     default:

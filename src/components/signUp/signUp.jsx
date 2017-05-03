@@ -1,36 +1,25 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {signUserUp} from '../../actions';
-import {LinkContainer} from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { signUserUp } from '../../actions';
+// import { LinkContainer } from 'react-router-bootstrap';
+
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => {
-  console.log('what is state in store?', state);
-  return {
-    // formData: state.signupForm
-  };
-};
+const mapStateToProps = (state, ownProps) => { return state; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    signUserUp
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp }, dispatch); };
 
 class SignUp extends Component {
 
   onSubmit = (value) => {
-    console.log('what is value?', value);
-    // event.preventDefault();
     const user = value;
     this.props.signUserUp(user.email, user.firstName, user.lastName, user.password);
-    // console.log('did prop,', this.props);
   }
 
   render() {
-    const {handleSubmit, pristine, reset, submitting} = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <div className="signup-modal">
         <button className="btn signup-modal-btn-google">
@@ -52,8 +41,8 @@ class SignUp extends Component {
             <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
             <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
             <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
-            <Field name="password" component="input" type="password" placeholder="Passwords" className="signup-modal-content-detail" required/>
-            <Field name="confirmPassword" component="input" type="password" placeholder="Confirm passwords" className="signup-modal-content-detail" required/>
+            <Field name="password" component="input" type="password" placeholder="Password" className="signup-modal-content-detail" required/>
+            <Field name="confirmPassword" component="input" type="password" placeholder="Confirm Password" className="signup-modal-content-detail" required/>
           </div>
 
           <div className="signup-modal-foot-btn">
@@ -70,6 +59,7 @@ class SignUp extends Component {
     );
   }
 }
-SignUp = reduxForm({form: 'signup'})(SignUp);
+
+SignUp = reduxForm({ form: 'signup' })(SignUp);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

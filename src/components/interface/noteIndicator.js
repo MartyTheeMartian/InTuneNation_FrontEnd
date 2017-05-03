@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentNote: state.currentNoteReducer,
     octave: state.octaveReducer.current,
@@ -13,45 +13,33 @@ const mapStateToProps = (state, ownProps) => {
     greenTime: state.greenTime,
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
-    sungNote: state.sungNote,
-    recordingStatus: state.recordingStatus
+    sungNote: state.sungNoteReducer,
+    recordingStatus: state.recordingStatus,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({}, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
+const renderSungNote = (note) => {
+  if (note === undefined) { return "Start singing!"; }
+  return note.name;
+}
 
 class NoteIndicator extends Component {
-
-
   render() {
-
     return (
-      <div className="col-sm-4 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h4>Note Indicator</h4>
-            <div style={style}>
-              <h2>{this.props.currentNote}</h2>
-            </div>
-            <div>
-              <ul className="list-group">
-                <li className="list-group-item">
-                  <span className="badge">{this.props.octave}</span>
-                  Octave
-                </li>
-              </ul>
-            </div>
+      <div className="col-sm-3 col-md-3">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h4>Currently Sung Note</h4>
+          </div>
+          <div className="panel-body">
+            <h2>{renderSungNote(this.props.sungNote)}</h2>
           </div>
         </div>
       </div>
     );
   }
-
 }
-
-let style = { backgroundColor: '' };
 
 export default connect (mapStateToProps, mapDispatchToProps)(NoteIndicator);

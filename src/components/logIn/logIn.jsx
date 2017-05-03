@@ -1,19 +1,13 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {logUserIn} from '../../actions';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { logUserIn } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
+const mapStateToProps = (state) => { return {}; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    logUserIn
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn }, dispatch); };
 
 class LogIn extends Component {
 
@@ -27,7 +21,7 @@ class LogIn extends Component {
   //   this.prop.handleSubmit(e);
   // }
   render() {
-    const {handleSubmit, pristine, reset, submitting} = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
 
@@ -52,7 +46,7 @@ class LogIn extends Component {
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className="signin-modal-content">
             <Field name="email" component="input" type="email" placeholder="Email" className="signin-modal-content-detail" required/>
-            <Field name="password" component="input" type="password" placeholder="Passwords" className="signin-modal-content-detail" required/>
+            <Field name="password" component="input" type="password" placeholder="Password" className="signin-modal-content-detail" required/>
           </div>
           <div className="signin-modal-foot-btn">
             <button type="button" className="btn btn-info" type="submit">
