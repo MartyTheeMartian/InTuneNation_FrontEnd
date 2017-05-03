@@ -2,15 +2,15 @@
 import axios from 'axios';
 
 const signUserUp = (user) => {
-  const API_URL = 'https://ppp-capstone-music.herokuapp.com/user/signup';
-    return axios
-    .post(API_URL, user)
-    .then(response => {
-      return response;
-    })
-    .catch(function (error) {
-      console.log(error);
-      });
+  console.log('actions/signUserUp');
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     return response.data;
+   }).catch((err) => {
+     console.error(err);
+   });
 };
 
 const logUserIn = (user) => {
@@ -18,7 +18,7 @@ const logUserIn = (user) => {
   return axios
    .post(API_URL, user)
    .then(response => {
-     return response;
+     return response.data;
    }).catch((err) => {
      console.error(err);
    });
@@ -45,20 +45,15 @@ export const toggleCapture = () => {
   };
 };
 
-// export const signUserUp = (user) => {
-//   return {
-//     type: 'USER_SIGN_UP',
-//     payload: fetchSignUpUser(user)
-//   }
-// };
+
 
 export const postSignUp = (user) => {
-  console.log('postSignUp');
   return {
     type: 'USER_SIGN_UP',
     payload: signUserUp(user),
   }
 }
+
 
 export const postLogIn = (user) => {
   return {
@@ -145,9 +140,6 @@ export const pushScoreToExerciseScoresArray = (score) => {
   };
 };
 
-export const postNewUserToBackEndAfterSignUp = (email, firstName, lastName, password)=>{
-  return {
-    type:'POST_NEW_USER_TO_BACK_END_AFTER_SIGN_UP',
-    payload: userInfo,
-  }
-};
+
+
+

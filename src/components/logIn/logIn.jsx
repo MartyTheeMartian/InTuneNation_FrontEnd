@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { postLogIn } from '../../actions';
+
+import { logUserIn, postLogIn } from '../../actions';
+
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state) => { return {}; };
+const mapStateToProps = (state) => {
+  console.log(state);
+  return state;
+};
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ postLogIn }, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn, postLogIn }, dispatch); };
 
 class LogIn extends Component {
 
@@ -43,7 +48,7 @@ class LogIn extends Component {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="signin-modal-content">
             <Field name="email" component="input" type="email" placeholder="Email" className="signin-modal-content-detail" required/>
             <Field name="password" component="input" type="password" placeholder="Password" className="signin-modal-content-detail" required/>

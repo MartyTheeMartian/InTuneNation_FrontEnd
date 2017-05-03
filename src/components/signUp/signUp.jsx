@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { postSignUp } from '../../actions';
+
+import { signUserUp, postSignUp } from '../../actions';
+
 // import { LinkContainer } from 'react-router-bootstrap';
 
 import google_logo from '../../assets/img/google_logo.png';
@@ -17,21 +19,19 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {return bindActionCreators({ postSignUp }, dispatch); };
+const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp, postSignUp }, dispatch); };
 
 class SignUp extends Component {
 
   onSubmit = (value) => {
     const user = value;
     const info = {
-     email: user.email,
-     firstName: user.firstName,
-     lastName: user.lastName,
-     password: user.password,
-   };
-    console.log('info ===', info);
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      password: user.password,
+    };
     this.props.postSignUp(info);
-
   }
 
   render() {
@@ -51,7 +51,7 @@ class SignUp extends Component {
           <div className="signup-modal-or-decorate-lineR">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
         </div>
 
-        <form onSubmit={handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="signup-modal-content">
 
             <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
