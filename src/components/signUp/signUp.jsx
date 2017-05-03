@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {signUserUp} from '../../actions';
-import {LinkContainer} from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { signUserUp } from '../../actions';
+import { LinkContainer } from 'react-router-bootstrap';
 import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state, ownProps) => {
