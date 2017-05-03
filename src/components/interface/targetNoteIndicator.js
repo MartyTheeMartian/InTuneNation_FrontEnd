@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 const renderKeyEventNotesAsTargetNotes = (keyEvents, targetNoteIndex) => {
-  if (!keyEvents) { return '' } else {
+  if (!keyEvents) { return ''; } else {
     return keyEvents.map((item, index) => {
       if (index === targetNoteIndex) {
         return <li className="active"><h3>{ item.noteName }</h3></li>;
@@ -43,7 +43,6 @@ class TargetNoteIndicator extends Component {
       </div>
     );
   }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TargetNoteIndicator);

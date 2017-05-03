@@ -3,7 +3,7 @@
 export const currentNote = (note) => {
   return {
     type: 'CURRENT_NOTE',
-    payload: note
+    payload: note,
   };
 };
 
@@ -38,8 +38,8 @@ export const logUserIn = (email, password) => {
   return {
     type: 'USER_LOG_IN',
     payload: {
-      email: email,
-      password: password
+      email,
+      password,
     }
   };
 };
@@ -58,7 +58,6 @@ export const toggleAudioCapture = () => {
 };
 
 export const incrementGreenTime = () => {
-  console.log('GREEN TIME INCREMENTED!!');
   return {
     type: 'INCREMENT_GREEN_TIME',
   };
@@ -73,20 +72,20 @@ export const resetGreenTime = () => {
 export const changeGreenTimeRequirement = (amount) => {
   return {
     type: 'CHANGE_GREEN_TIME_REQUIREMENT',
-    amount: amount
+    amount,
   };
 };
 
 export const decrementScore = (amount) => {
   return {
     type: 'DECREMENT_SCORE',
-    amount: amount,
+    amount,
   };
 };
 
 export const resetScore = () => {
   return {
-    type: 'RESET_SCORE'
+    type: 'RESET_SCORE',
   };
 };
 

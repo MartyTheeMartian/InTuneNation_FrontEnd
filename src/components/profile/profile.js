@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import mathew from '../../assets/img/matthew.png';
 import {
-  Button,
+  // Button,
   Thumbnail,
   Col,
   Row,
   Grid,
-  MenuItem,
-  Clearfix,
-  onSelectAlert,
-  ButtonGroup,
-  DropdownButton,
-  Table
+  // MenuItem,
+  // Clearfix,
+  // onSelectAlert,
+  // ButtonGroup,
+  // DropdownButton,
+  // Table
 } from 'react-bootstrap';
-const wellStyles = {
-  maxWidth: 400,
-  margin: '0 auto 10px'
-};
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
+import ExerciseCardList from './exerciseCardList';
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-};
+import mathew from '../../assets/img/matthew.png';
+// const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
+
+const mapStateToProps = (state) => { return state; };
+
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class Profile extends Component {
 
@@ -42,7 +38,7 @@ class Profile extends Component {
 
           </Col>
 
-
+          <ExerciseCardList />
         </Row>
       </Grid>
     );

@@ -1,6 +1,6 @@
 import initialState from './initialState';
 
-const loginReducer = (state = initialState.user, action) => {
+const loginReducer = (state = initialState.userId, action) => {
   switch (action.type) {
     case 'USER_LOG_IN':
       return { ...state, ...action.payload };

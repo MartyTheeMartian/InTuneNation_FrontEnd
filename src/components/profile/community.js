@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Col,
   Row,
@@ -9,13 +9,9 @@ import {
   Table,
 } from 'react-bootstrap';
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
+const mapStateToProps = (state) => { return state; };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-}
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class Community extends Component {
 
@@ -23,7 +19,6 @@ class Community extends Component {
     return (
       <Grid>
         <Row className="show-grid">
-
           <Col xs={18} md={3}>
             <Navbar.Text pullLeft className>
               Monster Dashboard
@@ -66,8 +61,8 @@ class Community extends Component {
 
         </Row>
       </Grid>
-    )
+    );
   }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Community);

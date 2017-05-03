@@ -32,7 +32,7 @@ class CaptureButtons extends Component {
     return (
       <div className="row">
           <div className="col-sm-6 col-md-4">
-            <button onClick={this.handleClick} className="btn btn-primary btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
+            <button onClick={this.handleClick} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
 
           </div>
           <div className="col-sm-6 col-md-4">

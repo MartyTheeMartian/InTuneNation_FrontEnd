@@ -14,16 +14,14 @@ const mapStateToProps = (state) => {
     targetNote: state.targetNote,
     targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatus
+    recordingStatus: state.recordingStatus,
   };
 };
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 const renderSungNote = (note) => {
-  if (note === undefined) {
-    return "Start singing!"
-  }
+  if (note === undefined) { return "Start singing!"; }
   return note.name;
 }
 
