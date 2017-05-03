@@ -1,6 +1,29 @@
 /*eslint-disable*/
 import axios from 'axios';
 
+const signUserUp = (user) => {
+  console.log('actions/signUserUp');
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     return response.data;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
+
+const logUserIn = (user) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     return response.data;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
+
 export const currentNote = (note) => {
   return {
     type: 'CURRENT_NOTE',
@@ -22,36 +45,15 @@ export const toggleCapture = () => {
   };
 };
 
-export const signUserUp = (user) => {
-  console.log('actions/signUserUp');
-  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
-  return axios
-   .post(API_URL, user)
-   .then(response => {
-     return response;
-   }).catch((err) => {
-     console.error(err);
-   });
-};
+
 
 export const postSignUp = (user) => {
-  console.log('postSignUp');
   return {
-    type: 'SIGN_UP',
+    type: 'USER_SIGN_UP',
     payload: signUserUp(user),
   }
 }
 
-export const logUserIn = (user) => {
-  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
-  return axios
-   .post(API_URL, user)
-   .then(response => {
-     return response.data;
-   }).catch((err) => {
-     console.error(err);
-   });
-};
 
 export const postLogIn = (user) => {
   return {
@@ -139,10 +141,5 @@ export const pushScoreToExerciseScoresArray = (score) => {
 };
 
 
-// user signup / login related action tasks
-export const postNewUserToBackEndAfterSignUp = (email, firstName, lastName, password) => {
-  return {
-    type: 'POST_NEW_USER_TO_BACK_END_AFTER_SIGN_UP',
-    payload: userInfo,
-  }
-}
+
+

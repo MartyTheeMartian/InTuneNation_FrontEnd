@@ -86,7 +86,7 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(finalScore));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            console.log('TIME TO POST TO DB');
+            // console.log('TIME TO POST TO DB');
             dispatch(resetTargetNoteIndex());
             dispatch(toggleAudioCapture());
           } else {

@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+
 import { signUserUp, postSignUp } from '../../actions';
+
 // import { LinkContainer } from 'react-router-bootstrap';
 
 import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('state === ', state);
   return {
-
-  };
+    firstName: state.signupReducer.firstName,
+    lastName: state.signupReducer.lastName,
+    email: state.signupReducer.email,
+    passport: state.signupReducer.passport,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp, postSignUp }, dispatch); };
@@ -42,7 +48,7 @@ class SignUp extends Component {
         <div className="signup-modal-or-decorate">
           <div className="signup-modal-or-decorate-lineL">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
           <span>or</span>
-          <div className="signup-modal-or-decorate-lineR">>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
+          <div className="signup-modal-or-decorate-lineR">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
         </div>
 
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -56,7 +62,7 @@ class SignUp extends Component {
           </div>
 
           <div className="signup-modal-foot-btn">
-            <button type="button" className="btn btn-info" type="submit">
+            <button type="button" className="btn btn-info" type="submit" >
               <h5>Sign Up</h5>
             </button>
             <button type="button" className="btn btn-default" data-dismiss="modal">
@@ -70,6 +76,6 @@ class SignUp extends Component {
   }
 }
 
-SignUp = reduxForm({ form: 'signup' })(SignUp);
+let SignUpWithForm = reduxForm({ form: 'signup' })(SignUp);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpWithForm);
