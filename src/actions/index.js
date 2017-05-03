@@ -28,29 +28,10 @@ export const signUserUp = (user) => {
   return axios
    .post(API_URL, user)
    .then(response => {
-     console.log('response === ', response);
      return response;
    }).catch((err) => {
      console.error(err);
-   })
-  //  return fetch(API_URL, {
-  //    mode: 'no-cors',
-  //    method: 'POST',
-  //    headers: {
-  //      'Accept': 'application/json',
-  //      'Content-Type': 'application/json',
-  //       body: JSON.stringify(user)
-  //    }
-  //  })
-  //  .then((res) => {
-  //    console.log('res === ',res);
-  //    console.log('res.body === ', res.body);
-  //    console.log('res.json === ', res.json);
-  //    return res.json();
-  //  })
-  //  .catch((err) => {
-  //    console.log(err);
-  //  });
+   });
 };
 
 export const postSignUp = (user) => {
@@ -61,15 +42,23 @@ export const postSignUp = (user) => {
   }
 }
 
-export const logUserIn = (email, password) => {
+export const logUserIn = (user) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     return response.data;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
+
+export const postLogIn = (user) => {
   return {
     type: 'USER_LOG_IN',
-    payload: {
-      email,
-      password,
-    }
+    payload: logUserIn(user)
   };
-};
+}
 
 export const shiftOctaves = (direction) => {
   return {
