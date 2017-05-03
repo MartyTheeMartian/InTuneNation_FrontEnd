@@ -1,3 +1,4 @@
+/*eslint-disable*/
 var React = require('react');
 
 var ReactGauge = React.createClass({

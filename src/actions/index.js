@@ -1,3 +1,4 @@
+/*eslint-disable*/
 
 export const currentNote = (note) => {
   return {
@@ -51,7 +52,6 @@ export const shiftOctaves = (direction) => {
 };
 
 export const toggleAudioCapture = () => {
-  console.log('React/src/actions/index/activateVocalInput()');
   return {
     type: 'TOGGLE_AUDIO_CAPTURE',
   };
