@@ -25,6 +25,10 @@ export default {
     arrowValue: 90/180,
   },
   recordingStatus: false,
+  singButton: {
+    singText: 'Sing',
+    disabled: true
+  },
   user: {},
   allPastExercises: [],
 };
