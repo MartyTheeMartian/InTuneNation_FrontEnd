@@ -5,7 +5,7 @@ export default {
     disabled: '',
   },
   octave: {
-    current: 4,
+    current: 3,
     up: '',
     down: '',
   },
@@ -27,4 +27,5 @@ export default {
   recordingStatus: false,
   user: {},
   allPastExercises: [],
+  currentExerciseId: null,
 };

@@ -16,6 +16,7 @@ import { setKeyEventAsTargetNote,
           setSungNote,
           toggleAudioCapture,
          } from '../actions';
+import scorePostingUtility from './score_posting_utility';
 
 const getUserMedia = require('get-user-media-promise');
 const MicrophoneStream = require('microphone-stream');
@@ -110,37 +111,39 @@ export default getUserMedia({ video: false, audio: true })
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
             const userId = getState().loginReducer.id;
+            const exerciseId = getState().currentExerciseIdReducer;
             const finalScoreArray = getState().exerciseScoresReducer;
-            const currentKeyNumCombo = keyEvents.map((key) => { return key.keyNum; });
-            const allPastExercises = getState().allPastExercisesReducer;
-            if (allPastExercises === []) {
-              dispatch(setAllPastExercises(userId));
-            }
-            let matchingComboId = null;
-            const pastKeyCombos = allPastExercises.map((exercise) => {
-              return { id: exercise.id, keyCombo: JSON.parse(exercise.notes_array) };
-            });
-            pastKeyCombos.forEach((combo) => {
-              if (combo.keyCombo === currentKeyNumCombo) {
-                matchingComboId = combo.id;
-              }
-            });
-            if (matchingComboId === null) {
-              // currentKeyNumCombo is NOT PRESENT in DB
-              // create exercise in exercise table, THEN add scores
-              console.log(currentKeyNumCombo);
-              postNewExerciseToProfile(userId, currentKeyNumCombo);
-              dispatch(setAllPastExercises(userId));
-              const refresh = getState().allPastExercisesReducer;
-              const lastIndex = refresh.length - 1;
-              matchingComboId = refresh[lastIndex].id;
-              console.log('matchingComboId ===', matchingComboId);
-            }
-            // currentKeyNumCombo is PRESENT in DB
-            // just add scores with the newly-found matchingComboId
-            updateExerciseWithNewScores(userId, matchingComboId, finalScoreArray);
-            console.log(`CHECK POSTMAN FOR USERID **${userId}** FOR EXERCISE ID **${matchingComboId}** FOR FINAL SCORE ARRAY OF **${finalScoreArray}**`);
-            // console.log('TIME TO POST TO DB');
+            scorePostingUtility(userId, exerciseId, finalScoreArray);
+            // const currentKeyNumCombo = keyEvents.map((key) => { return key.keyNum; });
+            // const allPastExercises = getState().allPastExercisesReducer;
+            // if (allPastExercises === []) {
+            //   dispatch(setAllPastExercises(userId));
+            // }
+            // let matchingComboId = null;
+            // const pastKeyCombos = allPastExercises.map((exercise) => {
+            //   return { id: exercise.id, keyCombo: JSON.parse(exercise.notes_array) };
+            // });
+            // pastKeyCombos.forEach((combo) => {
+            //   if (combo.keyCombo === currentKeyNumCombo) {
+            //     matchingComboId = combo.id;
+            //   }
+            // });
+            // if (matchingComboId === null) {
+            //   // currentKeyNumCombo is NOT PRESENT in DB
+            //   // create exercise in exercise table, THEN add scores
+            //   console.log(currentKeyNumCombo);
+            //   postNewExerciseToProfile(userId, currentKeyNumCombo);
+            //   dispatch(setAllPastExercises(userId));
+            //   const refresh = getState().allPastExercisesReducer;
+            //   const lastIndex = refresh.length - 1;
+            //   matchingComboId = refresh[lastIndex].id;
+            //   console.log('matchingComboId ===', matchingComboId);
+            // }
+            // // currentKeyNumCombo is PRESENT in DB
+            // // just add scores with the newly-found matchingComboId
+            // updateExerciseWithNewScores(userId, matchingComboId, finalScoreArray);
+            // console.log(`CHECK POSTMAN FOR USERID **${userId}** FOR EXERCISE ID **${matchingComboId}** FOR FINAL SCORE ARRAY OF **${finalScoreArray}**`);
+            // // console.log('TIME TO POST TO DB');
             dispatch(resetTargetNoteIndex());
             dispatch(toggleAudioCapture());
           } else {
