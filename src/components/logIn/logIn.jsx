@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { logUserIn } from '../../actions';
+
+
+import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
+
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state) => { return {}; };
+const mapStateToProps = (state) => {
+  return {
+    userId: state.loginReducer.id,
+  };
+};
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn }, dispatch); };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ logUserIn, postLogIn, setAllPastExercises }, dispatch); };
 
 class LogIn extends Component {
 
   onSubmit = (value) => {
-    // value.preventDefault();
     const user = value;
-    this.props.logUserIn(user.email, user.password);
+    this.props.postLogIn(user);
+    console.log(this.props.userId);
+    this.props.setAllPastExercises(this.props.userId);
   }
-  // doSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.prop.handleSubmit(e);
-  // }
+
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
@@ -43,7 +49,7 @@ class LogIn extends Component {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit(this.onSubmit)}>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="signin-modal-content">
             <Field name="email" component="input" type="email" placeholder="Email" className="signin-modal-content-detail" required/>
             <Field name="password" component="input" type="password" placeholder="Password" className="signin-modal-content-detail" required/>
@@ -65,6 +71,6 @@ class LogIn extends Component {
   }
 }
 
-LogIn = reduxForm({form: 'login'})(LogIn);
+let LogInWithForm = reduxForm({ form: 'login' })(LogIn);
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default connect(null, mapDispatchToProps)(LogInWithForm);
