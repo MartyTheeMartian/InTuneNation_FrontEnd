@@ -3,23 +3,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { signUserUp, postSignUp } from '../../actions';
+import { postSignUp } from '../../actions';
 
 // import { LinkContainer } from 'react-router-bootstrap';
 
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state, ownProps) => {
-  console.log('state === ', state);
-  return {
-    firstName: state.signupReducer.firstName,
-    lastName: state.signupReducer.lastName,
-    email: state.signupReducer.email,
-    passport: state.signupReducer.passport,
-    };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ postSignUp }, dispatch);
 };
-
-const mapDispatchToProps = (dispatch) => {return bindActionCreators({ signUserUp, postSignUp }, dispatch); };
 
 class SignUp extends Component {
 
@@ -78,4 +70,4 @@ class SignUp extends Component {
 
 let SignUpWithForm = reduxForm({ form: 'signup' })(SignUp);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpWithForm);
+export default connect(null, mapDispatchToProps)(SignUpWithForm);
