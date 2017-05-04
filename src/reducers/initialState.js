@@ -28,7 +28,7 @@ export default {
   singButton: {
     singText: 'Sing',
     disabled: true
-  }
+  },
   user: {},
   allPastExercises: [],
 };
