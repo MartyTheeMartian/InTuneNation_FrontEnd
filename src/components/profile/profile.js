@@ -1,27 +1,31 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import mathew from '../../assets/img/matthew.png'
+
 import {
-  Button,
+  // Button,
   Thumbnail,
   Col,
   Row,
   Grid,
-  MenuItem,
-  Clearfix,
-  onSelectAlert,
-  ButtonGroup,
-  DropdownButton,
-  Table
+  // MenuItem,
+  // Clearfix,
+  // onSelectAlert,
+  // ButtonGroup,
+  // DropdownButton,
+  // Table
 } from 'react-bootstrap';
-const wellStyles = {
-  maxWidth: 400,
-  margin: '0 auto 10px'
-};
+import C3Chart from 'react-c3js';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { averageScore } from '../../charts/linegraph';
+import ExerciseCardList from './exerciseCardList';
+import 'c3/c3.css';
+import mathew from '../../assets/img/matthew.png';
+import { dashboardRun } from '../../actions';
+// const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
+const mapStateToProps = (state) => {
+  // console.log('what is dashboard', state.dashboard);
+  return state.dashboard;
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -29,75 +33,39 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Profile extends Component {
-
   render() {
+
     return (
-      <Grid>
-        <Row>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-2">
+            left
+            <div className="thumbnail">
+              <img src={mathew} alt=".." />
+              <div class="caption">
+                <h3>Thumbnail label</h3>
+                <p>...</p>
+                <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div>
 
-          <Col xs={4} md={3}>
-            <Thumbnail src={mathew} alt="242x200">
-              <h3>Kevin Zheng</h3>
-              <p>Kevin is born in pleasanton, he has always been passionate about helping people lives. He want to help people improve their singing skills</p>
-            </Thumbnail>
+            </div>
 
-            <ButtonGroup vertical>
-              <Button>Dashboard</Button>
-              <Button>Status</Button>
-              <Button>Ranking</Button>
 
-              {/* <DropdownButton title="Ranking" id="bg-vertical-dropdown-1">
-                <MenuItem eventKey="1">Ranking</MenuItem>
-                <MenuItem eventKey="2">Dropdown link</MenuItem>
-              </DropdownButton> */}
-              <Button>Inbox</Button>
-              <Button>Profile</Button>
+            <button onClick={dashboardRun}> Click me to get all the dashboards !!! </button>
+            <C3Chart data={averageScore} />
 
-              {/* <DropdownButton title="Dropdown" id="bg-vertical-dropdown-2">
-                <MenuItem eventKey="1">Dropdown link</MenuItem>
-                <MenuItem eventKey="2">Dropdown link</MenuItem>
-              </DropdownButton> */}
-              {/* <DropdownButton title="Dropdown" id="bg-vertical-dropdown-3">
-                <MenuItem eventKey="1">Dropdown link</MenuItem>
-                <MenuItem eventKey="2">Dropdown link</MenuItem>
-              </DropdownButton> */}
-            </ButtonGroup>
-          </Col>
+            middle
+          </div>
+          <div className="col-md-2">
+            right
+          </div>
+        </div>
+      </div>
 
-          <Col xs={14} md={4}>
-            <Table striped bordered condensed hover>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td colSpan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Col>
-
-        </Row>
-      </Grid>
     );
   }
 

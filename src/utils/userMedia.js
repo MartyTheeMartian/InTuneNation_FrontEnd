@@ -1,4 +1,5 @@
 import teoria from 'teoria';
+import axios from 'axios';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
 
@@ -9,7 +10,9 @@ import { setKeyEventAsTargetNote,
           resetScore,
           incrementTargetNoteIndex,
           resetTargetNoteIndex,
+          setAllPastExercises,
           pushScoreToExerciseScoresArray,
+          pushExerciseToProfileHistory,
           setSungNote,
           toggleAudioCapture,
          } from '../actions';
@@ -23,10 +26,10 @@ const { dispatch, getState } = store;
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
+// function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
+// function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiffPlusFreq(freq) {
   const result = getPreciseNotePlusCentDiff(freq);
@@ -47,6 +50,26 @@ const yellow = (targetNoteName, sungNoteName, fq) => {
 const red = (targetNoteName, sungNoteName, fq) => {
   return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
 };
+
+const postNewExerciseToProfile = (userId, keyNumCombo) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
+  // return axios.post(API_URL, { notes_array: keyNumCombo })
+  // .then((response) => { return response.data; });
+  return fetch(API_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: { notes_array: keyNumCombo }
+  }).then((response) => {
+    return response;
+  })
+}
+
+const updateExerciseWithNewScores = (userId, exerciseId, scores_array) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises/${exerciseId}/scores`;
+  const avg_score = (scores_array.reduce((acc, val) => { return acc + val; })) / scores_array.length;
+  return axios.post(API_URL, { scores_array, avg_score })
+  .then((response) => { return response.data; });
+}
 
 // MICROPHONE INPUT CODE
 export default getUserMedia({ video: false, audio: true })
@@ -82,11 +105,42 @@ export default getUserMedia({ video: false, audio: true })
         const sungNoteName = getState().sungNoteReducer.name;
         const greenTime = getState().greenTimeReducer;
         if (greenTime.accumulated === greenTime.required) {
-          const finalScore = getState().scoreReducer;
-          dispatch(pushScoreToExerciseScoresArray(finalScore));
+          const scoreToAdd = getState().scoreReducer;
+          dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            console.log('TIME TO POST TO DB');
+            const userId = getState().loginReducer.id;
+            const finalScoreArray = getState().exerciseScoresReducer;
+            const currentKeyNumCombo = keyEvents.map((key) => { return key.keyNum; });
+            const allPastExercises = getState().allPastExercisesReducer;
+            if (allPastExercises === []) {
+              dispatch(setAllPastExercises(userId));
+            }
+            let matchingComboId = null;
+            const pastKeyCombos = allPastExercises.map((exercise) => {
+              return { id: exercise.id, keyCombo: JSON.parse(exercise.notes_array) };
+            });
+            pastKeyCombos.forEach((combo) => {
+              if (combo.keyCombo === currentKeyNumCombo) {
+                matchingComboId = combo.id;
+              }
+            });
+            if (matchingComboId === null) {
+              // currentKeyNumCombo is NOT PRESENT in DB
+              // create exercise in exercise table, THEN add scores
+              console.log(currentKeyNumCombo);
+              postNewExerciseToProfile(userId, currentKeyNumCombo);
+              dispatch(setAllPastExercises(userId));
+              const refresh = getState().allPastExercisesReducer;
+              const lastIndex = refresh.length - 1;
+              matchingComboId = refresh[lastIndex].id;
+              console.log('matchingComboId ===', matchingComboId);
+            }
+            // currentKeyNumCombo is PRESENT in DB
+            // just add scores with the newly-found matchingComboId
+            updateExerciseWithNewScores(userId, matchingComboId, finalScoreArray);
+            console.log(`CHECK POSTMAN FOR USERID **${userId}** FOR EXERCISE ID **${matchingComboId}** FOR FINAL SCORE ARRAY OF **${finalScoreArray}**`);
+            // console.log('TIME TO POST TO DB');
             dispatch(resetTargetNoteIndex());
             dispatch(toggleAudioCapture());
           } else {

@@ -1,9 +1,59 @@
-import teoria from 'teoria';
+/*eslint-disable*/
+import axios from 'axios';
+
+const signUserUp = (user) => {
+  console.log('actions/signUserUp');
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     localStorage.setItem('token', response.data.token);
+     return response.data;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
+
+const logUserIn = (user) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  return axios
+   .post(API_URL, user)
+   .then(response => {
+     localStorage.setItem('token',  response.data.token);
+     return response;
+   }).catch((err) => {
+     console.error(err);
+   });
+};
+
+let config = {
+  headers: {'Token': localStorage.getItem('token')}
+};
+
+const axioUserExercise = () => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/1/exercises/1/scores`;
+  return axios
+  .get(API_URL, config)
+  .then(response => {
+    console.log(response.data[0]);
+    return response.data[0];
+  }).catch((err) => {
+    console.error(err);
+  });
+}
+
+export const dashboardRun = () => {
+  return {
+    type: 'DASHBOARD_RUN',
+    payload: axioUserExercise()
+  }
+}
+
 
 export const currentNote = (note) => {
   return {
     type: 'CURRENT_NOTE',
-    payload: note
+    payload: note,
   };
 };
 
@@ -21,29 +71,19 @@ export const toggleCapture = () => {
   };
 };
 
-export const signUserUp = (email, firstName, lastName, password) => {
-  console.log('am I here?');
+export const postSignUp = (user) => {
   return {
-    type:'USER_SIGN_UP',
-    payload: {
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-    }
+    type: 'USER_SIGN_UP',
+    payload: signUserUp(user),
+  }
+}
 
-  };
-};
-
-export const logUserIn = (email, password) => {
+export const postLogIn = (user) => {
   return {
     type: 'USER_LOG_IN',
-    payload: {
-      email: email,
-      password: password
-    }
+    payload: logUserIn(user)
   };
-};
+}
 
 export const shiftOctaves = (direction) => {
   return {
@@ -53,14 +93,12 @@ export const shiftOctaves = (direction) => {
 };
 
 export const toggleAudioCapture = () => {
-  console.log('React/src/actions/index/activateVocalInput()');
   return {
     type: 'TOGGLE_AUDIO_CAPTURE',
   };
 };
 
 export const incrementGreenTime = () => {
-  console.log('GREEN TIME INCREMENTED!!');
   return {
     type: 'INCREMENT_GREEN_TIME',
   };
@@ -75,20 +113,20 @@ export const resetGreenTime = () => {
 export const changeGreenTimeRequirement = (amount) => {
   return {
     type: 'CHANGE_GREEN_TIME_REQUIREMENT',
-    amount: amount
+    amount,
   };
 };
 
 export const decrementScore = (amount) => {
   return {
     type: 'DECREMENT_SCORE',
-    amount: amount,
+    amount,
   };
 };
 
 export const resetScore = () => {
   return {
-    type: 'RESET_SCORE'
+    type: 'RESET_SCORE',
   };
 };
 
@@ -125,16 +163,33 @@ export const pushScoreToExerciseScoresArray = (score) => {
   };
 };
 
-// teoria functions for music theory
-function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
-function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
-function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
-function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
-function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiffPlusFreq(freq) {
-  const result = getPreciseNotePlusCentDiff(freq);
-  return result.concat(freq);
+export const singButton = () => {
+  return {
+    type: 'TOGGLE_SING_BUTTON'
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: 'RESET_STATE'
+  };
+};
+
+const fetchAllPastExercises = (userId) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
+  console.log(API_URL);
+  return axios
+  .get(API_URL)
+  .then((response) => {
+    console.log(response.data);
+    return response.data;
+  })
+}
+
+export const setAllPastExercises = (userId) => {
+  const data = fetchAllPastExercises(userId);
+  return {
+    type: 'SET_ALL_PAST_EXERCISES',
+    payload: data,
+  }
 }
