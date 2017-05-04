@@ -3,19 +3,27 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { postLogIn } from '../../actions';
+
+import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
 
 import google_logo from '../../assets/img/google_logo.png';
 
+const mapStateToProps = (state) => {
+  return {
+    userId: state.loginReducer.id,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ postLogIn }, dispatch);
- };
+  return bindActionCreators({ logUserIn, postLogIn, setAllPastExercises }, dispatch); };
 
 class LogIn extends Component {
 
   onSubmit = (value) => {
     const user = value;
-    this.props.postLogIn(user)
+    this.props.postLogIn(user);
+    console.log(this.props.userId);
+    this.props.setAllPastExercises(this.props.userId);
   }
 
   render() {

@@ -71,15 +71,12 @@ export const toggleCapture = () => {
   };
 };
 
-
-
 export const postSignUp = (user) => {
   return {
     type: 'USER_SIGN_UP',
     payload: signUserUp(user),
   }
 }
-
 
 export const postLogIn = (user) => {
   return {
@@ -165,3 +162,22 @@ export const pushScoreToExerciseScoresArray = (score) => {
     payload: score,
   };
 };
+
+const fetchAllPastExercises = (userId) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
+  console.log(API_URL);
+  return axios
+  .get(API_URL)
+  .then((response) => {
+    console.log(response.data);
+    return response.data;
+  })
+}
+
+export const setAllPastExercises = (userId) => {
+  const data = fetchAllPastExercises(userId);
+  return {
+    type: 'SET_ALL_PAST_EXERCISES',
+    payload: data,
+  }
+}
