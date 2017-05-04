@@ -26,4 +26,8 @@ export default {
   },
   recordingStatus: false,
   userId: null,
+  singButton: {
+    singText: 'Sing',
+    disabled: true
+  }
 };

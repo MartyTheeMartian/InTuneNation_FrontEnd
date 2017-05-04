@@ -121,3 +121,15 @@ export const pushScoreToExerciseScoresArray = (score) => {
     payload: score,
   };
 };
+
+export const singButton = () => {
+  return {
+    type: 'TOGGLE_SING_BUTTON'
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: 'RESET_STATE'
+  };
+};
