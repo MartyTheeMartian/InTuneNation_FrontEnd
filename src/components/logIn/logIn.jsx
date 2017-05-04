@@ -3,28 +3,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { logUserIn, postLogIn } from '../../actions';
+import { postLogIn } from '../../actions';
 
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return state;
-};
-
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ logUserIn, postLogIn }, dispatch); };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ postLogIn }, dispatch);
+ };
 
 class LogIn extends Component {
 
   onSubmit = (value) => {
-    // value.preventDefault();
     const user = value;
-    this.props.postLogIn(user);
+    this.props.postLogIn(user)
   }
-  // doSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.prop.handleSubmit(e);
-  // }
+
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
@@ -70,6 +63,6 @@ class LogIn extends Component {
   }
 }
 
-LogIn = reduxForm({form: 'login'})(LogIn);
+let LogInWithForm = reduxForm({ form: 'login' })(LogIn);
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default connect(null, mapDispatchToProps)(LogInWithForm);
