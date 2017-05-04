@@ -1,4 +1,5 @@
 import teoria from 'teoria';
+import axios from 'axios';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
 
@@ -9,7 +10,9 @@ import { setKeyEventAsTargetNote,
           resetScore,
           incrementTargetNoteIndex,
           resetTargetNoteIndex,
+          setAllPastExercises,
           pushScoreToExerciseScoresArray,
+          pushExerciseToProfileHistory,
           setSungNote,
           toggleAudioCapture,
          } from '../actions';
@@ -48,6 +51,26 @@ const red = (targetNoteName, sungNoteName, fq) => {
   return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
 };
 
+const postNewExerciseToProfile = (userId, keyNumCombo) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
+  // return axios.post(API_URL, { notes_array: keyNumCombo })
+  // .then((response) => { return response.data; });
+  return fetch(API_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: { notes_array: keyNumCombo }
+  }).then((response) => {
+    return response;
+  })
+}
+
+const updateExerciseWithNewScores = (userId, exerciseId, scores_array) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises/${exerciseId}/scores`;
+  const avg_score = (scores_array.reduce((acc, val) => { return acc + val; })) / scores_array.length;
+  return axios.post(API_URL, { scores_array, avg_score })
+  .then((response) => { return response.data; });
+}
+
 // MICROPHONE INPUT CODE
 export default getUserMedia({ video: false, audio: true })
   .then((stream) => {
@@ -82,10 +105,41 @@ export default getUserMedia({ video: false, audio: true })
         const sungNoteName = getState().sungNoteReducer.name;
         const greenTime = getState().greenTimeReducer;
         if (greenTime.accumulated === greenTime.required) {
-          const finalScore = getState().scoreReducer;
-          dispatch(pushScoreToExerciseScoresArray(finalScore));
+          const scoreToAdd = getState().scoreReducer;
+          dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
+            const userId = getState().loginReducer.id;
+            const finalScoreArray = getState().exerciseScoresReducer;
+            const currentKeyNumCombo = keyEvents.map((key) => { return key.keyNum; });
+            const allPastExercises = getState().allPastExercisesReducer;
+            if (allPastExercises === []) {
+              dispatch(setAllPastExercises(userId));
+            }
+            let matchingComboId = null;
+            const pastKeyCombos = allPastExercises.map((exercise) => {
+              return { id: exercise.id, keyCombo: JSON.parse(exercise.notes_array) };
+            });
+            pastKeyCombos.forEach((combo) => {
+              if (combo.keyCombo === currentKeyNumCombo) {
+                matchingComboId = combo.id;
+              }
+            });
+            if (matchingComboId === null) {
+              // currentKeyNumCombo is NOT PRESENT in DB
+              // create exercise in exercise table, THEN add scores
+              console.log(currentKeyNumCombo);
+              postNewExerciseToProfile(userId, currentKeyNumCombo);
+              dispatch(setAllPastExercises(userId));
+              const refresh = getState().allPastExercisesReducer;
+              const lastIndex = refresh.length - 1;
+              matchingComboId = refresh[lastIndex].id;
+              console.log('matchingComboId ===', matchingComboId);
+            }
+            // currentKeyNumCombo is PRESENT in DB
+            // just add scores with the newly-found matchingComboId
+            updateExerciseWithNewScores(userId, matchingComboId, finalScoreArray);
+            console.log(`CHECK POSTMAN FOR USERID **${userId}** FOR EXERCISE ID **${matchingComboId}** FOR FINAL SCORE ARRAY OF **${finalScoreArray}**`);
             // console.log('TIME TO POST TO DB');
             dispatch(resetTargetNoteIndex());
             dispatch(toggleAudioCapture());
