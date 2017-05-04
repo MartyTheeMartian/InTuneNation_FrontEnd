@@ -8,6 +8,7 @@ const signUserUp = (user) => {
   return axios
    .post(API_URL, user, config)
    .then(response => {
+     localStorage.setItem('token', response.data.token);
      return response.data;
    }).catch((err) => {
      console.error(err);
@@ -20,11 +21,36 @@ const logUserIn = (user) => {
   return axios
    .post(API_URL, user, config)
    .then(response => {
-     return response.data;
+     localStorage.setItem('token',  response.data.token);
+     return response;
    }).catch((err) => {
      console.error(err);
    });
 };
+
+let config = {
+  headers: {'Token': localStorage.getItem('token')}
+};
+
+const axioUserExercise = () => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/1/exercises/1/scores`;
+  return axios
+  .get(API_URL, config)
+  .then(response => {
+    console.log(response.data[0]);
+    return response.data[0];
+  }).catch((err) => {
+    console.error(err);
+  });
+}
+
+export const dashboardRun = () => {
+  return {
+    type: 'DASHBOARD_RUN',
+    payload: axioUserExercise()
+  }
+}
+
 
 export const currentNote = (note) => {
   return {
@@ -136,6 +162,18 @@ export const pushScoreToExerciseScoresArray = (score) => {
   return {
     type: 'PUSH_SCORE_TO_EXERCISE_SCORES_ARRAY',
     payload: score,
+  };
+};
+
+export const singButton = () => {
+  return {
+    type: 'TOGGLE_SING_BUTTON'
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: 'RESET_STATE'
   };
 };
 
