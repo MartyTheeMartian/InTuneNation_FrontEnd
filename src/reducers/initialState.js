@@ -6,7 +6,7 @@ export default {
     resetDisabled: 'disabled'
   },
   octave: {
-    current: 3,
+    current: 4,
     up: '',
     down: '',
   },
