@@ -32,6 +32,10 @@ h2, h3, h4, h5 {
   text-align: center;
 }
 
+#title {
+  margin-top: 120px;
+}
+
 #nav {
   width: 100%
 }
