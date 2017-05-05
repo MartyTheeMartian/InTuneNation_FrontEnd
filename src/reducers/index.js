@@ -12,6 +12,7 @@ import allPastExercisesReducer from './allPastExercises_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
+import dashboard from './dashboard';
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   recordingStatusReducer,
   signupReducer,
   loginReducer,
+  dashboard,
 });
 
 

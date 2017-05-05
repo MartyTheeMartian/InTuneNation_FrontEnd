@@ -27,4 +27,5 @@ export default {
   recordingStatus: false,
   user: {},
   allPastExercises: [],
+  graphData: {}
 };
