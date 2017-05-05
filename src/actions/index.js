@@ -210,9 +210,9 @@ export const setExerciseId = (userId, body) => {
   console.log('actions/setExerciseId');
   console.log('actions/setExerciseId body === ', body);
   console.log('actions/setExerciseId userId === ', userId);
-  const data = postExercise(userId, body);
+  // const data = postExercise(userId, body);
   return {
     type: 'SET_EXERCISE_ID',
-    payload: data,
+    payload: postExercise(userId, body),
   };
 };

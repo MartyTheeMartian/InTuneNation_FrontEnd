@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { shiftOctaves, toggleCapture, setExerciseId } from '../../actions';
 
 const mapStateToProps = (state) => {
+  console.log('state === ', state);
   return {
     captureText: state.captureReducer.captureText,
     disabled: state.captureReducer.disabled,
@@ -20,27 +21,17 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators ({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
 };
 
-
 class OctaveButtons extends Component {
 
-  octaveShift = (direction) => {
-    this.props.shiftOctaves(direction);
-  }
+  octaveShift = (direction) => { this.props.shiftOctaves(direction); }
 
   handleClick = () =>  {
-    console.log('handleClick activated');
     this.props.toggleCapture();
-    console.log('toggleCapture action sent');
-    console.log(this.props.props);
     if (this.props.disabled === "" && this.props.captureText === "End Capture") {
-      console.log(this.props);
       const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
-      console.log('currentKeyNumCombo === ', currentKeyNumCombo);
-      const body = { notes_array: currentKeyNumCombo, token: localStorage.getItem('token') };
-      console.log('body === ', body);
+      const body = { notes_array: currentKeyNumCombo };
       this.props.setExerciseId(this.props.user.id, body);
     }
-    console.log(this.props.exerciseId);
   }
 
   render() {
