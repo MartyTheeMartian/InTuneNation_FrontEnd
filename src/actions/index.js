@@ -5,11 +5,12 @@ const config = {
   headers: {'token': localStorage.getItem('token')}
 };
 
-export const dashboardRun = (userId, exerciseId) => {
-  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises/${exerciseId}/scores`;
+export const dashboardRun = (user_id) => {
+  console.log('what is user id',user_id);
+  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
   let data = axios.get(API_URL, config)
   return {
-    type: 'DASHBOARD_RUN',
+    type: 'PAST_EXERCISES_TABLE_RUN',
     payload: data
   }
 }

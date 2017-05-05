@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import {
   // Button,
@@ -21,60 +21,77 @@ import ExerciseCardList from './exerciseCardList';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
 import { dashboardRun } from '../../actions';
-import Table from '../profile/profile';
+import Table from '../Table/Table.jsx';
 // const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-const mapStateToProps = ({ dashboard }) => {
-  return {
-    dashboard,
-  }
-};
+const mapStateToProps = (state, ownProps) => ({
+  user: state.loginReducer,
+});
 //
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({dashboardRun}, dispatch);
-// };
+const mapDispatchToProps = dispatch => bindActionCreators({
+  dashboardRun,
+}, dispatch);
+
 
 class Profile extends Component {
+  handleClick(e) {
+    return () => this.props.dashboardRun(this.props.user.id);
+  }
+
+
+  foo() {
+
+  }
+
+  foo: () => {
+
+  }
+
   render() {
-    console.log(`Profile props`, this.props.dashboard);
+    if (this.props.user.id === undefined) {
+      return (
+        <div>Loading...</div>
+      );
+    }
+
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-2">
-            left
+            {/* left */}
             <div className="thumbnail">
               <img src={mathew} alt=".." />
-              <div class="caption">
-                <h3>Thumbnail label</h3>
-                <p>...</p>
-                <p><a href="#" className="btn btn-primary" role="button">Button</a> <a href="#" className="btn btn-default" role="button">Button</a></p>
+              <div className="caption">
+
+                <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+                <p>
+                  {/* <a href="#" className="btn btn-primary" role="button">Button</a>
+                    <a href="#" className="btn btn-default" role="button">Button</a> */}
+                </p>
               </div>
             </div>
           </div>
           <div className="col-md-8">
             <div>
-
+              <Table />
             </div>
 
-
-            <button onClick={this.props.dashboardRun}> Click me to get all the dashboards !!! </button>
-            <div>
-              {/* <Table></Table> */}
-            </div>
+            <button onClick={this.handleClick()} className="btn btn-danger">
+                Check Past Exercises
+              </button>
+            <div />
 
             <C3Chart data={averageScore} />
 
-            middle
+            {/* middle */}
           </div>
           <div className="col-md-2">
-            right
+            {/* right */}
           </div>
         </div>
       </div>
-
     );
   }
-
 }
 
-export default connect(mapStateToProps, { dashboardRun })(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

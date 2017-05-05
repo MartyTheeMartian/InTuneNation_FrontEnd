@@ -1,7 +1,7 @@
 
-const searchAllExercises = (state = {}, action ) => {
+const searchAllExercises = (state = {}, action) => {
   // console.log('action ==', action);
-  console.log('what is searchAllExercises', state);
+  // console.log('what is searchAllExercises', state);
   switch (action.type) {
     case 'SEARCH_USER_EXERCISES_FULFILLED':
       return action.payload.data;

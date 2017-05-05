@@ -22,15 +22,15 @@ export default {
     frequency: null,
     name: null,
     centDiff: null,
-    arrowValue: 90/180,
+    arrowValue: 90 / 180,
   },
   recordingStatus: false,
   singButton: {
     singText: 'Sing',
     disabled: true,
   },
-  user: {},
+  user: [],
   allPastExercises: [],
   currentExerciseId: null,
-  graphData: {},
+  graphData: [],
 };
