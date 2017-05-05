@@ -16,7 +16,7 @@ import dashboard from './dashboard';
 import singButtonReducer from './singButton';
 import resetStateReducer from './resetState';
 import initialState from './initialState';
-
+import searchExercise from './searchAllExercises';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -36,6 +36,7 @@ const appReducer = combineReducers({
   signupReducer,
   loginReducer,
   dashboard,
+  searchExercise,
 });
 
 const rootReducer = (state, action) => {

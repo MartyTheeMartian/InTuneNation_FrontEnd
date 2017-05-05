@@ -161,3 +161,12 @@ export const setAllPastExercises = (userId) => {
     payload: data,
   }
 }
+
+export const doSearchExercises = () => {
+  const API_URL =
+  `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;
+  return {
+    type:'SEARCH_USER_EXERCISES',
+    payload: data,
+  }
+}

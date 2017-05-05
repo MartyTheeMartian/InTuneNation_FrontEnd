@@ -21,6 +21,7 @@ import ExerciseCardList from './exerciseCardList';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
 import { dashboardRun } from '../../actions';
+import Table from '../profile/profile';
 // const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
 const mapStateToProps = ({ dashboard }) => {
@@ -37,7 +38,7 @@ class Profile extends Component {
   render() {
     console.log(`Profile props`, this.props.dashboard);
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-2">
             left
@@ -57,6 +58,10 @@ class Profile extends Component {
 
 
             <button onClick={this.props.dashboardRun}> Click me to get all the dashboards !!! </button>
+            <div>
+              {/* <Table></Table> */}
+            </div>
+
             <C3Chart data={averageScore} />
 
             middle
