@@ -5,7 +5,7 @@ export default {
     disabled: '',
   },
   octave: {
-    current: 4,
+    current: 3,
     up: '',
     down: '',
   },
@@ -27,9 +27,10 @@ export default {
   recordingStatus: false,
   singButton: {
     singText: 'Sing',
-    disabled: true
+    disabled: true,
   },
   user: {},
   allPastExercises: [],
-  graphData: {}
+  currentExerciseId: null,
+  graphData: {},
 };

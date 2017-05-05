@@ -8,6 +8,7 @@ import recordingStatusReducer from './recordingStatus_reducer';
 import greenTimeReducer from './greenTime_reducer';
 import scoreReducer from './score_reducer';
 import exerciseScoresReducer from './exerciseScores_reducer';
+import currentExerciseIdReducer from './currentExerciseId_reducer';
 import allPastExercisesReducer from './allPastExercises_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import signupReducer from './signUp';
@@ -26,6 +27,7 @@ const appReducer = combineReducers({
   greenTimeReducer,
   scoreReducer,
   exerciseScoresReducer,
+  currentExerciseIdReducer,
   allPastExercisesReducer,
   keyEventsReducer,
   targetNoteReducer,

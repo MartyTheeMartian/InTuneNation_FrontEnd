@@ -28,7 +28,6 @@ class CaptureButtons extends Component {
     this.props.resetState();
   }
 
-
   // resetDisabled = () => {
   //   if (this.props.captureText === 'Capture') {
   //     return 'disabled';
@@ -54,8 +53,6 @@ class CaptureButtons extends Component {
     //   return 'disabled';
     // }
   }
-
-
 
   render() {
     return (
