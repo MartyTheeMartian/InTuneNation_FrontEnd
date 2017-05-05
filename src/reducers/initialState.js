@@ -27,9 +27,10 @@ export default {
   recordingStatus: false,
   singButton: {
     singText: 'Sing',
-    disabled: true
+    disabled: true,
   },
   user: {},
   allPastExercises: [],
   currentExerciseId: null,
+  graphData: {},
 };

@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 const renderSungNote = (note) => {
   if (note === undefined) { return "Start singing!"; }
   return note.name;
-}
+};
 
 class NoteIndicator extends Component {
   render() {
@@ -42,4 +42,4 @@ class NoteIndicator extends Component {
   }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(NoteIndicator);
+export default connect(mapStateToProps, mapDispatchToProps)(NoteIndicator);

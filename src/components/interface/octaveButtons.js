@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { shiftOctaves, toggleCapture, setExerciseId } from '../../actions';
 
 const mapStateToProps = (state) => {
-  console.log('state === ', state);
   return {
     captureText: state.captureReducer.captureText,
     disabled: state.captureReducer.disabled,

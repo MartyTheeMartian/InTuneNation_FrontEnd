@@ -13,9 +13,11 @@ import allPastExercisesReducer from './allPastExercises_reducer';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
+import dashboard from './dashboard';
 import singButtonReducer from './singButton';
 import resetStateReducer from './resetState';
 import initialState from './initialState';
+
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -35,6 +37,7 @@ const appReducer = combineReducers({
   singButtonReducer,
   signupReducer,
   loginReducer,
+  dashboard,
 });
 
 const rootReducer = (state, action) => {
