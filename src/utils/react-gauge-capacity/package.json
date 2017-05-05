@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-gauge-capacity",
+        "scope": null,
+        "escapedName": "react-gauge-capacity",
+        "name": "react-gauge-capacity",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/rpd-air/Documents/Galvanize/Projects/q4/play-pitch-precision/React"
+    ]
+  ],
+  "_from": "react-gauge-capacity@latest",
+  "_id": "react-gauge-capacity@1.7.0",
+  "_inCache": true,
+  "_location": "/react-gauge-capacity",
+  "_nodeVersion": "6.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/react-gauge-capacity-1.7.0.tgz_1488374882432_0.3538343580439687"
+  },
+  "_npmUser": {
+    "name": "gurpreet.singh",
+    "email": "gurpreet.singh1@globalpueblosolutions.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-gauge-capacity",
+    "scope": null,
+    "escapedName": "react-gauge-capacity",
+    "name": "react-gauge-capacity",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-gauge-capacity/-/react-gauge-capacity-1.7.0.tgz",
+  "_shasum": "ecec8616272af458175f7a6ce9a1c34ed31ac80a",
+  "_shrinkwrap": null,
+  "_spec": "react-gauge-capacity",
+  "_where": "/Users/rpd-air/Documents/Galvanize/Projects/q4/play-pitch-precision/React",
+  "author": {
+    "name": "Gurpreet",
+    "email": "gurpreet.singh1@globalpueblosolutions.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Gurpreets/react-gauge-capacity/issues"
+  },
+  "dependencies": {},
+  "description": "A React.js gauge component",
+  "devDependencies": {
+    "react": "15.4.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "ecec8616272af458175f7a6ce9a1c34ed31ac80a",
+    "tarball": "https://registry.npmjs.org/react-gauge-capacity/-/react-gauge-capacity-1.7.0.tgz"
+  },
+  "gitHead": "66ab02db2e1f0edf866e15d8d7b14eb64d75824c",
+  "homepage": "https://github.com/Gurpreets/react-gauge-capacity#readme",
+  "keywords": [
+    "React.js",
+    "React",
+    "svg",
+    "gauge",
+    "component",
+    "react-component"
+  ],
+  "license": "MIT",
+  "main": "lib/react-gauge.js",
+  "maintainers": [
+    {
+      "name": "gurpreet.singh",
+      "email": "gurpreet.singh1@globalpueblosolutions.com"
+    }
+  ],
+  "name": "react-gauge-capacity",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gurpreets/react-gauge-capacity.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.7.0"
+}

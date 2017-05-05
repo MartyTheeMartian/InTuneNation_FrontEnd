@@ -1,4 +1,5 @@
 import teoria from 'teoria';
+import axios from 'axios';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
 
@@ -9,10 +10,13 @@ import { setKeyEventAsTargetNote,
           resetScore,
           incrementTargetNoteIndex,
           resetTargetNoteIndex,
+          // setAllPastExercises,
           pushScoreToExerciseScoresArray,
+          // pushExerciseToProfileHistory,
           setSungNote,
           toggleAudioCapture,
          } from '../actions';
+import scorePostingUtility from './score_posting_utility';
 
 const getUserMedia = require('get-user-media-promise');
 const MicrophoneStream = require('microphone-stream');
@@ -23,16 +27,14 @@ const { dispatch, getState } = store;
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
-function getNameAccidental(frequency) { return [getName(frequency), getAccidental(frequency)].join(''); }
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
-function getNotePlusCentDiff(frequency) { return [getNameAccidental(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
 function getPreciseNotePlusCentDiffPlusFreq(freq) {
   const result = getPreciseNotePlusCentDiff(freq);
   return result.concat(freq);
 }
-function centDiffInRed(cD) { return (cD<-40 && cD>40); }
+function centDiffInRed(cD) { return (cD < -40 && cD > 40); }
 function centDiffInYellow(cD) { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
 function centDiffInGreen(cD) { return (cD > -15 && cD < 15); }
 
@@ -77,16 +79,19 @@ export default getUserMedia({ video: false, audio: true })
         dispatch(setSungNote(sungNote));
         const keyEvents = getState().keyEventsReducer;
         const targetNoteIndex = getState().targetNoteIndexReducer;
-        dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]))
+        dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]));
         const targetNoteName = getState().targetNoteReducer.tNote;
         const sungNoteName = getState().sungNoteReducer.name;
         const greenTime = getState().greenTimeReducer;
         if (greenTime.accumulated === greenTime.required) {
-          const finalScore = getState().scoreReducer;
-          dispatch(pushScoreToExerciseScoresArray(finalScore));
+          const scoreToAdd = getState().scoreReducer;
+          dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            console.log('TIME TO POST TO DB');
+            const userId = getState().loginReducer.id;
+            const exerciseId = getState().currentExerciseIdReducer.id;
+            const finalScoreArray = getState().exerciseScoresReducer;
+            scorePostingUtility(userId, exerciseId, finalScoreArray);
             dispatch(resetTargetNoteIndex());
             dispatch(toggleAudioCapture());
           } else {
@@ -100,9 +105,9 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(0.5));
+              dispatch(decrementScore(5));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(0.25));
+              dispatch(decrementScore(2));
             }
           }
         }
