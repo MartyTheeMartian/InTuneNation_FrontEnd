@@ -131,6 +131,18 @@ export const pushScoreToExerciseScoresArray = (score) => {
   };
 };
 
+export const singButton = () => {
+  return {
+    type: 'TOGGLE_SING_BUTTON'
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: 'RESET_STATE'
+  };
+};
+
 const fetchAllPastExercises = (userId) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
   console.log(API_URL);

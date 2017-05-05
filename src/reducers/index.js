@@ -13,8 +13,12 @@ import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboard from './dashboard';
+import singButtonReducer from './singButton';
+import resetStateReducer from './resetState';
+import initialState from './initialState';
 
-const rootReducer = combineReducers({
+
+const appReducer = combineReducers({
   form: formReducer,
   currentNoteReducer,
   captureReducer,
@@ -28,10 +32,18 @@ const rootReducer = combineReducers({
   targetNoteIndexReducer,
   sungNoteReducer,
   recordingStatusReducer,
+  singButtonReducer,
   signupReducer,
   loginReducer,
   dashboard,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_STATE') {
+    state = initialState;
+  }
+  return appReducer(state, action);
+};
 
 
 export default rootReducer;
