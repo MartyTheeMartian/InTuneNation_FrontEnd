@@ -5,6 +5,7 @@ import { toggleAudioCapture, singButton, resetState } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
+    resetDisabled: state.captureReducer.resetDisabled,
     singText: state.singButtonReducer.singText,
     singDisabled: state.singButtonReducer.disabled,
     captureDisabled: state.captureReducer.disabled,
@@ -28,16 +29,6 @@ class CaptureButtons extends Component {
     this.props.resetState();
   }
 
-
-  // resetDisabled = () => {
-  //   if (this.props.captureText === 'Capture') {
-  //     return 'disabled';
-  //   }
-  //   else {
-  //     return '';
-  //   }
-  // }
-
   handleSingClick = () => {
     this.props.toggleAudioCapture();
     this.props.singButton();
@@ -50,21 +41,17 @@ class CaptureButtons extends Component {
     else if (this.props.singDisabled === false) {
       return 'disabled';
     }
-    // else if (this.props.singDisabled === true && this.props.captureDisabled === 'disabled') {
-    //   return 'disabled';
-    // }
   }
-
 
 
   render() {
     return (
       <div className="row">
-          <div className="col-sm-6 col-md-4">
+          <div className="col-md-4 col-sm-6 col-xs-5">
             <button onClick={this.handleSingClick} className="btn btn-primary btn-lg active" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
-          <div>
-            <button onClick={this.handleResetClick} className="btn btn-primary btn-lg active" >Reset</button>
+          <div className="col-md-4 col-sm-6 col-xs-5">
+            <button onClick={this.handleResetClick} className="btn btn-primary btn-lg active" disabled={this.props.resetDisabled} >Reset</button>
           </div>
       </div>
     );

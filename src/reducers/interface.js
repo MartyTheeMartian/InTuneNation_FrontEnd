@@ -13,9 +13,19 @@ export const captureReducer = (state = initialState.capture, action) => {
   switch (action.type) {
     case 'TOGGLE_CAPTURE':
       if (!state.capture) {
-        return { capture: true, captureText: 'End Capture', disabled: '' };
+        return {
+          capture: true,
+          captureText: 'End Capture',
+          disabled: '',
+          resetDisabled: ''
+        };
       } else if (state.capture) {
-        return { capture: false, captureText: 'Capture', disabled: 'disabled' };
+        return {
+          capture: false,
+          captureText: 'Capture',
+          disabled: 'disabled',
+          resetDisabled: ''
+        };
       }
       break;
     default:

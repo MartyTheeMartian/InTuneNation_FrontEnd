@@ -28,7 +28,7 @@ const renderKeyEventNotesAsTargetNotes = (keyEvents, targetNoteIndex) => {
 class TargetNoteIndicator extends Component {
   render() {
     return (
-      <div className="col-sm-3 col-md-3">
+      <div className="col-sm-3 col-md-3 col-xs-4">
         <div className="thumbnail">
           <div className="caption">
             <h4>Target Notes</h4>

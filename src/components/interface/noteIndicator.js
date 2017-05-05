@@ -28,13 +28,14 @@ const renderSungNote = (note) => {
 class NoteIndicator extends Component {
   render() {
     return (
-      <div className="col-sm-3 col-md-3">
+      <div className="col-sm-3 col-md-3 col-xs-4">
         <div className="panel panel-default">
           <div className="panel-heading">
             <h4>Currently Sung Note</h4>
           </div>
           <div className="panel-body">
             <h2>{renderSungNote(this.props.sungNote)}</h2>
+
           </div>
         </div>
       </div>
