@@ -39,7 +39,7 @@ class Interface extends Component {
           <Piano />
           <TuningIndicator />
         </div>
-        <div className="row">
+        <div id="indicatorRow" className="row">
           <NoteIndicator />
           <TargetNoteIndicator />
           <ScoreBox />

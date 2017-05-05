@@ -62,7 +62,7 @@ class TuningIndicator extends Component {
       tickLabelOffset: 12,
       scaleDivisionNumber: 5,
       centralCircleRadius: 10,
-      marks: ["-50c b", null, "-40", null, "-30", null , "-20", "-15", "-10", "-5", "C", "5", "10", "15", "20", null, "30", null , "40", null, "50c #"],
+      marks: ["b", null, "-40", null, "-30", null , "-20", null, "-10", null, "0", null, "10", null, "20", null, "30", null , "40", null, "#"],
       contentWidth: contWidth, svgContainerWidth: contWidth, svgContainerHeight: contHeight,
       arrowValue: this.props.sungNote.arrowValue, // THIS VALUE MUST REACT TO CURRENT SUNG PITCH
       gaugeCenterLineHeight: centerLineHeight,
