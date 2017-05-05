@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { shiftOctaves, toggleCapture } from '../../actions';
+import { shiftOctaves, toggleCapture, setExerciseId } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,22 +10,27 @@ const mapStateToProps = (state) => {
     octave: state.octaveReducer.current,
     up: state.octaveReducer.up,
     down: state.octaveReducer.down,
+    user: state.loginReducer,
+    keyEvents: state.keyEventsReducer,
+    exerciseId: state.currentExerciseIdReducer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({ shiftOctaves, toggleCapture }, dispatch);
+  return bindActionCreators ({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
 };
-
 
 class OctaveButtons extends Component {
 
-  octaveShift = (direction) => {
-    this.props.shiftOctaves(direction);
-  }
+  octaveShift = (direction) => { this.props.shiftOctaves(direction); }
 
-  capture = () =>  {
+  handleClick = () =>  {
     this.props.toggleCapture();
+    if (this.props.disabled === "" && this.props.captureText === "End Capture") {
+      const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
+      const body = { notes_array: currentKeyNumCombo };
+      this.props.setExerciseId(this.props.user.id, body);
+    }
   }
 
   render() {
@@ -35,7 +40,7 @@ class OctaveButtons extends Component {
           <button onClick={() => this.octaveShift('-')} className="btn btn-primary btn-lg active" disabled={this.props.down} > - Octave</button>
         </div>
         <div className="col-md-2 col-sm-4">
-          <button onClick={this.capture} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
+          <button onClick={this.handleClick} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
         </div>
         <div className="col-md-2 col-sm-4">
           <button id="rOctBut" onClick={() => this.octaveShift('+')} className="btn btn-primary btn-lg active" disabled={this.props.up} >Octave +</button>
