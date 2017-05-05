@@ -1,11 +1,12 @@
 export default {
   capture: {
     capture: false,
-    captureText: 'Capture Keyboard',
+    captureText: 'Capture',
     disabled: '',
+    resetDisabled: 'disabled'
   },
   octave: {
-    current: 4,
+    current: 3,
     up: '',
     down: '',
   },
@@ -25,4 +26,12 @@ export default {
     arrowValue: 90/180,
   },
   recordingStatus: false,
+  singButton: {
+    singText: 'Sing',
+    disabled: true,
+  },
+  user: {},
+  allPastExercises: [],
+  currentExerciseId: null,
+  graphData: {},
 };

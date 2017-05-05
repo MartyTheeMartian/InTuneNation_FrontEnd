@@ -1,11 +1,11 @@
-const signup = (state = {}, action) => {
-  console.log('am I here???????????');
+const signupReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'USER_SIGN_UP':
-      return {...state, ...action.payload };
+    case 'USER_SIGN_UP_FULFILLED':
+      localStorage.setItem('token', action.payload.data.token);
+      return { ...action.payload.data };
     default:
       return state;
   }
-}
+};
 
-export default signup;
+export default signupReducer;
