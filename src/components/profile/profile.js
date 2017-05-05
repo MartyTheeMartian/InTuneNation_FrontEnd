@@ -23,18 +23,19 @@ import mathew from '../../assets/img/matthew.png';
 import { dashboardRun } from '../../actions';
 // const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
-const mapStateToProps = (state) => {
-  // console.log('what is dashboard', state.dashboard);
-  return state.dashboard;
+const mapStateToProps = ({ dashboard }) => {
+  return {
+    dashboard,
+  }
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-};
+//
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({dashboardRun}, dispatch);
+// };
 
 class Profile extends Component {
   render() {
-
+    console.log(`Profile props`, this.props.dashboard);
     return (
       <div className="container">
         <div className="row">
@@ -55,7 +56,7 @@ class Profile extends Component {
             </div>
 
 
-            <button onClick={dashboardRun}> Click me to get all the dashboards !!! </button>
+            <button onClick={this.props.dashboardRun}> Click me to get all the dashboards !!! </button>
             <C3Chart data={averageScore} />
 
             middle
@@ -71,4 +72,4 @@ class Profile extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, { dashboardRun })(Profile);

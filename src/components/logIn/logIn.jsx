@@ -23,7 +23,7 @@ class LogIn extends Component {
     const user = value;
     this.props.postLogIn(user);
     console.log(this.props.userId);
-    this.props.setAllPastExercises(this.props.userId);
+    // this.props.setAllPastExercises(this.props.userId);
   }
 
   render() {

@@ -31,4 +31,5 @@ export default {
   },
   user: {},
   allPastExercises: [],
+  graphData: {}
 };
