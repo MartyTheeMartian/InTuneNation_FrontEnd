@@ -29,7 +29,7 @@ class PPP extends Component {
           <Route exact path="/interface" component={Interface} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/community" component={Community} />
-          <Route path="/" component={Footer} />
+          {/* <Route path="/" component={Footer} /> */}
 
         </div>
       </Router>
