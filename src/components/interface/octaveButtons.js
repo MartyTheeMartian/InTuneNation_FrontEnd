@@ -40,7 +40,7 @@ class OctaveButtons extends Component {
           <button onClick={() => this.octaveShift('-')} className="btn btn-primary btn-lg active" disabled={this.props.down} > - Octave</button>
         </div>
         <div className="col-md-2 col-sm-4 col-xs-4">
-          <button onClick={this.capture} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
+          <button onClick={this.handleClick} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
         </div>
         <div className="col-md-2 col-sm-4 col-xs-4">
           <button id="rOctBut" onClick={() => this.octaveShift('+')} className="btn btn-primary btn-lg active" disabled={this.props.up} >Octave +</button>
