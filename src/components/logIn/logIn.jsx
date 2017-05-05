@@ -8,11 +8,7 @@ import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
 
 import google_logo from '../../assets/img/google_logo.png';
 
-const mapStateToProps = (state) => {
-  return {
-    userId: state.loginReducer.id,
-  };
-};
+const mapStateToProps = (state) => { return { userId: state.loginReducer.id }; };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ logUserIn, postLogIn, setAllPastExercises }, dispatch); };

@@ -25,9 +25,7 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAud
 
 class CaptureButtons extends Component {
 
-  handleResetClick = () => {
-    this.props.resetState();
-  }
+  handleResetClick = () => { this.props.resetState(); }
 
   handleSingClick = () => {
     this.props.toggleAudioCapture();
@@ -35,14 +33,9 @@ class CaptureButtons extends Component {
   }
 
   getDisabled = () => {
-    if (this.props.captureDisabled === '') {
-      return 'disabled';
-    }
-    else if (this.props.singDisabled === false) {
-      return 'disabled';
-    }
+    if (this.props.captureDisabled === '') { return 'disabled'; }
+    else if (this.props.singDisabled === false) { return 'disabled'; }
   }
-
 
   render() {
     return (

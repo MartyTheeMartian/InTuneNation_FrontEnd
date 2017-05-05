@@ -3,9 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-  return {
-    currentScore: state.scoreReducer,
-  };
+  return { currentScore: state.scoreReducer };
 };
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
