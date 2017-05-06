@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-
-
 import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
-
 import google_logo from '../../assets/img/google_logo.png';
 
 const mapStateToProps = (state) => { return { userId: state.loginReducer.id }; };
@@ -18,15 +15,12 @@ class LogIn extends Component {
   onSubmit = (value) => {
     const user = value;
     this.props.postLogIn(user);
-    console.log(this.props.userId);
-    // this.props.setAllPastExercises(this.props.userId);
   }
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
-
       <div className="signin-modal">
         <button className="btn signin-modal-btn-google">
           <div className="signin-modal-btn-google-inside">

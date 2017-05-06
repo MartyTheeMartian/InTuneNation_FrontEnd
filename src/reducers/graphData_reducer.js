@@ -3,7 +3,6 @@ import initialState from './initialState';
 const graphDataReducer = (state = initialState.graphData, action) => {
   switch (action.type) {
     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
-      console.log('what is allScorePerExercise?', action.payload.data);
       const data = action.payload.data;
       let d3Format = data.map((obj) => {
         return obj.avg_score;

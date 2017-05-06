@@ -6,7 +6,6 @@ const config = {
 };
 
 export const loadPastExercisesData = (user_id) => {
-  console.log('what is user id',user_id);
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
   let data = axios.get(API_URL, config)
   return {
@@ -15,8 +14,6 @@ export const loadPastExercisesData = (user_id) => {
   }
 }
 export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) => {
-  console.log('what is user id',user_id);
-  console.log('what is exercise_id', exercise_id);
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
   let data = axios.get(API_URL, config)
 
@@ -157,12 +154,10 @@ export const resetState = () => {
 
 const fetchAllPastExercises = (userId) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
-  console.log(API_URL);
   const config = { headers: { token: localStorage.getItem('token') } };
   return axios
   .get(API_URL, config)
   .then((response) => {
-    console.log(response.data);
     return response.data;
   })
 }
@@ -186,7 +181,6 @@ export const doSearchExercises = () => {
 }
 export const postExercise = (userId, body) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
-  console.log('actions/postExercise');
   const config = { headers: { token: localStorage.getItem('token') } };
   return axios.post(API_URL, body, config).then((response) => {
     return response.data;
@@ -194,10 +188,6 @@ export const postExercise = (userId, body) => {
 }
 
 export const setExerciseId = (userId, body) => {
-  console.log('actions/setExerciseId');
-  console.log('actions/setExerciseId body === ', body);
-  console.log('actions/setExerciseId userId === ', userId);
-  // const data = postExercise(userId, body);
   return {
     type: 'SET_EXERCISE_ID',
     payload: postExercise(userId, body),

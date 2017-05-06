@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData } from '../../actions';
-console.log('gloabally',loadSpecificExercisesIDwithAllScoresData);
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('what is state.dashboard', state.dashboard);
-  console.log('what is user_info', state.loginReducer);
   return { list: state.dashboard, user_info: state.loginReducer  };
 };
 
@@ -14,16 +11,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ loadSpecificExercisesIDwithAllScoresData }, dispatch);
 };
 
-// const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState }, dispatch); };
-
-
 
 class Table extends Component {
-    // handleClick = (item) => {
-    //   // console.log('what is item id', item);
-    //   // console.log('what is loadSpecificExercisesIDwithAllScoresData', loadSpecificExercisesIDwithAllScoresData);
-    //   this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
-    // }
     renderList = (list) => (
       list.map((item, index) => (
         <tr onClick={()=> {
@@ -38,8 +27,6 @@ class Table extends Component {
     );
 
   render() {
-    console.log('Profile props', this.props);
-
     if (this.props.list.length === 0) {
       return (
         <div className="alert alert-info"> Table Will Show After You Click 'Check Past Exercises'</div>

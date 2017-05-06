@@ -47,8 +47,6 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   let resetState = (JSON.parse(JSON.stringify(initialState)));
-  console.log('state.loginReducer ', state);
-  // console.log('resetState: ', resetState);
   if (action.type === 'RESET_STATE') {
     state = resetState;
   }
