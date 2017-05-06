@@ -17,7 +17,9 @@ import dashboard from './dashboard';
 import singButtonReducer from './singButton';
 import resetStateReducer from './resetState';
 import initialState from './initialState';
-
+import searchExercise from './searchAllExercises';
+import allScorePerExercise from './allIntonationScorePerExercise';
+import graphDataReducer from './graphData_reducer';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -38,12 +40,13 @@ const appReducer = combineReducers({
   signupReducer,
   loginReducer,
   dashboard,
+  searchExercise,
+  allScorePerExercise,
+  graphDataReducer,
 });
 
 const rootReducer = (state, action) => {
   let resetState = (JSON.parse(JSON.stringify(initialState)));
-  console.log('state.loginReducer ', state);
-  // console.log('resetState: ', resetState);
   if (action.type === 'RESET_STATE') {
     state = resetState;
   }
