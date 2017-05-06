@@ -18,6 +18,8 @@ import singButtonReducer from './singButton';
 import resetStateReducer from './resetState';
 import initialState from './initialState';
 import searchExercise from './searchAllExercises';
+import allScorePerExercise from './allIntonationScorePerExercise';
+import graphDataReducer from './graphData_reducer';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -39,6 +41,8 @@ const appReducer = combineReducers({
   loginReducer,
   dashboard,
   searchExercise,
+  allScorePerExercise,
+  graphDataReducer,
 });
 
 const rootReducer = (state, action) => {

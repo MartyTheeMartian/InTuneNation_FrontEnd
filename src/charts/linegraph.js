@@ -1,13 +1,18 @@
 import axios from 'axios';
+import store from '../store';
 
+const { getState } = store;
 
-const averageScore = {
+const formatData = () => {
+  let data = getState().allScorePerExercise;
+  let d3Format = data.map((obj) => {
+    return obj.avg_score;
+  });
+  return ['All Average Scores', ...d3Format];
+}
 
-
-  columns: [
-    ['data1', 30, 200, 100, 400, 150, 250],
-    ['data2', 50, 20, 10, 40, 15, 25]
-  ]
+let averageScore = {
+  columns: formatData(),
 };
 
 

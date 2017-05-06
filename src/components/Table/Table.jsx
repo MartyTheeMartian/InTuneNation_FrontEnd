@@ -1,60 +1,76 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { dashboardRun } from '../../actions';
+import { loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData } from '../../actions';
+console.log('gloabally',loadSpecificExercisesIDwithAllScoresData);
+import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state, ownProps) => {
   console.log('what is state.dashboard', state.dashboard);
-  // let filteredExercises = state.dashboard.map((exercise) => {
-  //   return ((exercise["created_at"] in exercise) && (exercise["notes_array"] in exercise) && (exercise["id"] in exercise));
-  // });
-  //
-  return { list: state.dashboard };
+  console.log('what is user_info', state.loginReducer);
+  return { list: state.dashboard, user_info: state.loginReducer  };
 };
 
-const _renderList = list => (
-    list.map(item => (
-      <tr>
-        <td>{item.id}</td>
-        <td>{item.notes_array}</td>
-        <td>{item.created_at}</td>
-      </tr>
-    ))
-  );
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ loadSpecificExercisesIDwithAllScoresData }, dispatch);
+};
+
+// const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState }, dispatch); };
+
+
 
 class Table extends Component {
+    // handleClick = (item) => {
+    //   // console.log('what is item id', item);
+    //   // console.log('what is loadSpecificExercisesIDwithAllScoresData', loadSpecificExercisesIDwithAllScoresData);
+    //   this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+    // }
+    renderList = (list) => (
+      list.map((item, index) => (
+        <tr onClick={()=> {
+            this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+        }}>
+          <td> {index+1} </td>
+          <td>{item.id}</td>
+          <td>{item.notes_array}</td>
+          <td>{item.created_at}</td>
+        </tr>
+      ))
+    );
 
   render() {
     console.log('Profile props', this.props);
 
     if (this.props.list.length === 0) {
       return (
-        <div>Loading...</div>
+        <div className="alert alert-info"> Table Will Show After You Click 'Check Past Exercises'</div>
       );
     }
-    return (
-      <table className="table table-bordered table-striped">
-        <thead>
-          <tr>
-            {/* <th>
-            ID
-          </th> */}
-            <th>
-            Score ID
-          </th>
-            <th>
-            Note Array
-          </th>
-            <th>
-            Time Stamp
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {_renderList(this.props.list)}
-        </tbody>
-      </table>
-    );
+    else{
+      return (
+        <table className="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>
+                ID
+                </th>
+              <th>
+                  Exercise ID
+                </th>
+              <th>
+                  Note Array
+                </th>
+              <th>
+                  Time Stamp
+                  </th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList(this.props.list)}
+          </tbody>
+        </table>
+      );
+    }
   }
 }
 
-export default connect(mapStateToProps)(Table);
+export default connect(mapStateToProps,mapDispatchToProps)(Table);

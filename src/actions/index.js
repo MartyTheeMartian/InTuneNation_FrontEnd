@@ -5,12 +5,23 @@ const config = {
   headers: {'token': localStorage.getItem('token')}
 };
 
-export const dashboardRun = (user_id) => {
+export const loadPastExercisesData = (user_id) => {
   console.log('what is user id',user_id);
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
   let data = axios.get(API_URL, config)
   return {
     type: 'PAST_EXERCISES_TABLE_RUN',
+    payload: data
+  }
+}
+export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) => {
+  console.log('what is user id',user_id);
+  console.log('what is exercise_id', exercise_id);
+  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
+  let data = axios.get(API_URL, config)
+
+  return {
+    type: 'ALL_INTONATION_PER_EXERCISE',
     payload: data
   }
 }
