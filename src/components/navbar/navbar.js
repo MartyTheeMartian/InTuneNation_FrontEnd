@@ -44,6 +44,10 @@ class NavBar extends Component {
             <LinkContainer to="/community">
               <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
+
+            <LinkContainer to="/">
+              <NavItem eventKey={3} href="#">Home</NavItem>
+            </LinkContainer>
             {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Sign up</MenuItem>
               <MenuItem eventKey={3.2}>Log in</MenuItem>

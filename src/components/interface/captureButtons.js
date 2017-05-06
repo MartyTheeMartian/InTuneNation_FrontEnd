@@ -5,6 +5,7 @@ import { toggleAudioCapture, singButton, resetState } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
+    resetDisabled: state.captureReducer.resetDisabled,
     singText: state.singButtonReducer.singText,
     singDisabled: state.singButtonReducer.disabled,
     captureDisabled: state.captureReducer.disabled,
@@ -24,18 +25,7 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAud
 
 class CaptureButtons extends Component {
 
-  handleResetClick = () => {
-    this.props.resetState();
-  }
-
-  // resetDisabled = () => {
-  //   if (this.props.captureText === 'Capture') {
-  //     return 'disabled';
-  //   }
-  //   else {
-  //     return '';
-  //   }
-  // }
+  handleResetClick = () => { this.props.resetState(); }
 
   handleSingClick = () => {
     this.props.toggleAudioCapture();
@@ -43,25 +33,18 @@ class CaptureButtons extends Component {
   }
 
   getDisabled = () => {
-    if (this.props.captureDisabled === '') {
-      return 'disabled';
-    }
-    else if (this.props.singDisabled === false) {
-      return 'disabled';
-    }
-    // else if (this.props.singDisabled === true && this.props.captureDisabled === 'disabled') {
-    //   return 'disabled';
-    // }
+    if (this.props.captureDisabled === '') { return 'disabled'; }
+    else if (this.props.singDisabled === false) { return 'disabled'; }
   }
 
   render() {
     return (
       <div className="row">
-          <div className="col-sm-6 col-md-4">
+          <div className="col-md-4 col-sm-6 col-xs-5">
             <button onClick={this.handleSingClick} className="btn btn-primary btn-lg active" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
-          <div>
-            <button onClick={this.handleResetClick} className="btn btn-primary btn-lg active" >Reset</button>
+          <div className="col-md-4 col-sm-6 col-xs-5">
+            <button onClick={this.handleResetClick} className="btn btn-primary btn-lg active" disabled={this.props.resetDisabled} >Reset</button>
           </div>
       </div>
     );

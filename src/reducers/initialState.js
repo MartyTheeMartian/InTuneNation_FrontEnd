@@ -3,9 +3,10 @@ export default {
     capture: false,
     captureText: 'Capture',
     disabled: '',
+    resetDisabled: 'disabled'
   },
   octave: {
-    current: 3,
+    current: 4,
     up: '',
     down: '',
   },

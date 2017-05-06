@@ -36,13 +36,13 @@ class OctaveButtons extends Component {
   render() {
     return (
       <div id="octRow" className="row">
-        <div className="col-md-2 col-sm-4">
+        <div className="col-md-2 col-sm-4 col-xs-4">
           <button onClick={() => this.octaveShift('-')} className="btn btn-primary btn-lg active" disabled={this.props.down} > - Octave</button>
         </div>
-        <div className="col-md-2 col-sm-4">
+        <div className="col-md-2 col-sm-4 col-xs-4">
           <button onClick={this.handleClick} className="btn btn-info btn-lg active" disabled={this.props.disabled}>{this.props.captureText}</button>
         </div>
-        <div className="col-md-2 col-sm-4">
+        <div className="col-md-2 col-sm-4 col-xs-4">
           <button id="rOctBut" onClick={() => this.octaveShift('+')} className="btn btn-primary btn-lg active" disabled={this.props.up} >Octave +</button>
         </div>
       </div>
