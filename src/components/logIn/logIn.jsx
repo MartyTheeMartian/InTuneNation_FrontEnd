@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 const mapStateToProps = (state) => { return { userId: state.loginReducer.id }; };
 

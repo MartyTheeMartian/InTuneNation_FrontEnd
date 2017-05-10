@@ -31,6 +31,7 @@ export default {
     disabled: true,
   },
   user: [],
+  signupSuccess: null,
   allPastExercises: [],
   currentExerciseId: null,
   graphData: [],

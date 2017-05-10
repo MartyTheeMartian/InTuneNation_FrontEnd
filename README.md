@@ -1,6 +1,6 @@
 ## Play-Pitch-Precision (_PPP_) Presents:
 
-# Intervalicity: An Ear-Training Coach for All Devices
+# InTuneNation: An Ear-Training Coach for All Devices
 
 > Sing in the moment!
 
