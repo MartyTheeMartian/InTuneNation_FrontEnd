@@ -27,9 +27,9 @@ class SignUp extends Component {
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <div className="signup-modal">
+
         <button className="btn signup-modal-btn-google">
           <div className="signup-modal-btn-google-inside">
             <img src={google_logo}></img>
@@ -63,6 +63,14 @@ class SignUp extends Component {
           </div>
 
         </form>
+        <div className="bs-example" className ="hide">
+          <div className="alert alert-warning fade in">
+            <a href="#" className="close" data-dismiss="alert">×</a>
+            <strong>Warning!</strong> You entered a existing email or the wrong password.
+          </div>
+        </div>
+
+
       </div>
     );
   }

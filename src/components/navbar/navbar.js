@@ -36,16 +36,15 @@ class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to="/profile">
-              <NavItem eventKey={1} href="#">
-                Profile</NavItem>
+            <LinkContainer exact to="/profile">
+              <NavItem eventKey={1} href="#">Profile</NavItem>
             </LinkContainer>
 
-            <LinkContainer to="/community">
+            <LinkContainer exact to="/community">
               <NavItem eventKey={2} href="#">Community</NavItem>
             </LinkContainer>
 
-            <LinkContainer to="/">
+            <LinkContainer exact to="/">
               <NavItem eventKey={3} href="#">Home</NavItem>
             </LinkContainer>
             {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
