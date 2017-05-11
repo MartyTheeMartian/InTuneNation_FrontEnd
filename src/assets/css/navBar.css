@@ -11,3 +11,11 @@ float: left;
   color: 	#666666 !important;
   font-size: medium;
 }
+
+#signButton {
+  padding-bottom: 20px;
+}
+
+#logButton {
+  padding-bottom: 20px;
+}

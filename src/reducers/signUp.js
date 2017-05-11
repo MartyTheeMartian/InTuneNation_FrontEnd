@@ -1,8 +1,12 @@
-const signupReducer = (state = {}, action) => {
+import initialState from './initialState';
+
+const signupReducer = (state = { signupSuccess: initialState.signupSuccess }, action) => {
   switch (action.type) {
     case 'USER_SIGN_UP_FULFILLED':
       localStorage.setItem('token', action.payload.data.token);
-      return { ...action.payload.data };
+      return { ...action.payload.data, signupSuccess: true };
+    case 'USER_SIGN_UP_REJECTED':
+      return { ...action.payload.response, signupSuccess: false };
     default:
       return state;
   }
