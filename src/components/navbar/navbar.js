@@ -52,10 +52,10 @@ class NavBar extends Component {
           </Nav>
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem href="" data-toggle="modal" data-target="#myModal1">
+            <NavItem id="signButton" href="" data-toggle="modal" data-target="#myModal1">
               <span className="navbar-right">Sign Up</span>
             </NavItem>
-            <NavItem href="" data-toggle="modal" data-target="#myModal2" >
+            <NavItem id="logButton" href="" data-toggle="modal" data-target="#myModal2" >
               <span className="navbar-right" >Log In</span>
             </NavItem>
               <SignUp />

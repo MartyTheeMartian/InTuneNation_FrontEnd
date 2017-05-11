@@ -68,14 +68,14 @@ class SignUp extends Component {
           showModal: false,
           focus: true
         });
-      }, 1600);
+      }, 700);
 
       setTimeout(() => {
         this.setState({
           ...this.state,
           force: true
         });
-      }, 2000);
+      }, 900);
     }
   }
 
@@ -109,9 +109,13 @@ class SignUp extends Component {
             </button>
 
             <div className="signup-modal-or-decorate">
-              <div className="signup-modal-or-decorate-lineL">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
+              <div className="signup-modal-or-decorate-lineL">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              </div>
               <span>or</span>
-              <div className="signup-modal-or-decorate-lineR">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</div>
+              <div className="signup-modal-or-decorate-lineR">
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              </div>
             </div>
 
             <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -128,7 +132,7 @@ class SignUp extends Component {
                 <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
                   <h5>Sign Up</h5>
                 </button>
-                <button onClick={this.redirect()} type="button" className="btn btn-default" data-dismiss="modal">
+                <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
                   <h5>Close</h5>
                 </button>
               </div>
