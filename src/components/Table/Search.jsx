@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { doSearchExercises } from  '../../actions';
+import { doSearchExercises } from '../../actions';
 import { bindActionCreators } from 'redux';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state, ownProps) => ({
+  value: state.searchExercise,
+});
 
-  return {
-    value: state.searchExercise
-  }
-}
-
-const mapDispatchToprops = (dispatch) => {
-  return bindActionCreators({ doSearchExercises }, display);
-}
+const mapDispatchToprops = dispatch => bindActionCreators({ doSearchExercises }, display);
 
 class SearchExercise extends Compoent {
   render() {
-
     return (
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        this.props.doSearchExercises();
-      }}
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          this.props.doSearchExercises();
+        }}
       >
         <button type="submit">
           Search All Past Exercise!
@@ -30,7 +25,7 @@ class SearchExercise extends Compoent {
 
 
       </form>
-    )
+    );
   }
 }
 
