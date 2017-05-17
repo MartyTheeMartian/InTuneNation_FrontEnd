@@ -9,9 +9,9 @@ import {
   Table,
 } from 'react-bootstrap';
 
-const mapStateToProps = (state) => { return state; };
+const mapStateToProps = state => state;
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 class Community extends Component {
 
