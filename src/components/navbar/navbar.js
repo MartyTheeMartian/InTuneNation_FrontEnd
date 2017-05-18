@@ -59,13 +59,7 @@ class NavBar extends Component {
               <span className="navbar-right" >Log In</span>
             </NavItem>
               <SignUp />
-            <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div className="modal-dialog " role="document">
-                <div className="modal-content">
-                  <LogIn />
-                </div>
-              </div>
-            </div>
+              <LogIn />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
