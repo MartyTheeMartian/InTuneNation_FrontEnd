@@ -13,7 +13,7 @@ const gainNode = ctx.createGain();
 
 osc.connect(gainNode);
 gainNode.connect(ctx.destination);
-osc.type = 'square';
+// osc.type = 'square';
 osc.connect(ctx.destination);
 osc.frequency.value = 0;
 gainNode.gain.value = 0;
@@ -51,12 +51,12 @@ class Piano extends Component {
 
     if (this.props.disabled !== 'disabled') {
       osc.frequency.value = freqAndKeyNum.frequency;
-      gainNode.gain.value = 0.2;
+      // gainNode.gain.value = 0.8;
 
       setTimeout(() => {
-        gainNode.gain.value = 0;
         osc.frequency.value = 0;
-      }, 700);
+        gainNode.gain.value = 0;
+      }, 600);
     }
 
   }

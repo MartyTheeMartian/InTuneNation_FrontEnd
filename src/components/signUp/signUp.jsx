@@ -98,58 +98,58 @@ class SignUp extends Component {
     else {
       return (
         <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div className="modal-dialog" role="document">
-        <div className="modal-content">
-          <div className="signup-modal">
-            <button className="btn signup-modal-btn-google">
-              <div className="signup-modal-btn-google-inside">
-                <img src={google_logo}></img>
-                <span>Sign Up with Google</span>
-              </div>
-            </button>
-
-            <div className="signup-modal-or-decorate">
-              <div className="signup-modal-or-decorate-lineL">
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              </div>
-              <span>or</span>
-              <div className="signup-modal-or-decorate-lineR">
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              </div>
-            </div>
-
-            <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-              <div className="signup-modal-content">
-
-                <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
-                <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
-                <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
-                <Field name="password" component="input" type="password" placeholder="Password" className="signup-modal-content-detail" required/>
-                <Field name="confirmPassword" component="input" type="password" placeholder="Confirm Password" className="signup-modal-content-detail" required/>
-              </div>
-
-              <div className="signup-modal-foot-btn">
-                <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
-                  <h5>Sign Up</h5>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="signup-modal">
+                <button className="btn signup-modal-btn-google">
+                  <div className="signup-modal-btn-google-inside">
+                    <img src={google_logo}></img>
+                    <span>Sign Up with Google</span>
+                  </div>
                 </button>
-                <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
-                  <h5>Close</h5>
-                </button>
+
+                <div className="signup-modal-or-decorate">
+                  <div className="signup-modal-or-decorate-lineL">
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                  </div>
+                  <span>or</span>
+                  <div className="signup-modal-or-decorate-lineR">
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                  </div>
+                </div>
+
+                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                  <div className="signup-modal-content">
+
+                    <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
+                    <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
+                    <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
+                    <Field name="password" component="input" type="password" placeholder="Password" className="signup-modal-content-detail" required/>
+                    <Field name="confirmPassword" component="input" type="password" placeholder="Confirm Password" className="signup-modal-content-detail" required/>
+                  </div>
+
+                  <div className="signup-modal-foot-btn">
+                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
+                      <h5>Sign Up</h5>
+                    </button>
+                    <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
+                      <h5>Close</h5>
+                    </button>
+                  </div>
+
+                </form>
+
+                <div className="alert alert-success" role="alert" style={this.displaySuccessAlert()} >
+                  <strong>Congrats!! &nbsp; 😄  &nbsp;</strong> Sign Up Successful!
+                </div>
+
+                <div className="alert alert-danger" role="alert" style={this.displayFailAlert()} >
+                  <strong>Warning! &nbsp; 🙁  &nbsp;</strong> Invalid form submission. {this.props.errMsg} Please retry with valid inputs. Thank You.
+                </div>
+
               </div>
-
-            </form>
-
-            <div className="alert alert-success" role="alert" style={this.displaySuccessAlert()} >
-              <strong>Congrats!! &nbsp; 😄  &nbsp;</strong> Sign Up Successful!
             </div>
-
-            <div className="alert alert-danger" role="alert" style={this.displayFailAlert()} >
-              <strong>Warning! &nbsp; 🙁  &nbsp;</strong> Invalid form submission. {this.props.errMsg} Please retry with valid inputs. Thank You.
-            </div>
-
           </div>
-        </div>
-        </div>
         </div>
       );
     }
