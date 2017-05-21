@@ -47,7 +47,11 @@ const yellow = (targetNoteName, sungNoteName, fq) => {
 };
 
 const red = (targetNoteName, sungNoteName, fq) => {
-  return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
+  if (targetNoteName !== sungNoteName) {
+    return true;
+  } else {
+    return centDiffInRed(getCentDiff(fq));
+  }
 };
 
 // MICROPHONE INPUT CODE

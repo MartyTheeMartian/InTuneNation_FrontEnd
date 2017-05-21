@@ -34,7 +34,7 @@ class Profile extends Component {
 
             <div className="col-md-2" />
             <div className="col-md-8">
-              <div className="alert alert alert-info" role="alert">Oh snap! Please Log Into Your Account </div>
+              <div className="alert alert alert-info" role="alert">Please Log Into Your Account</div>
               <div>
                 <img src={musicNoteMusic} height={400} width={800} alt={''} />
               </div>
