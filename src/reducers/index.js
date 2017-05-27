@@ -1,15 +1,15 @@
 import { reducer as formReducer } from 'redux-form';
 import { combineReducers } from 'redux';
-import keyEventsReducer from './keyEvents_reducer';
-import targetNoteReducer from './targetNote_reducer';
-import targetNoteIndexReducer from './targetNoteIndex_reducer';
-import sungNoteReducer from './sungNote_reducer';
-import recordingStatusReducer from './recordingStatus_reducer';
-import greenTimeReducer from './greenTime_reducer';
-import scoreReducer from './score_reducer';
-import exerciseScoresReducer from './exerciseScores_reducer';
-import currentExerciseIdReducer from './currentExerciseId_reducer';
-import allPastExercisesReducer from './allPastExercises_reducer';
+import keyEventsReducer from './keyEvents';
+import targetNoteReducer from './targetNote';
+import targetNoteIndexReducer from './targetNoteIndex';
+import sungNoteReducer from './sungNote';
+import recordingStatusReducer from './recordingStatus';
+import greenTimeReducer from './greenTime';
+import scoreReducer from './score';
+import exerciseScoresReducer from './exerciseScores';
+import currentExerciseIdReducer from './currentExerciseId';
+import allPastExercisesReducer from './allPastExercises';
 import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
@@ -19,7 +19,7 @@ import resetStateReducer from './resetState';
 import initialState from './initialState';
 import searchExercise from './searchAllExercises';
 import allScorePerExercise from './allIntonationScorePerExercise';
-import graphDataReducer from './graphData_reducer';
+import graphDataReducer from './graphData';
 
 const appReducer = combineReducers({
   form: formReducer,
