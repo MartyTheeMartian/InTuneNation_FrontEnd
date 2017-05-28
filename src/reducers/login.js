@@ -9,6 +9,7 @@ const loginReducer = (state = { loginSuccess: initialState.loginSuccess }, actio
 //     localStorage.setItem('lastName', action.payload.data.last_name);
       return { ...action.payload.data, loginSuccess: true };
     case 'USER_LOG_IN_REJECTED':
+      console.log('what is this', action.payload.response);
       return { ...action.payload.response, loginSuccess: false };
     default:
       return state;

@@ -21,6 +21,23 @@ class Profile extends Component {
   handleClick(e) {
     return () => this.props.loadPastExercisesData(this.props.user.id);
   }
+  graph = () => {
+    console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
+    if (this.props.graphData !== "user hasn't sing yet") {
+      return <C3Chart data={this.props.graphData}/>
+    } else {
+      return <div className="center-warning">
+        <a href='#' className="thumbnail" style={{
+          'text-decoration': 'none',
+          'border-radius': '50px',
+          'border-width': '3px'
+        }}>
+          <h4>user hasn't sign the related exercise yet, &nbsp; 😄 &nbsp; please go back to the interface page; Hit the piano and sign again !
+          </h4>
+        </a>
+      </div>
+    }
+  }
 
   render() {
     if (this.props.user.id === undefined) {
@@ -61,8 +78,8 @@ class Profile extends Component {
               <button onClick={this.handleClick()} className="btn btn-danger">
                 Check Past Exercises
               </button>
-              <div/>
-              <C3Chart data={this.props.graphData}/>
+              {/* <div/> */}
+              {this.graph()}
             </div>
             <div className="col-md-2"></div>
           </div>

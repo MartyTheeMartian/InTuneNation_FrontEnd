@@ -7,11 +7,22 @@ const graphDataReducer = (state = initialState.graphData, action) => {
       let d3Format = data.map((obj) => {
         return obj.avg_score;
       });
-      return {
-        columns: [
-            ['All Average Scores', ...d3Format],
-        ],
-      };
+      console.log('what is d3Format', d3Format);
+      if(d3Format.length === 0){
+        return "user hasn't sing yet"
+      } else {
+        return {
+          columns: [
+              ['All Average Scores', ...d3Format],
+          ],
+        };
+      }
+      //
+      // return {
+      //   columns: [
+      //       ['All Average Scores', ...d3Format],
+      //   ],
+      // };
     default:
       return state;
   }
