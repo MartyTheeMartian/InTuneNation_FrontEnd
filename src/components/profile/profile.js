@@ -24,14 +24,10 @@ class Profile extends Component {
   graph = () => {
     console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
     if (this.props.graphData !== "user hasn't sing yet") {
-      return <C3Chart data={this.props.graphData}/>
+      return <div className="center-warning"><C3Chart data={this.props.graphData}/></div>
     } else {
       return <div className="center-warning">
-        <a href='#' className="thumbnail" style={{
-          'text-decoration': 'none',
-          'border-radius': '50px',
-          'border-width': '3px'
-        }}>
+        <a href='#' className="thumbnail" >
           <h4>user hasn't sign the related exercise yet, &nbsp; 😄 &nbsp; please go back to the interface page; Hit the piano and sign again !
           </h4>
         </a>
@@ -74,10 +70,13 @@ class Profile extends Component {
               <div>
                 <Table/>
               </div>
+              <div>
 
               <button onClick={this.handleClick()} className="btn btn-danger">
                 Check Past Exercises
               </button>
+            </div>
+            <br/>
               {/* <div/> */}
               {this.graph()}
             </div>

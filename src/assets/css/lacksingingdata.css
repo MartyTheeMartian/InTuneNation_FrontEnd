@@ -3,9 +3,13 @@
   margin-left: auto;
   margin-right: auto;
   width: 800px;
-  height: 50px;
+  height: 500px;
+  padding-top: 50px;
 }
 
-#warning-edge{
-  border-radius: 50px;
+.center-warning a {
+  text-decoration: none !important;
+  border-radius: 50px !important;
+  border-width: 3px !important;
+  width: 1000px !important;
 }
