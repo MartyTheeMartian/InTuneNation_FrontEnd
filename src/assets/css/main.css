@@ -5,6 +5,7 @@
 @import url('home.css');
 @import url('profilewarning.css');
 @import url('lacksingingdata.css');
+@import url('profileBottom.css')
 body {
   margin: 0;
   padding: 0;

@@ -10,6 +10,8 @@ import mathew from '../../assets/img/matthew.png';
 import {loadPastExercisesData} from '../../actions';
 import Table from '../Table/Table.jsx';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
@@ -22,19 +24,23 @@ class Profile extends Component {
     return () => this.props.loadPastExercisesData(this.props.user.id);
   }
   graph = () => {
-    console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
+    // console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
     if (this.props.graphData !== "user hasn't sing yet") {
-      return <div className="center-warning"><C3Chart data={this.props.graphData}/></div>
+      return <div className="center-warning">
+        <C3Chart data={this.props.graphData}/></div>
     } else {
       return <div className="center-warning">
-        <a href='#' className="thumbnail" >
-          <h4>user hasn't sign the related exercise yet, &nbsp; 😄 &nbsp; please go back to the interface page; Hit the piano and sign again !
-          </h4>
+        <a href='#' className="thumbnail" style={{'background': '#e6ecff' }} >
+          <h3> Can't find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
+          </h3>
         </a>
       </div>
     }
   }
 
+  uploadFile(files){
+
+  }
   render() {
     if (this.props.user.id === undefined) {
       return (
@@ -56,33 +62,70 @@ class Profile extends Component {
       );
     } else {
       return (
+        <div>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-2">
+            <div className="col-md-2" >
+              <div>
               <div className="thumbnail">
                 <img src={mathew} alt=".."/>
                 <div className="caption">
                   <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
                 </div>
               </div>
+              <div>
+                <button onClick={this.handleClick()} className="btn btn-danger">
+                  Check Past Exercises
+                </button>
+              </div>
+              <div>
+                ImageDropping Area
+              <Dropzone onDrop={ this.uploadFile.bind(this) }/>
+              </div>
+              </div>
             </div>
             <div className="col-md-8">
+              <div className="pastExercise">
+
+
+            </div>
               <div>
                 <Table/>
               </div>
-              <div>
 
-              <button onClick={this.handleClick()} className="btn btn-danger">
-                Check Past Exercises
-              </button>
-            </div>
             <br/>
               {/* <div/> */}
               {this.graph()}
+
             </div>
-            <div className="col-md-2"></div>
+            <div className="col-md-2 "></div>
           </div>
         </div>
+        <div className="profileBottom">
+          <div className="col-md-4">
+            <div>
+              <section>
+                <h3><span>Read more about us here</span></h3>
+              </section>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div>
+              <section>
+                <h3><span>Read more about us here</span></h3>
+              </section>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div>
+              <section>
+                <h3><span>Read more about us here</span></h3>
+              </section>
+            </div>
+          </div>
+
+        </div>
+      </div>
       );
     }
   }

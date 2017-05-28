@@ -1,15 +1,20 @@
 .center-warning {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+
   width: 800px;
   height: 500px;
-  padding-top: 50px;
+  padding-top: 250px;
 }
 
 .center-warning a {
   text-decoration: none !important;
-  border-radius: 50px !important;
+  border-radius: 10px !important;
   border-width: 3px !important;
   width: 1000px !important;
+  height:75px;
+}
+
+.pastExercise {
+  padding-top:20px;
+  padding-bottom:20px;
 }
