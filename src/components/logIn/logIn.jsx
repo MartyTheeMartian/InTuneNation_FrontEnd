@@ -24,7 +24,8 @@ class LogIn extends Component {
       ...this.state,
       showModal: true,
       focus: false,
-      force: false
+      force: false,
+
     };
   }
 

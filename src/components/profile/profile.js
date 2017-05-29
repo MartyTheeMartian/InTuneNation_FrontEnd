@@ -20,8 +20,15 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userID: localStorage.getItem('userId'),
+    }
+  }
+
   handleClick(e) {
-    return () => this.props.loadPastExercisesData(this.props.user.id);
+    return () => this.props.loadPastExercisesData(this.state.userID);
   }
   graph = () => {
     // console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
@@ -38,11 +45,22 @@ class Profile extends Component {
     }
   }
 
-  uploadFile(files){
-
+  uploadFile(e){
+    // e.preventDefault();
+    // cloudinary.openUploadWidget(
+    //   { cloud_name: 'kevinawesome',
+    //     upload_preset: 'musicapp',
+    //     theme: 'minimal' },
+    //   (error, imageInfo) => {
+    //     if(error === null){
+    //       let cloud_url=imageInfo[0].url;
+    //       this.setState({image:cloud_url});
+    //     }
+    //   });
   }
+
   render() {
-    if (this.props.user.id === undefined) {
+    if (this.state.userID === undefined) {
       return (
         <div className="container-fluid">
           <div className="row">
@@ -66,22 +84,26 @@ class Profile extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-2" >
-              <div>
-              <div className="thumbnail">
-                <img src={mathew} alt=".."/>
-                <div className="caption">
-                  <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+              <div className="thumbnailSection">
+
+                <div className="thumbnail">
+                  <img src={mathew} alt=".."/>
+                  <div className="caption">
+                    <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <button onClick={this.handleClick()} className="btn btn-danger">
-                  Check Past Exercises
-                </button>
-              </div>
-              <div>
-                ImageDropping Area
-              <Dropzone onDrop={ this.uploadFile.bind(this) }/>
-              </div>
+                <div>
+                  <button onClick={this.handleClick()} className="btn btn-danger">
+                    Check Past Exercises
+                  </button>
+                </div>
+                {/* <input type="file" onClick={this.uploadFile}>
+                  <img src={this.state.image}></img>
+                </input> */}
+                {/* <div>
+                  ImageDropping Area
+                <Dropzone onDrop={ this.uploadFile.bind(this) }/>
+                </div> */}
               </div>
             </div>
             <div className="col-md-8">

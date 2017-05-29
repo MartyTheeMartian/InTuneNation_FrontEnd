@@ -4,6 +4,7 @@ const loginReducer = (state = { loginSuccess: initialState.loginSuccess }, actio
   switch (action.type) {
     case 'USER_LOG_IN_FULFILLED':
       localStorage.setItem('token', action.payload.data.token);
+      console.log('what is loginSuccess responsed data', action.payload.data);
       localStorage.setItem('userId', action.payload.data.id);
 //     localStorage.setItem('firstName', action.payload.data.first_name);
 //     localStorage.setItem('lastName', action.payload.data.last_name);

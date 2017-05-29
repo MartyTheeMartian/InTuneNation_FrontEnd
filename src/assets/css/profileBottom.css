@@ -1,6 +1,7 @@
 .profileBottom {
-  border-top: 3px solid #999999 !important;
+  border-top: 2px solid #999999 !important;
   padding-top: 100px;
+  margin-top: 100px;
 }
 
 .profileBottom h3{
