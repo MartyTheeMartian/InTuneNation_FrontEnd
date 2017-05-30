@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import keyboard from "../../../public/home-page.png";
+import homeBackground from "../../../public/home-page.png";
 import logo from "../../../public/assets/InTune_Nation_typelogo.png";
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,7 +18,7 @@ class Home extends Component {
     return (
       <div className="home-component">
         <div className="home-img-container">
-          <img src={keyboard}></img>
+          <img src={homeBackground}></img>
         </div>
 
         <div className="home-content">

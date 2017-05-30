@@ -92,7 +92,7 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            const userId = getState().loginReducer.id;
+            const userId = localStorage.getItem('userId');
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
@@ -109,9 +109,9 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(5));
+              dispatch(decrementScore(3));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(2));
+              dispatch(decrementScore(1));
             }
           }
         }
