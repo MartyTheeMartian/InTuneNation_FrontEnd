@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('what is user dashboard',state.dashboard);
   return { list: state.dashboard, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
 
@@ -30,7 +29,6 @@ class Table extends Component {
         <h4>{index + 1}</h4>
       </td>
       <td><h4>{item.id}</h4></td>
-      {/* <td><h4>{item.notes_array}</h4></td> */}
       <td><h4>{this.converter(item.notes_array)}</h4></td>
       <td><h4>{item.created_at}</h4></td>
     </tr>
