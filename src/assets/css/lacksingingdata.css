@@ -1,0 +1,20 @@
+.center-warning {
+  display: block;
+  margin-top:0px;
+  width: 800px;
+  height: 500px;
+  padding-top: 50px;
+}
+
+.center-warning a {
+  text-decoration: none !important;
+  border-radius: 10px !important;
+  border-width: 3px !important;
+  width: 1000px !important;
+  height:75px;
+}
+
+.pastExercise {
+  padding-top:20px;
+  padding-bottom:20px;
+}
