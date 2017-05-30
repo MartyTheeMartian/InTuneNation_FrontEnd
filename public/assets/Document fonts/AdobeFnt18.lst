@@ -1,0 +1,189 @@
+%!Adobe-FontList 1.18
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:DDCHardware-Condensed
+FamilyName:DDC Hardware
+StyleName:Condensed
+MenuName:DDC Hardware Condensed
+StyleBits:0
+WeightClass:410
+WidthClass:5
+AngleClass:0
+FullName:DDC Hardware Condensed
+WritingScript:Roman
+OutlineFileName:\DDCHardware-Condensed.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:61352
+FileModTime:1485360081
+NameArray:0,Mac,18,DDC Hardware Condensed
+NameArray:0,Mac,4,DDC Hardware Condensed
+NameArray:0,Win,1,DDC Hardware Condensed
+NameArray:0,Win,16,DDC Hardware
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Type1
+FontName:MinionPro-Regular
+FamilyName:Minion Pro
+StyleName:Regular
+MenuName:Minion Pro
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Minion Pro
+WritingScript:Roman
+OutlineFileName:\MinionPro-Regular.otf
+DataFormat:sfntData
+UsesStandardEncoding:yes
+isCFF:yes
+hasSVG:no
+FileLength:218640
+FileModTime:1494866439
+DesignSize:110
+NameArray:0,Mac,4,Minion Pro
+NameArray:0,Win,1,Minion Pro
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans-Bold
+FamilyName:Open Sans
+StyleName:Bold
+MenuName:Open Sans
+StyleBits:2
+WeightClass:700
+WidthClass:5
+AngleClass:0
+FullName:Open Sans Bold
+WritingScript:Roman
+OutlineFileName:\OpenSans-Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:224592
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans Bold
+NameArray:0,Win,1,Open Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans-BoldItalic
+FamilyName:Open Sans
+StyleName:Bold Italic
+MenuName:Open Sans
+StyleBits:3
+WeightClass:700
+WidthClass:5
+AngleClass:1
+FullName:Open Sans Bold Italic
+WritingScript:Roman
+OutlineFileName:\OpenSans-BoldItalic.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:213292
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans Bold Italic
+NameArray:0,Win,1,Open Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans-Extrabold
+FamilyName:Open Sans
+StyleName:Extrabold
+MenuName:Open Sans Extrabold
+StyleBits:0
+WeightClass:800
+WidthClass:5
+AngleClass:0
+FullName:Open Sans Extrabold
+WritingScript:Roman
+OutlineFileName:\OpenSans-ExtraBold.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:222584
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans Extrabold
+NameArray:0,Win,1,Open Sans Extrabold
+NameArray:0,Win,16,Open Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans
+FamilyName:Open Sans
+StyleName:Regular
+MenuName:Open Sans
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Open Sans
+WritingScript:Roman
+OutlineFileName:\OpenSans-Regular.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:217360
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans
+NameArray:0,Win,1,Open Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans-Semibold
+FamilyName:Open Sans
+StyleName:Semibold
+MenuName:Open Sans Semibold
+StyleBits:0
+WeightClass:600
+WidthClass:5
+AngleClass:0
+FullName:Open Sans Semibold
+WritingScript:Roman
+OutlineFileName:\OpenSans-Semibold.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:221328
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans Semibold
+NameArray:0,Win,1,Open Sans Semibold
+NameArray:0,Win,16,Open Sans
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:OpenSans-SemiboldItalic
+FamilyName:Open Sans
+StyleName:Semibold Italic
+MenuName:Open Sans Semibold
+StyleBits:1
+WeightClass:600
+WidthClass:5
+AngleClass:1
+FullName:Open Sans Semibold Italic
+WritingScript:Roman
+OutlineFileName:\OpenSans-SemiboldItalic.ttf
+DataFormat:sfntData
+hasSVG:no
+FileLength:212820
+FileModTime:1457710682
+NameArray:0,Mac,4,Open Sans Semibold Italic
+NameArray:0,Win,1,Open Sans Semibold
+NameArray:0,Win,16,Open Sans
+%EndFont
+

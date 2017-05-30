@@ -1,3 +1,7 @@
+#main-logo {
+  margin-top: 250px;
+}
+
 .home-component {
   position: relative;
   /*background-color: #ccc;*/
@@ -32,7 +36,7 @@
 }
 
 .github {
-  margin: 20px 0 20px 0;
+  margin: 600px 0 20px 0;
   text-align: center;
 }
 

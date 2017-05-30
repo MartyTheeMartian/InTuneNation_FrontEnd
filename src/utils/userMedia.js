@@ -47,7 +47,11 @@ const yellow = (targetNoteName, sungNoteName, fq) => {
 };
 
 const red = (targetNoteName, sungNoteName, fq) => {
-  return (!targetNoteName === sungNoteName) ? true : centDiffInRed(getCentDiff(fq));
+  if (targetNoteName !== sungNoteName) {
+    return true;
+  } else {
+    return centDiffInRed(getCentDiff(fq));
+  }
 };
 
 // MICROPHONE INPUT CODE
@@ -88,7 +92,7 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            const userId = getState().loginReducer.id;
+            const userId = localStorage.getItem('userId');
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
@@ -105,9 +109,9 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(5));
+              dispatch(decrementScore(3));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(2));
+              dispatch(decrementScore(1));
             }
           }
         }
