@@ -23,16 +23,14 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      userID: localStorage.getItem('userId'),
-    }
+    this.state = { userID: localStorage.getItem('userId' };
   }
 
   handleClick(e) {
     return () => this.props.loadPastExercisesData(this.state.userID);
   }
   graph = () => {
-    if (this.props.graphData !== "user hasn't sing yet") {
+    if (this.props.graphData !== "The user has not sung this exercise before.") {
       return <div className="center-warning">
         {/* <div id="chart"></div> */}
         <C3Chart data={ {columns: this.props.graphData.columns} } axis={{axis:this.props.graphData.axis}}/>
@@ -40,7 +38,7 @@ class Profile extends Component {
     } else {
       return <div className="center-warning">
         <a href='#' className="thumbnail" style={{'background': '#e6ecff' }} >
-          <h3> Can't find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
+          <h3>Cannot find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
           </h3>
         </a>
       </div>
