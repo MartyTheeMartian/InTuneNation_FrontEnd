@@ -28,6 +28,9 @@ class Interface extends Component {
   render() {
     return (
       <div className="container">
+        <div className="github">
+          <a href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md">Checkout Out Our GitHub ReadMe!!</a>
+        </div>
         <OctaveButtons />
         <div className="row">
           <Piano />

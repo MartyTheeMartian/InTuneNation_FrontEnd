@@ -28,7 +28,6 @@ class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-
             <LinkContainer exact to="/">
               <NavItem href="#">Home</NavItem>
             </LinkContainer>

@@ -2,6 +2,7 @@
 @import url('signUpModal.css');
 @import url('SignUpLogIn.css');
 @import url('navBar.css');
+@import url('home.css');
 @import url('profilewarning.css');
 
 body {
@@ -35,10 +36,6 @@ h2, h3, h4, h5 {
 
 #nav {
   width: 100%
-}
-
-#title {
-  margin-top: 120px;
 }
 
 .white-key {

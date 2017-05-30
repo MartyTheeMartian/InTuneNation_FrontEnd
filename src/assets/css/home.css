@@ -1,0 +1,50 @@
+#main-logo {
+  margin-top: 110px;
+}
+
+.home-component {
+  position: relative;
+  /*background-color: #ccc;*/
+}
+
+.home-img-container {
+  position: absolute;
+  top: -120px;
+  z-index: -1;
+}
+
+.home-img-container img {
+  width: 100%;
+}
+
+.home-content {
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  width: 620px;
+  padding: 15px;
+  margin: 120px auto;
+}
+
+.home-content h1{
+  color: #ddd;
+}
+
+.home-content h3{
+  color: #ddd;
+  font-size: 47px;
+  font-family: 'Philosopher';
+}
+
+.github {
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+.github a{
+  font-size: 25px;
+  color: #000 !important;
+}
+
+.github a:hover{
+  text-decoration: none !important;
+}
