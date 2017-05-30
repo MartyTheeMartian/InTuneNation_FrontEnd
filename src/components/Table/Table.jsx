@@ -19,7 +19,7 @@ class Table extends Component {
   converter = (array) => {
     return JSON.parse(array).map((ele) => {
       return "Octave " + this.props.getNoteAndOctave(ele)["octave"] + "_" +this.props.getNoteAndOctave(ele)["note"] + ' | ' ;
-    }).toString().slice(0, -2);
+    }).toString().slice(0, -2).replace(/,/g , "")
   }
 
   renderList = (list) => (list.map((item, index) => (

@@ -12,6 +12,7 @@ import Table from '../Table/Table.jsx';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import { BarGroupTooltip } from 'react-d3-tooltip'
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
@@ -31,10 +32,11 @@ class Profile extends Component {
     return () => this.props.loadPastExercisesData(this.state.userID);
   }
   graph = () => {
-    // console.log('what is this.props.graphData.columns  ', this.props.graphData.columns);
     if (this.props.graphData !== "user hasn't sing yet") {
       return <div className="center-warning">
-        <C3Chart data={this.props.graphData}/></div>
+        {/* <div id="chart"></div> */}
+        <C3Chart data={ {columns: this.props.graphData.columns} } axis={{axis:this.props.graphData.axis}}/>
+      </div>
     } else {
       return <div className="center-warning">
         <a href='#' className="thumbnail" style={{'background': '#e6ecff' }} >
@@ -67,7 +69,7 @@ class Profile extends Component {
 
             <div className="col-md-2"/>
             <div className="col-md-8">
-              <div className="alert alert alert-info" role="alert">Oh snap! Please Log Into Your Account
+              <div className="alert alert alert-info" role="alert"> Please Log Into Your Account to in order to use this feature.
               </div>
               <div>
                 <img src={musicNoteMusic} height={400} width={800} alt={''}/>
@@ -117,13 +119,22 @@ class Profile extends Component {
 
             <br/>
               {/* <div/> */}
-              {this.graph()}
+
 
             </div>
             <div className="col-md-2 "></div>
           </div>
         </div>
-        <div className="profileBottom">
+        <div className="row">
+          <div className="col-md-6">
+            {this.graph()}
+          </div>
+          <div className="col-md-6">
+
+          </div>
+
+        </div>
+        <div className="profileBottom row">
           <div className="col-md-4">
             <div>
               <section>

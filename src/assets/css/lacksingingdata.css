@@ -1,9 +1,9 @@
 .center-warning {
   display: block;
-
+  margin-top:0px;
   width: 800px;
   height: 500px;
-  padding-top: 250px;
+  padding-top: 50px;
 }
 
 .center-warning a {
