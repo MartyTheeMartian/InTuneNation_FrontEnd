@@ -13,7 +13,7 @@ const graphDataReducer = (state = initialState.graphData, action) => {
       // })
       console.log('what is d3Format', d3Format);
       if(d3Format.length === 0){
-        return "user hasn't sing yet";
+        return "The user has not sung this exercise before.";
       } else {
 
         return {
