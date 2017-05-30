@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { userID: localStorage.getItem('userId' };
+    this.state = { userID: localStorage.getItem('userId') };
   }
 
   handleClick(e) {
@@ -67,8 +67,7 @@ class Profile extends Component {
 
             <div className="col-md-2"/>
             <div className="col-md-8">
-              <div className="alert alert alert-info" role="alert"> Please Log Into Your Account to in order to use this feature.
-              </div>
+              <div className="alert alert-info" role="alert"> Please Log Into Your Account</div>
               <div>
                 <img src={musicNoteMusic} height={400} width={800} alt={''}/>
               </div>

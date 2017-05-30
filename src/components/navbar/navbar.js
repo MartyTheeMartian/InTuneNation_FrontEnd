@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
-import LogIn from '../logIn/logIn';
-import SignUp from '../signUp/signUp';
+import LogIn from '../logIn/logIn.js';
+import SignUp from '../signUp/signUp.js';
 // import music from '../../assets/img/music.jpg'
 // import profile from '../../assets/img/profile-icon.png'
 
@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 class NavBar extends Component {
 
   render() {
-
     return (
       <Navbar collapseOnSelect>
         <Navbar.Header>
