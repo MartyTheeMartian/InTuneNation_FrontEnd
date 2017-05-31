@@ -29,8 +29,8 @@ class TargetNoteIndicator extends Component {
   render() {
     return (
       <div className="col-sm-3 col-md-3 col-xs-4">
-        <div className="thumbnail">
-          <div className="caption">
+        <div className="thumbnail noteScoreIndicatorsBorder">
+          <div className="noteScoreIndicatorsText">
             <h4>Target Notes</h4>
             {/* <div style={style}>
               <h2>{_renderKeyEventNotesAsTargetNotes(this.props.keyStrokeEvents)}</h2>
