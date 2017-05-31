@@ -13,10 +13,10 @@ class ScoreBox extends Component {
   render() {
     return (
       <div className="col-sm-3 col-md-3 col-xs-4">
-        <div className="thumbnail">
+        <div className="thumbnail noteScoreIndicatorsBorder noteScoreIndicatorsText">
           <div className="caption">
-            <h4>Current Score</h4>
-            <h3>{this.props.currentScore}</h3>
+            <h4 className="noteScoreIndicatorsText">Current Score</h4>
+            <h3 className="noteScoreIndicatorsText">{this.props.currentScore}</h3>
           </div>
         </div>
       </div>

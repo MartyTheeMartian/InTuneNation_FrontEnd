@@ -29,8 +29,8 @@ class NoteIndicator extends Component {
   render() {
     return (
       <div className="col-sm-3 col-md-3 col-xs-4">
-        <div className="panel panel-default">
-          <div className="panel-heading">
+        <div className="panel panel-default noteScoreIndicatorsBorder">
+          <div className="caption noteScoreIndicatorsText">
             <h4>Current Note</h4>
           </div>
           <div className="panel-body">
