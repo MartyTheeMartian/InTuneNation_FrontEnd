@@ -9,7 +9,7 @@ import { Route, Redirect } from 'react-router-dom';
 const mapStateToProps = (state) => {
   return {
     success: state.loginReducer.loginSuccess,
-    errMsg: state.loginReducer.statusText,
+    errMsg: state.loginReducer.data,
     userId: state.loginReducer.id
   }; };
 
