@@ -28,9 +28,6 @@ class Home extends Component {
           </div>
           {/* <h3 className="text-center">Sing In The Moment</h3> */}
         </div>
-        <div className="github">
-          <a href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md">Checkout Out Our GitHub ReadMe!!</a>
-        </div>
 
       </div>
     );

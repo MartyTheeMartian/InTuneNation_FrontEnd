@@ -131,30 +131,6 @@ class Profile extends Component {
           </div>
 
         </div>
-        <div className="profileBottom row">
-          <div className="col-md-4">
-            <div>
-              <section>
-                <h3><span>Read more about us here</span></h3>
-              </section>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div>
-              <section>
-                <h3><span>Read more about us here</span></h3>
-              </section>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div>
-              <section>
-                <h3><span>Read more about us here</span></h3>
-              </section>
-            </div>
-          </div>
-
-        </div>
       </div>
       );
     }

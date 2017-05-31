@@ -41,10 +41,10 @@ class CaptureButtons extends Component {
     return (
       <div className="row">
           <div className="col-md-4 col-sm-6 col-xs-5">
-            <button onClick={this.handleSingClick} className="btn btn-primary btn-lg active" disabled={this.getDisabled()}>{this.props.singText}</button>
+            <button onClick={this.handleSingClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
           <div className="col-md-4 col-sm-6 col-xs-5">
-            <button onClick={this.handleResetClick} className="btn btn-primary btn-lg active" disabled={this.props.resetDisabled} >Reset</button>
+            <button onClick={this.handleResetClick} className="btn btn-lg active captureBox" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>
     );
