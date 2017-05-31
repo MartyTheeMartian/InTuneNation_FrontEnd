@@ -12,13 +12,15 @@ import Table from '../Table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { BarGroupTooltip } from 'react-d3-tooltip'
-
+import { BarChart } from 'react-d3/barchart';
+import rd3 from 'react-d3';
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   loadPastExercisesData
 }, dispatch);
+
+
 
 class Profile extends Component {
   constructor(props) {
