@@ -8,6 +8,7 @@ import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
+// import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +28,8 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 class Interface extends Component {
   render() {
     return (
-      <div className="container">
+      <div id="keyboardBackground" className="container">
+        <div id="keyboardBackground" className="container"></div>
         <OctaveButtons />
         <div className="row">
           <Piano />

@@ -1,0 +1,59 @@
+@font-face { font-family: DDCHardwareCondensed; src: url('../../../public/assets/fonts/DDCHardware-Condensed.otf'); }
+@font-face { font-family: OpenSans; font-weight: normal; src: url('../../../public/assets/fonts/OpenSans-Regular.ttf') }
+@font-face { font-family: OpenSans-Bold; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-Regular.ttf') }
+@font-face { font-family: OpenSans-SemiboldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-SemiboldItalic.ttf') }
+@font-face { font-family: OpenSans-BoldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-BoldItalic.ttf') }
+
+
+#keyboardBackground {
+  background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
+  repeat: no-repeat;
+  height: 10%;
+  float: left;
+}
+
+.captureBox {
+  border-radius: 8px;
+  background-color: #b94ad5;
+  font-family: DDCHardwareCondensed;
+  font-size: 50px;
+  color: white;
+  float: right;
+}
+
+#octRow {
+  margin-bottom: 15px;
+}
+
+.noteScoreIndicatorsBorder {
+  border: 3px #486aee solid;
+  border-radius: 15px;
+}
+
+.noteScoreIndicatorsText {
+  font-family: OpenSans-Bold;
+  color: #486aee;
+}
+
+.octaveButtons {
+  font-family: OpenSans-BoldItalic;
+  font-weight: bold;
+  background-color: white;
+  border: 3px solid #1cd1fc;
+  border-radius: 8px;
+  font-size: 23px;
+}
+
+#gauge {
+  background-color: white;
+  border: 3px solid #1cd1fc;
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px 8px 8px 8px;
+}
+
+#indicatorRow {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

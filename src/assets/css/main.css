@@ -1,15 +1,25 @@
 @import url('signInModal.css');
 @import url('signUpModal.css');
 @import url('SignUpLogIn.css');
-@import url('narBar.css');
-@import url('profilewarning.css');
+@import url('navBar.css');
+@import url('home.css');
+@import url('interface.css');
+@import url('lacksingingdata.css');
+@import url('profileBottom.css');
+@import url('thumbnailSection.css');
+@import url('profileWarning.css');
+
+/* fonts */
+
+@font-face { font-family: DDCHardwareCondensed; src: url('../../../public/assets/fonts/DDCHardware-Condensed.otf'); }
+@font-face { font-family: OpenSans; font-weight: normal; src: url('../../../public/assets/fonts/OpenSans-Regular.ttf') }
+@font-face { font-family: OpenSans-Bold; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-Regular.ttf') }
+@font-face { font-family: OpenSans-SemiboldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-SemiboldItalic.ttf') }
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: url('../../../public/home-wallpaper.jpg');
-  background-repeat: repeat-x;
 }
 
 footer {
@@ -41,8 +51,10 @@ h2, h3, h4, h5 {
   width: 100%
 }
 
-#title {
-  margin-top: 120px;
+#logo {
+  font-family: DDCHardwareCondensed;
+  font-size: 30px;
+  color: black;
 }
 
 .white-key {
@@ -130,16 +142,20 @@ h2, h3, h4, h5 {
   padding: 0px;
 }
 
-#octRow {
+/*#octRow {
   margin-bottom: 15px;
 }
 
 #gauge {
+  background-color: white;
+  border: 3px solid #1cd1fc;
+  border-radius: 15px;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 8px 8px 8px 8px;
 }
 
 #indicatorRow {
   margin-top: 20px;
   margin-bottom: 20px;
-}
+}*/

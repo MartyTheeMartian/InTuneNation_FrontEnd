@@ -7,7 +7,7 @@ const config = {
 
 export const loadPastExercisesData = (user_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
-  let data = axios.get(API_URL, config)
+  let data = axios.get(API_URL, config);
   return {
     type: 'PAST_EXERCISES_TABLE_RUN',
     payload: data
@@ -15,8 +15,7 @@ export const loadPastExercisesData = (user_id) => {
 }
 export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
-  let data = axios.get(API_URL, config)
-
+  let data = axios.get(API_URL, config);
   return {
     type: 'ALL_INTONATION_PER_EXERCISE',
     payload: data
@@ -25,7 +24,7 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
 
 export const postSignUp = (user) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
-  let data = axios.post(API_URL, user, config)
+  let data = axios.post(API_URL, user, config);
   return {
     type: 'USER_SIGN_UP',
     payload: data
