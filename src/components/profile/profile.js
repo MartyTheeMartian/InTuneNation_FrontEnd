@@ -12,9 +12,15 @@ import Table from '../Table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import {BarChart} from 'react-d3/barchart';
 import rd3 from 'react-d3';
+import {BarChart} from 'react-d3/barchart';
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
+
+const barData = [
+  {label: 'A', value: 5},
+  {label: 'B', value: 6},
+  {label: 'F', value: 7}
+];
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   loadPastExercisesData
@@ -30,6 +36,9 @@ class Profile extends Component {
 
   handleClick(e) {
     return () => this.props.loadPastExercisesData(this.state.userID);
+  }
+  loadExercise = () => {
+    return this.props.loadPastExercisesData(this.state.userID)();
   }
   graph = () => {
     console.log('what is props',this.props.graphData );
@@ -100,9 +109,18 @@ class Profile extends Component {
                     </div>
                   </div>
                   <div>
-                    <button onClick={this.handleClick()} className="btn btn-danger">
+                  {  <button onClick={this.handleClick()} className="btn btn-danger">
                       Check Past Exercises
-                    </button>
+                    </button> }
+                  </div>
+                  <div>
+                    {/* <BarChart
+                      data={barData}
+                      width={500}
+                      height={200}
+                      fill={'#3182bd'}
+                      title='Bar Chart'
+                    /> */}
                   </div>
                   {/* <input type="file" onClick={this.uploadFile}>
                   <img src={this.state.image}></img>
