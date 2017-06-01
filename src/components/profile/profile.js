@@ -12,7 +12,7 @@ import Table from '../Table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { BarChart } from 'react-d3/barchart';
+import {BarChart} from 'react-d3/barchart';
 import rd3 from 'react-d3';
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
@@ -20,26 +20,30 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   loadPastExercisesData
 }, dispatch);
 
-
-
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { userID: localStorage.getItem('userId') };
+    this.state = {
+      userID: localStorage.getItem('userId')
+    };
   }
 
   handleClick(e) {
     return () => this.props.loadPastExercisesData(this.state.userID);
   }
   graph = () => {
-    if (this.props.graphData !== "The user has not sung this exercise before.") {
+    console.log('what is props',this.props.graphData );
+    if (this.props.graphData.length !== 0) {
       return <div className="center-warning">
-        {/* <div id="chart"></div> */}
-        <C3Chart data={ {columns: this.props.graphData.columns} } axis={{axis:this.props.graphData.axis}}/>
+        <C3Chart data={{
+          columns: this.props.graphData.columns
+        }} axis={this.props.graphData.axis}/>
       </div>
-    } else {
+    } else  {
       return <div className="center-warning">
-        <a href='#' className="thumbnail" style={{'background': '#e6ecff' }} >
+        <a href='#' className="thumbnail" style={{
+          'background': '#e6ecff'
+        }}>
           <h3>Cannot find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
           </h3>
         </a>
@@ -47,7 +51,7 @@ class Profile extends Component {
     }
   }
 
-  uploadFile(e){
+  uploadFile(e) {
     // e.preventDefault();
     // cloudinary.openUploadWidget(
     //   { cloud_name: 'kevinawesome',
@@ -69,7 +73,8 @@ class Profile extends Component {
 
             <div className="col-md-2"/>
             <div className="col-md-8">
-              <div className="alert alert-info" role="alert"> Please Log Into Your Account
+              <div className="alert alert-info" role="alert">
+                Please Log Into Your Account
               </div>
               <div>
                 <img src={musicNoteMusic} height={400} width={800} alt={''}/>
@@ -83,58 +88,49 @@ class Profile extends Component {
     } else {
       return (
         <div>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-2" >
-              <div className="thumbnailSection">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-2">
+                <div className="thumbnailSection">
 
-                <div className="thumbnail">
-                  <img src={mathew} alt=".."/>
-                  <div className="caption">
-                    <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+                  <div className="thumbnail">
+                    <img src={mathew} alt=".."/>
+                    <div className="caption">
+                      <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <button onClick={this.handleClick()} className="btn btn-danger">
-                    Check Past Exercises
-                  </button>
-                </div>
-                {/* <input type="file" onClick={this.uploadFile}>
+                  <div>
+                    <button onClick={this.handleClick()} className="btn btn-danger">
+                      Check Past Exercises
+                    </button>
+                  </div>
+                  {/* <input type="file" onClick={this.uploadFile}>
                   <img src={this.state.image}></img>
                 </input> */}
-                {/* <div>
+                  {/* <div>
                   ImageDropping Area
                 <Dropzone onDrop={ this.uploadFile.bind(this) }/>
                 </div> */}
+                </div>
               </div>
-            </div>
-            <div className="col-md-8">
-              <div className="pastExercise">
-
-
-            </div>
-              <div>
-                <Table/>
+              <div className="col-md-8">
+                <div className="pastExercise"></div>
+                <div>
+                  <Table/>
+                </div>
+                <br/>
               </div>
-
-            <br/>
-              {/* <div/> */}
-
-
+              <div className="col-md-2 "></div>
             </div>
-            <div className="col-md-2 "></div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              {this.graph()}
+            </div>
+            <div className="col-md-6"></div>
+
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-6">
-            {this.graph()}
-          </div>
-          <div className="col-md-6">
-
-          </div>
-
-        </div>
-      </div>
       );
     }
   }
