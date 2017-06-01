@@ -34,21 +34,30 @@ class Profile extends Component {
     };
   }
 
-  handleClick(e) {
-    return () => this.props.loadPastExercisesData(this.state.userID);
-  }
-  loadExercise = () => {
-    return this.props.loadPastExercisesData(this.state.userID)();
-  }
+  // handleClick(e) {
+  //   return () => this.props.loadPastExercisesData(this.state.userID);
+  // }
+  // loadExercise = () => {
+  //   return this.props.loadPastExercisesData(this.state.userID)();
+  // }
+  componentWillMount = () => {
+    this.props.loadPastExercisesData(this.state.userID);
+  };
   graph = () => {
     console.log('what is props',this.props.graphData );
-    if (this.props.graphData.length !== 0) {
+    console.log('what is props.graphData', this.props.graphData);
+    if (this.props.graphData === null){
+      return <div></div>;
+    }
+    else if (this.props.graphData.length !== 0) {
       return <div className="center-warning">
         <C3Chart data={{
+          unload: true,
           columns: this.props.graphData.columns
         }} axis={this.props.graphData.axis}/>
       </div>
-    } else  {
+    }
+    else  {
       return <div className="center-warning">
         <a href='#' className="thumbnail" style={{
           'background': '#e6ecff'
@@ -67,6 +76,7 @@ class Profile extends Component {
     //     upload_preset: 'musicapp',
     //     theme: 'minimal' },
     //   (error, imageInfo) => {
+    //     console.log(error);
     //     if(error === null){
     //       let cloud_url=imageInfo[0].url;
     //       this.setState({image:cloud_url});
@@ -105,14 +115,18 @@ class Profile extends Component {
                   <div className="thumbnail">
                     <img src={mathew} alt=".."/>
                     <div className="caption">
-                      <h3>{this.props.user.firstName} {this.props.user.lastName}</h3>
+                      <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
+
                     </div>
                   </div>
+
                   <div>
-                  {  <button onClick={this.handleClick()} className="btn btn-danger">
+                  {/* {  <button onClick={this.handleClick()} className="btn btn-danger">
                       Check Past Exercises
-                    </button> }
+                    </button> } */}
+                    {/* {this.props.loadPastExercisesData(this.state.userID)()} */}
                   </div>
+
                   <div>
                     {/* <BarChart
                       data={barData}
@@ -142,10 +156,11 @@ class Profile extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
               {this.graph()}
             </div>
-            <div className="col-md-6"></div>
+            <div className="col-md-2"></div>
 
           </div>
         </div>
