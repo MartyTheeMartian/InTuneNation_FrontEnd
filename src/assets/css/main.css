@@ -7,7 +7,6 @@
 @import url('lacksingingdata.css');
 @import url('profileBottom.css');
 @import url('thumbnailSection.css');
-@import url('profileWarning.css');
 
 /* fonts */
 
@@ -41,6 +40,10 @@ h1 {
 
 h2, h3, h4, h5 {
   text-align: center;
+}
+
+#title {
+  margin-top: 120px;
 }
 
 #nav {
@@ -136,6 +139,11 @@ h2, h3, h4, h5 {
   margin-left: 7px;
   margin-right: 7px;
   padding: 0px;
+}
+
+#profileWarning {
+   width: 48px;
+   height: 48px;
 }
 
 /*#octRow {
