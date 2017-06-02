@@ -10,26 +10,11 @@ import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
 // import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
-const mapStateToProps = (state) => {
-  return {
-    keyStrokeEvents: state.keyStrokeEventsReducer,
-    vocalInputResults: state.vocalInputResultsReducer,
-    exerciseScores: state.exerciseScoresReducer,
-    greenTime: state.greenTimeReducer,
-    targetNote: state.targetNoteReducer,
-    targetNoteIndex: state.targetNoteIndexReducer,
-    sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatusReducer,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class Interface extends Component {
   render() {
     return (
-      <div id="keyboardBackground" className="container">
-        <div id="keyboardBackground" className="container"></div>
+      <div className="container">
         <OctaveButtons />
         <div className="row">
           <Piano />
@@ -46,4 +31,4 @@ class Interface extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Interface);
+export default Interface;
