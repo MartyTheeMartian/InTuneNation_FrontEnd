@@ -5,7 +5,6 @@ import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('what is user dashboard',state.dashboard);
   return { list: state.dashboard, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
 
