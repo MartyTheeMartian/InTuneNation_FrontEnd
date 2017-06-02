@@ -141,6 +141,11 @@ h2, h3, h4, h5 {
   padding: 0px;
 }
 
+#profileWarning {
+   width: 48px;
+   height: 48px;
+}
+
 /*#octRow {
   margin-bottom: 15px;
 }
