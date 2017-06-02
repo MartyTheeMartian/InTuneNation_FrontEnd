@@ -34,18 +34,11 @@ class Profile extends Component {
     };
   }
 
-  // handleClick(e) {
-  //   return () => this.props.loadPastExercisesData(this.state.userID);
-  // }
-  // loadExercise = () => {
-  //   return this.props.loadPastExercisesData(this.state.userID)();
-  // }
   componentWillMount = () => {
     this.props.loadPastExercisesData(this.state.userID);
   };
+
   graph = () => {
-    console.log('what is props',this.props.graphData );
-    console.log('what is props.graphData', this.props.graphData);
     if (this.props.graphData === null){
       return <div></div>;
     }
@@ -59,7 +52,7 @@ class Profile extends Component {
     }
     else  {
       return <div className="center-warning">
-        <a href='#' className="thumbnail" style={{
+        <a href='/interface' className="thumbnail" style={{
           'background': '#e6ecff'
         }}>
           <h3>Cannot find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
@@ -121,13 +114,6 @@ class Profile extends Component {
                   </div>
 
                   <div>
-                  {/* {  <button onClick={this.handleClick()} className="btn btn-danger">
-                      Check Past Exercises
-                    </button> } */}
-                    {/* {this.props.loadPastExercisesData(this.state.userID)()} */}
-                  </div>
-
-                  <div>
                     {/* <BarChart
                       data={barData}
                       width={500}
@@ -161,7 +147,6 @@ class Profile extends Component {
               {this.graph()}
             </div>
             <div className="col-md-2"></div>
-
           </div>
         </div>
       );
