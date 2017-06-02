@@ -94,7 +94,7 @@ class TuningIndicator extends Component {
       ],
     };
     return (
-      <div className="col-lg-4 col-md-5 col-sm-8 col-xs-12 ">
+      <div>
         <div id="gauge">
           <ReactGauge {...options} />
         </div>

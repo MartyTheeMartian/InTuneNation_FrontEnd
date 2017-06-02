@@ -26,7 +26,7 @@ class PPP extends Component {
         <div className="App">
           <Route path="/" component={NavBar} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/interface" component={Interface} />
+          <Route exact path="/interface" component={Interface} id="keyboardBackground"/>
           <Route exact path="/profile" component={Profile} />
           {/* <Route exact path="/community" component={Community} /> */}
           {/* <Route path="/" component={Footer} /> */}

@@ -53,8 +53,15 @@ h2, h3, h4, h5 {
   color: black;
 }
 
+#githubLink {
+  margin-top: 14px;
+  text-decoration: none;
+  color: #777;
+}
+
 .white-key {
   height: 260px;
+  width: 70px;
   border: 1px solid #000000;
   background-color: #ffffff;
   z-index: 1;
@@ -62,6 +69,7 @@ h2, h3, h4, h5 {
 
 .black-key {
   height: 160px;
+  width: 60px;
   border: 1px solid #ffffff;
   border-top: 1px solid #000000;
   background-color: #000000;
@@ -71,7 +79,6 @@ h2, h3, h4, h5 {
 }
 
 .black-key, .white-key {
-  width: 70px;
   vertical-align: top;
   position: relative;
   cursor: pointer;

@@ -4,7 +4,7 @@ import {Thumbnail, Col, Row, Grid} from 'react-bootstrap';
 import C3Chart from 'react-c3js';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import ExerciseCardList from './exerciseCardList';
+// import ExerciseCardList from './exerciseCardList';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
 import {loadPastExercisesData} from '../../actions';
