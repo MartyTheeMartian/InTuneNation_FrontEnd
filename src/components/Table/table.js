@@ -35,12 +35,12 @@ class Table extends Component {
   )));
 
   render() {
-    // if (this.props.list.length === 0) {
-    //   return (
-    //     <div className="alert alert-info">
-    //       Table Will Show After You Click 'Check Past Exercises'</div>
-    //   );
-    // } else {
+    if (this.props.list.length === 0) {
+      return (
+        <div className="alert alert-info">
+          Table Will Show After You Click 'Check Past Exercises'</div>
+      );
+    } else {
       return (
         <table className="table table-bordered table-striped"
           style={{ "border": "4px solid #ffe6e6" }}>
@@ -73,7 +73,7 @@ class Table extends Component {
           </tbody>
         </table>
       );
-    // }
+    }
   }
 }
 
