@@ -117,7 +117,5 @@ export default getUserMedia({ video: false, audio: true })
         }
         // console.log(getPreciseNotePlusCentDiffPlusFreq(freq));
       }
-    }).catch((error) => {
-      console.log(error);
     });
   });

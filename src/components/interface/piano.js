@@ -63,7 +63,7 @@ class Piano extends Component {
 
   render() {
     return (
-      <div className="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+      <div>
         <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
         <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
         <div onClick={() => this.handleClick('D')} className="white-key" ></div>
