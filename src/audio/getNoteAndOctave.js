@@ -1,5 +1,4 @@
 function getNoteAndOctave( keyNum ) {
-  console.log('did i get here? kevin');
   let noteObj = {};
   if (keyNum >= 28 && keyNum <= 39) {
     noteObj['octave'] = 3;
