@@ -26,11 +26,11 @@ class Table extends Component {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
     }}>
       <td>
-        <h4>{index + 1}</h4>
+        <h5>{index + 1}</h5>
       </td>
-      <td><h4>{item.id}</h4></td>
-      <td><h4>{this.converter(item.notes_array)}</h4></td>
-      <td><h4>{item.created_at}</h4></td>
+      <td><h5>{item.id}</h5></td>
+      <td><h5>{this.converter(item.notes_array)}</h5></td>
+      <td><h5>{item.created_at}</h5></td>
     </tr>
   )));
 
@@ -47,24 +47,24 @@ class Table extends Component {
           <thead>
             <tr>
               <th>
-                <h4>
+                <h5>
                 ID
-              </h4>
+              </h5>
               </th>
               <th>
-                <h4>
+                <h5>
                 Exercise ID
-              </h4>
+              </h5>
               </th>
               <th>
-                <h4>
+                <h5>
                 Note Array
-              </h4>
+              </h5>
               </th>
               <th>
-                <h4>
+                <h5>
                 Time Stamp
-              </h4>
+              </h5>
               </th>
             </tr>
           </thead>
