@@ -23,7 +23,7 @@ const renderKeyEventNotesAsTargetNotes = (keyEvents, targetNoteIndex) => {
       return <li>{ item.noteName }</li>;
     });
   }
-}
+};
 
 class TargetNoteIndicator extends Component {
   render() {
