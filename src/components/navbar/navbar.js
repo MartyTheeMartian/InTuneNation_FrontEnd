@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
-import LogIn from '../logIn/logIn';
-import SignUp from '../signUp/signUp';
+import LogIn from '../logIn/logIn.js';
+import SignUp from '../signUp/signUp.js';
 // import music from '../../assets/img/music.jpg'
 // import profile from '../../assets/img/profile-icon.png'
 
@@ -17,17 +17,16 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 class NavBar extends Component {
 
   render() {
-
     return (
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <span className="navbar-left">InTuneNation</span>
+            <span id="logo" className="navbar-left">InTuneNation</span>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav>
+          <Nav pullRight>
             <LinkContainer exact to="/">
               <NavItem href="#">Home</NavItem>
             </LinkContainer>
@@ -37,19 +36,10 @@ class NavBar extends Component {
             </LinkContainer>
 
             <LinkContainer to="/profile">
-              <NavItem href="#">
-                Profile</NavItem>
+              <NavItem href="#">Profile</NavItem>
             </LinkContainer>
 
-            {/* <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Sign up</MenuItem>
-              <MenuItem eventKey={3.2}>Log in</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider/>
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown> */}
-          </Nav>
-          <Nav pullRight>
+            <NavItem href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md"><a href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md">GitHub</a></NavItem>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
             <NavItem id="signButton" href="" data-toggle="modal" data-target="#myModal1">
               <span className="navbar-right">Sign Up</span>
