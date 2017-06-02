@@ -1,5 +1,4 @@
 import teoria from 'teoria';
-import axios from 'axios';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
 
@@ -78,7 +77,7 @@ export default getUserMedia({ video: false, audio: true })
           frequency: freq,
           name: getNameAccidentalOctave(freq),
           centDiff: getCentDiff(freq),
-          arrowValue: ((180*((getCentDiff(freq) + 50)/100))/180),
+          arrowValue: ((180 * ((getCentDiff(freq) + 50) / 100)) / 180),
         };
         dispatch(setSungNote(sungNote));
         const keyEvents = getState().keyEventsReducer;
@@ -92,7 +91,7 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            const userId = localStorage.getItem('userId');
+            const userId = parseInt(localStorage.getItem('userId'), 10);
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
@@ -109,9 +108,9 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(3));
+              dispatch(decrementScore(2));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(1));
+              dispatch(decrementScore(.5));
             }
           }
         }
