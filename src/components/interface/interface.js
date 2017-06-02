@@ -11,20 +11,6 @@ import ScoreBox from './scoreBox';
 import { Col, Grid, Row } from 'react-bootstrap';
 // import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
-const mapStateToProps = (state) => {
-  return {
-    keyStrokeEvents: state.keyStrokeEventsReducer,
-    vocalInputResults: state.vocalInputResultsReducer,
-    exerciseScores: state.exerciseScoresReducer,
-    greenTime: state.greenTimeReducer,
-    targetNote: state.targetNoteReducer,
-    targetNoteIndex: state.targetNoteIndexReducer,
-    sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatusReducer,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class Interface extends Component {
   render() {
@@ -78,4 +64,4 @@ class Interface extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Interface);
+export default Interface;
