@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
 import {loadPastExercisesData} from '../../actions';
-import Table from '../Table/Table';
+import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
