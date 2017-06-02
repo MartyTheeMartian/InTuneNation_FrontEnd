@@ -92,7 +92,7 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            const userId = localStorage.getItem('userId');
+            const userId = parseInt(localStorage.getItem('userId'));
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
