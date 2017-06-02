@@ -7,25 +7,24 @@ const mapStateToProps = (state) => {
   return {
     currentNote: state.currentNoteReducer,
     octave: state.octaveReducer.current,
-    keyStrokeEvents: state.keyStrokeEvents,
     vocalInputResults: state.vocalInputResults,
-    exerciseScores: state.exerciseScores,
-    greenTime: state.greenTime,
-    targetNote: state.targetNote,
-    targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNoteReducer,
     recordingStatus: state.recordingStatus,
   };
 };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
-
-const renderSungNote = (note) => {
-  if (note === undefined) { return "Start singing!"; }
-  return note.name;
-};
+// const renderSungNote = (note) => {
+//   if (note === undefined) { return "Start singing!"; }
+//   return note.name;
+// };
 
 class NoteIndicator extends Component {
+
+  renderSungNote = (note) => {
+    if (note === undefined) { return "Start singing!"; }
+    return note.name;
+  }
+
   render() {
     return (
       <div>
@@ -34,13 +33,12 @@ class NoteIndicator extends Component {
             <h4>Current Note</h4>
           </div>
           <div className="panel-body">
-            <h2>{renderSungNote(this.props.sungNote)}</h2>
+            <h2>{this.renderSungNote(this.props.sungNote)}</h2>
             <h2>{this.props.currentNote}</h2>
             <li className="list-group-item">
               Octave
                 <span className="badge">{this.props.octave}</span>
               </li>
-
           </div>
         </div>
       </div>
@@ -48,4 +46,4 @@ class NoteIndicator extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteIndicator);
+export default connect(mapStateToProps)(NoteIndicator);

@@ -1,8 +1,7 @@
 .center-warning {
   display: block;
-  margin-top:0px;
-  width: 800px;
-  height: 500px;
+  margin-top:auto;
+  margin-left:auto;
   padding-top: 50px;
 }
 
@@ -10,8 +9,6 @@
   text-decoration: none !important;
   border-radius: 10px !important;
   border-width: 3px !important;
-  width: 1000px !important;
-  height:75px;
 }
 
 .pastExercise {
