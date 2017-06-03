@@ -97,7 +97,7 @@ class SignUp extends Component {
     }
     else {
       return (
-        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="myModal1" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="signUp" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="signup-modal">
@@ -129,7 +129,7 @@ class SignUp extends Component {
                   </div>
 
                   <div className="signup-modal-foot-btn">
-                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
+                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit">
                       <h5>Sign Up</h5>
                     </button>
                     <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">

@@ -15,7 +15,7 @@ import Community from './components/profile/community';
 
 // import { connect } from 'react-redux';
 // import { Grid, Col } from 'react-bootstrap';
-import './App.css';
+import './app.css';
 
 
 class PPP extends Component {
