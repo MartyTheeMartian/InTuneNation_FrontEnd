@@ -90,7 +90,7 @@ class LogIn extends Component {
     else {
 
       return (
-        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
@@ -117,11 +117,11 @@ class LogIn extends Component {
                     <Field name="password" component="input" type="password" placeholder="Password" className="signin-modal-content-detail" required/>
                   </div>
                   <div className="signin-modal-foot-btn">
-                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit">
+                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
                       <h5>Log In</h5>
                     </button>
                     <div className="signin-modal-foot-btn">
-                      <button onClick={this.redirect} type="button" className="btn btn-default  " data-dismiss="modal">
+                      <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
                         <h5>Close</h5>
                       </button>
                     </div>

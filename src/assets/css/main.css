@@ -1,6 +1,6 @@
 @import url('signInModal.css');
 @import url('signUpModal.css');
-@import url('SignUpLogIn.css');
+@import url('signUpLogIn.css');
 @import url('navBar.css');
 @import url('home.css');
 @import url('interface.css');
@@ -54,12 +54,6 @@ h2, h3, h4, h5 {
   font-family: DDCHardwareCondensed;
   font-size: 30px;
   color: black;
-}
-
-.githubLink {
-  margin-top: 14px;
-  text-decoration: none;
-  color: #777;
 }
 
 .white-key {
