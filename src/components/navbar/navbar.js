@@ -10,11 +10,21 @@ import SignUp from '../signUp/signUp.js';
 // import profile from '../../assets/img/profile-icon.png'
 
 
-const mapStateToProps = (state) => { return state; };
+const mapStateToProps = (state) => {
+  return {
+    logIn: state.loginReducer.loginSuccess
+  };
+};
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class NavBar extends Component {
+
+  hideButtons = () => {
+
+  }
+
+
 
   render() {
     return (
@@ -39,8 +49,8 @@ class NavBar extends Component {
               <NavItem href="#">Profile</NavItem>
             </LinkContainer>
 
-            <Nav id="githubLink" href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md">
-              <a id="githubLink" href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md">GitHub</a>
+            <Nav className="githubLink">
+              <a className="githubLink" href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md" target="_blank">GitHub</a>
             </Nav>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
             <NavItem id="signButton" href="" data-toggle="modal" data-target="#myModal1">
