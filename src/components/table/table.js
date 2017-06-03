@@ -20,7 +20,15 @@ class Table extends Component {
       return "Octave " + this.props.getNoteAndOctave(ele)["octave"] + "_" +this.props.getNoteAndOctave(ele)["note"] + ' | ' ;
     }).toString().slice(0, -2).replace(/,/g , "")
   }
-
+  convertTime = (time) => {
+    let dateTime = time.split('T');
+    let date = dateTime[0].split('-');
+    let year = date.shift();
+    date.push(year);
+    let resultLeft = date.join('/');
+    return resultLeft;
+    console.log('items.create_at is', resultLeft);
+  }
   renderList = (list) => (list.map((item, index) => (
     <tr onClick={() => {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
@@ -30,7 +38,7 @@ class Table extends Component {
       </td>
       <td><h5>{item.id}</h5></td>
       <td><h5>{this.converter(item.notes_array)}</h5></td>
-      <td><h5>{item.created_at}</h5></td>
+      <td><h5>{this.convertTime(item.created_at)}</h5></td>
     </tr>
   )));
 
