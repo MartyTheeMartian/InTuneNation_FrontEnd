@@ -36,4 +36,5 @@ export default {
   allPastExercises: [],
   currentExerciseId: null,
   graphData: null,
+  dashboard: [],
 };
