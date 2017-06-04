@@ -5,8 +5,9 @@ export default {
     disabled: '',
     resetDisabled: 'disabled'
   },
+  currentPianoNote: '',
   octave: {
-    current: 4,
+    current: 3,
     up: '',
     down: '',
   },
@@ -30,10 +31,9 @@ export default {
     singText: 'Sing',
     disabled: true,
   },
-  user: {},
   loginSuccess: null,
   signupSuccess: null,
   allPastExercises: [],
   currentExerciseId: null,
-  graphData: [],
+  graphData: null,
 };

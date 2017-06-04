@@ -1,9 +1,13 @@
 import initialState from './initialState';
 
-export const currentNoteReducer = (state = '', action) => {
+export const currentPianoNoteReducer = (state = initialState.currentPianoNote, action) => {
   switch (action.type) {
-    case 'CURRENT_NOTE':
+    case 'CURRENT_PIANO_NOTE':
       return action.payload;
+    case 'REMOVE_PIANO_NOTE':
+      return initialState.currentPianoNote;
+    case 'RESET_INTERFACE':
+      return initialState.currentPianoNote;
     default:
       return state;
   }
@@ -28,6 +32,8 @@ export const captureReducer = (state = initialState.capture, action) => {
         };
       }
       break;
+    case 'RESET_INTERFACE':
+      return initialState.capture;
     default:
       return state;
   }

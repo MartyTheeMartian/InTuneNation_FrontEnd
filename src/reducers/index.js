@@ -10,12 +10,12 @@ import scoreReducer from './score';
 import exerciseScoresReducer from './exerciseScores';
 import currentExerciseIdReducer from './currentExerciseId';
 import allPastExercisesReducer from './allPastExercises';
-import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
+import { captureReducer, octaveReducer, currentPianoNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboard from './dashboard';
 import singButtonReducer from './singButton';
-import resetStateReducer from './resetState';
+// import resetStateReducer from './resetState';
 import initialState from './initialState';
 import searchExercise from './searchAllExercises';
 import allScorePerExercise from './allIntonationScorePerExercise';
@@ -23,7 +23,7 @@ import graphDataReducer from './graphData';
 
 const appReducer = combineReducers({
   form: formReducer,
-  currentNoteReducer,
+  currentPianoNoteReducer,
   captureReducer,
   octaveReducer,
   greenTimeReducer,
@@ -46,7 +46,7 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-  let resetState = (JSON.parse(JSON.stringify(initialState)));
+  const resetState = (JSON.parse(JSON.stringify(initialState)));
   if (action.type === 'RESET_STATE') {
     state = resetState;
   }
