@@ -10,7 +10,7 @@ import scoreReducer from './score';
 import exerciseScoresReducer from './exerciseScores';
 import currentExerciseIdReducer from './currentExerciseId';
 import allPastExercisesReducer from './allPastExercises';
-import { captureReducer, octaveReducer, currentNoteReducer } from './interface';
+import { captureReducer, octaveReducer, currentPianoNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboard from './dashboard';
@@ -23,7 +23,7 @@ import graphDataReducer from './graphData';
 
 const appReducer = combineReducers({
   form: formReducer,
-  currentNoteReducer,
+  currentPianoNoteReducer,
   captureReducer,
   octaveReducer,
   greenTimeReducer,

@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
     octave: state.octaveReducer.current,
     up: state.octaveReducer.up,
     down: state.octaveReducer.down,
-    user: state.loginReducer,
     keyEvents: state.keyEventsReducer,
     exerciseId: state.currentExerciseIdReducer,
   };
@@ -29,7 +28,8 @@ class OctaveButtons extends Component {
     if (this.props.disabled === "" && this.props.captureText === "End Capture") {
       const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
       const body = { notes_array: currentKeyNumCombo };
-      this.props.setExerciseId(this.props.user.id, body);
+      const userId = parseInt(localStorage.getItem('userId'), 10);
+      this.props.setExerciseId(userId, body);
     }
   }
 
