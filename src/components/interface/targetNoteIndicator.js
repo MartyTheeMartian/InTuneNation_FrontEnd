@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    currentNote: state.currentNoteReducer,
+    currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
     keyStrokeEvents: state.keyEventsReducer,
     targetNote: state.targetNoteReducer,

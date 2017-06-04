@@ -17,6 +17,8 @@ const greenTimeReducer = (state = initialState.greenTime, action) => {
         accumulated: state.accumulated,
         required: action.amount,
       };
+    case 'RESET_INTERFACE':
+      return initialState.greenTime;
     default:
       return state;
   }

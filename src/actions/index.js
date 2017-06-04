@@ -40,12 +40,18 @@ export const postLogIn = (user) => {
   };
 }
 
-export const currentNote = (note) => {
+export const currentPianoNote = (note) => {
   return {
-    type: 'CURRENT_NOTE',
+    type: 'CURRENT_PIANO_NOTE',
     payload: note,
   };
 };
+
+export const removePianoNote = () => {
+  return {
+    type: 'REMOVE_PIANO_NOTE'
+  }
+}
 
 export const pushKeyEventToArray = (noteObj) => {
 
@@ -126,9 +132,9 @@ export const incrementTargetNoteIndex = () => {
   };
 };
 
-export const resetTargetNoteIndex = () => {
+export const resetInterface = () => {
   return {
-    type: 'RESET_TARGET_NOTE_INDEX',
+    type: 'RESET_INTERFACE',
   };
 };
 
