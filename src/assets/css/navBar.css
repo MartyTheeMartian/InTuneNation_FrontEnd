@@ -12,10 +12,19 @@ float: left;
   font-size: medium;
 }
 
+.githubLink {
+  margin-top: 14px;
+  margin-left: 8px;
+  text-decoration: none;
+  color: #777;
+}
+
 #signButton {
-  padding-bottom: 20px;
+  margin-right: 6px;
+  padding-bottom: 35px;
 }
 
 #logButton {
-  padding-bottom: 20px;
+  margin-right: 6px;
+  padding-bottom: 35px;
 }

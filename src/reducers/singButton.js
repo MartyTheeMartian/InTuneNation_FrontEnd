@@ -4,6 +4,8 @@ export const singButtonReducer = (state = initialState.singButton, action) => {
   switch (action.type) {
     case 'TOGGLE_SING_BUTTON':
       return { singText: 'Sing', disabled: false };
+    case 'RESET_INTERFACE':
+      return initialState.singButton;
     default:
       return state;
   }

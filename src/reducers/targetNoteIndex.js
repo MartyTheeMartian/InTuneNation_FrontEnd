@@ -4,8 +4,8 @@ const targetNoteIndexReducer = (state = initialState.targetNoteIndex, action) =>
   switch (action.type) {
     case 'INCREMENT_TARGET_NOTE_INDEX':
       return state + 1;
-    case 'RESET_TARGET_NOTE_INDEX':
-      return 0;
+    case 'RESET_INTERFACE':
+      return initialState.targetNoteIndex;
     default:
       return state;
   }

@@ -4,18 +4,18 @@ import {
   Route,
   // Link,
 } from 'react-router-dom';
-import Footer from './components/footer/footer';
+// import Footer from './components/footer/footer';
 import NavBar from './components/navbar/navbar';
 import Home from './components/home/home';
 // import SignUp from './components/signUp/signUp.jsx';
 // import LogIn from './components/logIn/logIn';
 import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
-import Community from './components/profile/community';
+// import Community from './components/profile/community';
 
 // import { connect } from 'react-redux';
 // import { Grid, Col } from 'react-bootstrap';
-import './App.css';
+import './app.css';
 
 
 class PPP extends Component {
