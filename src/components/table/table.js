@@ -20,15 +20,17 @@ class Table extends Component {
       return "Octave " + this.props.getNoteAndOctave(ele)["octave"] + "_" +this.props.getNoteAndOctave(ele)["note"] + ' | ' ;
     }).toString().slice(0, -2).replace(/,/g , "")
   }
-  convertTime = (time) => {
-    let dateTime = time.split('T');
-    let date = dateTime[0].split('-');
+  convertTime = (timeStamp) => {
+    let dateTime = timeStamp.split('T');
+    let date = dateTime[0].split('-');//this is year
+    let time = dateTime[1];//this is time
+    let updatedTime = time.slice(0,5);
     let year = date.shift();
     date.push(year);
     let resultLeft = date.join('/');
-    return resultLeft;
-    console.log('items.create_at is', resultLeft);
+    return resultLeft + '\xa0\xa0\xa0' + updatedTime + ' UTC';
   }
+
   renderList = (list) => (list.map((item, index) => (
     <tr onClick={() => {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
@@ -36,19 +38,13 @@ class Table extends Component {
       <td>
         <h5>{index + 1}</h5>
       </td>
-      <td><h5>{item.id}</h5></td>
+      {/* <td><h5>{item.id}</h5></td> */}
       <td><h5>{this.converter(item.notes_array)}</h5></td>
-      <td><h5>{this.convertTime(item.created_at)}</h5></td>
+      <td><h5>{` ${this.convertTime(item.created_at)} ` }</h5></td>
     </tr>
   )));
 
   render() {
-    // if (this.props.list.length === 0) {
-    //   return (
-    //     <div className="alert alert-info">
-    //       Table Will Show After You Click 'Check Past Exercises'</div>
-    //   );
-    // } else {
       return (
         <table className="table table-bordered table-striped"
           style={{ "border": "4px solid #ffe6e6" }}>
@@ -56,22 +52,22 @@ class Table extends Component {
             <tr>
               <th>
                 <h5>
-                ID
+                No. #
               </h5>
               </th>
-              <th>
+              {/* <th>
                 <h5>
                 Exercise ID
               </h5>
-              </th>
+              </th> */}
               <th>
                 <h5>
-                Note Array
+                Exercises
               </h5>
               </th>
               <th>
                 <h5>
-                Time Stamp
+                Creation Date
               </h5>
               </th>
             </tr>
