@@ -17,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
 class Table extends Component {
   converter = (array) => {
     return JSON.parse(array).map((ele) => {
-      return "Octave " + this.props.getNoteAndOctave(ele)["octave"] + "_" +this.props.getNoteAndOctave(ele)["note"] + ' | ' ;
-    }).toString().slice(0, -2).replace(/,/g , "")
+      return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' 🎵  ' + '\xa0' ;
+    }).toString().slice(0, -5).replace(/,/g , "")
   }
   convertTime = (timeStamp) => {
     let dateTime = timeStamp.split('T');
