@@ -35,5 +35,5 @@ export default {
   signupSuccess: null,
   allPastExercises: [],
   currentExerciseId: null,
-  graphData: [],
+  graphData: null,
 };
