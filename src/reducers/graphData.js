@@ -7,7 +7,8 @@ const graphDataReducer = (state = null, action) => {
       const data = action.payload.data;
       let d3Format = data.map((obj, index) => {
         return [
-          `Exercise ${index}`, ...JSON.parse(obj["scores_array"])
+          `Performance #${index + 1}`,
+          ...JSON.parse(obj["scores_array"])
         ];
       });
 
@@ -16,6 +17,7 @@ const graphDataReducer = (state = null, action) => {
       } else {
         return {
           columns: d3Format,
+
           axis: {
             y: {
               label: {
@@ -25,7 +27,6 @@ const graphDataReducer = (state = null, action) => {
             }
           }
         }
-
       };
     default:
       return state;

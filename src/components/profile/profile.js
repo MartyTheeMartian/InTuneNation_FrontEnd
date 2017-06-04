@@ -47,7 +47,7 @@ class Profile extends Component {
         <C3Chart data={{
           unload: true,
           columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis}/>
+        }} axis={this.props.graphData.axis} />
       </div>
     }
     else  {
