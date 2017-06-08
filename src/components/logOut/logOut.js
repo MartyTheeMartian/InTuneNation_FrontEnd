@@ -12,7 +12,7 @@ class LogOut extends Component {
       ...this.state,
       showModal: true,
       focus: false,
-      redirect : false
+      redirect: false,
     };
   }
 

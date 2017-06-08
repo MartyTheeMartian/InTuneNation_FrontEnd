@@ -4,6 +4,7 @@ const signupReducer = (state = { signupSuccess: initialState.signupSuccess }, ac
   switch (action.type) {
     case 'USER_SIGN_UP_FULFILLED':
       localStorage.setItem('token', action.payload.data.token);
+      localStorage.setItem('userId', action.payload.data.id);
       return { ...action.payload.data, signupSuccess: true };
     case 'USER_SIGN_UP_REJECTED':
       return { ...action.payload.response, signupSuccess: false };
