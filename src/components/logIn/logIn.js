@@ -23,7 +23,7 @@ class LogIn extends Component {
     this.state = {
       ...this.state,
       show: true,
-      focus: false,
+      backdrop: false,
       redirect: false,
 
     };
@@ -62,17 +62,17 @@ class LogIn extends Component {
       setTimeout(() => {
         this.setState({
           ...this.state,
-          showModal: false,
-          focus: true
+          show: false,
+          backdrop: true
         });
-      }, 700);
+      }, 300);
 
       setTimeout(() => {
         this.setState({
           ...this.state,
-          force: true
+          redirect: true
         });
-      }, 900);
+      }, 500);
     }
   }
 
@@ -90,7 +90,7 @@ class LogIn extends Component {
     else {
 
       return (
-        <div show={this.state.showModal} backdrop={this.state.focus} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div show={this.state.showModal} backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
