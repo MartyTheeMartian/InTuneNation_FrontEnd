@@ -26,15 +26,16 @@ function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequ
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
+function getKeyNum(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).key() }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
 // function getPreciseNotePlusCentDiffPlusFreq(freq) {
 //   const result = getPreciseNotePlusCentDiff(freq);
 //   return result.concat(freq);
 // }
-function centDiffInRed(cD) { return (cD < -40 && cD > 40); }
-function centDiffInYellow(cD)  { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
-function centDiffInGreen(cD) { return (cD > -15 && cD < 15); }
+// function centDiffInRed(cD) { return (cD < -40 && cD > 40); }
+function centDiffInYellow(cD)  { return ((cD > -50 && cD < -3) || (cD < 50 && cD > 3)); }
+function centDiffInGreen(cD) { return (cD > -3 && cD < 3); }
 
 const green = (targetNoteName, sungNoteName, fq) => {
   return (centDiffInGreen(getCentDiff(fq)) && targetNoteName === sungNoteName);
@@ -48,10 +49,14 @@ const red = (targetNoteName, sungNoteName, fq) => {
   if (targetNoteName !== sungNoteName) {
     return true;
   } else {
-    return centDiffInRed(getCentDiff(fq));
+    return false;
+  //  return centDiffInRed(getCentDiff(fq));
   }
 };
 
+const noteIsUnder = (keyNum, fq) => {
+
+}
 // MICROPHONE INPUT CODE
 export default getUserMedia({ video: false, audio: true })
   .then((stream) => {
@@ -71,19 +76,30 @@ export default getUserMedia({ video: false, audio: true })
       pitch.process();
       const tone = pitch.findTone();
       if (tone) {
+        // define our fq
         const freq = tone.freq;
+        // remove currentPianoNote at beginning of exercise
+        if (getState().currentPianoNoteReducer !== '') { dispatch(removePianoNote()); }
+        // define our target note
+        const keyEvents = getState().keyEventsReducer;
+        const targetNoteIndex = getState().targetNoteIndexReducer;
+        dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]));
+        const targetNote = getState().targetNoteReducer;
+        // correctly calibrate meter arrow for flat, sharp, or approximate readings
+        let offset;
+        if (getKeyNum(freq) < targetNote.keyNum) { offset = -50; }
+        else if (getKeyNum(freq) > targetNote.keyNum) { offset = 50; }
+        else { offset = getCentDiff(freq); }
+        let arrowValue = ((180 * ((offset + 50) / 100)) / 180);
+        // define & set sungNote
         const sungNote = {
           frequency: freq,
           name: getNameAccidentalOctave(freq),
           centDiff: getCentDiff(freq),
-          arrowValue: ((180 * ((getCentDiff(freq) + 50) / 100)) / 180),
+          arrowValue: arrowValue,
         };
-        if (getState().currentPianoNoteReducer !== '') { dispatch(removePianoNote()); }
         dispatch(setSungNote(sungNote));
-        const keyEvents = getState().keyEventsReducer;
-        const targetNoteIndex = getState().targetNoteIndexReducer;
-        dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]));
-        const targetNoteName = getState().targetNoteReducer.tNote;
+        const targetNoteName = targetNote.tNote;
         const sungNoteName = getState().sungNoteReducer.name;
         const greenTime = getState().greenTimeReducer;
         if (greenTime.accumulated === greenTime.required) {
@@ -107,7 +123,7 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(2));
+              dispatch(decrementScore(1.5));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
               dispatch(decrementScore(.5));
             }

@@ -5,11 +5,11 @@ function getFrequencyAndKeyNum(note, octave) {
       case 'C':
         return { frequency: 130.81, keyNum: 28, tNote: 'c3' };
       case 'C#':
-        return { frequency: 138.59, keyNum: 29, tNote: 'c#3' };
+        return { frequency: 138.59, keyNum: 29, tNote: 'db3' };
       case 'D':
         return { frequency: 146.83, keyNum: 30, tNote: 'd3' };
       case 'D#':
-        return { frequency: 155.56, keyNum: 31, tNote: 'd#3' };
+        return { frequency: 155.56, keyNum: 31, tNote: 'eb3' };
       case 'E':
         return { frequency: 164.81, keyNum: 32, tNote: 'e3' };
       case 'F':
@@ -34,11 +34,11 @@ function getFrequencyAndKeyNum(note, octave) {
       case 'C':
         return { frequency: 261.63, keyNum: 40, tNote: 'c4' };
       case 'C#':
-        return { frequency: 277.18, keyNum: 41, tNote: 'c#4' };
+        return { frequency: 277.18, keyNum: 41, tNote: 'db4' };
       case 'D':
         return { frequency: 293.66, keyNum: 42, tNote: 'd4' };
       case 'D#':
-        return { frequency: 311.13, keyNum: 43, tNote: 'd#4' };
+        return { frequency: 311.13, keyNum: 43, tNote: 'eb4' };
       case 'E':
         return { frequency: 329.63, keyNum: 44, tNote: 'e4' };
       case 'F':
@@ -63,11 +63,11 @@ function getFrequencyAndKeyNum(note, octave) {
       case 'C':
         return { frequency: 523.25, keyNum: 52, tNote: 'c5' };
       case 'C#':
-        return { frequency: 554.37, keyNum: 53, tNote: 'c#5' };
+        return { frequency: 554.37, keyNum: 53, tNote: 'db5' };
       case 'D':
         return { frequency: 587.33, keyNum: 54, tNote: 'd5' };
       case 'D#':
-        return { frequency: 622.25, keyNum: 55, tNote: 'd#5' };
+        return { frequency: 622.25, keyNum: 55, tNote: 'eb5' };
       case 'E':
         return { frequency: 659.25, keyNum: 56, tNote: 'e5' };
       case 'F':
