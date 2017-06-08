@@ -22,9 +22,9 @@ class LogIn extends Component {
     super(props);
     this.state = {
       ...this.state,
-      showModal: true,
+      show: true,
       focus: false,
-      force: false,
+      redirect: false,
 
     };
   }
@@ -84,13 +84,13 @@ class LogIn extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
-    if (this.state.force === true) {
+    if (this.state.redirect === true) {
       return <Redirect to="/interface"/>;
     }
     else {
 
       return (
-        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div show={this.state.showModal} backdrop={this.state.focus} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
