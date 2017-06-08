@@ -85,7 +85,7 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
+            <NavItem className="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Sign Up</span>
             </NavItem>
               <SignUp />
@@ -93,7 +93,7 @@ class NavBar extends Component {
               <span className="navbar-right">Log In</span>
             </NavItem>
               <LogIn />
-            <NavItem id="signButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
+            <NavItem className="signButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
               <LogOut />
