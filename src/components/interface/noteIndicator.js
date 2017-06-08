@@ -5,42 +5,40 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    currentNote: state.currentNoteReducer,
+    currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
-    keyStrokeEvents: state.keyStrokeEvents,
     vocalInputResults: state.vocalInputResults,
-    exerciseScores: state.exerciseScores,
-    greenTime: state.greenTime,
-    targetNote: state.targetNote,
-    targetNoteIndex: state.targetNoteIndex,
     sungNote: state.sungNoteReducer,
     recordingStatus: state.recordingStatus,
   };
 };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
-
-const renderSungNote = (note) => {
-  if (note === undefined) { return "Start singing!"; }
-  return note.name;
-};
+// const renderSungNote = (note) => {
+//   if (note === undefined) { return "Start singing!"; }
+//   return note.name;
+// };
 
 class NoteIndicator extends Component {
+
+  renderSungNote = (note) => {
+    if (note === undefined) { return "Start singing!"; }
+    return note.name;
+  }
+
   render() {
     return (
-      <div className="col-sm-3 col-md-3 col-xs-4">
+      <div>
         <div className="panel panel-default noteScoreIndicatorsBorder">
           <div className="caption noteScoreIndicatorsText">
             <h4>Current Note</h4>
           </div>
           <div className="panel-body">
-            <h2>{renderSungNote(this.props.sungNote)}</h2>
-            <h2>{this.props.currentNote}</h2>
+            <h2>{this.renderSungNote(this.props.sungNote)}</h2>
+            <h2>{this.props.currentPianoNote}</h2>
             <li className="list-group-item">
               Octave
                 <span className="badge">{this.props.octave}</span>
               </li>
-
           </div>
         </div>
       </div>
@@ -48,4 +46,4 @@ class NoteIndicator extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteIndicator);
+export default connect(mapStateToProps)(NoteIndicator);

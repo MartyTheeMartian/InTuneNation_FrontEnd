@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 class ScoreBox extends Component {
   render() {
     return (
-      <div className="col-sm-3 col-md-3 col-xs-4">
+      <div>
         <div className="thumbnail noteScoreIndicatorsBorder noteScoreIndicatorsText">
           <div className="caption">
             <h4 className="noteScoreIndicatorsText">Current Score</h4>

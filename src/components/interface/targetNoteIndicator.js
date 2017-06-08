@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    currentNote: state.currentNoteReducer,
+    currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
     keyStrokeEvents: state.keyEventsReducer,
     targetNote: state.targetNoteReducer,
@@ -23,12 +23,12 @@ const renderKeyEventNotesAsTargetNotes = (keyEvents, targetNoteIndex) => {
       return <li>{ item.noteName }</li>;
     });
   }
-}
+};
 
 class TargetNoteIndicator extends Component {
   render() {
     return (
-      <div className="col-sm-3 col-md-3 col-xs-4">
+      <div>
         <div className="thumbnail noteScoreIndicatorsBorder">
           <div className="noteScoreIndicatorsText">
             <h4>Target Notes</h4>

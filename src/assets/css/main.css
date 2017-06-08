@@ -1,13 +1,12 @@
 @import url('signInModal.css');
 @import url('signUpModal.css');
-@import url('SignUpLogIn.css');
+@import url('signUpLogIn.css');
 @import url('navBar.css');
 @import url('home.css');
 @import url('interface.css');
 @import url('lacksingingdata.css');
 @import url('profileBottom.css');
 @import url('thumbnailSection.css');
-@import url('profileWarning.css');
 
 /* fonts */
 
@@ -43,6 +42,10 @@ h2, h3, h4, h5 {
   text-align: center;
 }
 
+#title {
+  margin-top: 120px;
+}
+
 #nav {
   width: 100%
 }
@@ -55,6 +58,7 @@ h2, h3, h4, h5 {
 
 .white-key {
   height: 260px;
+  width: 70px;
   border: 1px solid #000000;
   background-color: #ffffff;
   z-index: 1;
@@ -62,6 +66,7 @@ h2, h3, h4, h5 {
 
 .black-key {
   height: 160px;
+  width: 60px;
   border: 1px solid #ffffff;
   border-top: 1px solid #000000;
   background-color: #000000;
@@ -71,7 +76,6 @@ h2, h3, h4, h5 {
 }
 
 .black-key, .white-key {
-  width: 70px;
   vertical-align: top;
   position: relative;
   cursor: pointer;
@@ -136,6 +140,11 @@ h2, h3, h4, h5 {
   margin-left: 7px;
   margin-right: 7px;
   padding: 0px;
+}
+
+#profileWarning {
+   width: 48px;
+   height: 48px;
 }
 
 /*#octRow {

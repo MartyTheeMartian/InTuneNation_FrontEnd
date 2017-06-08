@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect as reactConnect } from 'react-redux';
-import { pushKeyEventToArray, currentNote } from '../../actions';
+import { pushKeyEventToArray, currentPianoNote } from '../../actions';
 import getFrequencyAndKeyNum from '../../audio/frequencies';
 // import getDistortionCurve from '../../audio/distort';
 
@@ -28,13 +28,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ pushKeyEventToArray, currentNote }, dispatch);
+  return bindActionCreators({ pushKeyEventToArray, currentPianoNote }, dispatch);
 };
 
 class Piano extends Component {
 
   handleClick = (note) => {
-    this.props.currentNote(note);
+    this.props.currentPianoNote(note);
 
     const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
     const keyNum = freqAndKeyNum.keyNum;
@@ -63,7 +63,7 @@ class Piano extends Component {
 
   render() {
     return (
-      <div className="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+      <div>
         <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
         <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
         <div onClick={() => this.handleClick('D')} className="white-key" ></div>

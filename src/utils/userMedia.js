@@ -1,5 +1,4 @@
 import teoria from 'teoria';
-import axios from 'axios';
 import PitchAnalyzer from '../../pitch-js/pitch';
 import store from '../store';
 
@@ -9,12 +8,11 @@ import { setKeyEventAsTargetNote,
           decrementScore,
           resetScore,
           incrementTargetNoteIndex,
-          resetTargetNoteIndex,
-          // setAllPastExercises,
+          resetInterface,
           pushScoreToExerciseScoresArray,
-          // pushExerciseToProfileHistory,
           setSungNote,
           toggleAudioCapture,
+          removePianoNote,
          } from '../actions';
 import scorePostingUtility from './score_posting_utility';
 
@@ -30,12 +28,12 @@ function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(fre
 function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(freq), getOctave(freq)].join(''); }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
-function getPreciseNotePlusCentDiffPlusFreq(freq) {
-  const result = getPreciseNotePlusCentDiff(freq);
-  return result.concat(freq);
-}
+// function getPreciseNotePlusCentDiffPlusFreq(freq) {
+//   const result = getPreciseNotePlusCentDiff(freq);
+//   return result.concat(freq);
+// }
 function centDiffInRed(cD) { return (cD < -40 && cD > 40); }
-function centDiffInYellow(cD) { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
+function centDiffInYellow(cD)  { return ((cD > -40 && cD < -15) || (cD < 40 && cD > 15)); }
 function centDiffInGreen(cD) { return (cD > -15 && cD < 15); }
 
 const green = (targetNoteName, sungNoteName, fq) => {
@@ -78,8 +76,9 @@ export default getUserMedia({ video: false, audio: true })
           frequency: freq,
           name: getNameAccidentalOctave(freq),
           centDiff: getCentDiff(freq),
-          arrowValue: ((180*((getCentDiff(freq) + 50)/100))/180),
+          arrowValue: ((180 * ((getCentDiff(freq) + 50) / 100)) / 180),
         };
+        if (getState().currentPianoNoteReducer !== '') { dispatch(removePianoNote()); }
         dispatch(setSungNote(sungNote));
         const keyEvents = getState().keyEventsReducer;
         const targetNoteIndex = getState().targetNoteIndexReducer;
@@ -92,12 +91,11 @@ export default getUserMedia({ video: false, audio: true })
           dispatch(pushScoreToExerciseScoresArray(scoreToAdd));
           if (getState().exerciseScoresReducer.length === keyEvents.length) {
             // POST SCORES TO DB
-            const userId = localStorage.getItem('userId');
+            const userId = parseInt(localStorage.getItem('userId'), 10);
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
-            dispatch(resetTargetNoteIndex());
-            dispatch(toggleAudioCapture());
+            dispatch(resetInterface());
           } else {
             dispatch(resetGreenTime());
             dispatch(resetScore());
@@ -109,15 +107,13 @@ export default getUserMedia({ video: false, audio: true })
           } else {
             // dispatch(resetGreenTime());
             if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(3));
+              dispatch(decrementScore(2));
             } else if (yellow(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(1));
+              dispatch(decrementScore(.5));
             }
           }
         }
         // console.log(getPreciseNotePlusCentDiffPlusFreq(freq));
       }
-    }).catch((error) => {
-      console.log(error);
     });
   });

@@ -4,7 +4,7 @@ const exerciseScoresReducer = (state = initialState.exerciseScores, action) => {
   switch (action.type) {
     case 'PUSH_SCORE_TO_EXERCISE_SCORES_ARRAY':
       return [...state, action.payload];
-    case 'RESET_EXERCISE_SCORES':
+    case 'RESET_INTERFACE':
       return [];
     default:
       return state;

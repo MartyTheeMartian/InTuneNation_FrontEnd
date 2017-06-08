@@ -8,7 +8,6 @@
 #keyboardBackground {
   background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
   repeat: no-repeat;
-  height: 10%;
   float: left;
 }
 
@@ -39,6 +38,16 @@
   font-family: OpenSans-BoldItalic;
   font-weight: bold;
   background-color: white;
+  border: 3px solid #1cd1fc;
+  border-radius: 8px;
+  font-size: 23px;
+}
+
+.captureButton {
+  font-family: OpenSans-BoldItalic;
+  font-weight: bold;
+  color: white;
+  background-color: #b94ad5;
   border: 3px solid #1cd1fc;
   border-radius: 8px;
   font-size: 23px;

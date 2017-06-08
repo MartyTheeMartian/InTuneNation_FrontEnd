@@ -4,7 +4,7 @@
 
 > Sing in the moment!
 
-Deployed App: https://intervalicity.herokuapp.com/
+Deployed App: https://intunenation.herokuapp.com/
 
 ========================================
 
