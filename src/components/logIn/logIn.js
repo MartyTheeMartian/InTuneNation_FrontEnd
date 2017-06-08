@@ -22,9 +22,9 @@ class LogIn extends Component {
     super(props);
     this.state = {
       ...this.state,
-      showModal: true,
-      focus: false,
-      force: false,
+      show: true,
+      backdrop: false,
+      redirect: false,
 
     };
   }
@@ -62,17 +62,17 @@ class LogIn extends Component {
       setTimeout(() => {
         this.setState({
           ...this.state,
-          showModal: false,
-          focus: true
+          show: false,
+          backdrop: true
         });
-      }, 700);
+      }, 300);
 
       setTimeout(() => {
         this.setState({
           ...this.state,
-          force: true
+          redirect: true
         });
-      }, 900);
+      }, 500);
     }
   }
 
@@ -84,13 +84,13 @@ class LogIn extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
-    if (this.state.force === true) {
+    if (this.state.redirect === true) {
       return <Redirect to="/interface"/>;
     }
     else {
 
       return (
-        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div show={this.state.showModal} backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
