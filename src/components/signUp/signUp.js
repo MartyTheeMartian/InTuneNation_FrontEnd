@@ -61,19 +61,18 @@ class SignUp extends Component {
 
   redirect = () => {
     if (this.props.success === true) {
-
       setTimeout(() => {
         this.setState({
           ...this.state,
           showModal: false,
-          focus: true
+          focus: true,
         });
       }, 700);
 
       setTimeout(() => {
         this.setState({
           ...this.state,
-          force: true
+          force: true,
         });
       }, 900);
     }

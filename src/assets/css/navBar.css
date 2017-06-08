@@ -19,7 +19,7 @@ float: left;
   color: #777;
 }
 
-#signButton {
+.signButton {
   margin-right: 6px;
   padding-bottom: 35px;
 }
