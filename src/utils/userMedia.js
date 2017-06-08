@@ -54,9 +54,6 @@ const red = (targetNoteName, sungNoteName, fq) => {
   }
 };
 
-const noteIsUnder = (keyNum, fq) => {
-
-}
 // MICROPHONE INPUT CODE
 export default getUserMedia({ video: false, audio: true })
   .then((stream) => {
