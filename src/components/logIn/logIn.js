@@ -94,7 +94,7 @@ class LogIn extends Component {
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
-                <button className="btn signin-modal-btn-google">
+                {/* <button className="btn signin-modal-btn-google">
                   <div className="signin-modal-btn-google-inside">
                     <img src={google_logo}></img>
                     <span>Log In with Google</span>
@@ -109,7 +109,7 @@ class LogIn extends Component {
                   <div className="signin-modal-or-decorate-lineR">
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                   </div>
-                </div>
+                </div> */}
 
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                   <div className="signin-modal-content">

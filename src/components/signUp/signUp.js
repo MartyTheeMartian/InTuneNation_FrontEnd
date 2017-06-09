@@ -100,7 +100,7 @@ class SignUp extends Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="signup-modal">
-                <button className="btn signup-modal-btn-google">
+                {/* <button className="btn signup-modal-btn-google">
                   <div className="signup-modal-btn-google-inside">
                     <img src={google_logo}></img>
                     <span>Sign Up with Google</span>
@@ -115,7 +115,7 @@ class SignUp extends Component {
                   <div className="signup-modal-or-decorate-lineR">
                     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                   </div>
-                </div>
+                </div> */}
 
                 <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                   <div className="signup-modal-content">
