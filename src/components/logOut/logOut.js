@@ -10,7 +10,7 @@ class LogOut extends Component {
     super(props);
     this.state = {
       ...this.state,
-      showModal: false,
+      show: true,
       focus: false,
       redirect: false,
     };

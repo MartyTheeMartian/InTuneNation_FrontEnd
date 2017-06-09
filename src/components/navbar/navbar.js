@@ -85,15 +85,15 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem className="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
+            <NavItem id="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Sign Up</span>
             </NavItem>
               <SignUp />
-            <NavItem id="logButton" href="" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
+            <NavItem id="loginButton" href="" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
               <LogIn />
-            <NavItem className="signButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
+            <NavItem id="logoutButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
               <LogOut />
