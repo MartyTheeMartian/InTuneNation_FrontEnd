@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
   return {
     octave: state.octaveReducer.current,
     capture: state.captureReducer.capture,
+    recordingStatus: state.recordingStatusReducer
   };
 };
 
@@ -42,12 +43,11 @@ class Piano extends Component {
       this.props.pushKeyEventToArray(noteObj);
     }
 
-    let toneNote = note + this.props.octave;
-
-    if (!this.state.capture) {
+    if (this.props.recordingStatus !== true) {
+      let toneNote = note + this.props.octave;
       this.synth.triggerAttackRelease(toneNote, 0.65);
     }
-    
+
   }
 
   render() {
