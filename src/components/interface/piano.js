@@ -27,9 +27,7 @@ class Piano extends Component {
   }
 
   handleClick = (note) => {
-
-    this.props.currentPianoNote(note);
-
+    
     if (this.props.capture) {
       const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
       const keyNum = freqAndKeyNum.keyNum;
@@ -46,6 +44,7 @@ class Piano extends Component {
     if (this.props.recordingStatus !== true) {
       let toneNote = note + this.props.octave;
       this.synth.triggerAttackRelease(toneNote, 0.65);
+      this.props.currentPianoNote(note);
     }
 
   }
