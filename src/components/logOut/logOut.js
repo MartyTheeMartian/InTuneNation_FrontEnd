@@ -9,9 +9,8 @@ class LogOut extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...this.state,
       show: true,
-      focus: false,
+      backdrop: true,
       redirect: false,
     };
   }
@@ -21,7 +20,7 @@ class LogOut extends Component {
     setTimeout(() => {
       this.setState({
         ...this.state,
-        redirect: true
+        redirect: true,
       });
     }, 900);
   }
@@ -35,7 +34,7 @@ class LogOut extends Component {
     else {
 
       return (
-        <div show={this.state.showModal} restoreFocus={this.state.focus} className="modal fade" id="logOut" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div data-show={this.state.show} data-backdrop={this.state.backdrop} className="modal fade" id="logOut" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
 

@@ -22,10 +22,8 @@ class LogIn extends Component {
     super(props);
     this.state = {
       ...this.state,
-      show: true,
-      backdrop: false,
+      backdrop: true,
       redirect: false,
-
     };
   }
 
@@ -57,22 +55,16 @@ class LogIn extends Component {
   }
 
   redirect = () => {
+
     if (this.props.success === true) {
 
       setTimeout(() => {
         this.setState({
-          ...this.state,
-          show: false,
-          backdrop: true
+          backdrop: true,
+          redirect: true
         });
       }, 300);
 
-      setTimeout(() => {
-        this.setState({
-          ...this.state,
-          redirect: true
-        });
-      }, 500);
     }
   }
 
@@ -90,7 +82,7 @@ class LogIn extends Component {
     else {
 
       return (
-        <div show={this.state.showModal} backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div data-show={this.props.show} data-backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">

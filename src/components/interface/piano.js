@@ -44,7 +44,10 @@ class Piano extends Component {
 
     let toneNote = note + this.props.octave;
 
-    this.synth.triggerAttackRelease(toneNote, 0.65);
+    if (!this.state.capture) {
+      this.synth.triggerAttackRelease(toneNote, 0.65);
+    }
+    
   }
 
   render() {

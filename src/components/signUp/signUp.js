@@ -27,7 +27,7 @@ class SignUp extends Component {
     this.state = {
       ...this.state,
       show: true,
-      backdrop: false,
+      backdrop: true,
       redirect: false
     };
   }
@@ -96,7 +96,7 @@ class SignUp extends Component {
     }
     else {
       return (
-        <div show={this.state.show} restoreFocus={this.state.focus} className="modal fade" id="signUp" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div data-show={this.state.show} data-backdrop={this.state.backdrop} className="modal fade" id="signUp" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="signup-modal">

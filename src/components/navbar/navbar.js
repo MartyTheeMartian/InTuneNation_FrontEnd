@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import LogIn from '../logIn/logIn.js';
@@ -23,6 +23,8 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: true,
+      backdrop: false,
       redirect : false
     }
   }
@@ -52,6 +54,13 @@ class NavBar extends Component {
     else {
       return { display: 'block' };
     }
+  }
+
+  displayModal = (modal) => {
+    this.setState({
+      ...this.state,
+      show: true
+    })
   }
 
   render() {
@@ -85,18 +94,18 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
+            <NavItem id="signButton" data-toggle="modal" data-target="#signUp" onClick={this.displayModal} style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Sign Up</span>
             </NavItem>
-              <SignUp />
-            <NavItem id="loginButton" href="" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
+              <SignUp modal={this.state.show} />
+            <NavItem id="loginButton" data-toggle="modal" data-target="#logIn" onClick={this.displayModal} style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
-              <LogIn />
-            <NavItem id="logoutButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
+              <LogIn modal={this.state.show} />
+            <NavItem id="logoutButton" data-toggle="modal" data-target="#logOut" onClick={this.displayModal}  style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
-              <LogOut />
+              <LogOut modal={this.state.show} />
 
           </Nav>
         </Navbar.Collapse>
