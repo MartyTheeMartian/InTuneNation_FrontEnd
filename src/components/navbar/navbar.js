@@ -47,6 +47,26 @@ class NavBar extends Component {
     }
   }
 
+  // toggleModal = () => {
+  //
+  //   console.log('Toggle Modal');
+  //   if (this.state.modal === 'modal fade') {
+  //     this.setState({
+  //       ...this.state,
+  //       display: {display: 'block' },
+  //       fade: 'modal fade in'
+  //     });
+  //   }
+  //   else {
+  //     this.setState({
+  //       ...this.state,
+  //       display: {display: 'none'},
+  //       fade: 'modal fade'
+  //     });
+  //   }
+  //
+  // }
+
   render() {
     return (
       <Navbar collapseOnSelect>
@@ -78,15 +98,15 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signButton" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
+            <NavItem id="signUpButton" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()} >
               <span className="navbar-right">Sign Up</span>
             </NavItem>
               <SignUp />
-            <NavItem id="loginButton" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
+            <NavItem id="logInButton" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
               <LogIn />
-            <NavItem id="logoutButton" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
+            <NavItem id="logOutButton" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
               <LogOut />

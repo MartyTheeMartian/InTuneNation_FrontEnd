@@ -19,17 +19,17 @@ float: left;
   color: #777;
 }
 
-#signButton {
+#signUpButton {
   margin-right: 6px;
   padding-bottom: 35px;
 }
 
-#loginButton {
+#logInButton {
   margin-right: 6px;
   padding-bottom: 35px;
 }
 
-#logoutButton {
+#logOutButton {
   margin-right: 6px;
   padding-bottom: 35px;
 }

@@ -22,7 +22,6 @@ class LogIn extends Component {
     super(props);
     this.state = {
       ...this.state,
-      backdrop: true,
       redirect: false,
     };
   }
@@ -82,7 +81,7 @@ class LogIn extends Component {
     else {
 
       return (
-        <div data-backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="logIn" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
