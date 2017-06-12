@@ -34,13 +34,13 @@ if (window.innerWidth <= 420 && window.innerWidth > 375) {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  keyStrokeEvents: state.keyStrokeEventsReducer,
-  vocalInputResults: state.vocalInputResultsReducer,
-  exerciseScores: state.exerciseScoresReducer,
-  targetNote: state.targetNoteReducer,
-  targetNoteIndex: state.targetNoteIndexReducer,
+  // keyStrokeEvents: state.keyStrokeEventsReducer,
+  // vocalInputResults: state.vocalInputResultsReducer,
+  // exerciseScores: state.exerciseScoresReducer,
+  // targetNote: state.targetNoteReducer,
+  // targetNoteIndex: state.targetNoteIndexReducer,
   sungNote: state.sungNoteReducer,
-  recordingStatus: state.recordingStatusReducer,
+  // recordingStatus: state.recordingStatusReducer,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ pushNoteToArray, toggleAudioCapture }, dispatch);

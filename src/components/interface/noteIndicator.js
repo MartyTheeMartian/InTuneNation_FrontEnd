@@ -7,9 +7,9 @@ const mapStateToProps = (state) => {
   return {
     currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
-    vocalInputResults: state.vocalInputResults,
+    // vocalInputResults: state.vocalInputResults,
     sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatus,
+    // recordingStatus: state.recordingStatus,
   };
 };
 
