@@ -5,7 +5,7 @@ function getKeyNum(note, octave) {
 
   for (let i = 0; i < notesArray.length; i++) {
     if (note === notesArray[i]) {
-      noteObj.keyNum = octave * 12 - 8 + noteIndex;
+      noteObj.keyNum = octave * 12 - 8 + i;
       break;
     }
   }
