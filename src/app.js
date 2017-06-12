@@ -18,7 +18,7 @@ import Profile from './components/profile/profile';
 import './app.css';
 
 
-class PPP extends Component {
+class App extends Component {
   render() {
     return (
 
@@ -37,4 +37,4 @@ class PPP extends Component {
   }
 }
 
-export default PPP;
+export default App;
