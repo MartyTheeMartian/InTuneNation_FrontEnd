@@ -42,7 +42,7 @@ class LogOut extends Component {
                 <h3 className="text-center">Are you sure you want to Log Out? 🤔</h3>
               </div>
               <div className="signin-modal-foot-btn">
-                <button onClick={this.redirect} type="button" className="btn btn-info" type="button" data-dismiss="modal">
+                <button onClick={this.redirect} type="button" className="btn btn-info" data-dismiss="modal">
                   <h5>Log Out</h5>
                 </button>
                 <div className="signin-modal-foot-btn">

@@ -35,10 +35,6 @@ class NoteIndicator extends Component {
           <div className="panel-body">
             <h2>{this.renderSungNote(this.props.sungNote)}</h2>
             <h2>{this.props.currentPianoNote}</h2>
-            <li className="list-group-item">
-              Octave
-                <span className="badge">{this.props.octave}</span>
-              </li>
           </div>
         </div>
       </div>

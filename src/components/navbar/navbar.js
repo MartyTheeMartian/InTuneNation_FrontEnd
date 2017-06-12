@@ -20,15 +20,6 @@ const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatc
 
 class NavBar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: true,
-      backdrop: false,
-      redirect : false
-    }
-  }
-
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };
@@ -54,13 +45,6 @@ class NavBar extends Component {
     else {
       return { display: 'block' };
     }
-  }
-
-  displayModal = (modal) => {
-    this.setState({
-      ...this.state,
-      show: true
-    })
   }
 
   render() {
@@ -94,18 +78,18 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signButton" data-toggle="modal" data-target="#signUp" onClick={this.displayModal} style={this.displaySignUpLogIn()}>
+            <NavItem id="signButton" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Sign Up</span>
             </NavItem>
-              <SignUp modal={this.state.show} />
-            <NavItem id="loginButton" data-toggle="modal" data-target="#logIn" onClick={this.displayModal} style={this.displaySignUpLogIn()}>
+              <SignUp />
+            <NavItem id="loginButton" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
-              <LogIn modal={this.state.show} />
-            <NavItem id="logoutButton" data-toggle="modal" data-target="#logOut" onClick={this.displayModal}  style={this.displayLogOut()}>
+              <LogIn />
+            <NavItem id="logoutButton" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
-              <LogOut modal={this.state.show} />
+              <LogOut />
 
           </Nav>
         </Navbar.Collapse>

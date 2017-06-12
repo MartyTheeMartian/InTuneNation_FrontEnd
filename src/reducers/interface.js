@@ -19,14 +19,14 @@ export const captureReducer = (state = initialState.capture, action) => {
       if (!state.capture) {
         return {
           capture: true,
-          captureText: 'End Capture',
+          captureText: 'End',
           disabled: '',
           resetDisabled: ''
         };
       } else if (state.capture) {
         return {
           capture: false,
-          captureText: 'Capture',
+          captureText: '',
           disabled: 'disabled',
           resetDisabled: ''
         };
@@ -42,14 +42,14 @@ export const captureReducer = (state = initialState.capture, action) => {
 export const octaveReducer = (state = initialState.octave, action) => {
   switch (action.type) {
     case 'SHIFT_OCTAVES':
-      if (action.payload === '+' && state.current === 4) {
-        return { current: 5, up: "disabled", down: "" };
-      } else if (action.payload === '-' && state.current === 4) {
-        return { current: 3, up: "", down: "disabled" };
-      } else if (action.payload === '-' && state.current === 5) {
-        return { current: 4, up: "", down: "" };
-      } else if (action.payload === '+' && state.current === 3) {
-        return { current: 4, up: "", down: "" };
+      if (action.payload === '+' && state.leftOctave === 3) {
+        return { leftOctave: 4, rightOctave: 5, up: "disabled", down: "" };
+      } else if (action.payload === '-' && state.leftOctave === 3) {
+        return { leftOctave: 2, rightOctave: 3, up: "", down: "disabled" };
+      } else if (action.payload === '-' && state.leftOctave === 4) {
+        return { leftOctave: 3, rightOctave: 4, up: "", down: "" };
+      } else if (action.payload === '+' && state.leftOctave === 2) {
+        return { leftOctave: 3, rightOctave: 4, up: "", down: "" };
       }
       break;
     default:

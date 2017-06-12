@@ -123,7 +123,7 @@ class SignUp extends Component {
                     <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
                     <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
                     <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
-                    <Field name="password" component="input" type="password" placeholder="Password" className="signup-modal-content-detail" required/>
+                    <Field name="password" component="input" type="password" placeholder="Password (minimum of 8 characters)" className="signup-modal-content-detail" required/>
                     <Field name="confirmPassword" component="input" type="password" placeholder="Confirm Password" className="signup-modal-content-detail" required/>
                   </div>
 
