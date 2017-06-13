@@ -11,13 +11,13 @@ const mapStateToProps = (state) => {
     rightOctave: state.octaveReducer.rightOctave,
     up: state.octaveReducer.up,
     down: state.octaveReducer.down,
-    keyEvents: state.keyEventsReducer,
-    exerciseId: state.currentExerciseIdReducer,
+    // keyEvents: state.keyEventsReducer,
+    // exerciseId: state.currentExerciseIdReducer,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators ({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
+  return bindActionCreators({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
 };
 
 class OctaveButtons extends Component {
