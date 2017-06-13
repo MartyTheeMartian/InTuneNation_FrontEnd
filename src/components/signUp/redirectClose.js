@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
-    success: state.loginReducer.loginSuccess
+    success: state.signupReducer.signupSuccess
   }; };
 
 const mapDispatchToProps = (dispatch) => {
