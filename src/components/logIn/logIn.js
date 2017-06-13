@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 import { Route, Redirect } from 'react-router-dom';
+import RedirectClose from './redirectClose';
 
 const mapStateToProps = (state) => {
   return {
@@ -53,19 +54,19 @@ class LogIn extends Component {
     }
   }
 
-  redirect = () => {
-
-    if (this.props.success === true) {
-
-      setTimeout(() => {
-        this.setState({
-          ...this.state,
-          redirect: true
-        });
-      }, 300);
-
-    }
-  }
+  // redirect = () => {
+  //
+  //   if (this.props.success === true) {
+  //
+  //     setTimeout(() => {
+  //       this.setState({
+  //         ...this.state,
+  //         redirect: true
+  //       });
+  //     }, 300);
+  //
+  //   }
+  // }
 
   onSubmit = (value) => {
     const user = value;
@@ -75,10 +76,10 @@ class LogIn extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
-    if (this.state.redirect === true) {
-      return <Redirect to="/interface"/>;
-    }
-    else {
+    // if (this.state.redirect === true) {
+    //   return <Redirect to="/interface"/>;
+    // }
+    // else {
 
       return (
         <div id="logIn" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -112,9 +113,10 @@ class LogIn extends Component {
                       <h5>Log In</h5>
                     </button>
                     <div className="signin-modal-foot-btn">
-                      <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
+                      {/* <button onClick={this.redirect} type="button" className="btn btn-default" data-dismiss="modal">
                         <h5>Close</h5>
-                      </button>
+                      </button> */}
+                      <RedirectClose success={this.props.success} />
                     </div>
                   </div>
                 </form>
@@ -133,7 +135,7 @@ class LogIn extends Component {
         </div>
       );
     }
-  }
+  // }
 }
 
 let LogInWithForm = reduxForm({ form: 'login' })(LogIn);
