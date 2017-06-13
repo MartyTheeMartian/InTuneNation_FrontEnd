@@ -80,7 +80,9 @@ class LogIn extends Component {
     const user = value;
     this.props.postLogIn(user);
   }
-
+  handleSwitch = () => {
+    window.location.assign('https://ppp-capstone-music.herokuapp.com/auth/google/');
+  }
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
 
@@ -94,7 +96,7 @@ class LogIn extends Component {
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
-                <button className="btn signin-modal-btn-google">
+                <button className="btn signin-modal-btn-google"  onClick={this.handleSwitch}>
                   <div className="signin-modal-btn-google-inside">
                     <img src={google_logo}></img>
                     <span>Log In with Google</span>
