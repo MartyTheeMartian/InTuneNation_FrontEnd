@@ -26,8 +26,6 @@ class SignUp extends Component {
     super(props);
     this.state = {
       ...this.state,
-      show: true,
-      backdrop: false,
       redirect: false
     };
   }
@@ -64,17 +62,9 @@ class SignUp extends Component {
       setTimeout(() => {
         this.setState({
           ...this.state,
-          show: false,
-          backdrop: true,
+          redirect: true
         });
-      }, 700);
-
-      setTimeout(() => {
-        this.setState({
-          ...this.state,
-          redirect: true,
-        });
-      }, 900);
+      }, 300);
     }
   }
 
@@ -96,7 +86,7 @@ class SignUp extends Component {
     }
     else {
       return (
-        <div show={this.state.show} restoreFocus={this.state.focus} className="modal fade" id="signUp" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="signUp" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="signup-modal">
@@ -123,7 +113,7 @@ class SignUp extends Component {
                     <Field name="firstName" component="input" type="text" placeholder="First Name" className="signup-modal-content-detail" required/>
                     <Field name="lastName" component="input" type="text" placeholder="Last Name" className="signup-modal-content-detail" required/>
                     <Field name="email" component="input" type="email" placeholder="Email" className="signup-modal-content-detail" required/>
-                    <Field name="password" component="input" type="password" placeholder="Password" className="signup-modal-content-detail" required/>
+                    <Field name="password" component="input" type="password" placeholder="Password (minimum of 8 characters)" className="signup-modal-content-detail" required/>
                     <Field name="confirmPassword" component="input" type="password" placeholder="Confirm Password" className="signup-modal-content-detail" required/>
                   </div>
 

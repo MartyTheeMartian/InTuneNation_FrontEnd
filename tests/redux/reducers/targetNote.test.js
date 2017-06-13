@@ -2,13 +2,13 @@ import keyEventsReducer from '../../../src/reducers/keyEvents';
 import targetNoteReducer from '../../../src/reducers/targetNote';
 import targetNoteIndexReducer from '../../../src/reducers/targetNoteIndex';
 import initialState from '../../../src/reducers/initialState';
-import getFrequencyAndKeyNum from '../../../src/audio/frequencies';
+import getKeyNum from '../../../src/audio/keyNumGenerator';
 
 const keyEventFn = () => {
   const note = 'C';
   const octave = 3;
-  const keyNum = getFrequencyAndKeyNum(note, octave).keyNum;
-  const tNote = getFrequencyAndKeyNum(note, octave).tNote;
+  const keyNum = getKeyNum(note, octave).keyNum;
+  const tNote = getKeyNum(note, octave).tNote;
   const keyEvent = {
     noteName: note,
     octave,

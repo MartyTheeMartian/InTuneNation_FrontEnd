@@ -28,7 +28,7 @@ import {
   setExerciseId
 } from '../../src/actions';
 
-import getFrequencyAndKeyNum from '../../src/audio/frequencies';
+import getKeyNum from '../../src/audio/keyNumGenerator';
 
 describe('actions', () => {
   describe('loadPastExercisesData', () => {});
@@ -65,8 +65,8 @@ describe('actions', () => {
     it("should properly add the piano key that was clicked into the keyEvents queue", () => {
       const note = 'C';
       const octave = 3;
-      const keyNum = getFrequencyAndKeyNum(note, octave).keyNum;
-      const tNote = getFrequencyAndKeyNum(note, octave).tNote;
+      const keyNum = getKeyNum(note, octave).keyNum;
+      const tNote = getKeyNum(note, octave).tNote;
       const noteObj = {
         noteName: note,
         octave,

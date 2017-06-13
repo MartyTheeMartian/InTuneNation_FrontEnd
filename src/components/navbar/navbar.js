@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+// import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import LogIn from '../logIn/logIn.js';
@@ -19,13 +19,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 class NavBar extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect : false
-    }
-  }
 
   displayTabs = () => {
     if (localStorage.length === 0) {
@@ -53,6 +46,26 @@ class NavBar extends Component {
       return { display: 'block' };
     }
   }
+
+  // toggleModal = () => {
+  //
+  //   console.log('Toggle Modal');
+  //   if (this.state.modal === 'modal fade') {
+  //     this.setState({
+  //       ...this.state,
+  //       display: {display: 'block' },
+  //       fade: 'modal fade in'
+  //     });
+  //   }
+  //   else {
+  //     this.setState({
+  //       ...this.state,
+  //       display: {display: 'none'},
+  //       fade: 'modal fade'
+  //     });
+  //   }
+  //
+  // }
 
   render() {
     return (
@@ -85,15 +98,15 @@ class NavBar extends Component {
 
           <Nav pullRight>
               {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signButton" href="" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()}>
+            <NavItem id="signUpButton" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()} >
               <span className="navbar-right">Sign Up</span>
             </NavItem>
               <SignUp />
-            <NavItem id="loginButton" href="" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
+            <NavItem id="logInButton" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
               <LogIn />
-            <NavItem id="logoutButton" href="" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
+            <NavItem id="logOutButton" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
               <LogOut />

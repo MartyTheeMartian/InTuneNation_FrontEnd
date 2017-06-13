@@ -1,13 +1,14 @@
 export default {
   capture: {
     capture: false,
-    captureText: 'Capture',
+    captureText: '',
     disabled: '',
     resetDisabled: 'disabled',
   },
   currentPianoNote: '',
   octave: {
-    current: 3,
+    leftOctave: 3,
+    rightOctave: 4,
     up: '',
     down: '',
   },

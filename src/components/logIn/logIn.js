@@ -22,10 +22,7 @@ class LogIn extends Component {
     super(props);
     this.state = {
       ...this.state,
-      show: true,
-      backdrop: false,
       redirect: false,
-
     };
   }
 
@@ -57,22 +54,16 @@ class LogIn extends Component {
   }
 
   redirect = () => {
-    if (this.props.success === true) {
 
-      setTimeout(() => {
-        this.setState({
-          ...this.state,
-          show: false,
-          backdrop: true
-        });
-      }, 300);
+    if (this.props.success === true) {
 
       setTimeout(() => {
         this.setState({
           ...this.state,
           redirect: true
         });
-      }, 500);
+      }, 300);
+
     }
   }
 
@@ -90,7 +81,7 @@ class LogIn extends Component {
     else {
 
       return (
-        <div show={this.state.showModal} backdrop={this.state.backdrop} className="modal fade" id="logIn" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div id="logIn" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div className="modal-dialog " role="document">
             <div className="modal-content">
               <div className="signin-modal">
@@ -117,7 +108,7 @@ class LogIn extends Component {
                     <Field name="password" component="input" type="password" placeholder="Password" className="signin-modal-content-detail" required/>
                   </div>
                   <div className="signin-modal-foot-btn">
-                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit" >
+                    <button disabled={this.disabled()} type="button" className="btn btn-info" type="submit">
                       <h5>Log In</h5>
                     </button>
                     <div className="signin-modal-foot-btn">
