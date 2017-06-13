@@ -1,6 +1,5 @@
 import recordingStatusReducer from '../../../src/reducers/recordingStatus';
 import initialState from '../../../src/reducers/initialState';
-import toggleAudioCapture from '../../../src/actions/index';
 
 describe('recordingStatusReducer', () => {
   it('returns false if passed in state that is undefined', () => {
@@ -34,5 +33,11 @@ describe('recordingStatusReducer', () => {
     const secondRecordingState = recordingStatusReducer(firstRecordingState, { type: 'TOGGLE_AUDIO_CAPTURE' });
     const thirdRecordingState = recordingStatusReducer(secondRecordingState, { type: 'TOGGLE_AUDIO_CAPTURE' });
     expect(thirdRecordingState).toEqual(initState.recordingStatus);
+  });
+
+  it('should return the recording status back to false if asked to reset the interface', () => {
+    const firstRecordingState = recordingStatusReducer(initialState.recordingStatus, { type: 'TOGGLE_AUDIO_CAPTURE' });
+    const resetRecordingState = recordingStatusReducer(firstRecordingState, { type: 'RESET_INTERFACE' });
+    expect(resetRecordingState).toEqual(false);
   });
 });

@@ -3,7 +3,7 @@ export default {
     capture: false,
     captureText: 'Capture',
     disabled: '',
-    resetDisabled: 'disabled'
+    resetDisabled: 'disabled',
   },
   currentPianoNote: '',
   octave: {
