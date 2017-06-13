@@ -55,6 +55,14 @@ describe('note-related reducers', () => {
       expect(initState.targetNote).toEqual(null);
     });
 
+    it('should return the current state if an unknown action type is given', () => {
+      const keyEvent = keyEventFn();
+      const action = { type: 'UNKNOWN' };
+      const newTN = targetNoteReducer(keyEvent, action);
+      expect(newTN).toEqual(keyEvent);
+    });
+
+
     it('should properly change the target note from null/previousTN to whatever key event is passed in the first time', () => {
       const initState = initialState;
       const keyEvent = keyEventFn();
@@ -71,6 +79,12 @@ describe('note-related reducers', () => {
     it('should initially be set to zero', () => {
       expect(initialState.targetNoteIndex).toEqual(0);
     });
+
+    it('should give the current state of the target note index if given an unknown action type', () => {
+      const tnIndex = targetNoteIndexReducer(initialState.targetNoteIndex+1, { type: 'UNKNOWN' });
+      expect(tnIndex).toEqual(1);
+    });
+
 
     it('should return the next target note index if given an action to increment it', () => {
       const tnIndex = targetNoteIndexReducer(initialState.targetNoteIndex, { type: 'INCREMENT_TARGET_NOTE_INDEX' });
