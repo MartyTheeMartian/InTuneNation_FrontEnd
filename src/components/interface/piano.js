@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect as reactConnect } from 'react-redux';
+import { connect } from 'react-redux';
 import { pushKeyEventToArray, currentPianoNote } from '../../actions';
 import getKeyNum from '../../audio/keyNumGenerator';
 import getDisplayableNote from '../../audio/pianoNoteForDisplay';
@@ -102,4 +102,4 @@ class Piano extends Component {
 
 }
 
-export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);
+export default connect(mapStateToProps, mapDispatchToProps)(Piano);
