@@ -89,39 +89,18 @@ class Profile extends Component {
   }
 
   render() {
-    if (this.state.userID === undefined) {
-      return (
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-2"/>
-            <div className="col-md-8">
-              <div className="alert alert-info" role="alert">Please Log Into Your Account
-              </div>
-              <div>
-                <img src={musicNoteMusic} height={400} width={800} alt={''}/>
-              </div>
-            </div>
-
-            <div className="col-md-2"/>
-          </div>
-        </div>
-      );
-    } else {
       return (
         <div>
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
-
                   <div className="thumbnail">
                     <img src={mathew} alt=".."/>
                     <div className="caption">
                       <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
-
                     </div>
                   </div>
-
                   <div>
                     {/* <BarChart
                       data={barData}
@@ -159,7 +138,7 @@ class Profile extends Component {
           </div>
         </div>
       );
-    }
+    // }
   }
 }
 
