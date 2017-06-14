@@ -10,6 +10,7 @@ import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import { Link } from 'react-router-dom';
 import rd3 from 'react-d3';
 import { BarChart } from 'react-d3/barchart';
 
@@ -35,6 +36,12 @@ class Profile extends Component {
     };
   }
 
+  componentWillMount() {
+    if (localStorage.length !== 0) {
+      this.props.loadPastExercisesData(this.state.userID);
+    }
+  }
+
   graph = () => {
     if (this.props.graphData === null){
       return <div></div>;
@@ -49,12 +56,14 @@ class Profile extends Component {
     }
     else  {
       return <div className="center-warning">
-        <a href='/interface' className="thumbnail" style={{
-          'background': '#e6ecff'
-        }}>
-          <h3>Cannot find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
-          </h3>
-        </a>
+        <Link to="/interface">
+          <a className="thumbnail" style={{
+            'background': '#e6ecff'
+          }}>
+            <h3>No scores logged. Please go back to the interface page and Sing! 😉
+            </h3>
+          </a>
+        </Link>
       </div>
     }
   }

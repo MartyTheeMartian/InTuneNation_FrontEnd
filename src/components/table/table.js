@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
 const mapStateToProps = (state, ownProps) => {
-  return { list: state.dashboard, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
+  return { list: state.dashboardReducer, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -32,7 +32,7 @@ class Table extends Component {
   }
 
   renderList = (list) => (list.map((item, index) => (
-    <tr onClick={() => {
+    <tr className="tableRow" onClick={() => {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
     }}>
       <td>
