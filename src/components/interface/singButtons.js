@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState }, dispatch); };
 
-class CaptureButtons extends Component {
+class SingButtons extends Component {
 
   handleResetClick = () => { this.props.resetState(); }
 
@@ -54,4 +54,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CaptureButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(SingButtons);

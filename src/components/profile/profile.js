@@ -47,6 +47,11 @@ class Profile extends Component {
    }
 
 
+  // Inserts exercise into redux
+  insertExToRedux = () => {
+
+  }
+
   graph = () => {
     if (this.props.graphData === null){
       return <div></div>;
@@ -61,7 +66,7 @@ class Profile extends Component {
     }
     else  {
       return <div className="center-warning">
-        <Link to="/interface">
+        <Link to="/interface" onClick={this.insertExToRedux}>
           <a className="thumbnail" style={{
             'background': '#e6ecff'
           }}>

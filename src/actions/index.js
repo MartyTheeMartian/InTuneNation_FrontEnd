@@ -166,7 +166,6 @@ export const postExercise = (userId, body) => {
 }
 
 export const setExerciseId = (userId, body) => {
-  console.log('inside setExerciseId');
   return {
     type: 'SET_EXERCISE_ID',
     payload: postExercise(userId, body),

@@ -2,7 +2,7 @@ function getDisplayableNote(note, octave) {
 
   let displayNote = '';
 
-  if (note[0] === 'G') {
+  if (note[0] === 'G' && note[1] === '#') {
     displayNote = note + '/' + 'Ab ' + octave;
   }
   else if (note[1] === '#') {
