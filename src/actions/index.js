@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import axios from 'axios';
 
-
 const config = () => {
   return { headers: {'token': localStorage.getItem('token')} };
 };
@@ -50,9 +49,7 @@ export const currentPianoNote = (note) => {
 };
 
 export const removePianoNote = () => {
-  return {
-    type: 'REMOVE_PIANO_NOTE'
-  };
+  return { type: 'REMOVE_PIANO_NOTE' };
 };
 
 export const pushKeyEventToArray = (noteObj) => {
@@ -63,9 +60,7 @@ export const pushKeyEventToArray = (noteObj) => {
 };
 
 export const toggleCapture = () => {
-  return {
-    type: 'TOGGLE_CAPTURE',
-  };
+  return { type: 'TOGGLE_CAPTURE' };
 };
 
 export const shiftOctaves = (direction) => {
@@ -76,21 +71,15 @@ export const shiftOctaves = (direction) => {
 };
 
 export const toggleAudioCapture = () => {
-  return {
-    type: 'TOGGLE_AUDIO_CAPTURE',
-  };
+  return { type: 'TOGGLE_AUDIO_CAPTURE' };
 };
 
 export const incrementGreenTime = () => {
-  return {
-    type: 'INCREMENT_GREEN_TIME',
-  };
+  return { type: 'INCREMENT_GREEN_TIME' };
 };
 
 export const resetGreenTime = () => {
-  return {
-    type: 'RESET_GREEN_TIME',
-  };
+  return { type: 'RESET_GREEN_TIME' };
 };
 
 export const changeGreenTimeRequirement = (amount) => {
@@ -108,9 +97,7 @@ export const decrementScore = (amount) => {
 };
 
 export const resetScore = () => {
-  return {
-    type: 'RESET_SCORE',
-  };
+  return { type: 'RESET_SCORE' };
 };
 
 export const setKeyEventAsTargetNote = (keyEvent) => {
@@ -128,15 +115,11 @@ export const setSungNote = (note) => {
 };
 
 export const incrementTargetNoteIndex = () => {
-  return {
-    type: 'INCREMENT_TARGET_NOTE_INDEX',
-  };
+  return { type: 'INCREMENT_TARGET_NOTE_INDEX' };
 };
 
 export const resetInterface = () => {
-  return {
-    type: 'RESET_INTERFACE',
-  };
+  return { type: 'RESET_INTERFACE' };
 };
 
 export const pushScoreToExerciseScoresArray = (score) => {
@@ -147,15 +130,11 @@ export const pushScoreToExerciseScoresArray = (score) => {
 };
 
 export const singButton = () => {
-  return {
-    type: 'TOGGLE_SING_BUTTON'
-  };
+  return { type: 'TOGGLE_SING_BUTTON' };
 };
 
 export const resetState = () => {
-  return {
-    type: 'RESET_STATE'
-  };
+  return { type: 'RESET_STATE' };
 };
 
 const fetchAllPastExercises = (userId) => {
@@ -168,7 +147,6 @@ const fetchAllPastExercises = (userId) => {
   });
 }
 
-
 export const setAllPastExercises = (userId) => {
   const data = fetchAllPastExercises(userId);
   return {
@@ -177,14 +155,7 @@ export const setAllPastExercises = (userId) => {
   };
 }
 
-export const doSearchExercises = () => {
-  const API_URL =
-  `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;
-  return {
-    type:'SEARCH_USER_EXERCISES',
-    payload: data,
-  };
-}
+
 export const postExercise = (userId, body) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
   const config = { headers: { token: localStorage.getItem('token') } };
@@ -194,8 +165,18 @@ export const postExercise = (userId, body) => {
 }
 
 export const setExerciseId = (userId, body) => {
+  console.log('inside setExerciseId');
   return {
     type: 'SET_EXERCISE_ID',
     payload: postExercise(userId, body),
   };
 };
+
+// export const doSearchExercises = () => {
+//   const API_URL =
+//   `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;
+//   return {
+//     type:'SEARCH_USER_EXERCISES',
+//     payload: data,
+//   }
+// }

@@ -13,7 +13,7 @@ import { setKeyEventAsTargetNote,
           toggleAudioCapture,
           removePianoNote,
          } from '../actions';
-import {  getName,
+import { getName,
           getAccidental,
           getOctave,
           getNameAccidentalOctave,
@@ -99,13 +99,13 @@ export default getUserMedia({ video: false, audio: true })
         if (getKeyNum(freq) < targetNote.keyNum) { offset = -50; }
         else if (getKeyNum(freq) > targetNote.keyNum) { offset = 50; }
         else { offset = getCentDiff(freq); }
-        let arrowValue = ((180 * ((offset + 50) / 100)) / 180);
+        const arrowValue = ((180 * ((offset + 50) / 100)) / 180);
         // define & set sungNote
         const sungNote = {
           frequency: freq,
           name: getNameAccidentalOctave(freq),
           centDiff: getCentDiff(freq),
-          arrowValue: arrowValue,
+          arrowValue,
         };
         dispatch(setSungNote(sungNote));
         const targetNoteName = targetNote.tNote;

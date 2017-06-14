@@ -34,7 +34,6 @@ export default {
   },
   loginSuccess: null,
   signupSuccess: null,
-  allPastExercises: [],
   currentExerciseId: null,
   graphData: null,
   dashboard: [],
