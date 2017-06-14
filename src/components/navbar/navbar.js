@@ -67,12 +67,7 @@ class NavBar extends Component {
               <NavItem>Interface</NavItem>
             </LinkContainer>
 
-<<<<<<< HEAD
-            {/* <LinkContainer to="/profile" style={this.displayTabs()}> */}
-            <LinkContainer to="/profile">
-=======
-            <LinkContainer onClick={this.profileAPI} to="/profile" style={this.displayTabs()}>
->>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
+            <LinkContainer to="/profile" style={this.displayTabs()}>
               <NavItem>Profile</NavItem>
             </LinkContainer>
 

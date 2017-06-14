@@ -12,43 +12,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { Link } from 'react-router-dom';
 import rd3 from 'react-d3';
-<<<<<<< HEAD
-import {BarChart} from 'react-d3/barchart';
-
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
-=======
 import { BarChart } from 'react-d3/barchart';
-
->>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({loadPastExercisesData, startload}, dispatch);
-//
-//   // return ({
-//   //   loadPastExercisesData: userID => dispatch(loadPastExercisesData(userID)),
-//   //   startload: (props, userID) => dispatch(startload(props, userID))
-//   // })
-//
-//   return ({
-//     loadPastExercisesData: (userID) => {
-//       dispatch(loadPastExercisesData(userID))
-//     },
-//     startload: (props, userID) => {
-//       dispatch(startload(props, userID));
-//     }
-//   });
-};
-
-function startload(props, userID) {
-  return (dispatch, getState) => {
-    if (localStorage.length === 0) {
-      return
-    } else {
-      props.dispatch(loadPastExercisesData(userID));
-    }
-  }
-};
-
 
 const barData = [
   {label: 'A', value: 5},
@@ -56,18 +20,20 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
-<<<<<<< HEAD
-=======
+
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  loadPastExercisesData
-}, dispatch);
->>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({loadPastExercisesData, startload}, dispatch);
+};
 
+function startload(props, userID) {
+  return (dispatch, getState) => {
+    dispatch(props.loadPastExercisesData(userID));
+  }
+};
 
 class Profile extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -75,20 +41,11 @@ class Profile extends Component {
     };
   }
 
-<<<<<<< HEAD
   componentDidMount = () => {
-    const userID = localStorage.getItem('userId')
-    this.props.dispatch(startload(this.props, userID));
-  }
+     let userID = localStorage.getItem('userId')
+     this.props.startload(this.props, userID);
+   }
 
-
-=======
-  componentWillMount() {
-    if (localStorage.length !== 0) {
-      this.props.loadPastExercisesData(this.state.userID);
-    }
-  }
->>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
 
   graph = () => {
     if (this.props.graphData === null){
@@ -206,4 +163,4 @@ class Profile extends Component {
   }
 }
 
-export default connect(mapStateToProps )(Profile);
+export default connect(mapStateToProps, mapDispatchToProps )(Profile);

@@ -2,11 +2,7 @@
 import axios from 'axios';
 
 const config = () => {
-<<<<<<< HEAD
-  return {headers: {'token': localStorage.getItem('token')}};
-=======
   return { headers: {'token': localStorage.getItem('token')} };
->>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
 };
 
 export const loadPastExercisesData = (user_id) => {
