@@ -1,85 +1,105 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect as reactConnect } from 'react-redux';
-import { pushKeyEventToArray, currentNote } from '../../actions';
-import getFrequencyAndKeyNum from '../../audio/frequencies';
-// import getDistortionCurve from '../../audio/distort';
+import { connect } from 'react-redux';
+import { pushKeyEventToArray, currentPianoNote } from '../../actions';
+import getKeyNum from '../../audio/keyNumGenerator';
+import getDisplayableNote from '../../audio/pianoNoteForDisplay';
+import Tone from '../../../tone-js/tone';
 
-const AudioContext = window.AudioContext || window.webkitAudioContext;
-const ctx = new AudioContext();
-const osc = ctx.createOscillator();
-const gainNode = ctx.createGain();
-
-
-osc.connect(gainNode);
-gainNode.connect(ctx.destination);
-// osc.type = 'square';
-osc.connect(ctx.destination);
-osc.frequency.value = 0;
-gainNode.gain.value = 0;
-osc.start();
 
 const mapStateToProps = (state) => {
   return {
-    disabled: state.captureReducer.disabled,
-    octave: state.octaveReducer.current,
+    leftOctave: state.octaveReducer.leftOctave,
+    rightOctave: state.octaveReducer.rightOctave,
     capture: state.captureReducer.capture,
+    recordingStatus: state.recordingStatusReducer
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ pushKeyEventToArray, currentNote }, dispatch);
+  return bindActionCreators({ pushKeyEventToArray, currentPianoNote }, dispatch);
 };
 
 class Piano extends Component {
 
-  handleClick = (note) => {
-    this.props.currentNote(note);
+  constructor(props) {
+    super(props);
+    this.synth = new Tone.Synth().toMaster();
+  }
 
-    const freqAndKeyNum = getFrequencyAndKeyNum(note, this.props.octave);
-    const keyNum = freqAndKeyNum.keyNum;
-    const tNote = freqAndKeyNum.tNote;
+  handleClick = (pianoObj) => {
+    let noteObj = {};
 
-    let noteObj = {
-      noteName: note,
-      octave: this.props.octave,
-      keyNum,
-      tNote,
-    };
+    if (this.props.capture) {
+      let keyNumAndtNote;
+      if (pianoObj.side === 'left') {
+        keyNumAndtNote = getKeyNum(pianoObj.note, this.props.leftOctave);
+        noteObj.noteName = getDisplayableNote(pianoObj.note, this.props.leftOctave);
+        noteObj.octave = this.props.leftOctave;
+      }
+      else {
+        keyNumAndtNote = getKeyNum(pianoObj.note, this.props.rightOctave);
+        noteObj.noteName = getDisplayableNote(pianoObj.note, this.props.rightOctave);
+        noteObj.octave = this.props.rightOctave;
+      }
 
-    if (this.props.capture) { this.props.pushKeyEventToArray(noteObj); }
+      noteObj.keyNum = keyNumAndtNote.keyNum;
+      noteObj.tNote = keyNumAndtNote.tNote;
+      this.props.pushKeyEventToArray(noteObj);
+    }
 
-    if (this.props.disabled !== 'disabled') {
-      osc.frequency.value = freqAndKeyNum.frequency;
-      // gainNode.gain.value = 0.8;
-
-      setTimeout(() => {
-        osc.frequency.value = 0;
-        gainNode.gain.value = 0;
-      }, 600);
+    if (this.props.recordingStatus !== true) {
+      let toneNote = pianoObj.note;
+      if (pianoObj.side === 'left') {
+        toneNote += this.props.leftOctave;
+        this.props.currentPianoNote(getDisplayableNote(pianoObj.note, this.props.leftOctave));
+      }
+      else {
+        toneNote += this.props.rightOctave;
+        this.props.currentPianoNote(getDisplayableNote(pianoObj.note, this.props.rightOctave));
+      }
+      this.synth.triggerAttackRelease(toneNote, 0.65);
     }
 
   }
 
   render() {
     return (
-      <div>
-        <div onClick={() => this.handleClick('C')} className="white-key"  ></div>
-        <div onClick={() => this.handleClick('C# / Db')} className="black-key" ></div>
-        <div onClick={() => this.handleClick('D')} className="white-key" ></div>
-        <div onClick={() => this.handleClick('D# / Eb')} className="black-key" ></div>
-        <div onClick={() => this.handleClick('E')} className="white-key" ></div>
-        <div onClick={() => this.handleClick('F')} className="white-key" ></div>
-        <div onClick={() => this.handleClick('F# / Gb')} className="black-key" ></div>
-        <div onClick={() => this.handleClick('G')} className="white-key" ></div>
-        <div onClick={() => this.handleClick('G# / Ab')} className="black-key" ></div>
-        <div onClick={() => this.handleClick('A')} className="white-key" ></div>
-        <div onClick={() => this.handleClick('A# / Bb')} className="black-key" ></div>
-        <div onClick={() => this.handleClick('B')} className="white-key" ></div>
+      <div className="col-md-12">
+
+        <div id="piano">
+          {/* right piano */}
+          <div onClick={() => this.handleClick({ note: 'C', side: 'left'})} className="white-key"  ></div>
+          <div onClick={() => this.handleClick({ note: 'C#', side: 'left'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'D', side: 'left'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'D#', side: 'left'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'E', side: 'left'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'F', side: 'left'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'F#', side: 'left'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'G', side: 'left'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'G#', side: 'left'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'A', side: 'left'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'A#', side: 'left'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'B', side: 'left'})} className="white-key" ></div>
+          {/* left piano */}
+          <div onClick={() => this.handleClick({ note: 'C', side: 'right'})} className="white-key"  ></div>
+          <div onClick={() => this.handleClick({ note: 'C#', side: 'right'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'D', side: 'right'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'D#', side: 'right'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'E', side: 'right'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'F', side: 'right'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'F#', side: 'right'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'G', side: 'right'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'G#', side: 'right'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'A', side: 'right'})} className="white-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'A#', side: 'right'})} className="black-key" ></div>
+          <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
+
+        </div>
       </div>
     );
   }
 
 }
 
-export default reactConnect(mapStateToProps, mapDispatchToProps)(Piano);
+export default connect(mapStateToProps, mapDispatchToProps)(Piano);

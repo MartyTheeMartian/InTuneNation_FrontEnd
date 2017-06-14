@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    currentNote: state.currentNoteReducer,
+    currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
-    vocalInputResults: state.vocalInputResults,
+    // vocalInputResults: state.vocalInputResults,
     sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatus,
+    // recordingStatus: state.recordingStatus,
   };
 };
 
@@ -34,11 +34,7 @@ class NoteIndicator extends Component {
           </div>
           <div className="panel-body">
             <h2>{this.renderSungNote(this.props.sungNote)}</h2>
-            <h2>{this.props.currentNote}</h2>
-            <li className="list-group-item">
-              Octave
-                <span className="badge">{this.props.octave}</span>
-              </li>
+            <h2>{this.props.currentPianoNote}</h2>
           </div>
         </div>
       </div>

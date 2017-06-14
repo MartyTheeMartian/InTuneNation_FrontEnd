@@ -1,12 +1,14 @@
 export default {
   capture: {
     capture: false,
-    captureText: 'Capture',
+    captureText: '',
     disabled: '',
-    resetDisabled: 'disabled'
+    resetDisabled: 'disabled',
   },
+  currentPianoNote: '',
   octave: {
-    current: 4,
+    leftOctave: 3,
+    rightOctave: 4,
     up: '',
     down: '',
   },
@@ -30,10 +32,10 @@ export default {
     singText: 'Sing',
     disabled: true,
   },
-  user: {},
   loginSuccess: null,
   signupSuccess: null,
   allPastExercises: [],
   currentExerciseId: null,
-  graphData: [],
+  graphData: null,
+  dashboard: [],
 };
