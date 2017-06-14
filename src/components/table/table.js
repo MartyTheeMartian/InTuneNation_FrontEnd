@@ -32,7 +32,7 @@ class Table extends Component {
   }
 
   renderList = (list) => (list.map((item, index) => (
-    <tr onClick={() => {
+    <tr className="tableRow" onClick={() => {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
     }}>
       <td>

@@ -44,7 +44,7 @@ class NavBar extends Component {
 
   profileAPI = () => {
     let userID = localStorage.getItem('userId');
-    this.props.loadPastExercisesData(userID, );
+    this.props.loadPastExercisesData(userID);
   }
 
   render() {
