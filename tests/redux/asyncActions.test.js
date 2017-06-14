@@ -1,4 +1,3 @@
-import configureMockStore from 'redux-mock-store';
 import nock from 'nock';
 import axios from 'axios';
 import expect from 'expect';
