@@ -14,6 +14,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
+
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
 const barData = [
@@ -22,11 +23,23 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  loadPastExercisesData
-}, dispatch);
+function startload(){
+  return (dispatch, getState) => {
+    dispatch(this.props.loadPastExercisesData(this.state.userID));
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadPastExercisesData,
+    load: () => {
+      dispatch(startload())
+    },
+  }, dispatch);
+}
 
 class Profile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,15 +47,21 @@ class Profile extends Component {
     };
   }
 
-  componentWillMount = () => {
-    this.props.loadPastExercisesData(this.state.userID);
-  };
+
+  //
+  // toggleWillMount = () => {
+  //   if(localStorage.length !==0){
+  //     dispatch(componentWillMount());
+  //   }
+  // }
+
 
   graph = () => {
     if (this.props.graphData === null){
       return <div></div>;
     }
     else if (this.props.graphData.length !== 0) {
+      this.props.load();
       return <div className="center-warning">
         <C3Chart data={{
           unload: true,
