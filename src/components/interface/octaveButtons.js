@@ -11,8 +11,7 @@ const mapStateToProps = (state) => {
     rightOctave: state.octaveReducer.rightOctave,
     up: state.octaveReducer.up,
     down: state.octaveReducer.down,
-    // keyEvents: state.keyEventsReducer,
-    // exerciseId: state.currentExerciseIdReducer,
+    keyEvents: state.keyEventsReducer,
   };
 };
 
@@ -26,7 +25,8 @@ class OctaveButtons extends Component {
 
   handleClick = () =>  {
     this.props.toggleCapture();
-    if (this.props.disabled === "" && this.props.captureText === "End Capture") {
+    if (this.props.disabled === '' && this.props.captureText === 'End') {
+      console.log(this.props.keyEvents);
       const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
       const body = { notes_array: currentKeyNumCombo };
       const userId = parseInt(localStorage.getItem('userId'), 10);

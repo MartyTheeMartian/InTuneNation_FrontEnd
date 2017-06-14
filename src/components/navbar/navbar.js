@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { Link, Redirect } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, NavItem, Nav } from 'react-bootstrap';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
-// import music from '../../assets/img/music.jpg'
-// import profile from '../../assets/img/profile-icon.png'
+import { loadPastExercisesData } from '../../actions';
 
 
-const mapStateToProps = (state) => {
-  return {
-  };
-};
+const mapStateToProps = (state) => { return {}; };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData }, dispatch); };
 
 class NavBar extends Component {
 
@@ -47,6 +42,11 @@ class NavBar extends Component {
     }
   }
 
+  profileAPI = () => {
+    let userID = localStorage.getItem('userId');
+    this.props.loadPastExercisesData(userID);
+  }
+
   render() {
     return (
       <Navbar collapseOnSelect>
@@ -67,8 +67,12 @@ class NavBar extends Component {
               <NavItem>Interface</NavItem>
             </LinkContainer>
 
+<<<<<<< HEAD
             {/* <LinkContainer to="/profile" style={this.displayTabs()}> */}
             <LinkContainer to="/profile">
+=======
+            <LinkContainer onClick={this.profileAPI} to="/profile" style={this.displayTabs()}>
+>>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
               <NavItem>Profile</NavItem>
             </LinkContainer>
 

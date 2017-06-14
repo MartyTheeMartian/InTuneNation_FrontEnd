@@ -9,16 +9,13 @@ import greenTimeReducer from './greenTime';
 import scoreReducer from './score';
 import exerciseScoresReducer from './exerciseScores';
 import currentExerciseIdReducer from './currentExerciseId';
-import allPastExercisesReducer from './allPastExercises';
 import { captureReducer, octaveReducer, currentPianoNoteReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
-import dashboard from './dashboard';
+import dashboardReducer from './dashboard';
 import singButtonReducer from './singButton';
 // import resetStateReducer from './resetState';
 import initialState from './initialState';
-import searchExercise from './searchAllExercises';
-import allScorePerExercise from './allIntonationScorePerExercise';
 import graphDataReducer from './graphData';
 
 const appReducer = combineReducers({
@@ -30,7 +27,6 @@ const appReducer = combineReducers({
   scoreReducer,
   exerciseScoresReducer,
   currentExerciseIdReducer,
-  allPastExercisesReducer,
   keyEventsReducer,
   targetNoteReducer,
   targetNoteIndexReducer,
@@ -39,17 +35,13 @@ const appReducer = combineReducers({
   singButtonReducer,
   signupReducer,
   loginReducer,
-  dashboard,
-  searchExercise,
-  allScorePerExercise,
+  dashboardReducer,
   graphDataReducer,
 });
 
 const rootReducer = (state, action) => {
   const resetState = (JSON.parse(JSON.stringify(initialState)));
-  if (action.type === 'RESET_STATE') {
-    state = resetState;
-  }
+  if (action.type === 'RESET_STATE') { state = resetState; } // refactor this out?
   return appReducer(state, action);
 };
 

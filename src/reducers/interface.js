@@ -31,7 +31,6 @@ export const captureReducer = (state = initialState.capture, action) => {
           resetDisabled: '',
         };
       }
-      break;
     case 'RESET_INTERFACE':
       return initialState.capture;
     default:
@@ -51,7 +50,6 @@ export const octaveReducer = (state = initialState.octave, action) => {
       } else if (action.payload === '+' && state.leftOctave === 2) {
         return { leftOctave: 3, rightOctave: 4, up: '', down: '' };
       }
-      break;
     case 'RESET_INTERFACE':
       return { leftOctave: 3, rightOctave: 4, up: '', down: '' };
     default:

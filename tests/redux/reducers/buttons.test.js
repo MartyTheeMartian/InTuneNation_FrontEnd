@@ -163,7 +163,7 @@ describe('button-info-related reducers', () => {
       expect(state).toEqual(initState);
     });
 
-    it('should increase the left & right octaves by 1 when given an action.payload containing an addition sign', () => {
+    it('should increase the left & right octaves by 1 from 3 & 4 when given an action.payload containing an addition sign', () => {
       const initState = {
         leftOctave: 3,
         rightOctave: 4,
@@ -176,7 +176,20 @@ describe('button-info-related reducers', () => {
       expect(state.rightOctave).toEqual(5);
     });
 
-    it('should decrement the left & right octaves by 1 when given an action.payload containing a subtraction sign', () => {
+    it('should increase the left & right octaves by 1 from 2 & 3 when given an action.payload containing an addition sign', () => {
+      const initState = {
+        leftOctave: 2,
+        rightOctave: 3,
+        up: '',
+        down: 'disabled',
+      };
+      const action = { type: 'SHIFT_OCTAVES', payload: '+' };
+      const state = octaveReducer(initState, action);
+      expect(state.leftOctave).toEqual(3);
+      expect(state.rightOctave).toEqual(4);
+    });
+
+    it('should decrement the left & right octaves by 1 from 3 & 4 when given an action.payload containing a subtraction sign', () => {
       const initState = {
         leftOctave: 3,
         rightOctave: 4,
@@ -187,6 +200,19 @@ describe('button-info-related reducers', () => {
       const state = octaveReducer(initState, action);
       expect(state.leftOctave).toEqual(2);
       expect(state.rightOctave).toEqual(3);
+    });
+
+    it('should decrement the left & right octaves by 1 from 4 & 5 when given an action.payload containing a subtraction sign', () => {
+      const initState = {
+        leftOctave: 4,
+        rightOctave: 5,
+        up: 'disabled',
+        down: '',
+      };
+      const action = { type: 'SHIFT_OCTAVES', payload: '-' };
+      const state = octaveReducer(initState, action);
+      expect(state.leftOctave).toEqual(3);
+      expect(state.rightOctave).toEqual(4);
     });
 
     it("should give the * up * property a value of 'disabled' if the right octave is equal to 4 and the action.payload contains an addition sign", () => {

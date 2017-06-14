@@ -1,8 +1,4 @@
 import {
-  loadPastExercisesData,
-  loadSpecificExercisesIDwithAllScoresData,
-  postSignUp,
-  postLogIn,
   currentPianoNote,
   removePianoNote,
   pushKeyEventToArray,
@@ -21,24 +17,26 @@ import {
   pushScoreToExerciseScoresArray,
   singButton,
   resetState,
-  fetchAllPastExercises,
-  setAllPastExercises,
-  doSearchExercises,
-  postExercise,
-  setExerciseId
 } from '../../src/actions';
 
 import getKeyNum from '../../src/audio/keyNumGenerator';
+import { getNameAccidentalOctave, getCentDiff } from '../../src/utils/teoria_helpers';
 
-describe('actions', () => {
-  describe('loadPastExercisesData', () => {});
+const noteObj = () => {
+  const note = 'C';
+  const octave = 3;
+  const keyNum = getKeyNum(note, octave).keyNum;
+  const tNote = getKeyNum(note, octave).tNote;
+  const noteObject = {
+    noteName: note,
+    octave,
+    keyNum,
+    tNote,
+  };
+  return noteObject;
+};
 
-  describe('loadSpecificExercisesIDwithAllScoresData', () => {});
-
-  describe('postSignUp', () => {});
-
-  describe('postLogIn', () => {});
-
+describe('synchronous actions', () => {
   describe('currentPianoNote', () => {
     it('should return the name of the note that was clicked on the keyboard', () => {
       const note = 'C';
@@ -48,7 +46,6 @@ describe('actions', () => {
       };
       expect(currentPianoNote(note)).toEqual(expectedAction);
     });
-
   });
 
   describe('removePianoNote', () => {
@@ -58,26 +55,16 @@ describe('actions', () => {
       };
       expect(removePianoNote()).toEqual(expectedAction);
     });
-
   });
 
   describe('pushKeyEventToArray', () => {
-    it("should properly add the piano key that was clicked into the keyEvents queue", () => {
-      const note = 'C';
-      const octave = 3;
-      const keyNum = getKeyNum(note, octave).keyNum;
-      const tNote = getKeyNum(note, octave).tNote;
-      const noteObj = {
-        noteName: note,
-        octave,
-        keyNum,
-        tNote,
-      };
+    it('should properly add the piano key that was clicked into the keyEvents queue', () => {
+      const payload = noteObj();
       const expectedAction = {
         type: 'ADD_KEY_EVENT',
-        payload: noteObj,
+        payload,
       };
-      expect(pushKeyEventToArray(noteObj)).toEqual(expectedAction);
+      expect(pushKeyEventToArray(payload)).toEqual(expectedAction);
     });
   });
 
@@ -106,7 +93,6 @@ describe('actions', () => {
       };
       expect(shiftOctaves(direction)).toEqual(expectedAction);
     });
-
   });
 
   describe('toggleAudioCapture', () => {
@@ -139,7 +125,6 @@ describe('actions', () => {
       };
       expect(changeGreenTimeRequirement(5)).toEqual(expectedAction);
     });
-
   });
 
   describe('decrementScore', () => {
@@ -160,9 +145,38 @@ describe('actions', () => {
     });
   });
 
-  describe('setKeyEventAsTargetNote', () => {});
+  describe('setKeyEventAsTargetNote', () => {
+    it('should return the expected action', () => {
+      const payload = noteObj();
+      const expectedAction = {
+        type: 'SET_KEY_EVENT_AS_TARGET_NOTE',
+        payload,
+      };
+      expect(setKeyEventAsTargetNote(payload)).toEqual(expectedAction);
+    });
+  });
 
-  describe('setSungNote', () => {});
+  describe('setSungNote', () => {
+    it('should return the expected action with a payload', () => {
+      const sN1 = () => {
+        const freq = 441;
+        const arrowValue = ((180 * ((getCentDiff(freq) + 50) / 100)) / 180);
+        const sungNote = {
+          frequency: freq,
+          name: getNameAccidentalOctave(freq),
+          centDiff: getCentDiff(freq),
+          arrowValue,
+        };
+        return sungNote;
+      };
+      const payload = sN1();
+      const expectedAction = {
+        type: 'SET_SUNG_NOTE',
+        payload,
+      };
+      expect(setSungNote(payload)).toEqual(expectedAction);
+    });
+  });
 
   describe('incrementTargetNoteIndex', () => {
     it('should return the expected action', () => {
@@ -187,7 +201,6 @@ describe('actions', () => {
       };
       expect(pushScoreToExerciseScoresArray(score)).toEqual(expectedAction);
     });
-
   });
 
   describe('singButton', () => {
@@ -203,15 +216,4 @@ describe('actions', () => {
       expect(resetState()).toEqual(expectedAction);
     });
   });
-
-  describe('fetchAllPastExercises', () => {});
-
-  describe('setAllPastExercises', () => {});
-
-  describe('doSearchExercises', () => {});
-
-  describe('postExercise', () => {});
-
-  describe('setExerciseId', () => {});
-
 });

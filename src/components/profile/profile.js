@@ -1,21 +1,25 @@
-import React, {Component} from 'react';
-
-import {Thumbnail, Col, Row, Grid} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Thumbnail, Col, Row, Grid } from 'react-bootstrap';
 import C3Chart from 'react-c3js';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-// import ExerciseCardList from './exerciseCardList';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
-import {loadPastExercisesData} from '../../actions';
+import { loadPastExercisesData } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
+import { Link } from 'react-router-dom';
 import rd3 from 'react-d3';
+<<<<<<< HEAD
 import {BarChart} from 'react-d3/barchart';
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
+=======
+import { BarChart } from 'react-d3/barchart';
+
+>>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({loadPastExercisesData, startload}, dispatch);
@@ -52,6 +56,15 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
+<<<<<<< HEAD
+=======
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  loadPastExercisesData
+}, dispatch);
+>>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
+
 
 class Profile extends Component {
 
@@ -62,12 +75,20 @@ class Profile extends Component {
     };
   }
 
+<<<<<<< HEAD
   componentDidMount = () => {
     const userID = localStorage.getItem('userId')
     this.props.dispatch(startload(this.props, userID));
   }
 
 
+=======
+  componentWillMount() {
+    if (localStorage.length !== 0) {
+      this.props.loadPastExercisesData(this.state.userID);
+    }
+  }
+>>>>>>> 0c6282c8165e5fe94988e56bdd5f3b3669c68715
 
   graph = () => {
     if (this.props.graphData === null){
@@ -83,12 +104,14 @@ class Profile extends Component {
     }
     else  {
       return <div className="center-warning">
-        <a href='/interface' className="thumbnail" style={{
-          'background': '#e6ecff'
-        }}>
-          <h3>Cannot find scores for current exercise. &nbsp; 😄 &nbsp; Go back to the interface page and Sing!
-          </h3>
-        </a>
+        <Link to="/interface">
+          <a className="thumbnail" style={{
+            'background': '#e6ecff'
+          }}>
+            <h3>No scores logged. Please go back to the interface page and Sing! 😉
+            </h3>
+          </a>
+        </Link>
       </div>
     }
   }
