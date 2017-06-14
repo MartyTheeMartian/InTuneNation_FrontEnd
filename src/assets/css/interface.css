@@ -62,6 +62,10 @@
   margin-bottom: 20px;
 }
 
+.currentTarget {
+  background-color: lightblue;
+}
+
 #indicators {
   height: 318px;
   width: 362px;

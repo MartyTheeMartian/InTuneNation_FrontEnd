@@ -8,7 +8,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
-
 class ScoreBox extends Component {
   render() {
     return (

@@ -47,7 +47,7 @@ class NavBar extends Component {
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <span id="logo" className="navbar-left">InTuneNation</span>
+          <span id="logo" className="navbar-left">InTuneNation</span>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
