@@ -15,9 +15,11 @@ class LogOut extends Component {
       <div id="logOut" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div className="modal-dialog " role="document">
           <div className="modal-content">
-
-            <div>
-              <h3 className="text-center">Are you sure you want to Log Out? 🤔</h3>
+            <div className="logout-modal">
+            <div className="log-out-message" >
+              <span>
+                <h3 className="text-center">Are you sure you want to Log Out? 🤔</h3>
+              </span>
             </div>
             <div className="signin-modal-foot-btn">
               <button onClick={this.redirect} type="button" className="btn btn-info" data-dismiss="modal">
@@ -29,7 +31,7 @@ class LogOut extends Component {
                 </button>
               </div>
             </div>
-
+          </div>
           </div>
         </div>
       </div>
