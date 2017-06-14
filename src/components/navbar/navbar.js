@@ -47,26 +47,6 @@ class NavBar extends Component {
     }
   }
 
-  // toggleModal = () => {
-  //
-  //   console.log('Toggle Modal');
-  //   if (this.state.modal === 'modal fade') {
-  //     this.setState({
-  //       ...this.state,
-  //       display: {display: 'block' },
-  //       fade: 'modal fade in'
-  //     });
-  //   }
-  //   else {
-  //     this.setState({
-  //       ...this.state,
-  //       display: {display: 'none'},
-  //       fade: 'modal fade'
-  //     });
-  //   }
-  //
-  // }
-
   render() {
     return (
       <Navbar collapseOnSelect>
@@ -80,15 +60,15 @@ class NavBar extends Component {
 
           <Nav pullLeft>
             <LinkContainer exact to="/">
-              <NavItem href="#">Home</NavItem>
+              <NavItem>Home</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/interface" style={this.displayTabs()}>
-              <NavItem href="#">Interface</NavItem>
+              <NavItem>Interface</NavItem>
             </LinkContainer>
 
             <LinkContainer to="/profile" style={this.displayTabs()}>
-              <NavItem href="#">Profile</NavItem>
+              <NavItem>Profile</NavItem>
             </LinkContainer>
 
             <Nav className="githubLink">
