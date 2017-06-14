@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
 };
 
-class OctaveButtons extends Component {
+class PianoButtons extends Component {
 
   octaveShift = (direction) => { this.props.shiftOctaves(direction); }
 
@@ -52,4 +52,4 @@ class OctaveButtons extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OctaveButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(PianoButtons);

@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     octave: state.octaveReducer.current,
     // vocalInputResults: state.vocalInputResults,
     sungNote: state.sungNoteReducer,
-    // recordingStatus: state.recordingStatus,
+    recordingStatus: state.recordingStatus,
   };
 };
 
@@ -25,16 +25,24 @@ class NoteIndicator extends Component {
     return note.name;
   }
 
+  displayPianoNotes = () => {
+    console.log(this.props.currentPianoNote);
+    if (this.props.recordingStatus !== true) {
+      return this.props.currentPianoNote;
+    }
+  }
+
   render() {
     return (
       <div>
         <div className="panel panel-default noteScoreIndicatorsBorder">
           <div className="caption noteScoreIndicatorsText">
-            <h4>Current Note</h4>
+            {/* Piano Note -> You Are Singing */}
+            <h4>{this.props.currentText}</h4>
           </div>
           <div className="panel-body">
             <h2>{this.renderSungNote(this.props.sungNote)}</h2>
-            <h2>{this.props.currentPianoNote}</h2>
+            <h2>{this.displayPianoNotes()}</h2>
           </div>
         </div>
       </div>
