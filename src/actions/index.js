@@ -99,7 +99,7 @@ export const resetState = () => {
 };
 
 //ASYNC
-const config = () => {
+export const config = () => {
   return { headers: {'token': localStorage.getItem('token')} };
 };
 
@@ -157,7 +157,6 @@ export const setAllPastExercises = (userId) => {
   };
 }
 
-
 export const postExercise = (userId, body) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
   const config = { headers: { token: localStorage.getItem('token') } };
@@ -182,3 +181,4 @@ export const setExerciseId = (userId, body) => {
 //     payload: data,
 //   }
 // }
+//
