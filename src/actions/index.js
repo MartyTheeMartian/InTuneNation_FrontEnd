@@ -1,9 +1,7 @@
 /*eslint-disable*/
 import axios from 'axios';
 
-const config = {
-  headers: {'token': localStorage.getItem('token')}
-};
+const config = { headers: {'token': localStorage.getItem('token')} };
 
 export const loadPastExercisesData = (user_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
@@ -13,6 +11,7 @@ export const loadPastExercisesData = (user_id) => {
     payload: data
   }
 }
+
 export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
   let data = axios.get(API_URL, config);
@@ -166,7 +165,6 @@ const fetchAllPastExercises = (userId) => {
   })
 }
 
-
 export const setAllPastExercises = (userId) => {
   const data = fetchAllPastExercises(userId);
   return {
@@ -175,14 +173,15 @@ export const setAllPastExercises = (userId) => {
   }
 }
 
-export const doSearchExercises = () => {
-  const API_URL =
-  `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;
-  return {
-    type:'SEARCH_USER_EXERCISES',
-    payload: data,
-  }
-}
+// export const doSearchExercises = () => {
+//   const API_URL =
+//   `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;
+//   return {
+//     type:'SEARCH_USER_EXERCISES',
+//     payload: data,
+//   }
+// }
+
 export const postExercise = (userId, body) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
   const config = { headers: { token: localStorage.getItem('token') } };
@@ -192,6 +191,7 @@ export const postExercise = (userId, body) => {
 }
 
 export const setExerciseId = (userId, body) => {
+  console.log('inside setExerciseId');
   return {
     type: 'SET_EXERCISE_ID',
     payload: postExercise(userId, body),

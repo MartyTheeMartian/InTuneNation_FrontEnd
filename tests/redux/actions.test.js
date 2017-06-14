@@ -1,3 +1,5 @@
+import nock from 'nock';
+import expect from 'expect';
 import {
   loadPastExercisesData,
   loadSpecificExercisesIDwithAllScoresData,
@@ -35,9 +37,27 @@ describe('actions', () => {
 
   describe('loadSpecificExercisesIDwithAllScoresData', () => {});
 
-  describe('postSignUp', () => {});
+  describe('postSignUp', () => {
+    // afterEach(() => {
+    //   nock.cleanAll();
+    // });
+    //
+    // it('creates USER_LOG_IN_FULFILLED when fetching a users login info was successful', () => {
+    //   nock('')
+    // });
 
-  describe('postLogIn', () => {});
+  });
+
+  describe('postLogIn', () => {
+    // afterEach(() => {
+    //   nock.cleanAll();
+    // });
+    //
+    // it('creates USER_LOG_IN_FULFILLED when fetching a users login info was successful', () => {
+    //   nock('https://ppp-capstone-music.herokuapp.com/user/login')
+    //     .post()
+    // });
+  });
 
   describe('currentPianoNote', () => {
     it('should return the name of the note that was clicked on the keyboard', () => {
