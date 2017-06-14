@@ -7,7 +7,8 @@ const graphDataReducer = (state = initialState.graphData, action) => {
       const data = action.payload.data;
       const d3Format = data.map((obj, index) => {
         return [
-          `Exercise ${index}`, ...JSON.parse(obj.scores_array),
+          `Performance #${index + 1}`,
+          ...JSON.parse(obj["scores_array"])
         ];
       });
       if (d3Format.length === 0) {
@@ -15,16 +16,18 @@ const graphDataReducer = (state = initialState.graphData, action) => {
       } else {
         return {
           columns: d3Format,
+
           axis: {
             y: {
               label: {
                 text: 'Intonation Score',
-                position: 'outer-middle',
-              },
-            },
-          },
-        };
-      }
+                position: 'outer-middle'
+              }
+            }
+          }
+        }
+      };
+
     default:
       return state;
   }

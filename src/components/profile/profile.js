@@ -47,7 +47,7 @@ class Profile extends Component {
         <C3Chart data={{
           unload: true,
           columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis}/>
+        }} axis={this.props.graphData.axis} />
       </div>
     }
     else  {
@@ -101,7 +101,7 @@ class Profile extends Component {
         <div>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
 
                   <div className="thumbnail">
@@ -130,22 +130,22 @@ class Profile extends Component {
                 </div> */}
                 </div>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 col-xs-12">
                 <div className="pastExercise"></div>
                 <div>
                   <Table/>
                 </div>
                 <br/>
               </div>
-              <div className="col-md-2 "></div>
+              <div className="col-md-2 col-xs-6"></div>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-8">
+            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-8 col-xs-12">
               {this.graph()}
             </div>
-            <div className="col-md-2"></div>
+            <div className="col-md-2 col-xs-3"></div>
           </div>
         </div>
       );
