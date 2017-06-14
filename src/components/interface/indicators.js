@@ -5,7 +5,7 @@ import NoteIndicator from './noteIndicator';
 
 const Indicators = () => {
   return (
-    <div>
+    <div id="indicators">
       <TuningIndicator />
       <NoteIndicator />
     </div>

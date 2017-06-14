@@ -7,43 +7,38 @@ const mapStateToProps = (state) => {
   return {
     currentPianoNote: state.currentPianoNoteReducer,
     octave: state.octaveReducer.current,
-    // vocalInputResults: state.vocalInputResults,
     sungNote: state.sungNoteReducer,
-    recordingStatus: state.recordingStatus,
+    recordingStatus: state.recordingStatusReducer,
   };
 };
 
-// const renderSungNote = (note) => {
-//   if (note === undefined) { return "Start singing!"; }
-//   return note.name;
-// };
 
 class NoteIndicator extends Component {
 
-  renderSungNote = (note) => {
-    if (note === undefined) { return "Start singing!"; }
-    return note.name;
-  }
-
-  displayPianoNotes = () => {
-    console.log(this.props.currentPianoNote);
+  displayNote = () => {
     if (this.props.recordingStatus !== true) {
       return this.props.currentPianoNote;
+    }
+    else {
+      return this.props.sungNote.name;
+    }
+  }
+
+  displayText = () => {
+    if (this.props.recordingStatus) {
+      return 'You Are Singing';
+    }
+    else {
+      return 'Piano Note';
     }
   }
 
   render() {
     return (
       <div>
-        <div className="panel panel-default noteScoreIndicatorsBorder">
-          <div className="caption noteScoreIndicatorsText">
-            {/* Piano Note -> You Are Singing */}
-            <h4>{this.props.currentText}</h4>
-          </div>
-          <div className="panel-body">
-            <h2>{this.renderSungNote(this.props.sungNote)}</h2>
-            <h2>{this.displayPianoNotes()}</h2>
-          </div>
+        <div className="panel-body">
+          <h4>{this.displayText()}</h4>
+          <h2 id="current-note">{this.displayNote()}</h2>
         </div>
       </div>
     );

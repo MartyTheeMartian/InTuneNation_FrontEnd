@@ -29,8 +29,8 @@ class Interface extends Component {
 
         <Row className="show-grid">
           <Col xs={12} md={5}><Indicators /></Col>
-          <Col xs={4} md={3}><TargetNoteIndicator /></Col>
-          <Col xs={4} md={3}><ScoreBox /></Col>
+          {/* <Col xs={4} md={3}><TargetNoteIndicator /></Col> */}
+          {/* <Col xs={4} md={3}><ScoreBox /></Col> */}
         </Row>
 
         {/* <Row className="show-grid">

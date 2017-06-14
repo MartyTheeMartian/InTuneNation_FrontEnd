@@ -26,7 +26,6 @@ class PianoButtons extends Component {
   handleClick = () =>  {
     this.props.toggleCapture();
     if (this.props.disabled === '' && this.props.captureText === 'End') {
-      console.log(this.props.keyEvents);
       const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
       const body = { notes_array: currentKeyNumCombo };
       const userId = parseInt(localStorage.getItem('userId'), 10);
