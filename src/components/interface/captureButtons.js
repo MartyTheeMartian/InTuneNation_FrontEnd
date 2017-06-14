@@ -10,14 +10,14 @@ const mapStateToProps = (state) => {
     singDisabled: state.singButtonReducer.disabled,
     captureDisabled: state.captureReducer.disabled,
     captureText: state.captureReducer.captureText,
-    keyStrokeEvents: state.keyStrokeEvents,
-    vocalInputResults: state.vocalInputResults,
-    exerciseScores: state.exerciseScores,
-    greenTime: state.greenTime,
-    targetNote: state.targetNote,
-    targetNoteIndex: state.targetNoteIndex,
-    sungNote: state.sungNote,
-    recordingStatus: state.recordingStatusReducer,
+    // keyStrokeEvents: state.keyStrokeEvents,
+    // vocalInputResults: state.vocalInputResults,
+    // exerciseScores: state.exerciseScores,
+    // greenTime: state.greenTime,
+    // targetNote: state.targetNote,
+    // targetNoteIndex: state.targetNoteIndex,
+    // sungNote: state.sungNote,
+    // recordingStatus: state.recordingStatusReducer,
   };
 };
 

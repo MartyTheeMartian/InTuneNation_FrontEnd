@@ -54,7 +54,6 @@ export const removePianoNote = () => {
 }
 
 export const pushKeyEventToArray = (noteObj) => {
-
   return {
     type: 'ADD_KEY_EVENT',
     payload: noteObj,
