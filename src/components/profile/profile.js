@@ -17,43 +17,40 @@ import {BarChart} from 'react-d3/barchart';
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({loadPastExercisesData, startload}, dispatch);
+};
+
 const barData = [
   {label: 'A', value: 5},
   {label: 'B', value: 6},
   {label: 'F', value: 7}
 ];
 
-function startload(){
+function startload(props, userID) {
   return (dispatch, getState) => {
-    dispatch(this.props.loadPastExercisesData(this.state.userID));
+    if (localStorage.length === 0) {
+      return
+    } else {
+      dispatch(props.loadPastExercisesData(userID));
+    }
   }
 };
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    loadPastExercisesData,
-    load: () => {
-      dispatch(startload())
-    },
-  }, dispatch);
-}
 
 class Profile extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      userID: localStorage.getItem('userId')
+      userID: ''
     };
   }
 
+  componentDidMount = () => {
+    const userID = localStorage.getItem('userId')
+    this.props.startload(this.props, userID);
+  }
 
-  //
-  // toggleWillMount = () => {
-  //   if(localStorage.length !==0){
-  //     dispatch(componentWillMount());
-  //   }
-  // }
 
 
   graph = () => {
@@ -61,7 +58,6 @@ class Profile extends Component {
       return <div></div>;
     }
     else if (this.props.graphData.length !== 0) {
-      this.props.load();
       return <div className="center-warning">
         <C3Chart data={{
           unload: true,
@@ -101,7 +97,6 @@ class Profile extends Component {
       return (
         <div className="container-fluid">
           <div className="row">
-
             <div className="col-md-2"/>
             <div className="col-md-8">
               <div className="alert alert-info" role="alert">Please Log Into Your Account
@@ -172,4 +167,4 @@ class Profile extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps )(Profile);
