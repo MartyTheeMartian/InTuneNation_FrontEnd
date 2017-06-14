@@ -42,11 +42,6 @@ class NavBar extends Component {
     }
   }
 
-  profileAPI = () => {
-    let userID = localStorage.getItem('userId');
-    this.props.loadPastExercisesData(userID);
-  }
-
   render() {
     return (
       <Navbar collapseOnSelect>
