@@ -19,7 +19,32 @@ const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphDa
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({loadPastExercisesData, startload}, dispatch);
+//
+//   // return ({
+//   //   loadPastExercisesData: userID => dispatch(loadPastExercisesData(userID)),
+//   //   startload: (props, userID) => dispatch(startload(props, userID))
+//   // })
+//
+//   return ({
+//     loadPastExercisesData: (userID) => {
+//       dispatch(loadPastExercisesData(userID))
+//     },
+//     startload: (props, userID) => {
+//       dispatch(startload(props, userID));
+//     }
+//   });
 };
+
+function startload(props, userID) {
+  return (dispatch, getState) => {
+    if (localStorage.length === 0) {
+      return
+    } else {
+      props.dispatch(loadPastExercisesData(userID));
+    }
+  }
+};
+
 
 const barData = [
   {label: 'A', value: 5},
@@ -27,15 +52,6 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
-function startload(props, userID) {
-  return (dispatch, getState) => {
-    if (localStorage.length === 0) {
-      return
-    } else {
-      dispatch(props.loadPastExercisesData(userID));
-    }
-  }
-};
 
 class Profile extends Component {
 
@@ -48,7 +64,7 @@ class Profile extends Component {
 
   componentDidMount = () => {
     const userID = localStorage.getItem('userId')
-    this.props.startload(this.props, userID);
+    this.props.dispatch(startload(this.props, userID));
   }
 
 
@@ -167,4 +183,4 @@ class Profile extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps )(Profile);
+export default connect(mapStateToProps )(Profile);
