@@ -14,32 +14,42 @@ import { Link } from 'react-router-dom';
 import rd3 from 'react-d3';
 import { BarChart } from 'react-d3/barchart';
 
-
 const barData = [
   {label: 'A', value: 5},
   {label: 'B', value: 6},
   {label: 'F', value: 7}
 ];
 
+
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  loadPastExercisesData
-}, dispatch);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({loadPastExercisesData, startload}, dispatch);
+};
 
+function startload(props, userID) {
+  return (dispatch, getState) => {
+    dispatch(props.loadPastExercisesData(userID));
+  }
+};
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userID: localStorage.getItem('userId')
+      userID: ''
     };
   }
 
-  componentWillMount() {
-    if (localStorage.length !== 0) {
-      this.props.loadPastExercisesData(this.state.userID);
-    }
+  componentDidMount = () => {
+     let userID = localStorage.getItem('userId')
+     this.props.startload(this.props, userID);
+   }
+
+
+  // Inserts exercise into redux
+  insertExToRedux = () => {
+
   }
 
   graph = () => {
@@ -56,7 +66,7 @@ class Profile extends Component {
     }
     else  {
       return <div className="center-warning">
-        <Link to="/interface">
+        <Link to="/interface" onClick={this.insertExToRedux}>
           <a className="thumbnail" style={{
             'background': '#e6ecff'
           }}>
@@ -84,40 +94,18 @@ class Profile extends Component {
   }
 
   render() {
-    if (this.state.userID === undefined) {
-      return (
-        <div className="container-fluid">
-          <div className="row">
-
-            <div className="col-md-2"/>
-            <div className="col-md-8">
-              <div className="alert alert-info" role="alert">Please Log Into Your Account
-              </div>
-              <div>
-                <img src={musicNoteMusic} height={400} width={800} alt={''}/>
-              </div>
-            </div>
-
-            <div className="col-md-2"/>
-          </div>
-        </div>
-      );
-    } else {
       return (
         <div>
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
-
                   <div className="thumbnail">
                     <img src={mathew} alt=".."/>
                     <div className="caption">
                       <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
-
                     </div>
                   </div>
-
                   <div>
                     {/* <BarChart
                       data={barData}
@@ -155,8 +143,8 @@ class Profile extends Component {
           </div>
         </div>
       );
-    }
+    // }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps )(Profile);

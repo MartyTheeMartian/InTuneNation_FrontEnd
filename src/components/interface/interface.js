@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import OctaveButtons from './octaveButtons';
-import NoteIndicator from './noteIndicator';
-import TargetNoteIndicator from './targetNoteIndicator';
-import TuningIndicator from './tuningIndicator';
+import PianoButtons from './pianoButtons';
+import Indicators from './indicators';
 import Piano from './piano';
-import CaptureButtons from './captureButtons';
-import ScoreBox from './scoreBox';
+import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import { Col, Grid, Row } from 'react-bootstrap';
 // import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
@@ -18,10 +15,10 @@ class Interface extends Component {
     return (
       <Grid id="keyboardBackground">
         <Row className="show-grid">
+          <Col xs={0} md={3}></Col>
+          <Col xs={6} md={4}><PianoButtons /></Col>
           <Col xs={0} md={1}></Col>
-          <Col xs={6} md={4}><OctaveButtons /></Col>
-          <Col xs={0} md={1}></Col>
-          <Col xs={6} md={4}><CaptureButtons /></Col>
+          <Col xs={6} md={4}><SingButtons /></Col>
         </Row>
 
         <Row className="show-grid">
@@ -31,8 +28,7 @@ class Interface extends Component {
         </Row>
 
         <Row>
-          <Col xs={12} md={6} lg={0}><TuningIndicator /></Col>
-          {/* <Col xs={0} md={8}><TargetNoteScoreTable /></Col> */}
+          <Col xs={12} md={5}><Indicators /></Col>
         </Row>
 
         <Row className="show-grid">

@@ -42,11 +42,6 @@ class NavBar extends Component {
     }
   }
 
-  profileAPI = () => {
-    let userID = localStorage.getItem('userId');
-    this.props.loadPastExercisesData(userID);
-  }
-
   render() {
     return (
       <Navbar collapseOnSelect>
@@ -67,7 +62,7 @@ class NavBar extends Component {
               <NavItem>Interface</NavItem>
             </LinkContainer>
 
-            <LinkContainer onClick={this.profileAPI} to="/profile" style={this.displayTabs()}>
+            <LinkContainer to="/profile" style={this.displayTabs()}>
               <NavItem>Profile</NavItem>
             </LinkContainer>
 
