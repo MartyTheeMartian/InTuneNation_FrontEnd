@@ -1,20 +1,18 @@
-import React, {Component} from 'react';
-
-import {Thumbnail, Col, Row, Grid} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Thumbnail, Col, Row, Grid } from 'react-bootstrap';
 import C3Chart from 'react-c3js';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-// import ExerciseCardList from './exerciseCardList';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
-import {loadPastExercisesData} from '../../actions';
+import { loadPastExercisesData } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import rd3 from 'react-d3';
-import {BarChart} from 'react-d3/barchart';
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
+import { BarChart } from 'react-d3/barchart';
+
 
 const barData = [
   {label: 'A', value: 5},
@@ -22,9 +20,12 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   loadPastExercisesData
 }, dispatch);
+
 
 class Profile extends Component {
   constructor(props) {
@@ -33,10 +34,6 @@ class Profile extends Component {
       userID: localStorage.getItem('userId')
     };
   }
-
-  componentWillMount = () => {
-    this.props.loadPastExercisesData(this.state.userID);
-  };
 
   graph = () => {
     if (this.props.graphData === null){
@@ -47,7 +44,7 @@ class Profile extends Component {
         <C3Chart data={{
           unload: true,
           columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis}/>
+        }} axis={this.props.graphData.axis} />
       </div>
     }
     else  {
@@ -101,7 +98,7 @@ class Profile extends Component {
         <div>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
 
                   <div className="thumbnail">
@@ -130,22 +127,22 @@ class Profile extends Component {
                 </div> */}
                 </div>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 col-xs-12">
                 <div className="pastExercise"></div>
                 <div>
                   <Table/>
                 </div>
                 <br/>
               </div>
-              <div className="col-md-2 "></div>
+              <div className="col-md-2 col-xs-6"></div>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-md-8">
+            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-8 col-xs-12">
               {this.graph()}
             </div>
-            <div className="col-md-2"></div>
+            <div className="col-md-2 col-xs-3"></div>
           </div>
         </div>
       );

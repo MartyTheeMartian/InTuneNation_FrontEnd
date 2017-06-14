@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 class Table extends Component {
   converter = (array) => {
     return JSON.parse(array).map((ele) => {
-      return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' 🎵  ' + '\xa0' ;
+      return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
     }).toString().slice(0, -5).replace(/,/g , "")
   }
   convertTime = (timeStamp) => {
@@ -36,11 +36,11 @@ class Table extends Component {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
     }}>
       <td>
-        <h5>{index + 1}</h5>
+        <h4>{index + 1}</h4>
       </td>
       {/* <td><h5>{item.id}</h5></td> */}
-      <td><h5>{this.converter(item.notes_array)}</h5></td>
-      <td><h5>{` ${this.convertTime(item.created_at)} ` }</h5></td>
+      <td><h4>{this.converter(item.notes_array)}</h4></td>
+      <td ><h5 id='timestampSize' >{` ${this.convertTime(item.created_at)} ` }</h5></td>
     </tr>
   )));
 
@@ -51,24 +51,30 @@ class Table extends Component {
           <thead>
             <tr>
               <th>
-                <h5>
+                <h4>
+                <strong>
                 No. #
-              </h5>
+              </strong>
+              </h4>
               </th>
               {/* <th>
-                <h5>
+                <h4>
                 Exercise ID
-              </h5>
+              </h4>
               </th> */}
               <th>
-                <h5>
-                Exercises
-              </h5>
+                <h4>
+                  <strong>
+                    Exercises
+                  </strong>
+              </h4>
               </th>
               <th>
-                <h5>
+                <h4>
+                <strong>
                 Creation Date
-              </h5>
+              </strong>
+              </h4>
               </th>
             </tr>
           </thead>
