@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .thumbnail img {
@@ -9,4 +12,8 @@
   margin-left: auto;
   width: 100%;
   height: auto;
+}
+
+.thumbnail {
+  border: 6px solid #e0e0e0 !important;
 }
