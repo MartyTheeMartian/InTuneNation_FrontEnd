@@ -21,7 +21,9 @@ class NoteIndicator extends Component {
       return this.props.currentPianoNote;
     }
     else {
-      return getDisplayableNote(this.props.sungNote.name);
+      if (this.props.sungNote.name) {
+        return getDisplayableNote(this.props.sungNote.name);
+      }
     }
   }
 
