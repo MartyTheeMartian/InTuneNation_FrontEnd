@@ -5,6 +5,7 @@
 .home-component {
   position: relative;
   background-image: url('../../../public/home-page.png');
+  background-repeat: no-repeat;
   background-size: 1464px 700px;
   repeat: no-repeat;
   padding-bottom: 110px;

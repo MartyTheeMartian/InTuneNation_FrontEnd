@@ -7,13 +7,12 @@ import Piano from './piano';
 import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import { Col, Grid, Row } from 'react-bootstrap';
-// import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
 
 class Interface extends Component {
   render() {
     return (
-      <div id="keyboardBackground" >
+      <div id="keyboardBackground">
         <Grid>
           <Row className="show-grid">
             <Col xs={0} md={3}></Col>

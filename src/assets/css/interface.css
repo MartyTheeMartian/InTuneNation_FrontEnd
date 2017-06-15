@@ -7,8 +7,51 @@
 
 #keyboardBackground {
   background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
-  repeat: no-repeat;
-  /*float: left;*/
+  background-repeat: no-repeat;
+}
+
+.white-key {
+  height: 260px;
+  width: 60px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.black-key {
+  height: 160px;
+  width: 58px;
+  border: 1px solid #ffffff;
+  border-top: 1px solid #000000;
+  background-color: #000000;
+  margin-left: -29px;
+  margin-right: -29px;
+  z-index: 2;
+}
+
+.black-key, .white-key {
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.white-key:hover {
+  background-color: #dddddd;
+}
+
+.black-key:hover {
+  background-color: #707070;
+}
+
+.white-key:active {
+  background-color: #2f8aaf;
+}
+
+.black-key:active {
+  background-color: #afac2f;
 }
 
 .captureBox {
