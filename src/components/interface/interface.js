@@ -22,9 +22,9 @@ class Interface extends Component {
         </Row>
 
         <Row className="show-grid">
-          <Col xs={0} md={0} lg={2}></Col>
-          <Col xs={12} md={12} lg={8}><Piano /></Col>
-          <Col xs={0} md={0} lg={2}></Col>
+          <Col xs={0} md={0} lg={1}></Col>
+          <Col xs={12} md={12} lg={10}><Piano /></Col>
+          <Col xs={0} md={0} lg={1}></Col>
         </Row>
 
         <Row>
