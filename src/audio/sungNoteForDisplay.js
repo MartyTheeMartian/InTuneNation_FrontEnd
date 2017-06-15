@@ -23,5 +23,4 @@ function getDisplayableNote(note) {
   return displayNote;
 }
 
-
 module.exports = getDisplayableNote;
