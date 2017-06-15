@@ -58,11 +58,13 @@ class NavBar extends Component {
               <NavItem>Home</NavItem>
             </LinkContainer>
 
-            <LinkContainer to="/interface" style={this.displayTabs()}>
+            {/* <LinkContainer to="/interface" style={this.displayTabs()}> */}
+            <LinkContainer to="/interface" >
               <NavItem>Interface</NavItem>
             </LinkContainer>
 
-            <LinkContainer to="/profile" style={this.displayTabs()}>
+            {/* <LinkContainer to="/profile" style={this.displayTabs()}> */}
+            <LinkContainer to="/profile">
               <NavItem>Profile</NavItem>
             </LinkContainer>
 

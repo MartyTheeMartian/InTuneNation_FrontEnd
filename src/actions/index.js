@@ -26,6 +26,7 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
 export const postSignUp = (user) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
   let data = axios.post(API_URL, user, config());
+  console.log('am i in postsignup action');
   return {
     type: 'USER_SIGN_UP',
     payload: data
@@ -33,8 +34,11 @@ export const postSignUp = (user) => {
 };
 
 export const postLogIn = (user) => {
+  console.log('what is user here now,', user);
   let API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
   let data = axios.post(API_URL, user, config());
+  console.log('am i in postsignup action');
+
   return {
     type: 'USER_LOG_IN',
     payload: data

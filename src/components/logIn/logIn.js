@@ -46,7 +46,6 @@ class LogIn extends Component {
       return { display: 'block' };
     }
   }
-
   onSubmit = (value) => {
     const user = value;
     this.props.postLogIn(user);
@@ -56,6 +55,7 @@ class LogIn extends Component {
   }
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
+
 
     return (
       <div id="logIn" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -68,6 +68,8 @@ class LogIn extends Component {
                   <span>Log In with Google</span>
                 </div>
               </button>
+
+
               <div className="signin-modal-or-decorate">
                 <div className="signin-modal-or-decorate-lineL">
                   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

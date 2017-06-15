@@ -16,6 +16,7 @@
     "meyda": "^4.0.5",
     "microphone-stream": "^3.0.7",
     "mocha": "^3.4.2",
+    "query-string": "^4.3.4",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.10",
     "react-c3js": "^0.1.18",
