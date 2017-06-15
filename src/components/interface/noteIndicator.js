@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import getDisplayableNote from '../../audio/sungNoteForDisplay';
 
 
 const mapStateToProps = (state) => {
@@ -20,7 +21,7 @@ class NoteIndicator extends Component {
       return this.props.currentPianoNote;
     }
     else {
-      return this.props.sungNote.name;
+      return getDisplayableNote(this.props.sungNote.name);
     }
   }
 
