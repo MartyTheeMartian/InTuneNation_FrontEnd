@@ -14,18 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Home extends Component {
-
-componentDidMount = () => {
-  console.log('hi')
-  let query = {};
-  let hash
-  let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
-  let cutTemp = temp.substring(0, temp.length-1);
-  let returnObj = JSON.parse(cutTemp);
-  console.log('returnObj',returnObj)
-
-}
-
   render() {
     return (
       <div className="home-component">
