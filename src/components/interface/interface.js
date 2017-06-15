@@ -13,30 +13,32 @@ import { Col, Grid, Row } from 'react-bootstrap';
 class Interface extends Component {
   render() {
     return (
-      <Grid id="keyboardBackground">
-        <Row className="show-grid">
-          <Col xs={0} md={3}></Col>
-          <Col xs={6} md={4}><PianoButtons /></Col>
-          <Col xs={0} md={1}></Col>
-          <Col xs={6} md={4}><SingButtons /></Col>
-        </Row>
+      <div id="keyboardBackground" >
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={0} md={3}></Col>
+            <Col xs={6} md={4}><PianoButtons /></Col>
+            <Col xs={0} md={1}></Col>
+            <Col xs={6} md={4}><SingButtons /></Col>
+          </Row>
 
-        <Row className="show-grid">
-          <Col xs={0} md={0} lg={1}></Col>
-          <Col xs={12} md={12} lg={10}><Piano /></Col>
-          <Col xs={0} md={0} lg={1}></Col>
-        </Row>
+          <Row className="show-grid">
+            <Col xs={0} md={0} lg={1}></Col>
+            <Col xs={12} md={12} lg={10}><Piano /></Col>
+            <Col xs={0} md={0} lg={1}></Col>
+          </Row>
 
-        <Row>
-          <Col xs={12} md={5}><Indicators /></Col>
-        </Row>
+          <Row>
+            <Col xs={12} md={5}><Indicators /></Col>
+          </Row>
 
-        <Row className="show-grid">
-          <Col md={6} lg={0}></Col>
-          <Col xs={12} md={6}><TargetNoteScoreTable /></Col>
-        </Row>
+          <Row className="show-grid">
+            <Col md={6} lg={0}></Col>
+            <Col xs={12} md={6}><TargetNoteScoreTable /></Col>
+          </Row>
 
-      </Grid>
+        </Grid>
+      </div>
     );
   }
 }

@@ -8,7 +8,7 @@
 #keyboardBackground {
   background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
   repeat: no-repeat;
-  float: left;
+  /*float: left;*/
 }
 
 .captureBox {
