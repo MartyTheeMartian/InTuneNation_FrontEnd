@@ -47,15 +47,12 @@ componentDidMount = () => {
     let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
     let cutTemp = temp.substring(0, temp.length - 1);
     let returnObj = JSON.parse(cutTemp);
-    console.log('returnObj', returnObj)
-
     localStorage.setItem('token', returnObj.token);
     localStorage.setItem('userId', returnObj.id);
     localStorage.setItem('firstName', returnObj.first_name);
     localStorage.setItem('lastName', returnObj.last_name);
     localStorage.setItem('profile_picture', returnObj.profile_picture);
     profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
-    // console.log('profilePicture====type', typeof profilePicture);
     this.props.postLogIn(returnObj.id);
   }
   let userID = localStorage.getItem('userId');
