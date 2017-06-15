@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
-import { loadPastExercisesData } from '../../actions';
+import { loadPastExercisesData, postSignUp, postLogIn } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
@@ -20,11 +20,12 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
+let profilePicture;
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({loadPastExercisesData, startload}, dispatch);
+  return bindActionCreators({loadPastExercisesData, startload, postSignUp, postLogIn}, dispatch);
 };
 
 function startload(props, userID) {
@@ -41,10 +42,22 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount = () => {
-     let userID = localStorage.getItem('userId')
-     this.props.startload(this.props, userID);
-   }
+componentDidMount = () => {
+  if(window.location.href.indexOf('?') !== -1) {
+    let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+    let cutTemp = temp.substring(0, temp.length - 1);
+    let returnObj = JSON.parse(cutTemp);
+    localStorage.setItem('token', returnObj.token);
+    localStorage.setItem('userId', returnObj.id);
+    localStorage.setItem('firstName', returnObj.first_name);
+    localStorage.setItem('lastName', returnObj.last_name);
+    localStorage.setItem('profile_picture', returnObj.profile_picture);
+    profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
+    this.props.postLogIn(returnObj.id);
+  }
+  let userID = localStorage.getItem('userId');
+  this.props.startload(this.props, userID);
+}
 
 
   // Inserts exercise into redux
@@ -101,7 +114,7 @@ class Profile extends Component {
               <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
                   <div className="thumbnail">
-                    <img src={mathew} alt=".."/>
+                    <img src={profilePicture} alt=".."/>
                     <div className="caption">
                       <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
                     </div>
@@ -143,7 +156,6 @@ class Profile extends Component {
           </div>
         </div>
       );
-    // }
   }
 }
 
