@@ -20,6 +20,7 @@ const barData = [
   {label: 'F', value: 7}
 ];
 
+let profilePicture;
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
@@ -53,7 +54,8 @@ componentDidMount = () => {
     localStorage.setItem('firstName', returnObj.first_name);
     localStorage.setItem('lastName', returnObj.last_name);
     localStorage.setItem('profile_picture', returnObj.profile_picture);
-
+    profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
+    // console.log('profilePicture====type', typeof profilePicture);
     this.props.postLogIn(returnObj.id);
   }
   let userID = localStorage.getItem('userId');
@@ -110,7 +112,7 @@ componentDidMount = () => {
               <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
                   <div className="thumbnail">
-                    <img src={mathew} alt=".."/>
+                    <img src={profilePicture} alt=".."/>
                     <div className="caption">
                       <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
                     </div>
