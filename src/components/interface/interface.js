@@ -8,11 +8,43 @@ import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
+import { loadPastExercisesData, postSignUp, postLogIn } from '../../actions';
 import { Col, Grid, Row } from 'react-bootstrap';
 // import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
+function startload(props, userID) {
+  return (dispatch, getState) => {
+    dispatch(props.loadPastExercisesData(userID));
+  }
+};
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({loadPastExercisesData, startload, postSignUp, postLogIn}, dispatch);
+};
+
+let profilePicture;
 class Interface extends Component {
+
+  // componentDidMount = () => {
+  //   if(window.location.href.indexOf('?') !== -1) {
+  //     let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+  //     let cutTemp = temp.substring(0, temp.length - 1);
+  //     let returnObj = JSON.parse(cutTemp);
+  //     console.log('returnObj', returnObj)
+  //
+  //     localStorage.setItem('token', returnObj.token);
+  //     localStorage.setItem('userId', returnObj.id);
+  //     localStorage.setItem('firstName', returnObj.first_name);
+  //     localStorage.setItem('lastName', returnObj.last_name);
+  //     localStorage.setItem('profile_picture', returnObj.profile_picture);
+  //     profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
+  //     // console.log('profilePicture====type', typeof profilePicture);
+  //     this.props.postLogIn(returnObj.id);
+  //   }
+  //   let userID = localStorage.getItem('userId');
+  //   this.props.startload(this.props, userID);
+  // }
+
   render() {
     return (
       <Grid id="keyboardBackground">

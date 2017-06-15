@@ -176,6 +176,11 @@ export const setExerciseId = (userId, body) => {
   };
 };
 
+export const renderNavBar = () => {
+  return {
+    type: 'RENDER_NAVBAR'
+  }
+}
 // export const doSearchExercises = () => {
 //   const API_URL =
 //   `https://ppp-capstone-music.herokuapp.com/users/17/exercises`;

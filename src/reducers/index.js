@@ -9,7 +9,7 @@ import greenTimeReducer from './greenTime';
 import scoreReducer from './score';
 import exerciseScoresReducer from './exerciseScores';
 import currentExerciseIdReducer from './currentExerciseId';
-import { captureReducer, octaveReducer, currentPianoNoteReducer } from './interface';
+import { captureReducer, octaveReducer, currentPianoNoteReducer, navBarReducer } from './interface';
 import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboardReducer from './dashboard';
@@ -37,6 +37,7 @@ const appReducer = combineReducers({
   loginReducer,
   dashboardReducer,
   graphDataReducer,
+  navBarReducer,
 });
 
 const rootReducer = (state, action) => {

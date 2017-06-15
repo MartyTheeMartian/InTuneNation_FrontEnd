@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
-import { loadPastExercisesData, postSignUp, postLogIn } from '../../actions';
+import { loadPastExercisesData, postSignUp, postLogIn, renderNavBar } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
@@ -25,7 +25,13 @@ let profilePicture;
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({loadPastExercisesData, startload, postSignUp, postLogIn}, dispatch);
+  return bindActionCreators({
+    loadPastExercisesData,
+    startload,
+    postSignUp,
+    postLogIn,
+    renderNavBar,
+  }, dispatch);
 };
 
 function startload(props, userID) {
@@ -42,7 +48,12 @@ class Profile extends Component {
     };
   }
 
+  // refresh = () => {
+  //   this.forceUpdate();
+  // }
+
 componentDidMount = () => {
+  this.props.renderNavBar();
   if(window.location.href.indexOf('?') !== -1) {
     let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
     let cutTemp = temp.substring(0, temp.length - 1);
@@ -53,13 +64,19 @@ componentDidMount = () => {
     localStorage.setItem('userId', returnObj.id);
     localStorage.setItem('firstName', returnObj.first_name);
     localStorage.setItem('lastName', returnObj.last_name);
+    localStorage.setItem('email', returnObj.email);
+    localStorage.setItem('password', returnObj.hashed_password);
     localStorage.setItem('profile_picture', returnObj.profile_picture);
     profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
+
     // console.log('profilePicture====type', typeof profilePicture);
-    this.props.postLogIn(returnObj.id);
+    this.props.postLogIn(
+      { email: returnObj.email, password: returnObj.hashed_password }
+    );
   }
   let userID = localStorage.getItem('userId');
   this.props.startload(this.props, userID);
+
 }
 
 
@@ -112,7 +129,7 @@ componentDidMount = () => {
               <div className="col-md-2 col-xs-6">
                 <div className="thumbnailSection">
                   <div className="thumbnail">
-                    <img src={profilePicture} alt=".."/>
+                    <img src={profilePicture || mathew} alt=".."/>
                     <div className="caption">
                       <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
                     </div>

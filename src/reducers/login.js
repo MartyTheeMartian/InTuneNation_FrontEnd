@@ -1,5 +1,5 @@
 import initialState from './initialState';
-
+console.log('am i in the login reducer');
 const loginReducer = (state = { loginSuccess: initialState.loginSuccess }, action) => {
 
   switch (action.type) {
