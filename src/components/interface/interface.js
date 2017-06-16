@@ -49,7 +49,6 @@ class Interface extends Component {
       localStorage.setItem('firstName', returnObj.first_name);
       localStorage.setItem('lastName', returnObj.last_name);
       localStorage.setItem('email', returnObj.email);
-      localStorage.setItem('password', returnObj.hashed_password);
       localStorage.setItem('profile_picture', returnObj.profile_picture);
     }
   }
