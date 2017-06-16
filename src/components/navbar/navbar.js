@@ -7,7 +7,7 @@ import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
 import { loadPastExercisesData } from '../../actions';
-// import Profile from '../Profile.js'
+
 
 const mapStateToProps = (state) => {
   return {
@@ -48,7 +48,6 @@ class NavBar extends Component {
 
   render() {
     return (
-      // <Profile props={refresh}></Profile>
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
