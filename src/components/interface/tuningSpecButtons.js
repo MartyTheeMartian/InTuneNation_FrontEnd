@@ -44,7 +44,6 @@ class VolumeSlider extends Component {
 
   handleOnChangeGreenTime = (value) => {
     this.props.changeGreenTimeRequirement(value);
-    console.log('changed GT to', this.props.greenTimeRequirement);
   }
 
   render() {

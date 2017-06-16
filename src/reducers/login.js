@@ -1,10 +1,8 @@
 import initialState from './initialState';
-
 const loginReducer = (state = { loginSuccess: initialState.loginSuccess }, action) => {
 
   switch (action.type) {
     case 'USER_LOG_IN_FULFILLED':
-      console.log('what is action.payload.data', action.payload.data);
       localStorage.setItem('token', action.payload.data.token);
       localStorage.setItem('userId', action.payload.data.id);
       localStorage.setItem('firstName', action.payload.data.firstName);

@@ -47,6 +47,7 @@ class LogIn extends Component {
     }
   }
   onSubmit = (value) => {
+    // console.log('what is value inside onSubmit', value);
     const user = value;
     this.props.postLogIn(user);
   }
