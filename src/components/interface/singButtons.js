@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState }, dispatch); };
 
-class CaptureButtons extends Component {
+class SingButtons extends Component {
 
   handleResetClick = () => { this.props.resetState(); }
 
@@ -40,12 +40,10 @@ class CaptureButtons extends Component {
   render() {
     return (
       <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-4 col-sm-6 col-xs-5">
-            <button onClick={this.handleSingClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>{this.props.singText}</button>
+          <div className="col-md-12">
+            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
-          <div className="col-md-1"></div>
-          <div className="col-md-4 col-sm-6 col-xs-5">
+          <div className="col-md-12">
             <button onClick={this.handleResetClick} className="btn btn-lg active captureBox" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>
@@ -54,4 +52,4 @@ class CaptureButtons extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CaptureButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(SingButtons);

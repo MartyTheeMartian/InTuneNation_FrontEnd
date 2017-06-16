@@ -65,8 +65,12 @@ class Profile extends Component {
       profile_picture: profile_picture
     }
     this.props.googleOauth(Obj);
-
     this.props.loadPastExercisesData(Obj.id);
+  }
+
+  // Inserts exercise into redux
+  insertExToRedux = () => {
+
   }
 
   graph = () => {
@@ -81,7 +85,7 @@ class Profile extends Component {
       </div>
     } else {
       return <div className="center-warning">
-        <Link to="/interface">
+        <Link to="/interface" onClick={this.insertExToRedux}>
           <a className="thumbnail" style={{
             'background': '#e6ecff'
           }}>

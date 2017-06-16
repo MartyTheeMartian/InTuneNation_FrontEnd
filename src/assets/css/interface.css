@@ -6,9 +6,80 @@
 
 
 #keyboardBackground {
-  background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
-  repeat: no-repeat;
-  float: left;
+  background-image: url('../../../public/interface-page.png');
+  background-size: 1430px 700px;
+  background-repeat: no-repeat;
+}
+
+#piano {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+}
+
+.right-piano {
+  width: 50%;
+  flex: 3 1 ;
+  display: inline-flex;
+}
+
+.left-piano {
+  width: 50%;
+  flex: 3 1;
+  display: inline-flex;
+}
+
+@media all and (max-width: 640px) {
+  #piano, .right-piano, .left-piano {
+    flex-direction: column;
+    display: table-footer-group;
+  }
+}
+
+.white-key {
+  height: 260px;
+  width: 58px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.black-key {
+  height: 160px;
+  width: 58px;
+  border: 1px solid #ffffff;
+  border-top: 1px solid #000000;
+  background-color: #000000;
+  margin-left: -29px;
+  margin-right: -29px;
+  z-index: 2;
+}
+
+.black-key, .white-key {
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.white-key:hover {
+  background-color: #dddddd;
+}
+
+.black-key:hover {
+  background-color: #707070;
+}
+
+.white-key:active {
+  background-color: #2f8aaf;
+}
+
+.black-key:active {
+  background-color: #afac2f;
 }
 
 .captureBox {
@@ -18,6 +89,10 @@
   font-size: 50px;
   color: white;
   float: right;
+}
+
+.slider {
+  background-color: yellow;
 }
 
 #octRow {
@@ -54,15 +129,38 @@
 }
 
 #gauge {
-  background-color: white;
-  border: 3px solid #1cd1fc;
-  border-radius: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 8px 8px 8px 8px;
+  padding-top: 6px;
 }
 
 #indicatorRow {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.currentTarget {
+  background-color: lightblue;
+}
+
+#indicators {
+  height: 318px;
+  width: 362px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+}
+
+.panel-body {
+  padding-top: 0px;
+  padding-bottom: 4px;
+}
+
+#current-note {
+  height: 30px;
+}
+
+#sing-button {
+  padding-left: 27px;
+  padding-right: 27px;
 }

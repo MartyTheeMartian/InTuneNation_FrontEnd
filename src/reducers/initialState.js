@@ -1,7 +1,7 @@
 export default {
   capture: {
     capture: false,
-    captureText: '',
+    captureText: 'Key',
     disabled: '',
     resetDisabled: 'disabled',
   },
@@ -26,6 +26,10 @@ export default {
     name: null,
     centDiff: null,
     arrowValue: 90 / 180,
+  },
+  tuningSpecs: {
+    greenYellowBand: 20,
+    redYellowBand: 49,
   },
   recordingStatus: false,
   singButton: {
