@@ -41,7 +41,9 @@ class NoteIndicator extends Component {
       <div>
         <div className="panel-body">
           <h4>{this.displayText()}</h4>
-          <h2 id="current-note">{this.displayNote()}</h2>
+          <div id="displayNoteBorder">
+            <h2 id="current-note">{this.displayNote()}</h2>
+          </div>
         </div>
       </div>
     );

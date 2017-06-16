@@ -4,13 +4,57 @@ import { connect } from 'react-redux';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
+import ScoreBox from './scoreBox';
+import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
+
 import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import TuningSpecButtons from './tuningSpecButtons';
+
 import { Col, Grid, Row } from 'react-bootstrap';
 
+const mapStateToProps = (state, ownProps) => ({googleOauthState: state.googleOauthReducer});
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadPastExercisesData,
+    startload,
+    postSignUp,
+    postLogIn,
+    googleOauth,
+    startload,
+    renderNavBar,
+  }, dispatch);
+};
+
+let profilePicture;
 class Interface extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
+  componentDidMount = () => {
+    let returnObj ;
+    this.props.renderNavBar();
+    if(window.location.href.indexOf('?') !== -1) {
+      let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+      let cutTemp = temp.substring(0, temp.length - 1);
+      returnObj = JSON.parse(cutTemp);
+
+      localStorage.setItem('token', returnObj.token);
+      localStorage.setItem('userId', returnObj.id);
+      localStorage.setItem('firstName', returnObj.first_name);
+      localStorage.setItem('lastName', returnObj.last_name);
+      localStorage.setItem('email', returnObj.email);
+      localStorage.setItem('password', returnObj.hashed_password);
+      localStorage.setItem('profile_picture', returnObj.profile_picture);
+    }
+  }
+
+
   render() {
     return (
 
@@ -66,14 +110,15 @@ class Interface extends Component {
           </Row>
           <Row className="show-grid">
             <Col lg={4}><Indicators /></Col>
-            <Col lg={8}>
+            <Col lg={1}></Col>
+            <Col lg={7}>
               <Row className="show-grid">
                 <br />
-                <Col lg={10}><TargetNoteScoreTable /></Col>
+                <Col lg={9}><TargetNoteScoreTable /></Col>
               </Row>
               {/* <br /><br /> */}
               <Row className="show-grid">
-                <Col lg={8}><TuningSpecButtons /></Col>
+                <Col lg={9}><TuningSpecButtons /></Col>
               </Row>
             </Col>
           </Row>
@@ -83,4 +128,4 @@ class Interface extends Component {
   }
 }
 
-export default Interface;
+export default connect(mapStateToProps, mapDispatchToProps )(Interface);

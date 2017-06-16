@@ -9,12 +9,16 @@ import LogOut from '../logOut/logOut.js';
 import { loadPastExercisesData } from '../../actions';
 
 
-const mapStateToProps = (state) => { return {}; };
+const mapStateToProps = (state) => {
+  return {
+    renderNav: state.navBarReducer,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData }, dispatch); };
 
 class NavBar extends Component {
-
+  
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };

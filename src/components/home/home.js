@@ -15,14 +15,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class Home extends Component {
 
-componentDidMount = () => {
-  let query = {};
-  let hash
-  let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
-  let cutTemp = temp.substring(0, temp.length-1);
-  let returnObj = JSON.parse(cutTemp);
-}
-
   render() {
     return (
       <div className="row home-component">

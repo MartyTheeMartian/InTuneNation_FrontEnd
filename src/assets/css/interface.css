@@ -4,6 +4,25 @@
 @font-face { font-family: OpenSans-SemiboldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-SemiboldItalic.ttf') }
 @font-face { font-family: OpenSans-BoldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-BoldItalic.ttf') }
 
+.noteScoresTable {
+  background-color: #fff;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+  padding-bottom: 0px;
+  height: 80%;
+}
+
+.table {
+  margin-bottom: 0px;
+}
+
+#timeSlider {
+  background-color: red;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: blue !important;
+}
 
 #keyboardBackground {
   background-image: url('../../../public/interface-page.png');
@@ -142,7 +161,7 @@
 }
 
 #indicators {
-  height: 318px;
+  height: 321px;
   width: 362px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -158,6 +177,16 @@
 
 #current-note {
   height: 30px;
+}
+
+#displayNoteBorder {
+  border: solid #1cd1fc 3px;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  justify-content: center;
+  margin-right: 94px;
+  margin-left: 94px;
+  padding: 1px;
 }
 
 #sing-button {

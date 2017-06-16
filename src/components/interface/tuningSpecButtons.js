@@ -10,24 +10,26 @@ class VolumeSlider extends Component {
   constructor(props, context) {
     super(props, context)
     this.title = this.props.title;
-    if (this.title === 'Green Zone') {
+    if (this.title === 'Accuracy Difficulty') {
       this.state = {
         centDifferential: this.props.tuningSpecs.greenYellowBand,
       }
       this.max = this.props.tuningSpecs.redYellowBand - 1;
       this.min = 0;
+      this.reverse = true;
     } else {
       this.state = {
         greenTime: this.props.greenTimeRequirement,
       };
       this.max = 10;
       this.min = 1;
+      this.reverse = false;
     }
   }
 
   handleOnChange = (value) => {
-    if (this.title === 'Green Zone') { this.handleOnChangeGY(value); }
-    else if (this.title === 'Green Time Requirement') { this.handleOnChangeGreenTime(value); }
+    if (this.title === 'Accuracy Difficulty') { this.handleOnChangeGY(value); }
+    else if (this.title === 'Time Difficulty') { this.handleOnChangeGreenTime(value); }
     // this.props.changeTuningSpecs(this.props.tuningSpecs.redYellowBand, value);
     this.setState({
       centDifferential: value,
@@ -44,7 +46,6 @@ class VolumeSlider extends Component {
 
   handleOnChangeGreenTime = (value) => {
     this.props.changeGreenTimeRequirement(value);
-    console.log('changed GT to', this.props.greenTimeRequirement);
   }
 
   render() {
@@ -56,6 +57,7 @@ class VolumeSlider extends Component {
           value={centDifferential}
           max={this.max}
           min={this.min}
+          reverse={this.reverse}
           tooltip={true}
           orientation="horizontal"
           onChange={this.handleOnChange}
@@ -90,12 +92,12 @@ class TuningSpecButtons extends Component {
     return (
       <div>
         <VolumeSlider
-          title={'Green Zone'}
+          title={'Accuracy Difficulty'}
           tuningSpecs={this.props.tuningSpecs}
           changeTuningSpecs={(rYB, gYB) => { this.props.changeTuningSpecs(rYB, gYB); } }
         />
         <VolumeSlider
-          title={'Green Time Requirement'}
+          title={'Time Difficulty'}
           tuningSpecs={this.props.tuningSpecs}
           greenTimeRequirement={this.props.greenTime.required}
           changeTuningSpecs={(rYB, gYB) => { this.props.changeTuningSpecs(rYB, gYB); } }
