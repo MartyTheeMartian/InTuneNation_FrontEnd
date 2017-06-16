@@ -25,6 +25,9 @@ import { getName,
           green,
           yellow,
           red,
+          greenWithParams,
+          yellowWithParams,
+          redWithParams,
         } from './teoria_helpers';
 import scorePostingUtility from './score_posting_utility';
 
@@ -127,13 +130,25 @@ export default getUserMedia({ video: false, audio: true })
             dispatch(incrementTargetNoteIndex());
           }
         } else {
-          if (green(targetNoteName, sungNoteName, freq)) {
+          // if (green(targetNoteName, sungNoteName, freq)) {
+          //   dispatch(incrementGreenTime());
+          // } else {
+          //   // dispatch(resetGreenTime());
+          //   if (red(targetNoteName, sungNoteName, freq)) {
+          //     dispatch(decrementScore(1.5));
+          //   } else if (yellow(targetNoteName, sungNoteName, freq)) {
+          //     dispatch(decrementScore(.5));
+          //   }
+          // }
+          const tuningSpecs = getState().tuningSpecsReducer;
+          if (tuningSpecs) { console.log(tuningSpecs.greenYellowBand); }
+          if (greenWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.greenYellowBand)) {
             dispatch(incrementGreenTime());
           } else {
             // dispatch(resetGreenTime());
-            if (red(targetNoteName, sungNoteName, freq)) {
-              dispatch(decrementScore(1.5));
-            } else if (yellow(targetNoteName, sungNoteName, freq)) {
+            if (redWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand)) {
+              dispatch(decrementScore(2));
+            } else if (yellowWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand, tuningSpecs.greenYellowBand)) {
               dispatch(decrementScore(.5));
             }
           }
