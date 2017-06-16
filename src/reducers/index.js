@@ -41,12 +41,9 @@ const appReducer = combineReducers({
   loginReducer,
   dashboardReducer,
   graphDataReducer,
-<<<<<<< HEAD
   navBarReducer,
   googleOauthReducer,
-=======
   tuningSpecsReducer,
->>>>>>> afee62ff079be3edb68ec1ece5b916ab0067297a
 });
 
 const rootReducer = (state, action) => {

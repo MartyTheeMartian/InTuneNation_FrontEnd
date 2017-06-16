@@ -1,18 +1,8 @@
 /*eslint-disable*/
 import axios from 'axios';
 
-<<<<<<< HEAD
 const config = () => {
   return { headers: {'token': localStorage.getItem('token')} };
-};
-
-export const loadPastExercisesData = (user_id) => {
-  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
-  let data = axios.get(API_URL, config());
-  return {
-    type: 'PAST_EXERCISES_TABLE_RUN',
-    payload: data
-  };
 };
 
 export const startload = (props, userID) => {
@@ -21,18 +11,7 @@ export const startload = (props, userID) => {
   }
 };
 
-export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) => {
-  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
-  let data = axios.get(API_URL, config());
-  return {
-    type: 'ALL_INTONATION_PER_EXERCISE',
-    payload: data
-  };
-};
-
 export const postSignUp = (user) => {
-
-  // user.password = user.password.trim();
   const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
   let data = axios.post(API_URL, user, config());
   return {
@@ -151,10 +130,6 @@ export const resetState = () => {
 };
 
 //ASYNC
-export const config = () => {
-  return { headers: {'token': localStorage.getItem('token')} };
-};
-
 export const loadPastExercisesData = (user_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises`;
   let data = axios.get(API_URL, config());
@@ -169,24 +144,6 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
   let data = axios.get(API_URL, config());
   return {
     type: 'ALL_INTONATION_PER_EXERCISE',
-    payload: data
-  };
-};
-
-export const postSignUp = (user) => {
-  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
-  let data = axios.post(API_URL, user, config());
-  return {
-    type: 'USER_SIGN_UP',
-    payload: data
-  };
-};
-
-export const postLogIn = (user) => {
-  let API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
-  let data = axios.post(API_URL, user, config());
-  return {
-    type: 'USER_LOG_IN',
     payload: data
   };
 };
