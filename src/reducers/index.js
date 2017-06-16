@@ -21,6 +21,7 @@ import tuningSpecsReducer from './tuningSpecs';
 // import resetStateReducer from './resetState';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
+import barGraphgraphDataReducer from './barGraphData';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -44,6 +45,7 @@ const appReducer = combineReducers({
   navBarReducer,
   googleOauthReducer,
   tuningSpecsReducer,
+  barGraphgraphDataReducer,
 });
 
 const rootReducer = (state, action) => {
