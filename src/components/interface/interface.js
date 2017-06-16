@@ -8,42 +8,50 @@ import TuningIndicator from './tuningIndicator';
 import Piano from './piano';
 import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
-import { loadPastExercisesData, postSignUp, postLogIn } from '../../actions';
+import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
 import { Col, Grid, Row } from 'react-bootstrap';
-// import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
-function startload(props, userID) {
-  return (dispatch, getState) => {
-    dispatch(props.loadPastExercisesData(userID));
-  }
-};
+const mapStateToProps = (state, ownProps) => ({googleOauthState: state.googleOauthReducer});
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({loadPastExercisesData, startload, postSignUp, postLogIn}, dispatch);
+  return bindActionCreators({
+    loadPastExercisesData,
+    startload,
+    postSignUp,
+    postLogIn,
+    googleOauth,
+    startload,
+    renderNavBar,
+  }, dispatch);
 };
 
 let profilePicture;
 class Interface extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-  // componentDidMount = () => {
-  //   if(window.location.href.indexOf('?') !== -1) {
-  //     let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
-  //     let cutTemp = temp.substring(0, temp.length - 1);
-  //     let returnObj = JSON.parse(cutTemp);
-  //     console.log('returnObj', returnObj)
-  //
-  //     localStorage.setItem('token', returnObj.token);
-  //     localStorage.setItem('userId', returnObj.id);
-  //     localStorage.setItem('firstName', returnObj.first_name);
-  //     localStorage.setItem('lastName', returnObj.last_name);
-  //     localStorage.setItem('profile_picture', returnObj.profile_picture);
-  //     profilePicture = returnObj.profile_picture.substring(0, returnObj.profile_picture.length-2)+'200';
-  //     // console.log('profilePicture====type', typeof profilePicture);
-  //     this.props.postLogIn(returnObj.id);
-  //   }
-  //   let userID = localStorage.getItem('userId');
-  //   this.props.startload(this.props, userID);
-  // }
+    };
+  }
+
+  componentDidMount = () => {
+    let returnObj ;
+    this.props.renderNavBar();
+    if(window.location.href.indexOf('?') !== -1) {
+      let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+      let cutTemp = temp.substring(0, temp.length - 1);
+      returnObj = JSON.parse(cutTemp);
+
+      localStorage.setItem('token', returnObj.token);
+      localStorage.setItem('userId', returnObj.id);
+      localStorage.setItem('firstName', returnObj.first_name);
+      localStorage.setItem('lastName', returnObj.last_name);
+      localStorage.setItem('email', returnObj.email);
+      localStorage.setItem('password', returnObj.hashed_password);
+      localStorage.setItem('profile_picture', returnObj.profile_picture);
+    }
+  }
+
 
   render() {
     return (
@@ -96,4 +104,4 @@ class Interface extends Component {
   }
 }
 
-export default Interface;
+export default connect(mapStateToProps, mapDispatchToProps )(Interface);

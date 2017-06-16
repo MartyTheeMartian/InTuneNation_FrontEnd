@@ -14,6 +14,7 @@ import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboardReducer from './dashboard';
 import singButtonReducer from './singButton';
+import googleOauthReducer from './googleOauth.js'
 // import resetStateReducer from './resetState';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
@@ -38,6 +39,7 @@ const appReducer = combineReducers({
   dashboardReducer,
   graphDataReducer,
   navBarReducer,
+  googleOauthReducer,
 });
 
 const rootReducer = (state, action) => {
