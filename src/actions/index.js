@@ -33,10 +33,8 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
 export const postSignUp = (user) => {
 
   // user.password = user.password.trim();
-  console.log('what is user', user);
   const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
   let data = axios.post(API_URL, user, config());
-  console.log('am i in postsignup action');
   return {
     type: 'USER_SIGN_UP',
     payload: data
@@ -45,11 +43,9 @@ export const postSignUp = (user) => {
 
 export const postLogIn = (user) => {
   user.password = user.password.trim();
-  console.log('what is postLogIn', user);
   user.password.trim();
   let API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
   let data = axios.post(API_URL, user, config());
-  // console.log('am i in postsignup action');
 
   return {
     type: 'USER_LOG_IN',
@@ -57,9 +53,7 @@ export const postLogIn = (user) => {
   };
 };
 
-=======
-//SYNC
->>>>>>> afee62ff079be3edb68ec1ece5b916ab0067297a
+
 export const currentPianoNote = (note) => {
   return {
     type: 'CURRENT_PIANO_NOTE',
