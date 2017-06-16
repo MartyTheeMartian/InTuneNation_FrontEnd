@@ -45,10 +45,6 @@ class NavBar extends Component {
       return { display: 'block' };
     }
   }
-  //
-  // refresh = () => {
-  //   this.forceUpdate();
-  // }
 
   render() {
     return (
