@@ -1,62 +1,91 @@
-import React, { Component } from 'react';
-import { Thumbnail, Col, Row, Grid } from 'react-bootstrap';
+import React, {Component} from 'react';
+import {Thumbnail, Col, Row, Grid} from 'react-bootstrap';
 import C3Chart from 'react-c3js';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import 'c3/c3.css';
 import mathew from '../../assets/img/matthew.png';
-import { loadPastExercisesData } from '../../actions';
+import {
+  loadPastExercisesData,
+  postSignUp,
+  postLogIn,
+  renderNavBar,
+  googleOauth,
+  startload
+} from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
-import { BarChart } from 'react-d3/barchart';
+import {BarChart} from 'react-d3/barchart';
 
+let profilePicture;
 
-const barData = [
-  {label: 'A', value: 5},
-  {label: 'B', value: 6},
-  {label: 'F', value: 7}
-];
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, googleOauthState: state.googleOauthReducer});
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer});
-
-const mapDispatchToProps = dispatch => bindActionCreators({
-  loadPastExercisesData
-}, dispatch);
-
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadPastExercisesData,
+    startload,
+    postSignUp,
+    postLogIn,
+    renderNavBar,
+    googleOauth,
+    startload
+  }, dispatch);
+};
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userID: localStorage.getItem('userId')
+      userID: ''
     };
   }
 
-  componentWillMount() {
-    if (localStorage.length !== 0) {
-      this.props.loadPastExercisesData(this.state.userID);
+  componentDidMount = () => {
+    let token = localStorage.getItem('token');
+    let userId = localStorage.getItem('userId');
+    let firstName = localStorage.getItem('firstName');
+    let lastName = localStorage.getItem('lastName');
+    let email = localStorage.getItem('email');
+    let password = localStorage.getItem('password');
+    let profile_picture = localStorage.getItem('profile_picture');
+
+    profilePicture = profile_picture.substring(0, profile_picture.length - 2) + '200';
+    let Obj = {
+      token: token,
+      id: userId,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      profile_picture: profile_picture
     }
+    this.props.googleOauth(Obj);
+    this.props.loadPastExercisesData(Obj.id);
+  }
+
+  // Inserts exercise into redux
+  insertExToRedux = () => {
+
   }
 
   graph = () => {
-    if (this.props.graphData === null){
+    if (this.props.graphData === null) {
       return <div></div>;
-    }
-    else if (this.props.graphData.length !== 0) {
+    } else if (this.props.graphData.length !== 0) {
       return <div className="center-warning">
         <C3Chart data={{
           unload: true,
           columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis} />
+        }} axis={this.props.graphData.axis}/>
       </div>
-    }
-    else  {
+    } else {
       return <div className="center-warning">
-        <Link to="/interface">
+        <Link to="/interface" onClick={this.insertExToRedux}>
           <a className="thumbnail" style={{
             'background': '#e6ecff'
           }}>
@@ -68,94 +97,41 @@ class Profile extends Component {
     }
   }
 
-  uploadFile(e) {
-    // e.preventDefault();
-    // cloudinary.openUploadWidget(
-    //   { cloud_name: 'kevinawesome',
-    //     upload_preset: 'musicapp',
-    //     theme: 'minimal' },
-    //   (error, imageInfo) => {
-    //     console.log(error);
-    //     if(error === null){
-    //       let cloud_url=imageInfo[0].url;
-    //       this.setState({image:cloud_url});
-    //     }
-    //   });
-  }
-
   render() {
-    if (this.state.userID === undefined) {
-      return (
+    return (
+      <div>
         <div className="container-fluid">
           <div className="row">
-
-            <div className="col-md-2"/>
-            <div className="col-md-8">
-              <div className="alert alert-info" role="alert">Please Log Into Your Account
-              </div>
-              <div>
-                <img src={musicNoteMusic} height={400} width={800} alt={''}/>
+            <div className="col-md-2 col-xs-6">
+              <div className="thumbnailSection">
+                <div className="thumbnail">
+                  <img src={profilePicture} alt=".."/>
+                  <div className="caption">
+                    <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
+                  </div>
+                </div>
+                <div></div>
               </div>
             </div>
-
-            <div className="col-md-2"/>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-2 col-xs-6">
-                <div className="thumbnailSection">
-
-                  <div className="thumbnail">
-                    <img src={mathew} alt=".."/>
-                    <div className="caption">
-                      <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
-
-                    </div>
-                  </div>
-
-                  <div>
-                    {/* <BarChart
-                      data={barData}
-                      width={500}
-                      height={200}
-                      fill={'#3182bd'}
-                      title='Bar Chart'
-                    /> */}
-                  </div>
-                  {/* <input type="file" onClick={this.uploadFile}>
-                  <img src={this.state.image}></img>
-                </input> */}
-                  {/* <div>
-                  ImageDropping Area
-                <Dropzone onDrop={ this.uploadFile.bind(this) }/>
-                </div> */}
-                </div>
-              </div>
-              <div className="col-md-8 col-xs-12">
-                <div className="pastExercise"></div>
-                <div>
-                  <Table/>
-                </div>
-                <br/>
-              </div>
-              <div className="col-md-2 col-xs-6"></div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-2 col-xs-3"></div>
             <div className="col-md-8 col-xs-12">
-              {this.graph()}
+              <div className="pastExercise"></div>
+              <div>
+                <Table/>
+              </div>
+              <br/>
             </div>
-            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-2 col-xs-6"></div>
           </div>
         </div>
-      );
-    }
+        <div className="row">
+          <div className="col-md-2 col-xs-3"></div>
+          <div className="col-md-8 col-xs-12">
+            {this.graph()}
+          </div>
+          <div className="col-md-2 col-xs-3"></div>
+        </div>
+      </div>
+    );
   }
 }
 

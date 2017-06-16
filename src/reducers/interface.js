@@ -26,7 +26,7 @@ export const captureReducer = (state = initialState.capture, action) => {
       } else if (state.capture) {
         return {
           capture: false,
-          captureText: '',
+          captureText: 'Key',
           disabled: 'disabled',
           resetDisabled: '',
         };
@@ -56,3 +56,12 @@ export const octaveReducer = (state = initialState.octave, action) => {
       return state;
   }
 };
+
+export const navBarReducer = (state = initialState.navBar, action) => {
+  switch (action.type) {
+    case 'RENDER_NAVBAR':
+      return true;
+    default:
+      return state;
+  }
+}

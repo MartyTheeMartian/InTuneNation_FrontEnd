@@ -4,7 +4,11 @@
 
 .home-component {
   position: relative;
-  /*background-color: #ccc;*/
+  background-image: url('../../../public/home-page.png');
+  background-repeat: no-repeat;
+  background-size: 1464px 700px;
+  padding-bottom: 110px;
+  margin-right: 0px;
 }
 
 .home-img-container {
@@ -18,33 +22,7 @@
 }
 
 .home-content {
-  background-color: rgba(255, 255, 255, 0);
-  border-radius: 8px;
-  width: 620px;
-  padding: 15px;
-  margin: 120px auto;
-}
-
-.home-content h1{
-  color: #ddd;
-}
-
-.home-content h3{
-  color: #ddd;
-  font-size: 47px;
-  font-family: 'Philosopher';
-}
-
-.github {
-  margin: 600px 0 20px 0;
+  margin-top: 390px;
+  margin-bottom: 160px;
   text-align: center;
-}
-
-.github a{
-  font-size: 25px;
-  color: #000 !important;
-}
-
-.github a:hover{
-  text-decoration: none !important;
 }
