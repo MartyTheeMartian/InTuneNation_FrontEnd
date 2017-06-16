@@ -27,6 +27,10 @@ export default {
     centDiff: null,
     arrowValue: 90 / 180,
   },
+  tuningSpecs: {
+    greenYellowBand: 20,
+    redYellowBand: 49,
+  },
   recordingStatus: false,
   singButton: {
     singText: 'Sing',

@@ -5,7 +5,7 @@ import { pushKeyEventToArray, currentPianoNote } from '../../actions';
 import getKeyNum from '../../audio/keyNumGenerator';
 import getDisplayableNote from '../../audio/pianoNoteForDisplay';
 import Tone from '../../../tone-js/tone';
-
+import { Col, Grid, Row } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {
   return {
@@ -99,6 +99,72 @@ class Piano extends Component {
             <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
           </div>
         </div>
+
+        {/* <Grid id="piano">
+
+          <Row>
+            <Col lgHidden mdHidden sm={8} xs={12}>
+              <div onClick={() => this.handleClick({ note: 'C', side: 'left'})} className="white-key"  ></div>
+              <div onClick={() => this.handleClick({ note: 'C#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'E', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'B', side: 'left'})} className="white-key" ></div>
+            </Col>
+          </Row>
+          <Row>
+            <Col lgHidden mdHidden md={8} xs={12}>
+              <div onClick={() => this.handleClick({ note: 'C', side: 'right'})} className="white-key"  ></div>
+              <div onClick={() => this.handleClick({ note: 'C#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'E', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
+            </Col>
+          </Row>
+          <Row>
+            <Col xsHidden smHidden md={12} lg={10}>
+              <div onClick={() => this.handleClick({ note: 'C', side: 'left'})} className="white-key"  ></div>
+              <div onClick={() => this.handleClick({ note: 'C#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'E', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A', side: 'left'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A#', side: 'left'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'B', side: 'left'})} className="white-key" ></div>
+
+              <div onClick={() => this.handleClick({ note: 'C', side: 'right'})} className="white-key"  ></div>
+              <div onClick={() => this.handleClick({ note: 'C#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'D#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'E', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'F#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'G#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A', side: 'right'})} className="white-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'A#', side: 'right'})} className="black-key" ></div>
+              <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
+            </Col>
+          </Row>
+
+        </Grid> */}
       </div>
     );
   }

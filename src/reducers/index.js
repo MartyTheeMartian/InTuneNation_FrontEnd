@@ -14,6 +14,7 @@ import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboardReducer from './dashboard';
 import singButtonReducer from './singButton';
+import tuningSpecsReducer from './tuningSpecs';
 // import resetStateReducer from './resetState';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
@@ -37,6 +38,7 @@ const appReducer = combineReducers({
   loginReducer,
   dashboardReducer,
   graphDataReducer,
+  tuningSpecsReducer,
 });
 
 const rootReducer = (state, action) => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Table } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +22,8 @@ const renderKeyEventIds = (keyEvents, targetNoteIndex, disableStr) => {
       if (index === targetNoteIndex) {
         const target = <th className="currentTarget">{ index + 1 }</th>;
         const passive = <th>{ index + 1 }</th>;
-        if (disableStr === 'disabled') { return target; } else { return passive; }
+        if (disableStr === 'disabled') { return target; }
+        return passive;
       }
       return <th>{ index + 1 }</th>;
     });
@@ -35,7 +37,8 @@ const renderTargetNotes = (keyEvents, targetNoteIndex, disableStr) => {
       if (index === targetNoteIndex) {
         const target = <th className="currentTarget">{ item.noteName }</th>;
         const passive = <th>{ item.noteName }</th>;
-        if (disableStr === 'disabled') { return target; } else { return passive; }
+        if (disableStr === 'disabled') { return target; }
+        return passive;
       }
       return <th>{ item.noteName }</th>;
     });
@@ -51,21 +54,22 @@ const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, 
       if (index === targetNoteIndex) {
         const target = <th className="currentTarget">{ currentScore }</th>;
         const passive = <th>{ currentScore }</th>;
-        if (disableStr === 'disabled') { return target; } else { return passive; }
+        if (disableStr === 'disabled') { return target; }
+        return passive;
       }
       return <th>100</th>;
     });
   }
-}
+};
 
 class TargetNoteScoreTable extends Component {
   render() {
     return (
       <div id="noteScores">
-        <table className="talbe table-bordered">
+        <Table bordered responsive condensed>
           <thead>
             <tr>
-              <th>#</th>
+              <th>Note #</th>
               {renderKeyEventIds(this.props.keyEvents, this.props.targetNoteIndex, this.props.capture.disabled)}
             </tr>
           </thead>
@@ -79,7 +83,7 @@ class TargetNoteScoreTable extends Component {
               {renderScores(this.props.keyEvents, this.props.exerciseScores, this.props.targetNoteIndex, this.props.currentScore, this.props.capture.disabled)}
             </tr>
           </tbody>
-        </table>
+        </Table>
       </div>
     )
   }
