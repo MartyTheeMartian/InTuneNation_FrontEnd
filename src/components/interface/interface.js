@@ -6,6 +6,7 @@ import Indicators from './indicators';
 import Piano from './piano';
 import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
+import TuningSpecButtons from './tuningSpecButtons';
 import { Col, Grid, Row } from 'react-bootstrap';
 // import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
@@ -13,29 +14,42 @@ import { Col, Grid, Row } from 'react-bootstrap';
 class Interface extends Component {
   render() {
     return (
-      <Grid id="keyboardBackground">
+      <Grid>
         <Row className="show-grid">
-          <Col xs={0} md={3}></Col>
-          <Col xs={6} md={4}><PianoButtons /></Col>
-          <Col xs={0} md={1}></Col>
-          <Col xs={6} md={4}><SingButtons /></Col>
+          <Col smHidden xsHidden md={12} lg={10}>
+            <Row className="show-grid">
+              <Col lg={6}><PianoButtons /></Col>
+              <Col lg={5}><SingButtons /></Col>
+            </Row>
+            <Row className="show-grid">
+              <Col lg={12}><Piano /></Col>
+            </Row>
+          </Col>
+          <Col mdHidden smHidden xsHidden lg={2}></Col>
+          <Col lgHidden mdHidden sm={12}>
+            <Row className="show-grid">
+              <Col sm={8}><PianoButtons /></Col>
+              <Col sm={4}><SingButtons /></Col>
+            </Row>
+            <Row>
+              <Col sm={7}><Piano /></Col>
+              <Col sm={5}><Indicators /></Col>
+            </Row>
+          </Col>
         </Row>
-
         <Row className="show-grid">
-          <Col xs={0} md={0} lg={2}></Col>
-          <Col xs={12} md={12} lg={8}><Piano /></Col>
-          <Col xs={0} md={0} lg={2}></Col>
+          <Col lg={4}><Indicators /></Col>
+          <Col lg={8}>
+            <Row className="show-grid">
+              <br />
+              <Col lg={10}><TargetNoteScoreTable /></Col>
+            </Row>
+            {/* <br /><br /> */}
+            <Row className="show-grid">
+              <Col lg={8}><TuningSpecButtons /></Col>
+            </Row>
+          </Col>
         </Row>
-
-        <Row>
-          <Col xs={12} md={5}><Indicators /></Col>
-        </Row>
-
-        <Row className="show-grid">
-          <Col md={6} lg={0}></Col>
-          <Col xs={12} md={6}><TargetNoteScoreTable /></Col>
-        </Row>
-
       </Grid>
     );
   }

@@ -147,7 +147,7 @@ const fetchAllPastExercises = (userId) => {
   .then((response) => {
     return response.data;
   });
-}
+};
 
 export const setAllPastExercises = (userId) => {
   const data = fetchAllPastExercises(userId);
@@ -155,7 +155,7 @@ export const setAllPastExercises = (userId) => {
     type: 'SET_ALL_PAST_EXERCISES',
     payload: data,
   };
-}
+};
 
 export const postExercise = (userId, body) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
@@ -163,12 +163,22 @@ export const postExercise = (userId, body) => {
   return axios.post(API_URL, body, config).then((response) => {
     return response.data;
   });
-}
+};
 
 export const setExerciseId = (userId, body) => {
   return {
     type: 'SET_EXERCISE_ID',
     payload: postExercise(userId, body),
+  };
+};
+
+export const changeTuningSpecs = (rYBand, gYBand) => {
+  return {
+    type: 'CHANGE_TUNING_SPECS',
+    payload: {
+      greenYellowBand: gYBand,
+      redYellowBand: rYBand,
+    },
   };
 };
 

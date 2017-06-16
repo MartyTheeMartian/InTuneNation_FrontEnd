@@ -34,17 +34,14 @@ if (window.innerWidth <= 420 && window.innerWidth > 375) {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  // keyStrokeEvents: state.keyStrokeEventsReducer,
-  // vocalInputResults: state.vocalInputResultsReducer,
-  // exerciseScores: state.exerciseScoresReducer,
-  // targetNote: state.targetNoteReducer,
-  // targetNoteIndex: state.targetNoteIndexReducer,
+  tuningSpecs: state.tuningSpecsReducer,
   sungNote: state.sungNoteReducer,
-  // recordingStatus: state.recordingStatusReducer,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ pushNoteToArray, toggleAudioCapture }, dispatch);
 
+const offsetNegative = (cD) => { return ((180 * (((cD * -1) + 50) / 100)) / 180); };
+const offsetPositive = (cD) => { return ((180 * ((cD + 50) / 100)) / 180); };
 
 class TuningIndicator extends Component {
   render() {
@@ -68,26 +65,31 @@ class TuningIndicator extends Component {
       ranges: [
         {
           start: 0,
-          end: 36 / 180,
+          end: offsetNegative(this.props.tuningSpecs.redYellowBand), // redYellowBand (negative)
           color: '#f3595b',
         },
         {
-          start: 36 / 180,
-          end: 72 / 180,
+          start: offsetNegative(this.props.tuningSpecs.redYellowBand), // redYellowBand (negative)
+          end: offsetNegative(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (negative)
           color: '#ffc875',
         },
         {
-          start: 72 / 180,
-          end: 108 / 180,
+          start: offsetNegative(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (negative)
+          end: offsetPositive(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (positive)
           color: '#83d7c0',
         },
         {
-          start: 108 / 180,
-          end: 144 / 180,
+          start: offsetPositive(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (positive)
+          end: offsetPositive(this.props.tuningSpecs.redYellowBand), // redYellowBand (positive)
           color: '#ffc875',
         },
         {
-          start: 144 / 180,
+          start: offsetPositive(this.props.tuningSpecs.redYellowBand), // redYellowBand (positive)
+          end: 179 / 180,
+          color: '#f3595b',
+        },
+        {
+          start: 179 / 180,
           end: 180 / 180,
           color: '#f3595b',
         },

@@ -20,6 +20,10 @@
   float: right;
 }
 
+.slider {
+  background-color: yellow;
+}
+
 #octRow {
   margin-bottom: 15px;
 }
@@ -72,6 +76,8 @@
   margin-top: 10px;
   margin-bottom: 20px;
   background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
 }
 
 .panel-body {
