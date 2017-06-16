@@ -17,12 +17,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="row home-component">
+      <div id="home-component">
 
-        <div className="home-content">
-          <div id="main-logo" className="github">
-            <img src={logo} alt="logo" />
-          </div>
+        <div id="home-logo">
+          <img src={logo} alt="logo" />
         </div>
 
       </div>
