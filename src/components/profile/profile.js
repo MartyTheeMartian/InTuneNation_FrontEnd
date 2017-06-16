@@ -21,7 +21,7 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer});
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,  googleOauthState: state.googleOauthReducer});
 
 let profile_picture;
 
@@ -89,13 +89,13 @@ class Profile extends Component {
             columns: this.props.graphData.columns
           }} axis={this.props.graphData.axis}/>
         </div>
-        <div className="center-warning">
+        {/* <div className="center-warning">
           <C3Chart data={{
             unload: true,
             columns: this.props.graphData.columns,
             type: 'bar'
-          }}/>
-        </div>
+          }}/> */}
+        {/* </div> */}
        </div>
     } else {
       return <div className="center-warning">
