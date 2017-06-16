@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
     targetNoteIndex: state.targetNoteIndexReducer,
     currentScore: state.scoreReducer,
     exerciseScores: state.exerciseScoresReducer,
+    greenTime: state.greenTimeReducer,
   };
 };
 
@@ -45,6 +46,16 @@ const renderTargetNotes = (keyEvents, targetNoteIndex, disableStr) => {
   }
 };
 
+const renderGreenTime = (keyEvents, targetNoteIndex, greenTime) => {
+  if (keyEvents) {
+    return keyEvents.map((item, index) => {
+      if (index > targetNoteIndex) { return <th>0</th>; }
+      else if (index === targetNoteIndex) { return <th>{greenTime.accumulated}</th>; }
+      else if (index < targetNoteIndex) { return <th>{greenTime.required}</th>; }
+    });
+  }
+}
+
 const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, disableStr) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
@@ -65,8 +76,8 @@ const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, 
 class TargetNoteScoreTable extends Component {
   render() {
     return (
-      <div id="noteScores">
-        <Table bordered responsive condensed>
+      <div className="noteScoresTable">
+        <table className="table table-responsive">
           <thead>
             <tr>
               <th>Note #</th>
@@ -79,11 +90,15 @@ class TargetNoteScoreTable extends Component {
               {renderTargetNotes(this.props.keyEvents, this.props.targetNoteIndex, this.props.capture.disabled)}
             </tr>
             <tr>
+              <th>Green Time</th>
+              {renderGreenTime(this.props.keyEvents, this.props.targetNoteIndex, this.props.greenTime)}
+            </tr>
+            <tr>
               <th>Score</th>
               {renderScores(this.props.keyEvents, this.props.exerciseScores, this.props.targetNoteIndex, this.props.currentScore, this.props.capture.disabled)}
             </tr>
           </tbody>
-        </Table>
+        </table>
       </div>
     )
   }
