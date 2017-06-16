@@ -103,11 +103,18 @@
 
 .captureBox {
   border-radius: 8px;
-  background-color: #b94ad5;
+  /*background-color: #b94ad5;*/
+  background-color: #2fc5e0;
   font-family: DDCHardwareCondensed;
   font-size: 50px;
   color: white;
   float: right;
+  margin: 5px 0px 5px 0px;
+  width: 200px;
+}
+
+.singButtonBackground {
+  background-color: white;
 }
 
 .slider {
@@ -168,6 +175,13 @@
   background-color: white;
   border: 3px #1cd1fc solid;
   border-radius: 15px;
+}
+
+#sliders {
+  background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+  margin-top: 5px;
 }
 
 .panel-body {

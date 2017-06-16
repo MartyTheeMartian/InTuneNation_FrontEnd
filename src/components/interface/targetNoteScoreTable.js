@@ -50,7 +50,7 @@ const renderGreenTime = (keyEvents, targetNoteIndex, greenTime) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
       if (index > targetNoteIndex) { return <th>0</th>; }
-      else if (index === targetNoteIndex) { return <th>{greenTime.accumulated}</th>; }
+      else if (index === targetNoteIndex) { return <th className="currentTarget">{greenTime.accumulated}</th>; }
       else if (index < targetNoteIndex) { return <th>{greenTime.required}</th>; }
     });
   }
