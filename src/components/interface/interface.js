@@ -8,7 +8,6 @@ import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import TuningSpecButtons from './tuningSpecButtons';
 import { Col, Grid, Row } from 'react-bootstrap';
-// import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
 
 class Interface extends Component {
