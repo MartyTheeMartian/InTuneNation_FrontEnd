@@ -68,33 +68,36 @@ class Piano extends Component {
       <div className="col-md-12">
 
         <div id="piano">
-          {/* right piano */}
-          <div onClick={() => this.handleClick({ note: 'C', side: 'left'})} className="white-key"  ></div>
-          <div onClick={() => this.handleClick({ note: 'C#', side: 'left'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'D', side: 'left'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'D#', side: 'left'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'E', side: 'left'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'F', side: 'left'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'F#', side: 'left'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'G', side: 'left'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'G#', side: 'left'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'A', side: 'left'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'A#', side: 'left'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'B', side: 'left'})} className="white-key" ></div>
           {/* left piano */}
-          <div onClick={() => this.handleClick({ note: 'C', side: 'right'})} className="white-key"  ></div>
-          <div onClick={() => this.handleClick({ note: 'C#', side: 'right'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'D', side: 'right'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'D#', side: 'right'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'E', side: 'right'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'F', side: 'right'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'F#', side: 'right'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'G', side: 'right'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'G#', side: 'right'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'A', side: 'right'})} className="white-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'A#', side: 'right'})} className="black-key" ></div>
-          <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
-
+          <div className="left-piano">
+            <div onClick={() => this.handleClick({ note: 'C', side: 'left'})} className="white-key"  ></div>
+            <div onClick={() => this.handleClick({ note: 'C#', side: 'left'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'D', side: 'left'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'D#', side: 'left'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'E', side: 'left'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'F', side: 'left'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'F#', side: 'left'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'G', side: 'left'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'G#', side: 'left'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'A', side: 'left'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'A#', side: 'left'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'B', side: 'left'})} className="white-key" ></div>
+          </div>
+          {/* right piano */}
+          <div className="right-piano">
+            <div onClick={() => this.handleClick({ note: 'C', side: 'right'})} className="white-key"  ></div>
+            <div onClick={() => this.handleClick({ note: 'C#', side: 'right'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'D', side: 'right'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'D#', side: 'right'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'E', side: 'right'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'F', side: 'right'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'F#', side: 'right'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'G', side: 'right'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'G#', side: 'right'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'A', side: 'right'})} className="white-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'A#', side: 'right'})} className="black-key" ></div>
+            <div onClick={() => this.handleClick({ note: 'B', side: 'right'})} className="white-key" ></div>
+          </div>
         </div>
       </div>
     );

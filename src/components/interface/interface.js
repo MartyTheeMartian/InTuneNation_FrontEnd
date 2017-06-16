@@ -15,16 +15,14 @@ class Interface extends Component {
       <div id="keyboardBackground">
         <Grid>
           <Row className="show-grid">
-            <Col xs={0} md={3}></Col>
-            <Col xs={6} md={4}><PianoButtons /></Col>
-            <Col xs={0} md={1}></Col>
-            <Col xs={6} md={4}><SingButtons /></Col>
-          </Row>
+            <Col md={9}>
+              <PianoButtons />
+              <Piano />
+            </Col>
+            <Col  md={3}>
+              <SingButtons />
+            </Col>
 
-          <Row className="show-grid">
-            <Col xs={0} md={0} lg={1}></Col>
-            <Col xs={12} md={12} lg={10}><Piano /></Col>
-            <Col xs={0} md={0} lg={1}></Col>
           </Row>
 
           <Row>
