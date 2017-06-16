@@ -49,7 +49,6 @@ class Interface extends Component {
       localStorage.setItem('firstName', returnObj.first_name);
       localStorage.setItem('lastName', returnObj.last_name);
       localStorage.setItem('email', returnObj.email);
-      localStorage.setItem('password', returnObj.hashed_password);
       localStorage.setItem('profile_picture', returnObj.profile_picture);
     }
   }
@@ -107,7 +106,7 @@ class Interface extends Component {
             </Col>
           </Row>
           <Row className="show-grid">
-            <Col lg={4}><Indicators /></Col>
+            <Col xsHidden smHidden md={4} lg={4}><Indicators /></Col>
             <Col lg={1}></Col>
             <Col lg={7}>
               <Row className="show-grid">
@@ -116,7 +115,7 @@ class Interface extends Component {
               </Row>
               {/* <br /><br /> */}
               <Row className="show-grid">
-                <Col lg={9}><TuningSpecButtons /></Col>
+                <Col lg={9} id="sliders"><TuningSpecButtons/></Col>
               </Row>
             </Col>
           </Row>

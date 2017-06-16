@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleAudioCapture, singButton, resetState } from '../../actions';
 import Tone from '../../../tone-js/tone';
-const note = require('../../assets/img/image.png');
 
 const mapStateToProps = (state) => {
   return {
