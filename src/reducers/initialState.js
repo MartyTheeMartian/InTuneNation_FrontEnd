@@ -41,4 +41,5 @@ export default {
   currentExerciseId: null,
   graphData: null,
   dashboard: [],
+  navBar: false,
 };
