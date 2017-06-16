@@ -23,6 +23,8 @@ import {BarChart} from 'react-d3/barchart';
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, googleOauthState: state.googleOauthReducer});
 
+let profile_picture;
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadPastExercisesData,
@@ -49,7 +51,12 @@ class Profile extends Component {
     let firstName = localStorage.getItem('firstName');
     let lastName = localStorage.getItem('lastName');
     let email = localStorage.getItem('email');
-    let profile_picture = localStorage.getItem('profile_picture');
+
+    if (localStorage.getItem('profile_picture') !== "undefined") {
+      profile_picture = localStorage.getItem('profile_picture').substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
+    } else {
+      profile_picture = mathew;
+    }
 
     let Obj = {
       token: token,
@@ -102,9 +109,9 @@ class Profile extends Component {
             <div className="col-md-2 col-xs-6">
               <div className="thumbnailSection">
                 <div className="thumbnail">
-                  <img src={this.props.googleOauthState.profile_picture} alt=".."/>
+                  <img src={profile_picture} alt=".."/>
                   <div className="caption">
-                    <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
+                    <h3>{this.props.googleOauthState.firstName} {this.props.googleOauthState.lastName}</h3>
                   </div>
                 </div>
                 <div></div>
