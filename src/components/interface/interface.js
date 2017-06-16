@@ -84,13 +84,15 @@ class Interface extends Component {
       <div id="keyboardBackground">
         <Grid>
           <Row className="show-grid">
-            <Col smHidden xsHidden md={12} lg={10}>
+            <Col smHidden xsHidden md={12} lg={12}>
               <Row className="show-grid">
-                <Col lg={6}><PianoButtons /></Col>
-                <Col lg={5}><SingButtons /></Col>
-              </Row>
-              <Row className="show-grid">
-                <Col lg={12}><Piano /></Col>
+                <Col md={9}>
+                  <PianoButtons />
+                  <Piano />
+                </Col>
+                <Col md={3}>
+                  <SingButtons />
+                </Col>
               </Row>
             </Col>
             <Col mdHidden smHidden xsHidden lg={2}></Col>

@@ -160,6 +160,15 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
   };
 };
 
+export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
+  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
+  let data = axios.get(API_URL, config());
+  return {
+    type: 'ALL_INTONATION_PER_EXERCISE_BARGRAPH',
+    payload: data
+  };
+};
+
 const fetchAllPastExercises = (userId) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;
   const config = { headers: { token: localStorage.getItem('token') } };

@@ -16,8 +16,8 @@ class VolumeSlider extends Component {
         centDifferential: this.props.tuningSpecs.greenYellowBand,
       }
       this.max = this.props.tuningSpecs.redYellowBand - 1;
-      this.min = 0;
-      this.reverse = true;
+      this.min = 1;
+      this.reverse = false;
     } else {
       this.state = {
         greenTime: this.props.greenTimeRequirement,
@@ -82,7 +82,7 @@ class TuningSpecButtons extends Component {
     return (
       <Grid>
         <Row>
-          <Col lg={1}>Hard</Col>
+          <Col lg={1}>Easy</Col>
           <Col lg={3}>
             <VolumeSlider
               title={'Accuracy Difficulty'}
@@ -99,7 +99,7 @@ class TuningSpecButtons extends Component {
               changeGreenTimeRequirement={(amount) => { this.props.changeGreenTimeRequirement(amount); }}
             />
           </Col>
-          <Col lg={1}>Easy</Col>
+          <Col lg={1}>Hard</Col>
         </Row>
       </Grid>
     );

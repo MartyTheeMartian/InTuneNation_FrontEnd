@@ -21,7 +21,9 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, googleOauthState: state.googleOauthReducer});
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,  googleOauthState: state.googleOauthReducer});
+
+let profile_picture;
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -49,7 +51,12 @@ class Profile extends Component {
     let firstName = localStorage.getItem('firstName');
     let lastName = localStorage.getItem('lastName');
     let email = localStorage.getItem('email');
-    let profile_picture = localStorage.getItem('profile_picture');
+
+    if (localStorage.getItem('profile_picture') !== "undefined") {
+      profile_picture = localStorage.getItem('profile_picture').substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
+    } else {
+      profile_picture = mathew;
+    }
 
     let Obj = {
       token: token,
@@ -71,15 +78,25 @@ class Profile extends Component {
   }
 
   graph = () => {
+    console.log('graphData===',this.props.graphData);
+    // console.log('graphDataBarGraph===', this.props.graphDataBarGraph.columns);
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0) {
-      return <div className="center-warning">
-        <C3Chart data={{
-          unload: true,
-          columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis}/>
-      </div>
+      return <div><div className="center-warning">
+          <C3Chart data={{
+            unload: true,
+            columns: this.props.graphData.columns
+          }} axis={this.props.graphData.axis}/>
+        </div>
+        {/* <div className="center-warning">
+          <C3Chart data={{
+            unload: true,
+            columns: this.props.graphData.columns,
+            type: 'bar'
+          }}/> */}
+        {/* </div> */}
+       </div>
     } else {
       return <div className="center-warning">
         <Link to="/interface" onClick={this.insertExToRedux}>
@@ -96,21 +113,20 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="col-md-2 col-xs-6">
               <div className="thumbnailSection">
                 <div className="thumbnail">
-                  <img src={this.props.googleOauthState.profile_picture} alt=".."/>
+                  <img src={profile_picture} alt=".."/>
                   <div className="caption">
-                    <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
+                    <h3>{this.props.googleOauthState.firstName} {this.props.googleOauthState.lastName}</h3>
                   </div>
                 </div>
                 <div></div>
               </div>
             </div>
-            <div className="col-md-8 col-xs-12">
+            <div className="col-md-10 col-xs-12">
               <div className="pastExercise"></div>
               <div>
                 <Table/>
@@ -119,15 +135,14 @@ class Profile extends Component {
             </div>
             <div className="col-md-2 col-xs-6"></div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-2 col-xs-3"></div>
-          <div className="col-md-8 col-xs-12">
-            {this.graph()}
+          <div className="row" >
+            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-8 col-xs-12">
+              {this.graph()}
+            </div>
+            <div className="col-md-2 col-xs-3"></div>
           </div>
-          <div className="col-md-2 col-xs-3"></div>
         </div>
-      </div>
     );
   }
 }

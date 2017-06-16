@@ -103,11 +103,18 @@
 
 .captureBox {
   border-radius: 8px;
-  background-color: #b94ad5;
+  /*background-color: #b94ad5;*/
+  background-color: #2fc5e0;
   font-family: DDCHardwareCondensed;
   font-size: 50px;
   color: white;
   float: right;
+  margin: 5px 0px 5px 0px;
+  width: 200px;
+}
+
+.singButtonBackground {
+  background-color: white;
 }
 
 .slider {
@@ -162,7 +169,7 @@
 
 #indicators {
   height: 321px;
-  width: 362px;
+  width: 364px;
   margin-top: 10px;
   margin-bottom: 20px;
   background-color: white;
@@ -198,5 +205,5 @@
 
 #sing-button {
   padding-left: 27px;
-  padding-right: 27px;
+  padding-right: 28px;
 }

@@ -68,13 +68,13 @@ class SingButtons extends Component {
         {/* <div className="col-md-12">
           <button id="play-exercise-button" onClick={this.handlePlayExerciseClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>PLAY EXERCISE</button>
         </div> */}
-        <div className="col-md-12">
+        <div className="col-md-9 singButtonBackground">
           <button id="starting-note-button" onClick={this.handleStartingNoteClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>START 🎵</button>
         </div>
-          <div className="col-md-12">
+          <div className="col-md-9 singButtonBackground">
             <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
-          <div className="col-md-12">
+          <div className="col-md-9 singButtonBackground">
             <button onClick={this.handleResetClick} className="btn btn-lg active captureBox" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>
