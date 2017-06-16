@@ -162,7 +162,7 @@
 
 #indicators {
   height: 321px;
-  width: 362px;
+  width: 364px;
   margin-top: 10px;
   margin-bottom: 20px;
   background-color: white;
@@ -191,5 +191,5 @@
 
 #sing-button {
   padding-left: 27px;
-  padding-right: 27px;
+  padding-right: 28px;
 }

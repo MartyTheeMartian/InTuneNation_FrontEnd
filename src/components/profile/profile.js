@@ -96,8 +96,7 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="col-md-2 col-xs-6">
               <div className="thumbnailSection">
@@ -110,7 +109,7 @@ class Profile extends Component {
                 <div></div>
               </div>
             </div>
-            <div className="col-md-8 col-xs-12">
+            <div className="col-md-10 col-xs-12">
               <div className="pastExercise"></div>
               <div>
                 <Table/>
@@ -119,15 +118,14 @@ class Profile extends Component {
             </div>
             <div className="col-md-2 col-xs-6"></div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-2 col-xs-3"></div>
-          <div className="col-md-8 col-xs-12">
-            {this.graph()}
+          <div className="row" >
+            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-8 col-xs-12">
+              {this.graph()}
+            </div>
+            <div className="col-md-2 col-xs-3"></div>
           </div>
-          <div className="col-md-2 col-xs-3"></div>
         </div>
-      </div>
     );
   }
 }
