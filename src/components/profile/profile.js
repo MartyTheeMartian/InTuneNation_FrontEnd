@@ -21,7 +21,7 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, googleOauthState: state.googleOauthReducer});
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer});
 
 let profile_picture;
 
@@ -78,15 +78,25 @@ class Profile extends Component {
   }
 
   graph = () => {
+    console.log('graphData===',this.props.graphData);
+    // console.log('graphDataBarGraph===', this.props.graphDataBarGraph.columns);
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0) {
-      return <div className="center-warning">
-        <C3Chart data={{
-          unload: true,
-          columns: this.props.graphData.columns
-        }} axis={this.props.graphData.axis}/>
-      </div>
+      return <div><div className="center-warning">
+          <C3Chart data={{
+            unload: true,
+            columns: this.props.graphData.columns
+          }} axis={this.props.graphData.axis}/>
+        </div>
+        <div className="center-warning">
+          <C3Chart data={{
+            unload: true,
+            columns: this.props.graphData.columns,
+            type: 'bar'
+          }}/>
+        </div>
+       </div>
     } else {
       return <div className="center-warning">
         <Link to="/interface" onClick={this.insertExToRedux}>
