@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { changeTuningSpecs, changeGreenTimeRequirement } from '../../actions';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
-import ReactSlider from 'react-slider';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
-import ReactUISlider from 'react-ui-slider';
+
 
 class VolumeSlider extends Component {
   constructor(props, context) {

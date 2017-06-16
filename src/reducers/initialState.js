@@ -1,7 +1,7 @@
 export default {
   capture: {
     capture: false,
-    captureText: '',
+    captureText: 'Key',
     disabled: '',
     resetDisabled: 'disabled',
   },

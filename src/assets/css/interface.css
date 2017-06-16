@@ -6,13 +6,40 @@
 
 
 #keyboardBackground {
-  background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
+  background-image: url('../../../public/home-page.png');
+  background-size: 1464px 700px;
   background-repeat: no-repeat;
+}
+
+#piano {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+}
+
+.right-piano {
+  width: 50%;
+  flex: 3 1 ;
+  display: inline-flex;
+}
+
+.left-piano {
+  width: 50%;
+  flex: 3 1;
+  display: inline-flex;
+}
+
+@media all and (max-width: 640px) {
+  #piano, .right-piano, .left-piano {
+    flex-direction: column;
+    display: table-footer-group;
+  }
 }
 
 .white-key {
   height: 260px;
-  width: 60px;
+  width: 58px;
   border: 1px solid #000000;
   background-color: #ffffff;
   z-index: 1;
@@ -35,7 +62,8 @@
   cursor: pointer;
   box-sizing: border-box;
   display: inline-block;
-  border-radius: 5px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .white-key:hover {
@@ -130,4 +158,9 @@
 
 #current-note {
   height: 30px;
+}
+
+#sing-button {
+  padding-left: 27px;
+  padding-right: 27px;
 }
