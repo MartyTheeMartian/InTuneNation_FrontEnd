@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
-
-import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
 import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
 
