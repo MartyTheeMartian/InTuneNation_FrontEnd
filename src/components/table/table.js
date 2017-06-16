@@ -38,7 +38,6 @@ class Table extends Component {
       <td>
         <h4>{index + 1}</h4>
       </td>
-      {/* <td><h5>{item.id}</h5></td> */}
       <td><h4>{this.converter(item.notes_array)}</h4></td>
       <td ><h5 id='timestampSize' >{` ${this.convertTime(item.created_at)} ` }</h5></td>
     </tr>
@@ -57,11 +56,6 @@ class Table extends Component {
               </strong>
               </h4>
               </th>
-              {/* <th>
-                <h4>
-                Exercise ID
-              </h4>
-              </th> */}
               <th>
                 <h4>
                   <strong>

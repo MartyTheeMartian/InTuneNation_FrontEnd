@@ -21,8 +21,6 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-let profilePicture;
-
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, googleOauthState: state.googleOauthReducer});
 
 const mapDispatchToProps = (dispatch) => {
@@ -47,24 +45,23 @@ class Profile extends Component {
 
   componentDidMount = () => {
     let token = localStorage.getItem('token');
-    let userId = localStorage.getItem('userId');
+    let id = localStorage.getItem('userId');
     let firstName = localStorage.getItem('firstName');
     let lastName = localStorage.getItem('lastName');
     let email = localStorage.getItem('email');
-    let password = localStorage.getItem('password');
     let profile_picture = localStorage.getItem('profile_picture');
 
-    profilePicture = profile_picture.substring(0, profile_picture.length - 2) + '200';
     let Obj = {
       token: token,
-      id: userId,
+      id: id,
       firstName: firstName,
       lastName: lastName,
       email: email,
-      password: password,
-      profile_picture: profile_picture
+      profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200',
     }
+    //sending the object to the state so i can rerender the page
     this.props.googleOauth(Obj);
+    //loading the music table
     this.props.loadPastExercisesData(Obj.id);
   }
 
@@ -105,7 +102,7 @@ class Profile extends Component {
             <div className="col-md-2 col-xs-6">
               <div className="thumbnailSection">
                 <div className="thumbnail">
-                  <img src={profilePicture} alt=".."/>
+                  <img src={this.props.googleOauthState.profile_picture} alt=".."/>
                   <div className="caption">
                     <h3>{localStorage.getItem('firstName')} {localStorage.getItem('lastName')}</h3>
                   </div>
