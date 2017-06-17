@@ -80,10 +80,10 @@ const mapDispatchToProps = (dispatch) => {
 class TuningSpecButtons extends Component {
   render() {
     return (
-      <Grid>
+
         <Row>
-          <Col lg={1}>Easy</Col>
-          <Col lg={3}>
+          <Col lg={2}>Easy</Col>
+          <Col lg={8}>
             <VolumeSlider
               title={'Accuracy Difficulty'}
               id="accuracySlider"
@@ -99,9 +99,9 @@ class TuningSpecButtons extends Component {
               changeGreenTimeRequirement={(amount) => { this.props.changeGreenTimeRequirement(amount); }}
             />
           </Col>
-          <Col lg={1}>Hard</Col>
+          <Col lg={2}>Hard</Col>
         </Row>
-      </Grid>
+
     );
   }
 };
