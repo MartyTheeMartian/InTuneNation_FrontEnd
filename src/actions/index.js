@@ -20,6 +20,18 @@ export const postSignUp = (user) => {
   };
 };
 
+// export const localStorageLogin = (user) => {
+//   return (dispatch) => {
+//     dispatch(postLogin(user))
+//     .then((data) => {
+//       localStorage.setItem('token', action.payload.data.token);
+//       localStorage.setItem('userId', action.payload.data.id);
+//       localStorage.setItem('firstName', action.payload.data.firstName);
+//       localStorage.setItem('lastName', action.payload.data.lastName);
+//       localStorage.setItem('profile_picture', action.payload.data.profile_picture);
+//     })
+//   }
+// }
 export const postLogIn = (user) => {
   user.password = user.password.trim();
   user.password.trim();

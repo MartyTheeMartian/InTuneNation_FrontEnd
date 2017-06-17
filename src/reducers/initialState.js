@@ -29,11 +29,11 @@ export default {
   },
   tuningSpecs: {
     greenYellowBand: 20,
-    redYellowBand: 49,
+    redYellowBand: 48,
   },
   recordingStatus: false,
   singButton: {
-    singText: 'Sing',
+    singText: 'Sing!',
     disabled: true,
   },
   loginSuccess: null,
