@@ -26,8 +26,10 @@
 
 #keyboardBackground {
   background-image: url('../../../public/interface-page.png');
-  background-size: 1430px 700px;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 93vh;
 }
 
 #piano {
@@ -41,6 +43,7 @@
   width: 50%;
   flex: 3 1 ;
   display: inline-flex;
+  margin-left: -5px;
 }
 
 .left-piano {
@@ -161,7 +164,7 @@
 }
 
 #indicators {
-  height: 321px;
+  height: 323px;
   width: 364px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -186,10 +189,14 @@
   justify-content: center;
   margin-right: 94px;
   margin-left: 94px;
-  padding: 1px;
+  padding-bottom: 4px;
 }
 
 #sing-button {
   padding-left: 27px;
   padding-right: 28px;
+}
+
+#interface-top-row {
+  margin-top: 20px;
 }
