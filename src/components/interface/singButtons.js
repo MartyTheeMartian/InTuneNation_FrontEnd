@@ -64,18 +64,18 @@ class SingButtons extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row sing-button-collection">
         {/* <div className="col-md-12">
-          <button id="play-exercise-button" onClick={this.handlePlayExerciseClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>PLAY EXERCISE</button>
+          <button id="play-exercise-button" onClick={this.handlePlayExerciseClick} className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>PLAY EXERCISE</button>
         </div> */}
-        <div className="col-md-9 singButtonBackground">
-          <button id="starting-note-button" onClick={this.handleStartingNoteClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>START 🎵</button>
+        <div className="col-md-8 singButtonBackground">
+          <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>START {String.fromCharCode(9834)}</button>
         </div>
-          <div className="col-md-9 singButtonBackground">
-            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active captureBox" disabled={this.getDisabled()}>{this.props.singText}</button>
+          <div className="col-md-8 singButtonBackground">
+            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>{this.props.singText}</button>
           </div>
-          <div className="col-md-9 singButtonBackground">
-            <button onClick={this.handleResetClick} className="btn btn-lg active captureBox" disabled={this.props.resetDisabled} >RESET</button>
+          <div className="col-md-8 singButtonBackground">
+            <button onClick={this.handleResetClick} className="btn btn-lg active sing-buttons" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>
     );

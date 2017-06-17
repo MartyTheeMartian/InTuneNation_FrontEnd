@@ -71,7 +71,7 @@ class TuningIndicator extends Component {
         {
           start: offsetNegative(this.props.tuningSpecs.redYellowBand), // redYellowBand (negative)
           end: offsetNegative(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (negative)
-          color: '#ffc875',
+          color: '#f7f21d',
         },
         {
           start: offsetNegative(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (negative)
@@ -81,7 +81,7 @@ class TuningIndicator extends Component {
         {
           start: offsetPositive(this.props.tuningSpecs.greenYellowBand), // greenYellowBand (positive)
           end: offsetPositive(this.props.tuningSpecs.redYellowBand), // redYellowBand (positive)
-          color: '#ffc875',
+          color: '#f7f21d',
         },
         {
           start: offsetPositive(this.props.tuningSpecs.redYellowBand), // redYellowBand (positive)
