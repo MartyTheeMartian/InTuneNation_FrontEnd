@@ -101,14 +101,18 @@ class Profile extends Component {
           }} axis={this.props.graphData.axis}/>
         </div>
         <div className="center-warning">
-          <C3Chart data={{
+          <C3Chart
+            x={'x1'} data={{
             unload: true,
-            columns:[['note',...this.props.graphDataBarGraph.columns]],
+            columns:[
+              ['x1','2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+              ['note',...this.props.graphDataBarGraph.columns]
+            ],
              type: 'bar'}}
         bar={ {width: {
-            ratio: 0.3,
+            ratio: 0.5,
         }}}
-          />
+           axis={this.props.graphDataBarGraph.axis} />
         </div>
        </div>
     } else {
