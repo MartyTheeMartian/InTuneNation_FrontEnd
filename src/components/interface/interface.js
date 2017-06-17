@@ -83,7 +83,7 @@ class Interface extends Component {
       // </div>
       <div id="keyboardBackground">
         <Grid>
-          <Row className="show-grid">
+          <Row id="interface-top-row" className="show-grid">
             <Col smHidden xsHidden md={12} lg={12}>
               <Row className="show-grid">
                 <Col md={9}>
@@ -103,7 +103,6 @@ class Interface extends Component {
               </Row>
               <Row>
                 <Col sm={7}><Piano /></Col>
-                <Col sm={5}><Indicators /></Col>
               </Row>
             </Col>
           </Row>
