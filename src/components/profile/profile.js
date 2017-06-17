@@ -24,7 +24,7 @@ import {BarChart} from 'react-d3/barchart';
 
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,
   graphDataBarGraph: state.barGraphgraphDataReducer,
-    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
+    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer, notes: state.loadSpecificExercisesIDwithAllNotesReducer});
 
 
 // graphDataBarGraph: state.barGraphgraphDataReducer,
@@ -84,13 +84,16 @@ class Profile extends Component {
     this.props.googleOauth(Obj);
     //loading the music table
     this.props.loadPastExercisesData(Obj.id);
+
   }
 
   convertArr = ( arr ) => {
+        // console.log('what is notes', this.props.notes);
     this.props.averageArr(arr);
   }
 
   graph = () => {
+        console.log('what is notes', this.props.notes);
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0) {
@@ -102,10 +105,11 @@ class Profile extends Component {
         </div>
         <div className="center-warning">
           <C3Chart
-            x={'x1'} data={{
+             data={{
+            x: 'x1',
             unload: true,
             columns:[
-              ['x1','2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+              ['x1',this.props.notes],
               ['note',...this.props.graphDataBarGraph.columns]
             ],
              type: 'bar'}}
@@ -130,6 +134,7 @@ class Profile extends Component {
   }
 
   render() {
+        // console.log('what is notes', this.props.notes);
     return (
         <div className="container">
           <div className="row">

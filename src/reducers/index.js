@@ -14,7 +14,7 @@ import signupReducer from './signUp';
 import loginReducer from './login';
 import dashboardReducer from './dashboard';
 import singButtonReducer from './singButton';
-
+import loadSpecificExercisesIDwithAllNotesReducer from './loadSpecificExercisesIDwithAllNotesReducer'
 import googleOauthReducer from './googleOauth.js'
 
 import tuningSpecsReducer from './tuningSpecs';
@@ -46,6 +46,7 @@ const appReducer = combineReducers({
   googleOauthReducer,
   tuningSpecsReducer,
   barGraphgraphDataReducer,
+  loadSpecificExercisesIDwithAllNotesReducer,
 });
 
 const rootReducer = (state, action) => {

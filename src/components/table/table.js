@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData,
-loadSpecificExercisesIDwithAllScoresData_barGraph
+loadSpecificExercisesIDwithAllScoresData_barGraph,
+loadSpecificExercisesIDwithAllNotes
 } from '../../actions';
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
@@ -13,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadSpecificExercisesIDwithAllScoresData,
-    loadSpecificExercisesIDwithAllScoresData_barGraph
+    loadSpecificExercisesIDwithAllScoresData_barGraph,
+    loadSpecificExercisesIDwithAllNotes
   }, dispatch);
 };
 
@@ -38,10 +40,11 @@ class Table extends Component {
   renderList = (list) => (list.map((item, index) => (
     <tr className="tableRow" onClick={
       () => {
+      this.props.loadSpecificExercisesIDwithAllNotes(item.user_id, item.id);
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
-      // this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
       }
-    }>
+    }
+>
       <td>
         <h4>{index + 1}</h4>
       </td>
