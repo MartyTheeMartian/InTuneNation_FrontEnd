@@ -2,27 +2,15 @@
   margin-top: 250px;
 }
 
-.home-component {
-  position: relative;
-  background-image: url('../../../public/home-page.png');
+#home-component {
+  background-image: url('../../../public/home-page2.png');
   background-repeat: no-repeat;
-  background-size: 1464px 700px;
-  padding-bottom: 110px;
-  margin-right: 0px;
-}
-
-.home-img-container {
-  position: absolute;
-  top: -120px;
-  z-index: -1;
-}
-
-.home-img-container img {
+  background-size: 100% 100%;
   width: 100%;
+  height: 93vh;
 }
 
-.home-content {
-  margin-top: 390px;
-  margin-bottom: 160px;
+#home-logo {
   text-align: center;
+  padding-top: 32vh;
 }

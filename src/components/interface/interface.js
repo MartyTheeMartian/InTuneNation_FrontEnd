@@ -56,66 +56,41 @@ class Interface extends Component {
 
   render() {
     return (
-
-      // <div id="keyboardBackground">
-      //   <Grid>
-      //     <Row className="show-grid">
-      //       <Col md={9}>
-      //         <PianoButtons />
-      //         <Piano />
-      //       </Col>
-      //       <Col  md={3}>
-      //         <SingButtons />
-      //       </Col>
-      //
-      //     </Row>
-      //
-      //     <Row>
-      //       <Col xs={12} md={5}><Indicators /></Col>
-      //     </Row>
-      //
-      //     <Row className="show-grid">
-      //       <Col md={6} lg={0}></Col>
-      //       <Col xs={12} md={6}><TargetNoteScoreTable /></Col>
-      //     </Row>
-      //
-      //   </Grid>
-      // </div>
       <div id="keyboardBackground">
         <Grid>
-          <Row className="show-grid">
-            <Col smHidden xsHidden md={12} lg={10}>
+          <Row id="interface-top-row" className="show-grid">
+            <Col smHidden xsHidden md={12} lg={12}>
               <Row className="show-grid">
-                <Col lg={6}><PianoButtons /></Col>
-                <Col lg={5}><SingButtons /></Col>
-              </Row>
-              <Row className="show-grid">
-                <Col lg={12}><Piano /></Col>
+                <Col md={9}>
+                  <PianoButtons />
+                  <Piano />
+                </Col>
+                <Col md={3}>
+                  <SingButtons />
+                </Col>
               </Row>
             </Col>
-            <Col mdHidden smHidden xsHidden lg={2}></Col>
-            <Col lgHidden mdHidden sm={12}>
+            {/* <Col mdHidden smHidden xsHidden lg={2}></Col> */}
+            {/* <Col lgHidden mdHidden sm={12}>
               <Row className="show-grid">
                 <Col sm={8}><PianoButtons /></Col>
                 <Col sm={4}><SingButtons /></Col>
               </Row>
               <Row>
                 <Col sm={7}><Piano /></Col>
-                <Col sm={5}><Indicators /></Col>
               </Row>
-            </Col>
+            </Col> */}
           </Row>
           <Row className="show-grid">
-            <Col lg={4}><Indicators /></Col>
-            <Col lg={1}></Col>
+            <Col xsHidden smHidden md={4} lg={4}><Indicators /></Col>
             <Col lg={7}>
               <Row className="show-grid">
-                <br />
-                <Col lg={9}><TargetNoteScoreTable /></Col>
+                <Col className="tableAndSliders">
+                  <TargetNoteScoreTable />
+                </Col>
               </Row>
-              {/* <br /><br /> */}
               <Row className="show-grid">
-                <Col lg={9}><TuningSpecButtons /></Col>
+                <Col lg={12} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
               </Row>
             </Col>
           </Row>

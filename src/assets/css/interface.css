@@ -9,6 +9,7 @@
   border: 3px #1cd1fc solid;
   border-radius: 15px;
   padding-bottom: 0px;
+  margin-top: 11px;
   height: 80%;
 }
 
@@ -21,13 +22,19 @@
 }
 
 .rangeslider-horizontal .rangeslider__fill {
-  background-color: blue !important;
+  background-color: #83d7c0 !important;
+}
+
+#timeDifficultySlider .rangeslider-horizontal .rangeslider__fill {
+  background-color: #A855AA !important;
 }
 
 #keyboardBackground {
   background-image: url('../../../public/interface-page.png');
-  background-size: 1430px 700px;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 93vh;
 }
 
 #piano {
@@ -41,6 +48,7 @@
   width: 50%;
   flex: 3 1 ;
   display: inline-flex;
+  margin-left: -5px;
 }
 
 .left-piano {
@@ -101,13 +109,41 @@
   background-color: #afac2f;
 }
 
-.captureBox {
+.sing-buttons {
   border-radius: 8px;
-  background-color: #b94ad5;
+  /*background-color: #b94ad5;*/
+  /*background-color: #2fc5e0;*/
+  /*background-color: #86b2d8;*/
+  background-color: #3776ad;
   font-family: DDCHardwareCondensed;
   font-size: 50px;
   color: white;
   float: right;
+  margin: 5px 0px 5px 0px;
+  width: 200px;
+  padding-left: 0px;
+
+}
+
+.sing-button-collection {
+  margin-top: 28px;
+  padding-left: 0px;
+}
+
+.singButtonBackground {
+  background-color: white;
+  padding-right: 0px;
+  padding-left: 204px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#starting-note-button {
+  padding-left: 19px;
+}
+
+.tableAndSliders {
+  margin-left: 10px;
 }
 
 .slider {
@@ -141,14 +177,15 @@
   font-family: OpenSans-BoldItalic;
   font-weight: bold;
   color: white;
-  background-color: #b94ad5;
-  border: 3px solid #1cd1fc;
+  /*background-color: #b94ad5;*/
+  background-color: #A855AA;
+  border: 3px solid #27a9d1;
   border-radius: 8px;
   font-size: 23px;
 }
 
 #gauge {
-  padding-top: 6px;
+  padding-top: 21px;
 }
 
 #indicatorRow {
@@ -161,13 +198,26 @@
 }
 
 #indicators {
-  height: 321px;
-  width: 362px;
+  height: 338px;
+  width: 364px;
   margin-top: 10px;
   margin-bottom: 20px;
   background-color: white;
   border: 3px #1cd1fc solid;
   border-radius: 15px;
+}
+
+#sliderTitles {
+  font-size: 22px;
+}
+
+#sliders {
+  background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+  margin-top: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .panel-body {
@@ -186,10 +236,14 @@
   justify-content: center;
   margin-right: 94px;
   margin-left: 94px;
-  padding: 1px;
+  padding-bottom: 4px;
 }
 
 #sing-button {
-  padding-left: 27px;
-  padding-right: 27px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#interface-top-row {
+  margin-top: 20px;
 }
