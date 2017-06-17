@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { logUserIn, postLogIn, hamidsLogin, setAllPastExercises } from '../../actions';
+import { logUserIn, postLogIn, localStorageLogin, setAllPastExercises } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 import { Route, Redirect } from 'react-router-dom';
 import RedirectClose from './redirectClose';
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   }; };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ logUserIn, postLogIn, hamidsLogin, setAllPastExercises }, dispatch); };
+  return bindActionCreators({ logUserIn, postLogIn, localStorageLogin, setAllPastExercises }, dispatch); };
 
 class LogIn extends Component {
 
@@ -48,8 +48,8 @@ class LogIn extends Component {
   }
   onSubmit = (value) => {
     const user = value;
-    // this.props.postLogIn(user);
-    this.props.hamidsLogin(user);
+    this.props.postLogIn(user);
+    // this.props.localStorageLogin(user);
   }
   handleSwitch = () => {
     window.location.assign('https://ppp-capstone-music.herokuapp.com/auth/google/');
