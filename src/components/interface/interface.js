@@ -108,17 +108,24 @@ class Interface extends Component {
           </Row>
           <Row className="show-grid">
             <Col xsHidden smHidden md={4} lg={4}><Indicators /></Col>
-            <Col lg={1}></Col>
             <Col lg={7}>
+              <Row className="show-grid">
+                <TargetNoteScoreTable />
+              </Row>
+              <Row className="show-grid">
+                <Col lg={12} id="sliders"><TuningSpecButtons/></Col>
+              </Row>
+            </Col>
+            {/* <Col lg={7}>
               <Row className="show-grid">
                 <br />
                 <Col lg={9}><TargetNoteScoreTable /></Col>
               </Row>
-              {/* <br /><br /> */}
+              <br /><br />
               <Row className="show-grid">
                 <Col lg={9} id="sliders"><TuningSpecButtons/></Col>
               </Row>
-            </Col>
+            </Col> */}
           </Row>
         </Grid>
       </div>
