@@ -24,12 +24,14 @@ class PianoButtons extends Component {
   octaveShift = (direction) => { this.props.shiftOctaves(direction); }
 
   handleClick = () =>  {
-    this.props.toggleCapture();
-    if (this.props.disabled === '' && this.props.captureText === 'End') {
-      const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
-      const body = { notes_array: currentKeyNumCombo };
-      const userId = parseInt(localStorage.getItem('userId'), 10);
-      this.props.setExerciseId(userId, body);
+    if (this.props.keyEvents.length > 0) {
+      this.props.toggleCapture();
+      if (this.props.disabled === '' && this.props.captureText === 'End') {
+        const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
+        const body = { notes_array: currentKeyNumCombo };
+        const userId = parseInt(localStorage.getItem('userId'), 10);
+        this.props.setExerciseId(userId, body);
+      }
     }
   }
 
