@@ -39,9 +39,8 @@ class Table extends Component {
     <tr className="tableRow" onClick={
       () => {
       this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
-      this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
+      // this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
       }
-
     }>
       <td>
         <h4>{index + 1}</h4>

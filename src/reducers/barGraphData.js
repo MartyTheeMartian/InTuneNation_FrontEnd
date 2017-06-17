@@ -1,15 +1,13 @@
 import initialState from './initialState';
-import { averageArr } from '../actions/index.js'
+import {averageArr} from '../actions/index.js'
 // the initialState is null
 
 const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
   switch (action.type) {
-    case 'ALL_INTONATION_PER_EXERCISE_BARGRAPH_FULFILLED':
+    case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
       const data = action.payload.data;
-      console.log('payloaddata==========',data)
       const d3Format = data.map((obj, index) => {
-        return [...JSON.parse(obj["scores_array"])
-        ];
+        return [...JSON.parse(obj["scores_array"])];
       });
       if (d3Format.length === 0) {
         return [];
@@ -25,7 +23,7 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
               }
             },
             x: {
-              type: 'category',
+              type: 'category'
             }
           }
         }

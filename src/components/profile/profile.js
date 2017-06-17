@@ -22,7 +22,9 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,
+  graphDataBarGraph: state.barGraphgraphDataReducer,
+    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
 
 
 // graphDataBarGraph: state.barGraphgraphDataReducer,
@@ -89,8 +91,6 @@ class Profile extends Component {
   }
 
   graph = () => {
-    // console.log('graphData===',this.props.graphDataBarGraph.columns);
-    // console.log('graphDataBarGraph===', this.props.graphDataBarGraph.columns);
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0) {
