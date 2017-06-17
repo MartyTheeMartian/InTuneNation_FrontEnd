@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class Table extends Component {
   converter = (array) => {
+    console.log('arrrrrray here!', array)
     return JSON.parse(array).map((ele) => {
       return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
     }).toString().slice(0, -5).replace(/,/g , "")

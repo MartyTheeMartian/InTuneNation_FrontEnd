@@ -11,7 +11,8 @@ import {
   postLogIn,
   renderNavBar,
   googleOauth,
-  startload
+  startload,
+  averageArr
 } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
@@ -21,7 +22,10 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,  googleOauthState: state.googleOauthReducer});
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
+
+
+// graphDataBarGraph: state.barGraphgraphDataReducer,
 
 let profile_picture;
 
@@ -33,7 +37,8 @@ const mapDispatchToProps = (dispatch) => {
     postLogIn,
     renderNavBar,
     googleOauth,
-    startload
+    startload,
+    averageArr
   }, dispatch);
 };
 
@@ -44,6 +49,13 @@ class Profile extends Component {
       userID: ''
     };
   }
+  //
+  // converter = (array) => {
+  //   console.log('arrrrrray here!', array)
+  //   return JSON.parse(array).map((ele) => {
+  //     return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
+  //   }).toString().slice(0, -5).replace(/,/g , "")
+  // }
 
   componentDidMount = () => {
     let token = localStorage.getItem('token');
@@ -72,13 +84,12 @@ class Profile extends Component {
     this.props.loadPastExercisesData(Obj.id);
   }
 
-  // Inserts exercise into redux
-  insertExToRedux = () => {
-
+  convertArr = ( arr ) => {
+    this.props.averageArr(arr);
   }
 
   graph = () => {
-    console.log('graphData===',this.props.graphData);
+    // console.log('graphData===',this.props.graphDataBarGraph.columns);
     // console.log('graphDataBarGraph===', this.props.graphDataBarGraph.columns);
     if (this.props.graphData === null) {
       return <div></div>;
@@ -89,13 +100,16 @@ class Profile extends Component {
             columns: this.props.graphData.columns
           }} axis={this.props.graphData.axis}/>
         </div>
-        {/* <div className="center-warning">
+        <div className="center-warning">
           <C3Chart data={{
             unload: true,
-            columns: this.props.graphData.columns,
-            type: 'bar'
-          }}/> */}
-        {/* </div> */}
+            columns:[['note',...this.props.graphDataBarGraph.columns]],
+             type: 'bar'}}
+        bar={ {width: {
+            ratio: 0.3,
+        }}}
+          />
+        </div>
        </div>
     } else {
       return <div className="center-warning">

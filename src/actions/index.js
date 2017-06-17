@@ -11,6 +11,20 @@ export const startload = (props, userID) => {
   }
 };
 
+export const averageArr = (arr) => {
+  let finalArr = [];
+  for(let k = 0 ; k < arr[0].length; k++){
+      let result = [];
+    for(let i = 0; i < arr.length; i++) {
+      let temp = arr[i];
+      result.push(temp[k])
+    }
+    finalArr.push(result);
+  }
+  let average = finalArr.map( arr => { return  arr.reduce( (acc,cur) => acc + cur, 0)/arr.length } );
+  return average
+}
+
 export const postSignUp = (user) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/user/signup`;
   let data = axios.post(API_URL, user, config());

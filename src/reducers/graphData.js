@@ -4,6 +4,7 @@ import initialState from './initialState';
 const graphDataReducer = (state = initialState.graphData, action) => {
   switch (action.type) {
     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
+    console.log('action.payload.data nowooooo', action.payload.data)
       const data = action.payload.data;
       const d3Format = data.map((obj, index) => {
         return [
