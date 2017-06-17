@@ -56,31 +56,6 @@ class Interface extends Component {
 
   render() {
     return (
-
-      // <div id="keyboardBackground">
-      //   <Grid>
-      //     <Row className="show-grid">
-      //       <Col md={9}>
-      //         <PianoButtons />
-      //         <Piano />
-      //       </Col>
-      //       <Col  md={3}>
-      //         <SingButtons />
-      //       </Col>
-      //
-      //     </Row>
-      //
-      //     <Row>
-      //       <Col xs={12} md={5}><Indicators /></Col>
-      //     </Row>
-      //
-      //     <Row className="show-grid">
-      //       <Col md={6} lg={0}></Col>
-      //       <Col xs={12} md={6}><TargetNoteScoreTable /></Col>
-      //     </Row>
-      //
-      //   </Grid>
-      // </div>
       <div id="keyboardBackground">
         <Grid>
           <Row id="interface-top-row" className="show-grid">
@@ -95,8 +70,8 @@ class Interface extends Component {
                 </Col>
               </Row>
             </Col>
-            <Col mdHidden smHidden xsHidden lg={2}></Col>
-            <Col lgHidden mdHidden sm={12}>
+            {/* <Col mdHidden smHidden xsHidden lg={2}></Col> */}
+            {/* <Col lgHidden mdHidden sm={12}>
               <Row className="show-grid">
                 <Col sm={8}><PianoButtons /></Col>
                 <Col sm={4}><SingButtons /></Col>
@@ -104,28 +79,20 @@ class Interface extends Component {
               <Row>
                 <Col sm={7}><Piano /></Col>
               </Row>
-            </Col>
+            </Col> */}
           </Row>
           <Row className="show-grid">
             <Col xsHidden smHidden md={4} lg={4}><Indicators /></Col>
             <Col lg={7}>
               <Row className="show-grid">
-                <TargetNoteScoreTable />
+                <Col className="tableAndSliders">
+                  <TargetNoteScoreTable />
+                </Col>
               </Row>
               <Row className="show-grid">
-                <Col lg={12} id="sliders"><TuningSpecButtons/></Col>
+                <Col lg={12} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
               </Row>
             </Col>
-            {/* <Col lg={7}>
-              <Row className="show-grid">
-                <br />
-                <Col lg={9}><TargetNoteScoreTable /></Col>
-              </Row>
-              <br /><br />
-              <Row className="show-grid">
-                <Col lg={9} id="sliders"><TuningSpecButtons/></Col>
-              </Row>
-            </Col> */}
           </Row>
         </Grid>
       </div>
