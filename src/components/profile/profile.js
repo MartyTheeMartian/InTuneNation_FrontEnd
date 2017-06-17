@@ -109,7 +109,7 @@ class Profile extends Component {
             x: 'x1',
             unload: true,
             columns:[
-              ['x1',this.props.notes],
+              ['x1',...this.props.notes],
               ['note',...this.props.graphDataBarGraph.columns]
             ],
              type: 'bar'}}
