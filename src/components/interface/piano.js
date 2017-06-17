@@ -45,7 +45,6 @@ class Piano extends Component {
 
       noteObj.keyNum = keyNumAndtNote.keyNum;
       noteObj.tNote = keyNumAndtNote.tNote;
-      console.log(noteObj);
       this.props.pushKeyEventToArray(noteObj);
     }
 
@@ -59,7 +58,6 @@ class Piano extends Component {
         toneNote += this.props.rightOctave;
         this.props.currentPianoNote(getDisplayableNote(pianoObj.note, this.props.rightOctave));
       }
-      console.log(toneNote);
       this.synth.triggerAttackRelease(toneNote, 0.65);
     }
 
