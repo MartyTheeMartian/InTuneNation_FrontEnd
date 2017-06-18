@@ -6,7 +6,7 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
   // console.log('action is', action);
   switch (action.type) {
     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
-    console.log('what is payload', action.payload);
+    // console.log('what is payload', action.payload);
       const scoreData = action.payload.data
       // const noteData = action.payload.noteData.datta;
 
