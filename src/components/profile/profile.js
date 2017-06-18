@@ -23,7 +23,7 @@ import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 // import  { noteNameArray } from '../table/table.js'
 const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer,
-    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer, noteArr: state.sendArrayReducer});
+    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
 
 
 // graphDataBarGraph: state.barGraphgraphDataReducer,
@@ -104,9 +104,10 @@ class Profile extends Component {
       return <div><div className="center-warning">
           <C3Chart data={{
               unload: true,
-            x:'x1',
+            // x:'x1',
 
-            columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
+            columns:this.props.graphData.columns ,
+            // columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
 
           }} axis={this.props.graphData.axis}/>
         </div>
@@ -114,12 +115,13 @@ class Profile extends Component {
           <C3Chart
              data={{
                unload: true,
-            x: 'x1',
-
             columns:[
-              ['x1',...this.props.noteArr],
               ['note',...this.props.graphDataBarGraph.columns]
             ],
+            // columns:[
+            //   ['x1',...this.props.noteArr],
+            //   ['note',...this.props.graphDataBarGraph.columns]
+            // ],
              type: 'bar'}}
         bar={ {width: {
             ratio: 0.5,
