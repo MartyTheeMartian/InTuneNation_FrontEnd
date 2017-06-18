@@ -59,13 +59,13 @@ class Interface extends Component {
       <div id="keyboardBackground">
         <Grid>
           <Row id="interface-top-row" className="show-grid">
-            <Col smHidden xsHidden md={12} lg={12}>
+            <Col md={12} lg={12}>
               <Row className="show-grid">
-                <Col md={9}>
+                <Col lg={9} md={9}>
                   <PianoButtons />
                   <Piano />
                 </Col>
-                <Col md={3}>
+                <Col lg={3} md={9}>
                   <SingButtons />
                 </Col>
               </Row>
@@ -81,16 +81,16 @@ class Interface extends Component {
               </Row>
             </Col> */}
           </Row>
-          <Row className="show-grid">
-            <Col xsHidden smHidden md={4} lg={4}><Indicators /></Col>
-            <Col lg={7}>
+          <Row id="interface-bottom-row" className="show-grid">
+            <Col lg={4} md={5} sm={6}><Indicators /></Col>
+            <Col lg={8} md={7} sm={6}>
               <Row className="show-grid">
-                <Col className="tableAndSliders">
+                <Col lg={12} md={8} className="tableAndSliders">
                   <TargetNoteScoreTable />
                 </Col>
               </Row>
               <Row className="show-grid">
-                <Col lg={12} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
+                <Col lg={12} md={8} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
               </Row>
             </Col>
           </Row>

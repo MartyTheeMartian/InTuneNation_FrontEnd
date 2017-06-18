@@ -87,7 +87,6 @@ class Profile extends Component {
   }
 
   convertArr = ( arr ) => {
-        // console.log('what is notes', this.props.notes);
     this.props.averageArr(arr);
   }
 
@@ -146,6 +145,7 @@ class Profile extends Component {
   render() {
         // console.log('what is notes', this.props.notes);
     return (
+      <div id="profileBackground">
         <div className="container">
           <div className="row">
             <div className="col-md-2 col-xs-6">
@@ -166,16 +166,16 @@ class Profile extends Component {
               </div>
               <br/>
             </div>
-            <div className="col-md-2 col-xs-6"></div>
+            <div className="col-md-3 col-xs-6"></div>
           </div>
           <div className="row" >
-            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-3 col-xs-3"></div>
             <div className="col-md-8 col-xs-12">
               {this.graph()}
             </div>
-            <div className="col-md-2 col-xs-3"></div>
           </div>
         </div>
+      </div>
     );
   }
 }

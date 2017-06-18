@@ -5,58 +5,59 @@ import { Table } from 'react-bootstrap';
 
 const mapStateToProps = (state) => {
   return {
-    capture: state.captureReducer,
+    captureIsDisabled: (state.captureReducer.disabled === 'disabled'),
     keyEvents: state.keyEventsReducer,
     targetNote: state.targetNoteReducer,
     targetNoteIndex: state.targetNoteIndexReducer,
     currentScore: state.scoreReducer,
     exerciseScores: state.exerciseScoresReducer,
     greenTime: state.greenTimeReducer,
+    recordingStatus: state.recordingStatusReducer,
   };
 };
 
-const mapDispatchToProps = (dispatch) => { bindActionCreators({}, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
-const renderKeyEventIds = (keyEvents, targetNoteIndex, disableStr) => {
+const renderKeyEventIds = (keyEvents, targetNoteIndex, disabled, recStatus) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
-      if (index === targetNoteIndex) {
-        const target = <th className="currentTarget">{ index + 1 }</th>;
-        const passive = <th>{ index + 1 }</th>;
-        if (disableStr === 'disabled') { return target; }
-        return passive;
-      }
-      return <th>{ index + 1 }</th>;
+      if (recStatus && index === targetNoteIndex) {
+        return <th className="currentTarget">{ index + 1 }</th>
+      } else { return <th>{ index + 1 }</th>; }
     });
   }
   return '';
 };
 
-const renderTargetNotes = (keyEvents, targetNoteIndex, disableStr) => {
+const renderTargetNotes = (keyEvents, targetNoteIndex, disabled, recStatus) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
-      if (index === targetNoteIndex) {
-        const target = <th className="currentTarget">{ item.noteName }</th>;
-        const passive = <th>{ item.noteName }</th>;
-        if (disableStr === 'disabled') { return target; }
-        return passive;
+      if (recStatus && index === targetNoteIndex) {
+        return <th className="currentTarget">{ item.noteName }</th>;
+      } else {
+        return <th>{ item.noteName }</th>;
       }
-      return <th>{ item.noteName }</th>;
     });
   }
 };
 
-const renderGreenTime = (keyEvents, targetNoteIndex, greenTime) => {
+const renderGreenTime = (keyEvents, targetNoteIndex, greenTime, recStatus) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
       if (index > targetNoteIndex) { return <th>0</th>; }
-      else if (index === targetNoteIndex) { return <th className="currentTarget">{greenTime.accumulated}</th>; }
+      else if (index === targetNoteIndex) {
+        if (recStatus) {
+          return <th className="currentTarget">{greenTime.accumulated}</th>;
+        } else {
+          return <th>{greenTime.accumulated}</th>;
+        }
+      }
       else if (index < targetNoteIndex) { return <th>{greenTime.required}</th>; }
     });
   }
 }
 
-const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, disableStr) => {
+const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, disabled, recStatus) => {
   if (keyEvents) {
     return keyEvents.map((item, index) => {
       if (exerciseScores[index] !== undefined) {
@@ -65,7 +66,7 @@ const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, 
       if (index === targetNoteIndex) {
         const target = <th className="currentTarget">{ currentScore }</th>;
         const passive = <th>{ currentScore }</th>;
-        if (disableStr === 'disabled') { return target; }
+        if (recStatus) { return target; }
         return passive;
       }
       return <th>100</th>;
@@ -81,21 +82,21 @@ class TargetNoteScoreTable extends Component {
           <thead>
             <tr>
               <th>Note #</th>
-              {renderKeyEventIds(this.props.keyEvents, this.props.targetNoteIndex, this.props.capture.disabled)}
+              {renderKeyEventIds(this.props.keyEvents, this.props.targetNoteIndex, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>
           </thead>
           <tbody>
             <tr>
               <th>Target</th>
-              {renderTargetNotes(this.props.keyEvents, this.props.targetNoteIndex, this.props.capture.disabled)}
+              {renderTargetNotes(this.props.keyEvents, this.props.targetNoteIndex, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>
             <tr>
               <th>Green Time</th>
-              {renderGreenTime(this.props.keyEvents, this.props.targetNoteIndex, this.props.greenTime)}
+              {renderGreenTime(this.props.keyEvents, this.props.targetNoteIndex, this.props.greenTime, this.props.recordingStatus)}
             </tr>
             <tr>
               <th>Score</th>
-              {renderScores(this.props.keyEvents, this.props.exerciseScores, this.props.targetNoteIndex, this.props.currentScore, this.props.capture.disabled)}
+              {renderScores(this.props.keyEvents, this.props.exerciseScores, this.props.targetNoteIndex, this.props.currentScore, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>
           </tbody>
         </table>
