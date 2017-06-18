@@ -3,7 +3,7 @@ import {averageArr} from '../actions/index.js'
 // the initialState is null
 
 const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
-  // console.log('action is', action);
+  // console.log('action is JKEVINNNN', action.payload);
   switch (action.type) {
     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
     // console.log('what is payload', action.payload);
@@ -27,13 +27,13 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
           axis: {
             y: {
               label: {
-                text: 'Intonation Score',
+                text: 'Average Intonation Score',
                 position: 'outer-middle'
               }
             },
             x: {
               label : {
-                text: 'Music Note',
+                text: 'Note',
               },
               type: 'category'
             }

@@ -11,20 +11,28 @@
 }
 
 #profileBackground {
-  background-image: url('../../../public/interface-page.png');
+  /*background-image: url('../../../public/interface-page.png');*/
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 93vh;
 }
 
+.graphBackGround {
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 100px;
+}
 .profileBackgroundDiv {
   background-color: white;
 }
 
+.middleBackGround {
+  background-color: white;
+}
 #scroll-table {
   overflow-y: auto;
-  height: 440px;
-  border: 5px solid #3776ad;
+  height: 450px;
+  border: 2px solid #e0e0e0;
   border-radius: 5px;
 }
