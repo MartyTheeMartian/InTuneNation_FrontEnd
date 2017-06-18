@@ -50,14 +50,7 @@ class Profile extends Component {
       userID: ''
     };
   }
-  //
-  // converter = (array) => {
-  //   console.log('arrrrrray here!', array)
-  //   return JSON.parse(array).map((ele) => {
-  //     return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
-  //   }).toString().slice(0, -5).replace(/,/g , "")
-  // }
-
+  
   componentDidMount = () => {
     let token = localStorage.getItem('token');
     let id = localStorage.getItem('userId');
@@ -91,16 +84,11 @@ class Profile extends Component {
   }
 
   graph = () => {
-    console.log('this.props.graphData ====', this.props.graphData);
-    console.log('this.props.graphDataBarGraph===',this.props.graphDataBarGraph)
+    // console.log('this.props.graphData ====', this.props.graphData);
+    // console.log('this.props.graphDataBarGraph===',this.props.graphDataBarGraph)
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
-      // console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
-      // console.log('bargraph====',[
-      //   ['x1',...this.props.noteArr],
-      //   ['note',...this.props.graphDataBarGraph.columns]
-      // ]);
       return <div className="graphBackGround"><div className="center-warning graphBack">
           <C3Chart data={{
               unload: true,
