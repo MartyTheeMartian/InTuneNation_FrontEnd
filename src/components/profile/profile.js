@@ -96,11 +96,11 @@ class Profile extends Component {
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
-      console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
-      console.log('bargraph====',[
-        ['x1',...this.props.noteArr],
-        ['note',...this.props.graphDataBarGraph.columns]
-      ]);
+      // console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
+      // console.log('bargraph====',[
+      //   ['x1',...this.props.noteArr],
+      //   ['note',...this.props.graphDataBarGraph.columns]
+      // ]);
       return <div><div className="center-warning">
           <C3Chart data={{
               unload: true,
