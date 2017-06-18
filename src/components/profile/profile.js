@@ -91,7 +91,8 @@ class Profile extends Component {
   }
 
   graph = () => {
-
+    console.log('this.props.graphData ====', this.props.graphData);
+    console.log('this.props.graphDataBarGraph===',this.props.graphDataBarGraph)
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
@@ -100,11 +101,10 @@ class Profile extends Component {
       //   ['x1',...this.props.noteArr],
       //   ['note',...this.props.graphDataBarGraph.columns]
       // ]);
-      return <div><div className="center-warning">
+      return <div className="graphBackGround"><div className="center-warning graphBack">
           <C3Chart data={{
               unload: true,
             // x:'x1',
-
             columns:this.props.graphData.columns ,
             // columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
 
@@ -166,7 +166,7 @@ class Profile extends Component {
               </div>
               <br/>
             </div>
-            <div className="col-md-3 col-xs-6"></div>
+            <div className="col-md-3 col-xs-6 "></div>
           </div>
           <div className="row" >
             <div className="col-md-3 col-xs-3"></div>
