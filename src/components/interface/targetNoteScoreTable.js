@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => { bindActionCreators({}, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({}, dispatch); };
 
 const renderKeyEventIds = (keyEvents, targetNoteIndex, disabled, recStatus) => {
   if (keyEvents) {
