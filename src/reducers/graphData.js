@@ -23,6 +23,13 @@ const graphDataReducer = (state = initialState.graphData, action) => {
                 text: 'Intonation Score',
                 position: 'outer-middle'
               }
+            },
+            x: {
+              label : {
+                text: 'Music Note',
+                position: 'outer-middle'
+              },
+              type: 'category'
             }
           }
         }

@@ -21,10 +21,9 @@ import request from 'superagent';
 import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
-import  { noteNameArray } from '../table/table.js'
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,
-  graphDataBarGraph: state.barGraphgraphDataReducer,
-    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
+// import  { noteNameArray } from '../table/table.js'
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer,
+    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer, noteArr: state.sendArrayReducer});
 
 
 // graphDataBarGraph: state.barGraphgraphDataReducer,
@@ -93,25 +92,32 @@ class Profile extends Component {
   }
 
   graph = () => {
-        console.log('what is notes', this.props.notes);
+
     if (this.props.graphData === null) {
       return <div></div>;
-    } else if (this.props.graphData.length !== 0) {
+    } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
+      console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
+      console.log('bargraph====',[
+        ['x1',...this.props.noteArr],
+        ['note',...this.props.graphDataBarGraph.columns]
+      ]);
       return <div><div className="center-warning">
           <C3Chart data={{
-            // x:'x1',
-            unload: true,
-            columns:  this.props.graphData.columns
-          ,
+              unload: true,
+            x:'x1',
+
+            columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
+
           }} axis={this.props.graphData.axis}/>
         </div>
         <div className="center-warning">
           <C3Chart
              data={{
-            // x: 'x1',
-            unload: true,
+               unload: true,
+            x: 'x1',
+
             columns:[
-              // ['x1',...noteNameArray],
+              ['x1',...this.props.noteArr],
               ['note',...this.props.graphDataBarGraph.columns]
             ],
              type: 'bar'}}

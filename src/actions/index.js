@@ -186,6 +186,12 @@ export const loadSpecificExercisesIDwithAllNotes = (user_id, exercise_id) => {
   };
 }
 
+export const sendArray = (noteArr) => {
+  return {
+    type:'ALL_NOTE',
+    payload: noteArr,
+  }
+}
 export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
   let data = axios.get(API_URL, config());

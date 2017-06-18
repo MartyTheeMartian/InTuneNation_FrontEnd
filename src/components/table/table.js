@@ -2,19 +2,21 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData,
 loadSpecificExercisesIDwithAllScoresData_barGraph,
-loadSpecificExercisesIDwithAllNotes
+loadSpecificExercisesIDwithAllNotes,
+sendArray
 } from '../../actions';
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
-export let noteNameArray;
-console.log('noteNameArray',noteNameArray)
+// export let noteNameArray;
+// console.log('noteNameArray',noteNameArray)
 const mapStateToProps = (state, ownProps) => {
   return { list: state.dashboardReducer, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    sendArray,
     loadSpecificExercisesIDwithAllScoresData,
     loadSpecificExercisesIDwithAllScoresData_barGraph,
     loadSpecificExercisesIDwithAllNotes
@@ -47,11 +49,12 @@ class Table extends Component {
 
         let keyNumsArray = this.props.list[index].notes_array;
         console.log('keyNumsArray', typeof keyNumsArray)
-        noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
+        let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
           let noteObj = getNoteAndOctave(keyNum);
           return noteObj.note + ' ' + noteObj.octave;
         })
         // console.log('NoteNamesArr: ', noteNameArray)
+        this.props.sendArray(noteNameArray);
         this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id)
       }
       }
