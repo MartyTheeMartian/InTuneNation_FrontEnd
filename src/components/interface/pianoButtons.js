@@ -36,14 +36,14 @@ class PianoButtons extends Component {
   render() {
     return (
       <div id="octRow" className="row">
-        <div className="col-md-4 col-sm-4 col-xs-4">
+        <div id="leftOctBut" className="col-md-4 col-sm-4 col-xs-4">
           <button onClick={() => this.octaveShift('-')} className="btn octaveButtons btn-lg active" disabled={this.props.down}> - Octave <br /> {this.props.leftOctave}</button>
         </div>
-        <div className="col-md-4 col-sm-4 col-xs-4">
+        <div id="captureBut" className="col-md-4 col-sm-4 col-xs-4">
           <button onClick={this.handleClick} className="btn captureButton btn-lg active" disabled={this.props.disabled}>{this.props.captureText}<br />Capture</button>
         </div>
-        <div className="col-md-4 col-sm-4 col-xs-4">
-          <button id="rOctBut" onClick={() => this.octaveShift('+')} className="btn octaveButtons btn-lg active" disabled={this.props.up}> Octave +  <br /> {this.props.rightOctave}</button>
+        <div id="rightOctBut" className="col-md-4 col-sm-4 col-xs-4">
+          <button onClick={() => this.octaveShift('+')} className="btn octaveButtons btn-lg active" disabled={this.props.up}> Octave +  <br /> {this.props.rightOctave}</button>
         </div>
       </div>
     );
