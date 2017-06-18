@@ -87,7 +87,6 @@ class Profile extends Component {
   }
 
   convertArr = ( arr ) => {
-        // console.log('what is notes', this.props.notes);
     this.props.averageArr(arr);
   }
 
@@ -101,32 +100,48 @@ class Profile extends Component {
       //   ['x1',...this.props.noteArr],
       //   ['note',...this.props.graphDataBarGraph.columns]
       // ]);
-      return <div><div className="center-warning">
-          <C3Chart data={{
-              unload: true,
-            x:'x1',
-
-            columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
-
-          }} axis={this.props.graphData.axis}/>
-        </div>
-        <div className="center-warning">
-          <C3Chart
-             data={{
-               unload: true,
-            x: 'x1',
-
-            columns:[
-              ['x1',...this.props.noteArr],
-              ['note',...this.props.graphDataBarGraph.columns]
-            ],
-             type: 'bar'}}
-        bar={ {width: {
-            ratio: 0.5,
-        }}}
-           axis={this.props.graphDataBarGraph.axis} />
-        </div>
-       </div>
+      return(
+        <div>
+          <div className="center-warning profileBackgroundDiv">
+            <C3Chart
+              data= {
+                      {
+                        unload: true,
+                        x:'x1',
+                        columns: [
+                          ['x1',...this.props.noteArr],
+                          ...this.props.graphData.columns,
+                        ],
+                      }
+                    }
+              axis= {this.props.graphData.axis}
+            />
+          </div>
+          <div className="center-warning profileBackgroundDiv">
+            <C3Chart
+               data= {
+                       {
+                         unload: true,
+                          x: 'x1',
+                          columns:[
+                                    ['x1',...this.props.noteArr],
+                                    ['note',...this.props.graphDataBarGraph.columns],
+                          ],
+                          type: 'bar',
+                        }
+                      }
+                bar={
+                      {
+                        width: {
+                                  ratio: 0.5,
+                                },
+                      }
+                    }
+                axis={this.props.graphDataBarGraph.axis}
+              />
+            </div>
+         </div>
+      )
     } else {
       return <div className="center-warning">
         <Link to="/interface" onClick={this.insertExToRedux}>
@@ -144,6 +159,7 @@ class Profile extends Component {
   render() {
         // console.log('what is notes', this.props.notes);
     return (
+      <div id="profileBackground">
         <div className="container">
           <div className="row">
             <div className="col-md-2 col-xs-6">
@@ -164,16 +180,16 @@ class Profile extends Component {
               </div>
               <br/>
             </div>
-            <div className="col-md-2 col-xs-6"></div>
+            <div className="col-md-3 col-xs-6"></div>
           </div>
           <div className="row" >
-            <div className="col-md-2 col-xs-3"></div>
+            <div className="col-md-3 col-xs-3"></div>
             <div className="col-md-8 col-xs-12">
               {this.graph()}
             </div>
-            <div className="col-md-2 col-xs-3"></div>
           </div>
         </div>
+      </div>
     );
   }
 }

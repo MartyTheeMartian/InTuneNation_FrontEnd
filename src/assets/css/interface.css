@@ -5,6 +5,7 @@
 @font-face { font-family: OpenSans-BoldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-BoldItalic.ttf') }
 
 .noteScoresTable {
+  overflow-x: auto;
   background-color: #fff;
   border: 3px #1cd1fc solid;
   border-radius: 15px;
