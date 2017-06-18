@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { shiftOctaves, toggleCapture, setExerciseId } from '../../actions';
+import { shiftOctaves, toggleCapture, setExerciseId, beginNewExercise } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ shiftOctaves, toggleCapture, setExerciseId }, dispatch);
+  return bindActionCreators({ shiftOctaves, toggleCapture, setExerciseId, beginNewExercise }, dispatch);
 };
 
 class PianoButtons extends Component {
@@ -24,12 +24,12 @@ class PianoButtons extends Component {
   octaveShift = (direction) => { this.props.shiftOctaves(direction); }
 
   handleClick = () =>  {
-    if (this.props.keyEvents.length > 0) {
-      this.props.toggleCapture();
-      if (this.props.disabled === '' && this.props.captureText === 'End') {
-        const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
-        const body = { notes_array: currentKeyNumCombo };
-        const userId = parseInt(localStorage.getItem('userId'), 10);
+    this.props.toggleCapture();
+    if (this.props.disabled === '' && this.props.captureText === 'End') {
+      const currentKeyNumCombo = (this.props.keyEvents).map((key) => { return key.keyNum; });
+      const body = { notes_array: currentKeyNumCombo };
+      const userId = parseInt(localStorage.getItem('userId'), 10);
+      if (this.props.keyEvents.length > 0) {
         this.props.setExerciseId(userId, body);
       }
     }

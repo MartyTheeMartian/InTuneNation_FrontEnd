@@ -212,18 +212,30 @@ export const setExerciseId = (userId, body) => {
 };
 
 
-export const renderNavBar = () => {
+export const renderNavBar = () => { // needs tests
   return {
     type: 'RENDER_NAVBAR'
   }
 }
 
-export const changeTuningSpecs = (rYBand, gYBand) => {
+export const changeTuningSpecs = (rYBand, gYBand) => { // needs tests
   return {
     type: 'CHANGE_TUNING_SPECS',
     payload: {
       greenYellowBand: gYBand,
       redYellowBand: rYBand,
     },
+  };
+};
+
+export const exerciseFinished = () => { // needs tests
+  return {
+    type: 'EXERCISE_FINISHED',
+  };
+};
+
+export const repeatExercise = () => { // needs tests
+  return {
+    type: 'REPEAT_EXERCISE',
   };
 };

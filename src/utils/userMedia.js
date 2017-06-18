@@ -8,6 +8,7 @@ import { setKeyEventAsTargetNote,
           resetScore,
           incrementTargetNoteIndex,
           resetInterface,
+          exerciseFinished,
           pushScoreToExerciseScoresArray,
           setSungNote,
           toggleAudioCapture,
@@ -123,7 +124,8 @@ export default getUserMedia({ video: false, audio: true })
             const exerciseId = getState().currentExerciseIdReducer.id;
             const finalScoreArray = getState().exerciseScoresReducer;
             scorePostingUtility(userId, exerciseId, finalScoreArray);
-            dispatch(resetInterface());
+            // dispatch(resetInterface());
+            dispatch(exerciseFinished());
           } else {
             dispatch(resetGreenTime());
             dispatch(resetScore());
