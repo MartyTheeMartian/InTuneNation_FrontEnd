@@ -11,7 +11,8 @@ import {
   postLogIn,
   renderNavBar,
   googleOauth,
-  startload
+  startload,
+  averageArr
 } from '../../actions';
 import Table from '../table/table';
 import musicNoteMusic from '../../assets/img/music-note.jpg';
@@ -20,8 +21,12 @@ import request from 'superagent';
 import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
+// import  { noteNameArray } from '../table/table.js'
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer,
+    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer, noteArr: state.sendArrayReducer});
 
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer,  googleOauthState: state.googleOauthReducer});
+
+// graphDataBarGraph: state.barGraphgraphDataReducer,
 
 let profile_picture;
 
@@ -33,7 +38,8 @@ const mapDispatchToProps = (dispatch) => {
     postLogIn,
     renderNavBar,
     googleOauth,
-    startload
+    startload,
+    averageArr
   }, dispatch);
 };
 
@@ -44,6 +50,13 @@ class Profile extends Component {
       userID: ''
     };
   }
+  //
+  // converter = (array) => {
+  //   console.log('arrrrrray here!', array)
+  //   return JSON.parse(array).map((ele) => {
+  //     return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
+  //   }).toString().slice(0, -5).replace(/,/g , "")
+  // }
 
   componentDidMount = () => {
     let token = localStorage.getItem('token');
@@ -70,32 +83,49 @@ class Profile extends Component {
     this.props.googleOauth(Obj);
     //loading the music table
     this.props.loadPastExercisesData(Obj.id);
+
   }
 
-  // Inserts exercise into redux
-  insertExToRedux = () => {
-
+  convertArr = ( arr ) => {
+        // console.log('what is notes', this.props.notes);
+    this.props.averageArr(arr);
   }
 
   graph = () => {
-    console.log('graphData===',this.props.graphData);
-    // console.log('graphDataBarGraph===', this.props.graphDataBarGraph.columns);
+
     if (this.props.graphData === null) {
       return <div></div>;
-    } else if (this.props.graphData.length !== 0) {
+    } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
+      // console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
+      // console.log('bargraph====',[
+      //   ['x1',...this.props.noteArr],
+      //   ['note',...this.props.graphDataBarGraph.columns]
+      // ]);
       return <div><div className="center-warning">
           <C3Chart data={{
-            unload: true,
-            columns: this.props.graphData.columns
+              unload: true,
+            x:'x1',
+
+            columns: [ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]
+
           }} axis={this.props.graphData.axis}/>
         </div>
-        {/* <div className="center-warning">
-          <C3Chart data={{
-            unload: true,
-            columns: this.props.graphData.columns,
-            type: 'bar'
-          }}/> */}
-        {/* </div> */}
+        <div className="center-warning">
+          <C3Chart
+             data={{
+               unload: true,
+            x: 'x1',
+
+            columns:[
+              ['x1',...this.props.noteArr],
+              ['note',...this.props.graphDataBarGraph.columns]
+            ],
+             type: 'bar'}}
+        bar={ {width: {
+            ratio: 0.5,
+        }}}
+           axis={this.props.graphDataBarGraph.axis} />
+        </div>
        </div>
     } else {
       return <div className="center-warning">
@@ -112,6 +142,7 @@ class Profile extends Component {
   }
 
   render() {
+        // console.log('what is notes', this.props.notes);
     return (
         <div className="container">
           <div className="row">

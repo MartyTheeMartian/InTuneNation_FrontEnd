@@ -1,19 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData,
-loadSpecificExercisesIDwithAllScoresData_barGraph
+loadSpecificExercisesIDwithAllScoresData_barGraph,
+loadSpecificExercisesIDwithAllNotes,
+sendArray
 } from '../../actions';
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
+// export let noteNameArray;
+// console.log('noteNameArray',noteNameArray)
 const mapStateToProps = (state, ownProps) => {
   return { list: state.dashboardReducer, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
+    sendArray,
     loadSpecificExercisesIDwithAllScoresData,
-    loadSpecificExercisesIDwithAllScoresData_barGraph
+    loadSpecificExercisesIDwithAllScoresData_barGraph,
+    loadSpecificExercisesIDwithAllNotes
   }, dispatch);
 };
 
@@ -35,13 +41,23 @@ class Table extends Component {
   }
 
   renderList = (list) => (list.map((item, index) => (
-    <tr className="tableRow" onClick={
+    <tr className="tableRow" key={index} onClick={
+      // (dispatch,getState) => {
+      // this.props.loadSpecificExercisesIDwithAllNotes(item.user_id, item.id);
       () => {
-      this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
-      this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
-      }
 
-    }>
+        let keyNumsArray = this.props.list[index].notes_array;
+        console.log('keyNumsArray', typeof keyNumsArray)
+        let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
+          let noteObj = getNoteAndOctave(keyNum);
+          return noteObj.note + ' ' + noteObj.octave;
+        })
+        // console.log('NoteNamesArr: ', noteNameArray)
+        this.props.sendArray(noteNameArray);
+        this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id)
+      }
+      }
+>
       <td>
         <h4>{index + 1}</h4>
       </td>
@@ -87,5 +103,5 @@ class Table extends Component {
     // }
   }
 }
-
+// export noteNameArray;
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
