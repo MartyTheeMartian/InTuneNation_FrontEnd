@@ -4,7 +4,7 @@ const recordingStatusReducer = (state = initialState.recordingStatus, action) =>
   switch (action.type) {
     case 'TOGGLE_AUDIO_CAPTURE':
       return !state;
-    case 'RESET_INTERFACE':
+    case 'EXERCISE_FINISHED':
       return initialState.recordingStatus;
     default:
       return state;

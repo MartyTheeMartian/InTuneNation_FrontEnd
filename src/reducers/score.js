@@ -6,6 +6,8 @@ const scoreReducer = (state = initialState.score, action) => {
       return state - action.amount;
     case 'RESET_SCORE':
       return initialState.score;
+    case 'REPEAT_EXERCISE':
+      return initialState.score;
     case 'RESET_INTERFACE':
       return initialState.score;
     default:
