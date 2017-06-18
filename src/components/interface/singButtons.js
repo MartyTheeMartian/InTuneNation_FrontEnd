@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { toggleAudioCapture, singButton, resetState } from '../../actions';
+import { toggleAudioCapture, singButton, resetState, resetInterface, repeatExercise } from '../../actions';
 import Tone from '../../../tone-js/tone';
 
 const mapStateToProps = (state) => {
   return {
-    resetDisabled: state.captureReducer.resetDisabled,
+    resetDisabled: (state.captureReducer.resetDisabled === 'disabled'),
     singText: state.singButtonReducer.singText,
-    singDisabled: state.singButtonReducer.disabled,
-    captureDisabled: state.captureReducer.disabled,
+    singDisabled: (state.singButtonReducer.disabled === 'disabled'),
+    captureDisabled: (state.captureReducer.disabled === 'disabled'),
     captureText: state.captureReducer.captureText,
     keyEvents: state.keyEventsReducer,
     recordingStatus: state.recordingStatusReducer,
   };
 };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState }, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ toggleAudioCapture, singButton, resetState, resetInterface, repeatExercise }, dispatch); };
 
 class SingButtons extends Component {
   constructor(props) {
@@ -24,9 +24,10 @@ class SingButtons extends Component {
     this.synth = new Tone.Synth().toMaster();
   }
 
-  handleResetClick = () => { this.props.resetState(); }
+  handleResetClick = () => { this.props.resetInterface(); }
 
   handleSingClick = () => {
+    if (this.props.keyEvents.length > 0) { this.props.repeatExercise(); }
     this.props.toggleAudioCapture();
     this.props.singButton();
   }
@@ -57,24 +58,31 @@ class SingButtons extends Component {
     // }
   // }
 
-  getDisabled = () => {
-    if (this.props.captureDisabled === '') { return 'disabled'; }
-    else if (this.props.singDisabled === false) { return 'disabled'; }
+  getSingDisabled = () => {
+    if (this.props.captureDisabled) {
+      if (!this.props.recordingStatus) { return ''; } else { return 'disabled'; }
+    } else {
+      return 'disabled';
+    }
+  }
+
+  startingNoteDisable = () => {
+    if (this.getSingDisabled() === 'disabled') { return 'disabled' } else { return ''; }
   }
 
   render() {
     return (
-      <div className="row sing-button-collection">
+      <div className="sing-button-collection">
         {/* <div className="col-md-12">
           <button id="play-exercise-button" onClick={this.handlePlayExerciseClick} className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>PLAY EXERCISE</button>
         </div> */}
-        <div className="col-md-8 singButtonBackground">
-          <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>START {String.fromCharCode(9834)}</button>
+        <div className="col-lg-10 col-md-4 col-sm-4  singButtonBackground">
+          <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons" disabled={this.startingNoteDisable()}>START {String.fromCharCode(9834)}</button>
         </div>
-          <div className="col-md-8 singButtonBackground">
-            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>{this.props.singText}</button>
+          <div className="col-lg-10 col-md-4 col-sm-4  singButtonBackground">
+            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons" disabled={this.getSingDisabled()}>{this.props.singText}</button>
           </div>
-          <div className="col-md-8 singButtonBackground">
+          <div className="col-lg-10 col-md-4 col-sm-4  singButtonBackground">
             <button onClick={this.handleResetClick} className="btn btn-lg active sing-buttons" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>

@@ -119,9 +119,11 @@
   font-size: 50px;
   color: white;
   float: right;
-  margin: 5px 0px 5px 0px;
-  width: 200px;
-  padding-left: 0px;
+  /*margin: 5px 0px 5px 0px;*/
+  margin: 5px;
+  width: 210px;
+  height: 90px;
+  padding: 0px;
 
 }
 
@@ -133,7 +135,8 @@
 .singButtonBackground {
   background-color: white;
   padding-right: 0px;
-  padding-left: 204px;
+  padding-left: 0px;
+  text-align: left;
   margin-right: 0px;
   margin-left: 0px;
 }
@@ -198,7 +201,7 @@
 }
 
 #indicators {
-  height: 338px;
+  height: 337px;
   width: 364px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -215,7 +218,7 @@
   background-color: white;
   border: 3px #1cd1fc solid;
   border-radius: 15px;
-  margin-top: 5px;
+  margin-top: 12px;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -246,4 +249,21 @@
 
 #interface-top-row {
   margin-top: 20px;
+}
+
+#interface-bottom-row {
+  margin-top: 14px;
+}
+
+#captureBut {
+  text-align: center;
+}
+
+#rightOctBut {
+  text-align: right;
+  padding-right: 32px;
+}
+
+#leftOctBut {
+  padding-left: 30px;
 }
