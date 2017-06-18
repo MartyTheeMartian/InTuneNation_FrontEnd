@@ -68,37 +68,38 @@ class Table extends Component {
 
   render() {
       return (
-        <table className="table table-bordered table-striped"
-          style={{ "border": "4px solid #ffe6e6" }}>
-          <thead>
-            <tr>
-              <th>
-                <h4>
-                <strong>
-                No. #
-              </strong>
-              </h4>
-              </th>
-              <th>
-                <h4>
+        <div id="scroll-table" className="profileBackgroundDiv">
+          <table className="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>
+                  <h4>
                   <strong>
-                    Exercises
-                  </strong>
-              </h4>
-              </th>
-              <th>
-                <h4>
-                <strong>
-                Creation Date
-              </strong>
-              </h4>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList(this.props.list)}
-          </tbody>
-        </table>
+                  No. #
+                </strong>
+                </h4>
+                </th>
+                <th>
+                  <h4>
+                    <strong>
+                      Exercises
+                    </strong>
+                </h4>
+                </th>
+                <th>
+                  <h4>
+                  <strong>
+                  Creation Date
+                </strong>
+                </h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderList(this.props.list)}
+            </tbody>
+          </table>
+        </div>
       );
     // }
   }
