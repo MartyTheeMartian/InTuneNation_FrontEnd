@@ -143,8 +143,6 @@ export default getUserMedia({ video: false, audio: true })
           //   }
           // }
           const tuningSpecs = getState().tuningSpecsReducer;
-          if (tuningSpecs) { console.log(tuningSpecs.greenYellowBand); }
-          console.log(greenWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.greenYellowBand));
           if (greenWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.greenYellowBand)) {
             dispatch(incrementGreenTime());
           } else {
