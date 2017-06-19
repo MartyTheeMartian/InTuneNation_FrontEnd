@@ -17,7 +17,7 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
           axis: {
             y: {
               label: {
-                text: 'Average Intonation Score',
+                text: 'Average InTuneNation Score',
                 position: 'outer-middle'
               },
               tick: {
