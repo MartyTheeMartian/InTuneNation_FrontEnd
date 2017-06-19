@@ -1,10 +1,17 @@
 import initialState from './initialState';
 // the initialState is null
+import getNoteAndOctave from '../audio/getNoteAndOctave';
 
 const graphDataReducer = (state = initialState.graphData, action) => {
   switch (action.type) {
     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
-      const data = action.payload.data;
+      const data = action.payload[0].data;
+      const noteArr = action.payload[1].data["notes_array"];
+      let noteNameArray = JSON.parse(noteArr).map((keyNum, index) => {
+        let noteObj = getNoteAndOctave(keyNum);
+        return noteObj.note + ' ' + noteObj.octave + `pitch #${index}`;
+      })
+
       const d3Format = data.map((obj, index) => {
         return [
           `Performance #${index + 1}`,
@@ -15,8 +22,8 @@ const graphDataReducer = (state = initialState.graphData, action) => {
         return [];
       } else {
         return {
+          notes: noteNameArray,
           columns: d3Format,
-
           axis: {
             y: {
               label: {
@@ -40,16 +47,3 @@ const graphDataReducer = (state = initialState.graphData, action) => {
 };
 
 export default graphDataReducer;
-
-// import initialState from './initialState';
-//
-// const allScorePerExercise = (state = initialState.graphData, action) => {
-//   switch (action.type) {
-//     case 'ALL_INTONATION_PER_EXERCISE_FULFILLED':
-//       return action.payload.data;
-//     default:
-//       return state;
-//   }
-// };
-//
-// export default allScorePerExercise;

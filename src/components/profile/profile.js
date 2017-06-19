@@ -22,9 +22,16 @@ import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
 import {noteName} from '../table/table.js'
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
 
-// graphDataBarGraph: state.barGraphgraphDataReducer,
+const mapStateToProps = (state, ownProps) => ({
+  user: state.loginReducer,
+  graphData: state.graphDataReducer,
+  graphDataBarGraph: state.barGraphgraphDataReducer,
+  googleOauthState: state.googleOauthReducer,
+  list: state.dashboardReducer,
+  notesLine: state.graphDataReducer,
+  notesBar: state.barGraphgraphDataReducer
+});
 
 let profile_picture;
 
@@ -70,11 +77,8 @@ class Profile extends Component {
       email: email,
       profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200'
     }
-    //sending the object to the state so i can rerender the page
     this.props.googleOauth(Obj);
-    //loading the music table
     this.props.loadPastExercisesData(Obj.id);
-
   }
 
   convertArr = (arr) => {
@@ -86,22 +90,26 @@ class Profile extends Component {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
 
-      let newNoteArr = noteName.map((ele, index) => {
-        if (noteName.includes(ele)) {
-          return ele + `# step ${index}`;
-        } else {
-          return ele;
-        }
-      })
+      // let newNoteArr = noteName.map((ele, index) => {
+      //   if (noteName.includes(ele)) {
+      //     return ele + `# step ${index}`;
+      //   } else {
+      //     return ele;
+      //   }
+      // })
 
       return <div className="graphBackGround">
         <div className="center-warning graphBack">
           <C3Chart data={{
             unload: true,
             x: 'x1',
-            // columns:this.props.graphData.columns ,
-            columns: [ ['x1', ...newNoteArr], ...this.props.graphData.columns ], }}
-            axis={this.props.graphData.axis} title={{
+            columns: [
+              [
+                'x1', ...this.props.notesLine.notes
+              ],
+              ...this.props.graphData.columns
+            ]
+          }} axis={this.props.graphData.axis} title={{
             text: 'Intonation Score V.S. Note'
           }}/>
         </div>
@@ -109,8 +117,16 @@ class Profile extends Component {
           <C3Chart data={{
             unload: true,
             x: 'x1',
-             // columns:[ // ['note',...this.props.graphDataBarGraph.columns] // ],
-            columns:[ ['x1', ...newNoteArr], ['Different Notes On KeyBoard',...this.props.graphDataBarGraph.columns] ], type: 'bar'}} title={{
+            columns: [
+              [
+                'x1', ...this.props.notesBar.notes
+              ],
+              [
+                'Different Notes On KeyBoard', ...this.props.graphDataBarGraph.columns
+              ]
+            ],
+            type: 'bar'
+          }} title={{
             text: 'Average Intonation Score V.S. Each Note'
           }} bar={{
             width: {
@@ -161,11 +177,12 @@ class Profile extends Component {
 
               <div className="popover right static-popover profile-right" id="testPopover">
                 <div className="arrow"></div>
-                <h3 className="popover-title poptitle">This Show Graphs 😄 </h3>
+                <h3 className="popover-title poptitle">This Show Graphs 😄
+                </h3>
                 <div className="popover-content">
-                      <span>Click the row on the left to see graph Visualizations</span>
+                  <span>Click the row on the left to see graph Visualizations</span>
                 </div>
-            </div>
+              </div>
             </div>
           </div>
           <div className="row">
