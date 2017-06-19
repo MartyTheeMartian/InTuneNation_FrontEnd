@@ -20,13 +20,13 @@ const graphDataReducer = (state = initialState.graphData, action) => {
           axis: {
             y: {
               label: {
-                text: 'Intonation Score',
+                text: 'InTuneNation Score',
                 position: 'outer-middle'
               }
             },
             x: {
               label : {
-                text: 'Music Note',
+                text: 'Note',
               },
               type: 'category'
             }

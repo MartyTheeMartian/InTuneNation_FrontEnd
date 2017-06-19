@@ -11,20 +11,62 @@
 }
 
 #profileBackground {
-  background-image: url('../../../public/interface-page.png');
+  background-image: url('../../../public/profile-page.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
   height: 93vh;
 }
 
+#profile-container {
+  width: 90%;
+}
+
+#profile-pic {
+  margin-top: 6px;
+}
+
+.static-popover {
+  display: block !important;
+  margin-right: 28px;
+}
+
+.c3-title {
+  font-size: 18px !important;
+}
+.profile-right {
+  margin-top: 40px;
+  /*font-family: serif;*/
+  font-size: 20px;
+}
+
+.poptitle {
+  background-color: #F0F8FF;
+}
+
+.graphBackGround {
+  background-color: white;
+  border: 3px solid #87CEEB;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
 .profileBackgroundDiv {
   background-color: white;
 }
 
+.middleBackGround {
+  background-color: white;
+}
 #scroll-table {
+  border-radius: 10px;
   overflow-y: auto;
-  height: 440px;
-  border: 5px solid #3776ad;
+  height: 341px;
+  border: 3px solid #87CEEB;
   border-radius: 5px;
+}
+
+.popover {
+  margin-top: 8vh;
 }

@@ -8,7 +8,7 @@ sendArray
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
-// export let noteNameArray;
+export let noteName;
 // console.log('noteNameArray',noteNameArray)
 const mapStateToProps = (state, ownProps) => {
   return { list: state.dashboardReducer, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
@@ -42,22 +42,19 @@ class Table extends Component {
 
   renderList = (list) => (list.map((item, index) => (
     <tr className="tableRow" key={index} onClick={
-      // (dispatch,getState) => {
-      // this.props.loadSpecificExercisesIDwithAllNotes(item.user_id, item.id);
+      // this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+      // this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
       () => {
-
         let keyNumsArray = this.props.list[index].notes_array;
-        console.log('keyNumsArray', typeof keyNumsArray)
+
         let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
           let noteObj = getNoteAndOctave(keyNum);
           return noteObj.note + ' ' + noteObj.octave;
         })
-        // console.log('NoteNamesArr: ', noteNameArray)
+        noteName = noteNameArray;
         this.props.sendArray(noteNameArray);
-        this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id)
-      }
-      }
->
+        this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+      }}>
       <td>
         <h4>{index + 1}</h4>
       </td>
