@@ -15,7 +15,6 @@ import {
   averageArr
 } from '../../actions';
 import Table from '../table/table';
-import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import {Link} from 'react-router-dom';
@@ -89,8 +88,6 @@ class Profile extends Component {
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
-
-
 
       return <div className="graphBackGround">
         <div className="center-warning graphBack">
@@ -169,7 +166,7 @@ class Profile extends Component {
             </div>
             <div className="col-md-2 col-xs-2">
 
-              <div className="popover right static-popover profile-right" id="testPopover">
+              <div className="popover right static-popover profile-right" id="right-pointer">
                 <div className="arrow"></div>
                 <h3 className="popover-title poptitle"> 🎶  &nbsp; 🎵 &nbsp; 🎶 </h3>
                 <div className="popover-content">

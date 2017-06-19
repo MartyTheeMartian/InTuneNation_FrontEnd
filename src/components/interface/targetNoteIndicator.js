@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    // currentPianoNote: state.currentPianoNoteReducer,
-    // octave: state.octaveReducer.current,
     keyStrokeEvents: state.keyEventsReducer,
     targetNote: state.targetNoteReducer,
     targetNoteIndex: state.targetNoteIndexReducer,
@@ -32,9 +30,6 @@ class TargetNoteIndicator extends Component {
         <div className="thumbnail noteScoreIndicatorsBorder">
           <div className="noteScoreIndicatorsText">
             <h4>Target Notes</h4>
-            {/* <div style={style}>
-              <h2>{_renderKeyEventNotesAsTargetNotes(this.props.keyStrokeEvents)}</h2>
-            </div> */}
             <ul className="pagination">
               {renderKeyEventNotesAsTargetNotes(this.props.keyStrokeEvents, this.props.targetNoteIndex)}
             </ul>

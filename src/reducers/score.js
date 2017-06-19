@@ -1,9 +1,10 @@
 import initialState from './initialState';
 
 const scoreReducer = (state = initialState.score, action) => {
+  let score = state;
   switch (action.type) {
     case 'DECREMENT_SCORE':
-      return state - action.amount;
+      return score - action.amount;
     case 'RESET_SCORE':
       return initialState.score;
     case 'REPEAT_EXERCISE':
