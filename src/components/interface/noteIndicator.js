@@ -31,9 +31,7 @@ class NoteIndicator extends Component {
     if (this.props.recordingStatus) {
       return 'You Are Singing';
     }
-    else {
-      return 'Piano Note';
-    }
+    return 'Piano Note';
   }
 
   render() {

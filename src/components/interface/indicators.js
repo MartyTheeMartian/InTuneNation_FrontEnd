@@ -10,6 +10,6 @@ const Indicators = () => {
       <NoteIndicator />
     </div>
   );
-}
+};
 
 export default Indicators;
