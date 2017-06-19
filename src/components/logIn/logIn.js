@@ -48,8 +48,8 @@ class LogIn extends Component {
   }
   onSubmit = (value) => {
     const user = value;
-    this.props.postLogIn(user);
-    // this.props.localStorageLogin(user);
+    // this.props.postLogIn(user);
+    this.props.localStorageLogin(user);
   }
   handleSwitch = () => {
     window.location.assign('https://ppp-capstone-music.herokuapp.com/auth/google/');
