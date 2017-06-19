@@ -169,7 +169,7 @@ class Profile extends Component {
             </div>
             <div className="col-md-2 col-xs-2 ">
 
-              <div className="popover right static-popover profile-right" id="testPopover">
+              <div className="popover right static-popover profile-right" id="right-pointer">
                 <div className="arrow"></div>
                 <h3 className="popover-title poptitle"> 🎶  &nbsp; 🎵 &nbsp; 🎶 </h3>
                 <div className="popover-content">

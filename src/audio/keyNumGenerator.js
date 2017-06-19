@@ -9,7 +9,15 @@ function getKeyNum(note, octave) {
       break;
     }
   }
-  noteObj.tNote = note.toLowerCase() + octave;
+  if (note === 'D#') {
+    noteObj.tNote = 'eb' + octave;
+  }
+  else if (note === 'C#') {
+    noteObj.tNote = 'db' + octave;
+  }
+  else {
+    noteObj.tNote = note.toLowerCase() + octave;
+  }
   return noteObj;
 }
 

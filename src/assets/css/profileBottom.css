@@ -72,3 +72,7 @@
 .popover {
   margin-top: 8vh;
 }
+
+#right-pointer {
+  z-index: 0;
+}
