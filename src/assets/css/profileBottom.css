@@ -11,17 +11,37 @@
 }
 
 #profileBackground {
-  /*background-image: url('../../../public/interface-page.png');*/
-  background-repeat: no-repeat;
+  /*background-image: url('../../../public/profile_background.png');*/
+  background-repeat: repeat-y;
+  /*background-color: #F0F8FF;*/
+  /*background-repeat: no-repeat;*/
   background-size: 100% 100%;
   width: 100%;
-  height: 93vh;
+  height: 100%;
+}
+
+.static-popover {
+  display: block !important;
+  margin-right: 28px;
+}
+
+.profile-right {
+  margin-top: 40px;
+  /*font-family: serif;*/
+  font-size: 20px;
+}
+
+.poptitle {
+  background-color: #F0F8FF;
 }
 
 .graphBackGround {
   background-color: white;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #87CEEB;
   margin-bottom: 100px;
+  border-radius: 5px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 .profileBackgroundDiv {
   background-color: white;
@@ -31,8 +51,9 @@
   background-color: white;
 }
 #scroll-table {
+  border-radius: 10px;
   overflow-y: auto;
   height: 450px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #87CEEB;
   border-radius: 5px;
 }
