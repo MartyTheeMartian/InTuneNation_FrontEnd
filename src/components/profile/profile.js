@@ -21,10 +21,8 @@ import request from 'superagent';
 import {Link} from 'react-router-dom';
 import rd3 from 'react-d3';
 import {BarChart} from 'react-d3/barchart';
-// import  { noteNameArray } from '../table/table.js'
-const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer,
-    googleOauthState: state.googleOauthReducer, list: state.dashboardReducer, noteArr: state.sendArrayReducer});
-
+import {noteName} from '../table/table.js'
+const mapStateToProps = (state, ownProps) => ({user: state.loginReducer, graphData: state.graphDataReducer, graphDataBarGraph: state.barGraphgraphDataReducer, googleOauthState: state.googleOauthReducer, list: state.dashboardReducer});
 
 // graphDataBarGraph: state.barGraphgraphDataReducer,
 
@@ -50,13 +48,6 @@ class Profile extends Component {
       userID: ''
     };
   }
-  //
-  // converter = (array) => {
-  //   console.log('arrrrrray here!', array)
-  //   return JSON.parse(array).map((ele) => {
-  //     return  this.props.getNoteAndOctave(ele)["note"] + ' ' + this.props.getNoteAndOctave(ele)["octave"] + '\xa0' + ' ➯ ' + '\xa0' ;
-  //   }).toString().slice(0, -5).replace(/,/g , "")
-  // }
 
   componentDidMount = () => {
     let token = localStorage.getItem('token');
@@ -77,7 +68,7 @@ class Profile extends Component {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200',
+      profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200'
     }
     //sending the object to the state so i can rerender the page
     this.props.googleOauth(Obj);
@@ -86,62 +77,49 @@ class Profile extends Component {
 
   }
 
-  convertArr = ( arr ) => {
+  convertArr = (arr) => {
     this.props.averageArr(arr);
   }
 
   graph = () => {
-
     if (this.props.graphData === null) {
       return <div></div>;
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
-      // console.log('normal line===',[ ['x1',...this.props.noteArr], ...this.props.graphData.columns ]);
-      // console.log('bargraph====',[
-      //   ['x1',...this.props.noteArr],
-      //   ['note',...this.props.graphDataBarGraph.columns]
-      // ]);
-      return(
-        <div>
-          <div className="center-warning profileBackgroundDiv">
-            <C3Chart
-              data= {
-                      {
-                        unload: true,
-                        x:'x1',
-                        columns: [
-                          ['x1',...this.props.noteArr],
-                          ...this.props.graphData.columns,
-                        ],
-                      }
-                    }
-              axis= {this.props.graphData.axis}
-            />
-          </div>
-          <div className="center-warning profileBackgroundDiv">
-            <C3Chart
-               data= {
-                       {
-                         unload: true,
-                          x: 'x1',
-                          columns:[
-                                    ['x1',...this.props.noteArr],
-                                    ['note',...this.props.graphDataBarGraph.columns],
-                          ],
-                          type: 'bar',
-                        }
-                      }
-                bar={
-                      {
-                        width: {
-                                  ratio: 0.5,
-                                },
-                      }
-                    }
-                axis={this.props.graphDataBarGraph.axis}
-              />
-            </div>
-         </div>
-      )
+
+      let newNoteArr = noteName.map((ele, index) => {
+        if (noteName.includes(ele)) {
+          return ele + `# step ${index}`;
+        } else {
+          return ele;
+        }
+      })
+
+      return <div className="graphBackGround">
+        <div className="center-warning graphBack">
+          <C3Chart data={{
+            unload: true,
+            x: 'x1',
+            // columns:this.props.graphData.columns ,
+            columns: [ ['x1', ...newNoteArr], ...this.props.graphData.columns ], }}
+            axis={this.props.graphData.axis} title={{
+            text: 'Intonation Score V.S. Note'
+          }}/>
+        </div>
+        <div className="center-warning">
+          <C3Chart data={{
+            unload: true,
+            x: 'x1',
+             // columns:[ // ['note',...this.props.graphDataBarGraph.columns] // ],
+            columns:[ ['x1', ...newNoteArr], ['Different Notes On KeyBoard',...this.props.graphDataBarGraph.columns] ], type: 'bar'}} title={{
+            text: 'Average Intonation Score V.S. Each Note'
+          }} bar={{
+            width: {
+              ratio: 0.5
+            }
+          }} axis={this.props.graphDataBarGraph.axis}/>
+        </div>
+
+      </div>
     } else {
       return <div className="center-warning">
         <Link to="/interface" onClick={this.insertExToRedux}>
@@ -157,12 +135,11 @@ class Profile extends Component {
   }
 
   render() {
-        // console.log('what is notes', this.props.notes);
     return (
       <div id="profileBackground">
-        <div className="container">
+        <div className="">
           <div className="row">
-            <div className="col-md-2 col-xs-6">
+            <div className="col-md-2 col-xs-2">
               <div className="thumbnailSection">
                 <div className="thumbnail">
                   <img src={profile_picture} alt=".."/>
@@ -173,20 +150,30 @@ class Profile extends Component {
                 <div></div>
               </div>
             </div>
-            <div className="col-md-10 col-xs-12">
+            <div className="col-md-8 col-xs-8">
               <div className="pastExercise"></div>
               <div>
                 <Table/>
               </div>
               <br/>
             </div>
-            <div className="col-md-3 col-xs-6"></div>
+            <div className="col-md-2 col-xs-2 ">
+
+              <div className="popover right static-popover profile-right" id="testPopover">
+                <div className="arrow"></div>
+                <h3 className="popover-title poptitle">This Show Graphs 😄 </h3>
+                <div className="popover-content">
+                      <span>Click the row on the left to see graph Visualizations</span>
+                </div>
+            </div>
+            </div>
           </div>
-          <div className="row" >
-            <div className="col-md-3 col-xs-3"></div>
-            <div className="col-md-8 col-xs-12">
+          <div className="row">
+            <div className="col-md-2 col-xs-2"></div>
+            <div className="col-md-8 col-xs-8">
               {this.graph()}
             </div>
+            <div className="col-md-2 col-xs-2"></div>
           </div>
         </div>
       </div>
