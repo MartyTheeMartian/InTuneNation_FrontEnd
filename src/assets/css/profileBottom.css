@@ -11,13 +11,19 @@
 }
 
 #profileBackground {
-  /*background-image: url('../../../public/profile_background.png');*/
-  background-repeat: repeat-y;
-  /*background-color: #F0F8FF;*/
-  /*background-repeat: no-repeat;*/
+  background-image: url('../../../public/profile-page.png');
+  background-repeat: no-repeat;
   background-size: 100% 100%;
   width: 100%;
-  height: 93%;
+  height: 93vh;
+}
+
+#profile-container {
+  width: 90%;
+}
+
+#profile-pic {
+  margin-top: 6px;
 }
 
 .static-popover {
@@ -40,7 +46,7 @@
 
 .graphBackGround {
   background-color: white;
-  border: 2px solid #87CEEB;
+  border: 3px solid #87CEEB;
   margin-bottom: 100px;
   border-radius: 5px;
   margin-right: 0px;
@@ -56,7 +62,11 @@
 #scroll-table {
   border-radius: 10px;
   overflow-y: auto;
-  height: 450px;
-  border: 2px solid #87CEEB;
+  height: 341px;
+  border: 3px solid #87CEEB;
   border-radius: 5px;
+}
+
+.popover {
+  margin-top: 8vh;
 }

@@ -4,7 +4,7 @@ import C3Chart from 'react-c3js';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import 'c3/c3.css';
-import mathew from '../../assets/img/matthew.png';
+import profileImg from '../../assets/img/profile-img.png';
 import {
   loadPastExercisesData,
   postSignUp,
@@ -59,7 +59,7 @@ class Profile extends Component {
     if (localStorage.getItem('profile_picture') !== "undefined") {
       profile_picture = localStorage.getItem('profile_picture').substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
     } else {
-      profile_picture = mathew;
+      profile_picture = profileImg;
     }
 
     let Obj = {
@@ -88,7 +88,7 @@ class Profile extends Component {
 
       let newNoteArr = noteName.map((ele, index) => {
         if (noteName.includes(ele)) {
-          return ele + `# step ${index}`;
+          return ele + ` (Note #${index + 1})`;
         } else {
           return ele;
         }
@@ -102,7 +102,7 @@ class Profile extends Component {
             // columns:this.props.graphData.columns ,
             columns: [ ['x1', ...newNoteArr], ...this.props.graphData.columns ], }}
             axis={this.props.graphData.axis} title={{
-            text: 'Intonation Score V.S. Note'
+            text: 'InTuneNation Scores'
           }}/>
         </div>
         <div className="center-warning">
@@ -111,7 +111,7 @@ class Profile extends Component {
             x: 'x1',
              // columns:[ // ['note',...this.props.graphDataBarGraph.columns] // ],
             columns:[ ['x1', ...newNoteArr], ['Different Notes On KeyBoard',...this.props.graphDataBarGraph.columns] ], type: 'bar'}} title={{
-            text: 'Average Intonation Score V.S. Each Note'
+            text: 'Average InTuneNation Scores'
           }} bar={{
             width: {
               ratio: 0.5
@@ -137,12 +137,12 @@ class Profile extends Component {
   render() {
     return (
       <div id="profileBackground">
-        <div className="">
+        <div id="profile-container" className="container">
           <div className="row">
             <div className="col-md-2 col-xs-2">
               <div className="thumbnailSection">
                 <div className="thumbnail">
-                  <img src={profile_picture} alt=".."/>
+                  <img id="profile-pic" src={profile_picture} alt=".."/>
                   <div className="caption">
                     <h3>{this.props.googleOauthState.firstName} {this.props.googleOauthState.lastName}</h3>
                   </div>
@@ -161,9 +161,9 @@ class Profile extends Component {
 
               <div className="popover right static-popover profile-right" id="testPopover">
                 <div className="arrow"></div>
-                <h3 className="popover-title poptitle">This Show Graphs 😄 </h3>
+                <h3 className="popover-title poptitle"> 🎶  &nbsp; 🎵 &nbsp; 🎶  &nbsp; 🎵 &nbsp;</h3>
                 <div className="popover-content">
-                      <span>Click the row on the left to see graph Visualizations</span>
+                  <span>Click on a row to display its graph</span>
                 </div>
             </div>
             </div>
