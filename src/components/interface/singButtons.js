@@ -50,7 +50,6 @@ class SingButtons extends Component {
   //     chain;
       // this.props.keyEvents.forEach((keyEvent, index) => {
       //   const tone = keyEvent.tNote.toUpperCase();
-      //   console.log(index);
       //   this.synth.triggerAttackRelease(tone, 0.5);
       //   // notes.push(instanceFn);
       // });

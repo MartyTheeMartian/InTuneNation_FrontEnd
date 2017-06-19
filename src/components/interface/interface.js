@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
-import ScoreBox from './scoreBox';
 import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
 
 import SingButtons from './singButtons';
@@ -13,7 +12,7 @@ import TuningSpecButtons from './tuningSpecButtons';
 
 import { Col, Grid, Row } from 'react-bootstrap';
 
-const mapStateToProps = (state, ownProps) => ({googleOauthState: state.googleOauthReducer});
+const mapStateToProps = (state, ownProps) => ({ googleOauthState: state.googleOauthReducer });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -29,19 +28,13 @@ const mapDispatchToProps = (dispatch) => {
 
 let profilePicture;
 class Interface extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
 
   componentDidMount = () => {
-    let returnObj ;
+    let returnObj;
     this.props.renderNavBar();
-    if(window.location.href.indexOf('?') !== -1) {
-      let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
-      let cutTemp = temp.substring(0, temp.length - 1);
+    if (window.location.href.indexOf('?') !== -1) {
+      const temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+      const cutTemp = temp.substring(0, temp.length - 1);
       returnObj = JSON.parse(cutTemp);
 
       localStorage.setItem('token', returnObj.token);
@@ -90,7 +83,9 @@ class Interface extends Component {
                 </Col>
               </Row>
               <Row className="show-grid">
-                <Col lg={12} md={8} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
+                <Col lg={12} md={8} id="sliders" className="tableAndSliders">
+                  <TuningSpecButtons />
+                </Col>
               </Row>
             </Col>
           </Row>

@@ -23,7 +23,9 @@ const renderKeyEventIds = (keyEvents, targetNoteIndex, disabled, recStatus) => {
     return keyEvents.map((item, index) => {
       if (recStatus && index === targetNoteIndex) {
         return <th className="currentTarget">{ index + 1 }</th>
-      } else { return <th>{ index + 1 }</th>; }
+      } else {
+        return <th>{ index + 1 }</th>;
+      }
     });
   }
   return '';
@@ -55,7 +57,7 @@ const renderGreenTime = (keyEvents, targetNoteIndex, greenTime, recStatus) => {
       else if (index < targetNoteIndex) { return <th>{greenTime.required}</th>; }
     });
   }
-}
+};
 
 const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, disabled, recStatus) => {
   if (keyEvents) {
@@ -101,7 +103,7 @@ class TargetNoteScoreTable extends Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
 
