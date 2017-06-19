@@ -3,7 +3,7 @@ import initialState from './initialState';
 const googleOauthReducer = (state = { }, action) => {
   switch (action.type) {
     case 'LOAD_PROFILE':
-      return action.payload ;
+      return { ...state, ...action.payload } ;
     default:
       return state;
   }
