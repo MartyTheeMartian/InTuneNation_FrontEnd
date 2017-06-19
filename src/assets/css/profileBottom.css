@@ -25,6 +25,9 @@
   margin-right: 28px;
 }
 
+.c3-title {
+  font-size: 18px !important;
+}
 .profile-right {
   margin-top: 40px;
   /*font-family: serif;*/
