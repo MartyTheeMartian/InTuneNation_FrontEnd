@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+// import { shallow } from 'enzyme';
 import Router from './app';
 
 // describe('App rendering', () => {
