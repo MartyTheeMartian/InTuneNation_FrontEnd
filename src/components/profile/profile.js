@@ -161,7 +161,7 @@ class Profile extends Component {
 
               <div className="popover right static-popover profile-right" id="testPopover">
                 <div className="arrow"></div>
-                <h3 className="popover-title poptitle"> 🎶  &nbsp; 🎵 &nbsp; 🎶  &nbsp; 🎵 &nbsp;</h3>
+                <h3 className="popover-title poptitle"> 🎶  &nbsp; 🎵 &nbsp; 🎶 </h3>
                 <div className="popover-content">
                   <span>Click on a row to display its graph</span>
                 </div>
