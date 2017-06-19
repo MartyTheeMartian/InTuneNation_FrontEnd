@@ -87,7 +87,10 @@ class Profile extends Component {
 
   graph = () => {
     if (this.props.graphData === null) {
-      return <div></div>;
+      return (
+        <div>
+        </div>
+      );
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
 
 
