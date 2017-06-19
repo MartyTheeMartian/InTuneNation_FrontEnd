@@ -1,67 +1,103 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import OctaveButtons from './octaveButtons';
-import NoteIndicator from './noteIndicator';
-import TargetNoteIndicator from './targetNoteIndicator';
-import TuningIndicator from './tuningIndicator';
+import PianoButtons from './pianoButtons';
+import Indicators from './indicators';
 import Piano from './piano';
-import CaptureButtons from './captureButtons';
 import ScoreBox from './scoreBox';
+import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
+
+import SingButtons from './singButtons';
+import TargetNoteScoreTable from './targetNoteScoreTable';
+import TuningSpecButtons from './tuningSpecButtons';
+
 import { Col, Grid, Row } from 'react-bootstrap';
-// import keyboardBackground from '../../../public/assets/Links/AdobeStock_26077538.png';
 
+const mapStateToProps = (state, ownProps) => ({googleOauthState: state.googleOauthReducer});
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadPastExercisesData,
+    startload,
+    postSignUp,
+    postLogIn,
+    googleOauth,
+    startload,
+    renderNavBar,
+  }, dispatch);
+};
+
+let profilePicture;
 class Interface extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
+  componentDidMount = () => {
+    let returnObj ;
+    this.props.renderNavBar();
+    if(window.location.href.indexOf('?') !== -1) {
+      let temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
+      let cutTemp = temp.substring(0, temp.length - 1);
+      returnObj = JSON.parse(cutTemp);
+
+      localStorage.setItem('token', returnObj.token);
+      localStorage.setItem('userId', returnObj.id);
+      localStorage.setItem('firstName', returnObj.first_name);
+      localStorage.setItem('lastName', returnObj.last_name);
+      localStorage.setItem('email', returnObj.email);
+      localStorage.setItem('profile_picture', returnObj.profile_picture);
+    }
+  }
+
+
   render() {
     return (
-      <Grid id="keyboardBackground">
-        <Row className="show-grid">
-          <Col xs={0} md={3}></Col>
-          <Col xs={6} md={4}><OctaveButtons /></Col>
-          <Col xs={0} md={1}></Col>
-          <Col xs={6} md={4}><CaptureButtons /></Col>
-        </Row>
-
-        <Row className="show-grid">
-          <Col xx={0} md={3}></Col>
-          <Col xs={12} md={12}><Piano /></Col>
-          <Col xs={12} md={4}><TuningIndicator /></Col>
-        </Row>
-
-        <Row className="show-grid">
-          <Col md={3}></Col>
-          <Col xs={4} md={3}><NoteIndicator /></Col>
-          <Col xs={4} md={3}><TargetNoteIndicator /></Col>
-          <Col xs={4} md={3}><ScoreBox /></Col>
-        </Row>
-
-        {/* <Row className="show-grid">
-          <Col md={6} mdPush={6}><code>&lt;{'Col md={6} mdPush={6}'} /&gt;</code></Col>
-          <Col md={6} mdPull={6}><code>&lt;{'Col md={6} mdPull={6}'} /&gt;</code></Col>
-        </Row> */}
-      </Grid>
-      // {/* <div id="keyboardBackground" className="container">
-        // <div id="keyboardBackground" className="container"></div>
-        // <div className="row">
-        //   <Col xs={4}></Col>
-        //   <Col xs={4}><OctaveButtons /></Col>
-        //   <Col xs={4}><CaptureButtons className="captureButtons"/></Col>
-          // {/* <OctaveButtons /> */}
-          // {/* <CaptureButtons className="captureButtons"/> */}
-        // </div>
-        // <div className="row">
-        //   <Piano />
-        //   <TuningIndicator />
-        // </div>
-        // <div id="indicatorRow" className="row">
-        //   <NoteIndicator />
-        //   <TargetNoteIndicator />
-        //   <ScoreBox />
-      //   </div>
-      // </div> */}
+      <div id="keyboardBackground">
+        <Grid>
+          <Row id="interface-top-row" className="show-grid">
+            <Col md={12} lg={12}>
+              <Row className="show-grid">
+                <Col lg={9} md={9}>
+                  <PianoButtons />
+                  <Piano />
+                </Col>
+                <Col lg={3} md={9}>
+                  <SingButtons />
+                </Col>
+              </Row>
+            </Col>
+            {/* <Col mdHidden smHidden xsHidden lg={2}></Col> */}
+            {/* <Col lgHidden mdHidden sm={12}>
+              <Row className="show-grid">
+                <Col sm={8}><PianoButtons /></Col>
+                <Col sm={4}><SingButtons /></Col>
+              </Row>
+              <Row>
+                <Col sm={7}><Piano /></Col>
+              </Row>
+            </Col> */}
+          </Row>
+          <Row id="interface-bottom-row" className="show-grid">
+            <Col lg={4} md={5} sm={6}><Indicators /></Col>
+            <Col lg={8} md={7} sm={6}>
+              <Row className="show-grid">
+                <Col lg={12} md={8} className="tableAndSliders">
+                  <TargetNoteScoreTable />
+                </Col>
+              </Row>
+              <Row className="show-grid">
+                <Col lg={12} md={8} id="sliders" className="tableAndSliders"><TuningSpecButtons/></Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
 
-export default Interface;
+export default connect(mapStateToProps, mapDispatchToProps )(Interface);

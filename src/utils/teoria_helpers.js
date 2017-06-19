@@ -15,6 +15,10 @@ function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave
 function centDiffInYellow(cD)  { return ((cD > -50 && cD < -3) || (cD < 50 && cD > 3)); }
 function centDiffInGreen(cD) { return (cD > -3 && cD < 3); }
 
+function centDiffInRedWithParams(cD, redYellowBand) { return (cD < (redYellowBand * -1) && cD > redYellowBand); }
+function centDiffInYellowWithParams(cD, redYellowBand, greenYellowBand)  { return ((cD > (redYellowBand * -1) && cD < (greenYellowBand * -1)) || (cD < redYellowBand && cD > greenYellowBand)); }
+function centDiffInGreenWithParams(cD, greenYellowBand) { return (cD > (greenYellowBand * -1) && cD < greenYellowBand); }
+
 const green = (targetNoteName, sungNoteName, fq) => {
   return (centDiffInGreen(getCentDiff(fq)) && targetNoteName === sungNoteName);
 };
@@ -32,6 +36,19 @@ const red = (targetNoteName, sungNoteName, fq) => {
   }
 };
 
+const greenWithParams = (targetNoteName, sungNoteName, fq, gYBand) => {
+  return (centDiffInGreenWithParams(getCentDiff(fq), gYBand) && targetNoteName === sungNoteName);
+};
+
+const yellowWithParams = (targetNoteName, sungNoteName, fq, rYBand, gYBand) => {
+  return (centDiffInYellowWithParams(getCentDiff(fq), rYBand, gYBand) && targetNoteName === sungNoteName);
+};
+
+const redWithParams = (targetNoteName, sungNoteName, fq, rYBand) => {
+  if (targetNoteName !== sungNoteName) { return true; }
+  return centDiffInRedWithParams(getCentDiff(fq), rYBand);
+};
+
 module.exports = {
   getName,
   getAccidental,
@@ -45,4 +62,10 @@ module.exports = {
   green,
   yellow,
   red,
+  centDiffInRedWithParams,
+  centDiffInYellowWithParams,
+  centDiffInGreenWithParams,
+  redWithParams,
+  yellowWithParams,
+  greenWithParams,
 };

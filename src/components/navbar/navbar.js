@@ -9,12 +9,16 @@ import LogOut from '../logOut/logOut.js';
 import { loadPastExercisesData } from '../../actions';
 
 
-const mapStateToProps = (state) => { return {}; };
+const mapStateToProps = (state) => {
+  return {
+    renderNav: state.navBarReducer,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData }, dispatch); };
 
 class NavBar extends Component {
-
+  
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };
@@ -42,17 +46,12 @@ class NavBar extends Component {
     }
   }
 
-  profileAPI = () => {
-    let userID = localStorage.getItem('userId');
-    this.props.loadPastExercisesData(userID);
-  }
-
   render() {
     return (
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <span id="logo" className="navbar-left">InTuneNation</span>
+          <span id="logo" className="navbar-left">InTuneNation</span>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -67,7 +66,7 @@ class NavBar extends Component {
               <NavItem>Interface</NavItem>
             </LinkContainer>
 
-            <LinkContainer onClick={this.profileAPI} to="/profile" style={this.displayTabs()}>
+            <LinkContainer to="/profile" style={this.displayTabs()}>
               <NavItem>Profile</NavItem>
             </LinkContainer>
 

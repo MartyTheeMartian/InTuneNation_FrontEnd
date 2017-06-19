@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { logUserIn, postLogIn, setAllPastExercises } from '../../actions';
+import { logUserIn, postLogIn, localStorageLogin, setAllPastExercises } from '../../actions';
 import google_logo from '../../assets/img/google_logo.png';
 import { Route, Redirect } from 'react-router-dom';
 import RedirectClose from './redirectClose';
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   }; };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ logUserIn, postLogIn, setAllPastExercises }, dispatch); };
+  return bindActionCreators({ logUserIn, postLogIn, localStorageLogin, setAllPastExercises }, dispatch); };
 
 class LogIn extends Component {
 
@@ -46,16 +46,17 @@ class LogIn extends Component {
       return { display: 'block' };
     }
   }
-
   onSubmit = (value) => {
     const user = value;
     this.props.postLogIn(user);
+    // this.props.localStorageLogin(user);
   }
   handleSwitch = () => {
     window.location.assign('https://ppp-capstone-music.herokuapp.com/auth/google/');
   }
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
+
 
     return (
       <div id="logIn" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -68,6 +69,8 @@ class LogIn extends Component {
                   <span>Log In with Google</span>
                 </div>
               </button>
+
+
               <div className="signin-modal-or-decorate">
                 <div className="signin-modal-or-decorate-lineL">
                   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

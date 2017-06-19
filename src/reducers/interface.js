@@ -26,13 +26,13 @@ export const captureReducer = (state = initialState.capture, action) => {
       } else if (state.capture) {
         return {
           capture: false,
-          captureText: '',
+          captureText: 'Key',
           disabled: 'disabled',
           resetDisabled: '',
         };
       }
     case 'RESET_INTERFACE':
-      return initialState.capture;
+      return initialState.capture; // not sure if this does anything useful yet
     default:
       return state;
   }
@@ -50,8 +50,18 @@ export const octaveReducer = (state = initialState.octave, action) => {
       } else if (action.payload === '+' && state.leftOctave === 2) {
         return { leftOctave: 3, rightOctave: 4, up: '', down: '' };
       }
+      break;
     case 'RESET_INTERFACE':
-      return { leftOctave: 3, rightOctave: 4, up: '', down: '' };
+      return initialState.octave;
+    default:
+      return state;
+  }
+};
+
+export const navBarReducer = (state = initialState.navBar, action) => {
+  switch (action.type) {
+    case 'RENDER_NAVBAR':
+      return true;
     default:
       return state;
   }

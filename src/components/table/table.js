@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData} from '../../actions';
+import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData,
+loadSpecificExercisesIDwithAllScoresData_barGraph,
+loadSpecificExercisesIDwithAllNotes,
+sendArray
+} from '../../actions';
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
@@ -10,7 +14,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    loadSpecificExercisesIDwithAllScoresData
+    sendArray,
+    loadSpecificExercisesIDwithAllScoresData,
+    loadSpecificExercisesIDwithAllScoresData_barGraph,
+    loadSpecificExercisesIDwithAllNotes
   }, dispatch);
 };
 
@@ -32,13 +39,23 @@ class Table extends Component {
   }
 
   renderList = (list) => (list.map((item, index) => (
-    <tr className="tableRow" onClick={() => {
-      this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
-    }}>
+    <tr className="tableRow" key={index} onClick={
+      // this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+      // this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
+      () => {
+        // let keyNumsArray = this.props.list[index].notes_array;
+        //
+        // let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
+        //   let noteObj = getNoteAndOctave(keyNum);
+        //   return noteObj.note + ' ' + noteObj.octave;
+        // })
+        // noteName = noteNameArray;
+        // this.props.sendArray(noteNameArray);
+        this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
+      }}>
       <td>
         <h4>{index + 1}</h4>
       </td>
-      {/* <td><h5>{item.id}</h5></td> */}
       <td><h4>{this.converter(item.notes_array)}</h4></td>
       <td ><h5 id='timestampSize' >{` ${this.convertTime(item.created_at)} ` }</h5></td>
     </tr>
@@ -46,45 +63,41 @@ class Table extends Component {
 
   render() {
       return (
-        <table className="table table-bordered table-striped"
-          style={{ "border": "4px solid #ffe6e6" }}>
-          <thead>
-            <tr>
-              <th>
-                <h4>
-                <strong>
-                No. #
-              </strong>
-              </h4>
-              </th>
-              {/* <th>
-                <h4>
-                Exercise ID
-              </h4>
-              </th> */}
-              <th>
-                <h4>
+        <div id="scroll-table" className="profileBackgroundDiv">
+          <table className="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>
+                  <h4>
                   <strong>
-                    Exercises
-                  </strong>
-              </h4>
-              </th>
-              <th>
-                <h4>
-                <strong>
-                Creation Date
-              </strong>
-              </h4>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderList(this.props.list)}
-          </tbody>
-        </table>
+                  No. #
+                </strong>
+                </h4>
+                </th>
+                <th>
+                  <h4>
+                    <strong>
+                      Exercises
+                    </strong>
+                </h4>
+                </th>
+                <th>
+                  <h4>
+                  <strong>
+                  Creation Date
+                </strong>
+                </h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderList(this.props.list)}
+            </tbody>
+          </table>
+        </div>
       );
     // }
   }
 }
-
+// export noteNameArray;
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

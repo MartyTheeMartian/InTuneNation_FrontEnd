@@ -4,20 +4,154 @@
 @font-face { font-family: OpenSans-SemiboldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-SemiboldItalic.ttf') }
 @font-face { font-family: OpenSans-BoldItalic; font-weight: bold; src: url('../../../public/assets/fonts/OpenSans-BoldItalic.ttf') }
 
-
-#keyboardBackground {
-  background-image: url('../../../public/assets/Links/AdobeStock_26077538.png');
-  repeat: no-repeat;
-  float: left;
+.noteScoresTable {
+  overflow-x: auto;
+  background-color: #fff;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+  padding-bottom: 0px;
+  margin-top: 11px;
+  height: 80%;
 }
 
-.captureBox {
+.table {
+  margin-bottom: 0px;
+}
+
+#timeSlider {
+  background-color: red;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: #83d7c0 !important;
+}
+
+#timeDifficultySlider .rangeslider-horizontal .rangeslider__fill {
+  background-color: #A855AA !important;
+}
+
+#keyboardBackground {
+  background-image: url('../../../public/interface-page.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 93vh;
+}
+
+#piano {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row;
+}
+
+.right-piano {
+  width: 50%;
+  flex: 3 1 ;
+  display: inline-flex;
+  margin-left: -5px;
+}
+
+.left-piano {
+  width: 50%;
+  flex: 3 1;
+  display: inline-flex;
+}
+
+@media all and (max-width: 640px) {
+  #piano, .right-piano, .left-piano {
+    flex-direction: column;
+    display: table-footer-group;
+  }
+}
+
+.white-key {
+  height: 260px;
+  width: 58px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.black-key {
+  height: 160px;
+  width: 58px;
+  border: 1px solid #ffffff;
+  border-top: 1px solid #000000;
+  background-color: #000000;
+  margin-left: -29px;
+  margin-right: -29px;
+  z-index: 2;
+}
+
+.black-key, .white-key {
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.white-key:hover {
+  background-color: #dddddd;
+}
+
+.black-key:hover {
+  background-color: #707070;
+}
+
+.white-key:active {
+  background-color: #2f8aaf;
+}
+
+.black-key:active {
+  background-color: #afac2f;
+}
+
+.sing-buttons {
   border-radius: 8px;
-  background-color: #b94ad5;
+  /*background-color: #b94ad5;*/
+  /*background-color: #2fc5e0;*/
+  /*background-color: #86b2d8;*/
+  background-color: #3776ad;
   font-family: DDCHardwareCondensed;
   font-size: 50px;
   color: white;
   float: right;
+  /*margin: 5px 0px 5px 0px;*/
+  margin: 5px;
+  width: 210px;
+  height: 90px;
+  padding: 0px;
+
+}
+
+.sing-button-collection {
+  margin-top: 28px;
+  padding-left: 0px;
+}
+
+.singButtonBackground {
+  background-color: white;
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: left;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+#starting-note-button {
+  padding-left: 19px;
+}
+
+.tableAndSliders {
+  margin-left: 10px;
+}
+
+.slider {
+  background-color: yellow;
 }
 
 #octRow {
@@ -47,22 +181,90 @@
   font-family: OpenSans-BoldItalic;
   font-weight: bold;
   color: white;
-  background-color: #b94ad5;
-  border: 3px solid #1cd1fc;
+  /*background-color: #b94ad5;*/
+  background-color: #A855AA;
+  border: 3px solid #27a9d1;
   border-radius: 8px;
   font-size: 23px;
 }
 
 #gauge {
-  background-color: white;
-  border: 3px solid #1cd1fc;
-  border-radius: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 8px 8px 8px 8px;
+  padding-top: 21px;
 }
 
 #indicatorRow {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.currentTarget {
+  background-color: lightblue;
+}
+
+#indicators {
+  height: 338px;
+  width: 364px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+}
+
+#sliderTitles {
+  font-size: 22px;
+}
+
+#sliders {
+  background-color: white;
+  border: 3px #1cd1fc solid;
+  border-radius: 15px;
+  margin-top: 12px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.panel-body {
+  padding-top: 0px;
+  padding-bottom: 4px;
+}
+
+#current-note {
+  height: 30px;
+}
+
+#displayNoteBorder {
+  border: solid #1cd1fc 3px;
+  border-radius: 15px 15px 0px 0px;
+  display: flex;
+  justify-content: center;
+  margin-right: 94px;
+  margin-left: 94px;
+  padding-bottom: 4px;
+}
+
+#sing-button {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#interface-top-row {
+  margin-top: 20px;
+}
+
+#interface-bottom-row {
+  margin-top: 14px;
+}
+
+#captureBut {
+  text-align: center;
+}
+
+#rightOctBut {
+  text-align: right;
+  padding-right: 32px;
+}
+
+#leftOctBut {
+  padding-left: 30px;
 }
