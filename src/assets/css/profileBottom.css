@@ -11,6 +11,7 @@
 }
 
 #profileBackground {
+
   background-image: url('../../../public/profile-page.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -52,6 +53,7 @@
   margin-right: 0px;
   margin-left: 0px;
 }
+
 .profileBackgroundDiv {
   background-color: white;
 }

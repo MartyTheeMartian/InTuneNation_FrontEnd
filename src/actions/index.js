@@ -169,9 +169,18 @@ export const loadSpecificExercisesIDwithAllScoresData = (user_id, exercise_id) =
   let SCORE_DATA_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
   let scoreData = axios.get(SCORE_DATA_URL, config());
 
+  let NOTE_DATA_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}`;
+  let noteData = axios.get(NOTE_DATA_URL, config());
+
+  const p = Promise.all([scoreData, noteData])
+
+  p.then((r) => {
+    console.log(r);
+  })
+
   return {
     type: 'ALL_INTONATION_PER_EXERCISE',
-    payload: scoreData,
+    payload: p
   };
 };
 
@@ -192,14 +201,14 @@ export const sendArray = (noteArr) => {
     payload: noteArr,
   }
 }
-export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
-  let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
-  let data = axios.get(API_URL, config());
-  return {
-    type: 'ALL_INTONATION_PER_EXERCISE_BARGRAPH',
-    payload: data
-  };
-};
+// export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
+//   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
+//   let data = axios.get(API_URL, config());
+//   return {
+//     type: 'ALL_INTONATION_PER_EXERCISE_BARGRAPH',
+//     payload: data
+//   };
+// };
 
 const fetchAllPastExercises = (userId) => {
   const API_URL = `https://ppp-capstone-music.herokuapp.com/users/${userId}/exercises`;

@@ -8,8 +8,6 @@ sendArray
 import {bindActionCreators} from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
-export let noteName;
-// console.log('noteNameArray',noteNameArray)
 const mapStateToProps = (state, ownProps) => {
   return { list: state.dashboardReducer, user_info: state.loginReducer, getNoteAndOctave: getNoteAndOctave };
 };
@@ -45,14 +43,14 @@ class Table extends Component {
       // this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
       // this.props.loadSpecificExercisesIDwithAllScoresData_barGraph(item.user_id, item.id);
       () => {
-        let keyNumsArray = this.props.list[index].notes_array;
-
-        let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
-          let noteObj = getNoteAndOctave(keyNum);
-          return noteObj.note + ' ' + noteObj.octave;
-        })
-        noteName = noteNameArray;
-        this.props.sendArray(noteNameArray);
+        // let keyNumsArray = this.props.list[index].notes_array;
+        //
+        // let noteNameArray = JSON.parse(keyNumsArray).map((keyNum) => {
+        //   let noteObj = getNoteAndOctave(keyNum);
+        //   return noteObj.note + ' ' + noteObj.octave;
+        // })
+        // noteName = noteNameArray;
+        // this.props.sendArray(noteNameArray);
         this.props.loadSpecificExercisesIDwithAllScoresData(item.user_id, item.id);
       }}>
       <td>
