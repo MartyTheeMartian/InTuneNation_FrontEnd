@@ -11,7 +11,8 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
       const noteArr = action.payload[1].data["notes_array"];
       let noteNameArray = JSON.parse(noteArr).map((keyNum, index) => {
         let noteObj = getNoteAndOctave(keyNum);
-        return noteObj.note + ' ' + noteObj.octave + `pitch #${index}`;
+        return noteObj.note + ' ' + noteObj.octave +
+        ` (Note #${ index + 1 })`;
       })
       const d3Format = scoreData.map((obj, index) => {
         return [...JSON.parse(obj["scores_array"])];
@@ -25,7 +26,7 @@ const barGraphgraphDataReducer = (state = initialState.graphData, action) => {
           axis: {
             y: {
               label: {
-                text: 'Average Intonation Score',
+                text: 'Average Score',
                 position: 'outer-middle'
               },
               tick: {

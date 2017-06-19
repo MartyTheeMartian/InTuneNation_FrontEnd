@@ -9,7 +9,8 @@ const graphDataReducer = (state = initialState.graphData, action) => {
       const noteArr = action.payload[1].data["notes_array"];
       let noteNameArray = JSON.parse(noteArr).map((keyNum, index) => {
         let noteObj = getNoteAndOctave(keyNum);
-        return noteObj.note + ' ' + noteObj.octave + `pitch #${index}`;
+        return noteObj.note + ' ' + noteObj.octave +
+         ` (Note #${ index + 1 })`;
       })
 
       const d3Format = data.map((obj, index) => {
@@ -27,7 +28,7 @@ const graphDataReducer = (state = initialState.graphData, action) => {
           axis: {
             y: {
               label: {
-                text: 'Intonation Score',
+                text: 'Score',
                 position: 'outer-middle'
               }
             },
