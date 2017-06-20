@@ -19,13 +19,15 @@ describe('dashboardReducer', function() {
     const prevState = [];
     const action = {
       type: 'PAST_EXERCISES_TABLE_RUN_FULFILLED',
-      payload: [{
-        id: 99,
-        user_id: 8,
-        notes_array: "[40,42]",
-        created_at: "2017-06-19T21:45:32.448Z",
-        updated_at: "2017-06-19T21:45:32.448Z"
-      }]
+      payload: {
+        data: [{
+          id: 99,
+          user_id: 8,
+          notes_array: "[40,42]",
+          created_at: "2017-06-19T21:45:32.448Z",
+          updated_at: "2017-06-19T21:45:32.448Z"
+        }],
+      }
     };
     const nextState = dashboardReducer(prevState, action);
     // console.log('what is nextState', nextState);

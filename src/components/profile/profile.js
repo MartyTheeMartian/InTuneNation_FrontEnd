@@ -76,6 +76,7 @@ class Profile extends Component {
       email: email,
       profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200'
     }
+    console.log('what Obj-====', Obj);
     this.props.googleOauth(Obj);
     this.props.loadPastExercisesData(Obj.id);
   }

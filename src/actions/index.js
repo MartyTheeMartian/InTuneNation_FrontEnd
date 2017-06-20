@@ -34,6 +34,19 @@ export const postSignUp = (user) => {
   };
 };
 
+export const localStorageSignUp = (user) => {
+  return (dispatch) => {
+    dispatch(postSignUp(user))
+    .then((data) => {
+      localStorage.setItem('token', data.action.payload.data.token);
+     localStorage.setItem('userId', data.action.payload.data.id);
+     localStorage.setItem('firstName', data.action.payload.data.firstName);
+     localStorage.setItem('lastName', data.action.payload.data.lastName);
+     localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+    })
+  }
+}
+
 export const postLogIn = (user) => {
   user.password = user.password.trim();
   user.password.trim();
@@ -50,11 +63,11 @@ export const localStorageLogin = (user) => {
   return (dispatch) => {
     dispatch(postLogIn(user))
     .then((data) => {
-      localStorage.setItem('token', action.payload.data.token);
-      localStorage.setItem('userId', action.payload.data.id);
-      localStorage.setItem('firstName', action.payload.data.firstName);
-      localStorage.setItem('lastName', action.payload.data.lastName);
-      localStorage.setItem('profile_picture', action.payload.data.profile_picture);
+      localStorage.setItem('token', data.action.payload.data.token);
+     localStorage.setItem('userId', data.action.payload.data.id);
+     localStorage.setItem('firstName', data.action.payload.data.firstName);
+     localStorage.setItem('lastName', data.action.payload.data.lastName);
+     localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
     })
   }
 }
