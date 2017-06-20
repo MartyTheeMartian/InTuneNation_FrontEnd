@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {loadPastExercisesData, loadSpecificExercisesIDwithAllScoresData,
-loadSpecificExercisesIDwithAllScoresData_barGraph,
-loadSpecificExercisesIDwithAllNotes,
-sendArray
-} from '../../actions';
-import {bindActionCreators} from 'redux';
+import {  loadPastExercisesData,
+          loadSpecificExercisesIDwithAllScoresData,
+          loadSpecificExercisesIDwithAllScoresData_barGraph,
+          loadSpecificExercisesIDwithAllNotes,
+          sendArray,
+        } from '../../actions';
+import { bindActionCreators } from 'redux';
 import getNoteAndOctave from '../../audio/getNoteAndOctave';
 
 const mapStateToProps = (state, ownProps) => {

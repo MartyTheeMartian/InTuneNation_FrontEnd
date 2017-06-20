@@ -30,7 +30,6 @@ describe('dashboardReducer', function() {
       }
     };
     const nextState = dashboardReducer(prevState, action);
-    // console.log('what is nextState', nextState);
     expect(nextState).not.toBe(prevState);
     expect(nextState).toEqual([
       {

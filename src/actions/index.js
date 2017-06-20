@@ -64,10 +64,24 @@ export const localStorageLogin = (user) => {
     dispatch(postLogIn(user))
     .then((data) => {
       localStorage.setItem('token', data.action.payload.data.token);
-     localStorage.setItem('userId', data.action.payload.data.id);
-     localStorage.setItem('firstName', data.action.payload.data.firstName);
-     localStorage.setItem('lastName', data.action.payload.data.lastName);
-     localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+      localStorage.setItem('userId', data.action.payload.data.id);
+      localStorage.setItem('firstName', data.action.payload.data.firstName);
+      localStorage.setItem('lastName', data.action.payload.data.lastName);
+      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+    })
+  }
+}
+
+export const localStorageSignUp = (user) => {
+  return (dispatch) => {
+    dispatch(postSignUp(user))
+    .then((data) => {
+      localStorage.setItem('token', data.action.payload.data.token);
+      localStorage.setItem('userId', data.action.payload.data.id);
+      localStorage.setItem('firstName', data.action.payload.data.firstName);
+      localStorage.setItem('lastName', data.action.payload.data.lastName);
+      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+>>>>>>> e18653ab7944506585cd54752cbbc5545b51c5a2
     })
   }
 }
