@@ -10,8 +10,3 @@ const dashboardReducer = (state = initialState.dashboard, action) => {
 };
 
 export default dashboardReducer;
-
-
-let state = [ ...[], ...[a,c,d,e]]
-
-state = [... state, ...[a,c,d,e,e,s,s]]
