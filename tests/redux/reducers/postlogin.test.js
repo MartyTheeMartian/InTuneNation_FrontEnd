@@ -15,14 +15,16 @@ describe('loginReducer', function() {
   it('returns a new state with the specified articles set on it', function() {
     const prevState = {};
     const action = {
-      type: 'USER_LOG_IN',
+      type: 'USER_LOG_IN_FULFILLED',
       payload: {
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTQ5NzgxNDg5MywiZXhwIjoxNDk4NDE5NjkzfQ.vAG1sQ1lUHh9hZmLmFk4ToIUb9bYRBcT2x3q7tnJFE0",
-        id: "2",
-        firstName: "Kevin",
-        lastName: "Zheng",
-        email: "kvinzheng@gmail.com",
-        profile_picture: "https://lh4.googleusercontent.com/-Ro0sSQVz7s0/AAAAAAAAAAI/AAAAAAAAAZ4/Ip6fTqSbzAk/photo.jpg?sz=2200"
+        data: {
+          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTQ5NzgxNDg5MywiZXhwIjoxNDk4NDE5NjkzfQ.vAG1sQ1lUHh9hZmLmFk4ToIUb9bYRBcT2x3q7tnJFE0",
+          id: "2",
+          firstName: "Kevin",
+          lastName: "Zheng",
+          email: "kvinzheng@gmail.com",
+          profile_picture: "https://lh4.googleusercontent.com/-Ro0sSQVz7s0/AAAAAAAAAAI/AAAAAAAAAZ4/Ip6fTqSbzAk/photo.jpg?sz=2200"
+        },
       }
     }
     const nextState = loginReducer(prevState, action);

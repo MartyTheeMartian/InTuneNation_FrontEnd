@@ -6,6 +6,8 @@ const recordingStatusReducer = (state = initialState.recordingStatus, action) =>
       return !state;
     case 'EXERCISE_FINISHED':
       return initialState.recordingStatus;
+    case 'RESET_INTERFACE':
+      return initialState.recordingStatus;
     default:
       return state;
   }

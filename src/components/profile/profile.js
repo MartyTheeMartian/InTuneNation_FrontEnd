@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Thumbnail, Col, Row, Grid} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Thumbnail, Col, Row, Grid } from 'react-bootstrap';
 import C3Chart from 'react-c3js';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import 'c3/c3.css';
 import profileImg from '../../assets/img/profile-img.png';
 import {
@@ -15,13 +15,12 @@ import {
   averageArr
 } from '../../actions';
 import Table from '../table/table';
-import musicNoteMusic from '../../assets/img/music-note.jpg';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import rd3 from 'react-d3';
-import {BarChart} from 'react-d3/barchart';
-import {noteName} from '../table/table.js'
+import { BarChart } from 'react-d3/barchart';
+import { noteName } from '../table/table.js'
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.loginReducer,
@@ -69,7 +68,7 @@ class Profile extends Component {
       profile_picture = profileImg;
     }
 
-    let Obj = {
+    let obj = {
       token: token,
       id: id,
       firstName: firstName,
@@ -77,8 +76,8 @@ class Profile extends Component {
       email: email,
       profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200'
     }
-    this.props.googleOauth(Obj);
-    this.props.loadPastExercisesData(Obj.id);
+    this.props.googleOauth(obj);
+    this.props.loadPastExercisesData(obj.id);
   }
 
   convertArr = (arr) => {
@@ -92,8 +91,6 @@ class Profile extends Component {
         </div>
       );
     } else if (this.props.graphData.length !== 0 && this.props.graphDataBarGraph !== null) {
-
-
 
       return <div className="graphBackGround">
         <div className="center-warning graphBack">
@@ -170,7 +167,7 @@ class Profile extends Component {
               </div>
               <br/>
             </div>
-            <div className="col-md-2 col-xs-2 ">
+            <div className="col-md-2 col-xs-2">
 
               <div className="popover right static-popover profile-right" id="right-pointer">
                 <div className="arrow"></div>

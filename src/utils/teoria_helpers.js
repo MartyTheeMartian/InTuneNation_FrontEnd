@@ -7,10 +7,10 @@ function getNameAccidentalOctave(freq) { return [getName(freq), getAccidental(fr
 function getKeyNum(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).key() }
 function getCentDiff(freq) { return teoria.note.fromFrequency(freq).cents; }
 function getPreciseNotePlusCentDiff(frequency) { return [getNameAccidentalOctave(frequency), getCentDiff(frequency)]; }
-// function getPreciseNotePlusCentDiffPlusFreq(freq) {
-//   const result = getPreciseNotePlusCentDiff(freq);
-//   return result.concat(freq);
-// }
+function getPreciseNotePlusCentDiffPlusFreq(freq) {
+  const result = getPreciseNotePlusCentDiff(freq);
+  return result.concat(freq);
+}
 // function centDiffInRed(cD) { return (cD < -40 && cD > 40); }
 function centDiffInYellow(cD)  { return ((cD > -50 && cD < -3) || (cD < 50 && cD > 3)); }
 function centDiffInGreen(cD) { return (cD > -3 && cD < 3); }
@@ -57,6 +57,7 @@ module.exports = {
   getKeyNum,
   getCentDiff,
   getPreciseNotePlusCentDiff,
+  getPreciseNotePlusCentDiffPlusFreq,
   centDiffInYellow,
   centDiffInGreen,
   green,
