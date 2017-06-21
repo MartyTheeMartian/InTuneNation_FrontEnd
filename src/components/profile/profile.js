@@ -32,8 +32,6 @@ const mapStateToProps = (state, ownProps) => ({
   notesBar: state.barGraphgraphDataReducer
 });
 
-let profile_picture;
-
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadPastExercisesData,
@@ -53,6 +51,7 @@ class Profile extends Component {
     this.state = {
       userID: ''
     };
+    this.profilePic;
   }
 
   componentDidMount = () => {
@@ -61,11 +60,14 @@ class Profile extends Component {
     let firstName = localStorage.getItem('firstName');
     let lastName = localStorage.getItem('lastName');
     let email = localStorage.getItem('email');
+    this.profilePic = localStorage.getItem('profile_picture');
 
-    if (localStorage.getItem('profile_picture') !== "undefined") {
-      profile_picture = localStorage.getItem('profile_picture').substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
-    } else {
-      profile_picture = profileImg;
+    if (this.profilePic === 'https://image.ibb.co/dnaRNk/bob_saget.jpg') { }
+    else if (this.profilePic === '') {
+      this.profilePic = profileImg;
+    }
+    else if (this.profilePic !== "undefined") {
+      this.profilePic = this.profilePic.substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
     }
 
     let obj = {
@@ -74,7 +76,7 @@ class Profile extends Component {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      profile_picture: profile_picture.substring(0, profile_picture.length - 2) + '200'
+      profile_picture: this.profilePic.substring(0, this.profilePic.length - 2) + '200'
     }
     this.props.googleOauth(obj);
     this.props.loadPastExercisesData(obj.id);
@@ -152,7 +154,7 @@ class Profile extends Component {
             <div className="col-md-2 col-xs-2">
               <div className="thumbnailSection">
                 <div className="thumbnail">
-                  <img id="profile-pic" src={profile_picture} alt=".."/>
+                  <img id="profile-pic" src={this.profilePic} alt=".."/>
                   <div className="caption">
                     <h3>{this.props.googleOauthState.firstName} {this.props.googleOauthState.lastName}</h3>
                   </div>
