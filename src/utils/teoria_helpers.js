@@ -1,5 +1,56 @@
 import teoria from 'teoria';
 
+class FreqConversion {
+  constructor(fq, tuningSpecs, targetNote) {
+    this.fq = fq;
+    this.tuningSpecs = tuningSpecs;
+    const base = teoria.note(teoria.note.fromFrequency(fq).note.coord);
+    this.note = [base.name(), base.accidental(), base.octave()].join('');
+    this.keyNum = base.key();
+    this.centDiff = teoria.note.fromFrequency(fq).cents;
+    this.inTune = this.inTune(targetNote);
+    this.somewhatInTune = this.somewhatInTune(targetNote);
+    this.outOfTune = this.outOfTune(targetNote);
+  }
+
+  fq() { return this.fq; }
+  note() { return this.note; }
+  keyNum() { return this.keyNum; }
+  centDiff() { return this.centDiff; }
+
+  green() {
+    const notTooSharp = this.centDiff < this.tuningSpecs.greenYellowBand;
+    const notTooFlat = this.centDiff > (this.tuningSpecs.greenYellowBand * -1);
+    return notTooSharp && notTooFlat;
+  }
+
+  inTune(targetNote) {
+    return targetNote === this.note && this.green();
+  }
+
+  yellow() {
+    const rYB = this.tuningSpecs.redYellowBand;
+    const gYB = this.tuningSpecs.greenYellowBand;
+    const slightlyFlat = this.centDiff > (rYB * -1) && this.centDiff < (gYB * -1);
+    const slightlySharp = this.centDiff < rYB && this.centDiff > gYB;
+    return slightlyFlat || slightlySharp;
+  }
+
+  somewhatInTune(targetNote) {
+    return targetNote === this.note && this.yellow();
+  }
+
+  red() {
+    const flat = this.centDiff < (this.tuningSpecs.redYellowBand * -1);
+    const sharp = this.centDiff > this.tuningSpecs.redYellowBand;
+    return flat || sharp;
+  }
+
+  outOfTune(targetNote) {
+    return targetNote !== this.note ? true : this.red();
+  }
+}
+
 function getName(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).name(); }
 function getAccidental(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).accidental(); }
 function getOctave(frequency) { return teoria.note(teoria.note.fromFrequency(frequency).note.coord).octave(); }
@@ -69,4 +120,5 @@ module.exports = {
   redWithParams,
   yellowWithParams,
   greenWithParams,
+  FreqConversion,
 };

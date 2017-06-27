@@ -20,14 +20,10 @@ import { getName,
           getKeyNum,
           getCentDiff,
           getPreciseNotePlusCentDiffPlusFreq,
-          centDiffInYellow,
-          centDiffInGreen,
-          green,
-          yellow,
-          red,
           greenWithParams,
           yellowWithParams,
           redWithParams,
+          FreqConversion,
         } from './teoria_helpers';
 import scorePostingUtility from './score_posting_utility';
 
@@ -55,8 +51,6 @@ export default getUserMedia({ video: false, audio: true })
       pitch.process();
       const tone = pitch.findTone();
       if (tone) {
-        // define our fq
-        const freq = tone.freq;
         // remove currentPianoNote at beginning of exercise
         if (getState().currentPianoNoteReducer !== '') { dispatch(removePianoNote()); }
         // define our target note
@@ -64,17 +58,22 @@ export default getUserMedia({ video: false, audio: true })
         const targetNoteIndex = getState().targetNoteIndexReducer;
         dispatch(setKeyEventAsTargetNote(keyEvents[targetNoteIndex]));
         const targetNote = getState().targetNoteReducer;
+        // define our fq
+        const freq = tone.freq;
+        const tuningSpecs = getState().tuningSpecsReducer;
+        const singing = new FreqConversion(freq, tuningSpecs, targetNote.tNote);
+        console.log(singing);
         // correctly calibrate meter arrow for flat, sharp, or approximate readings
         let offset;
-        if (getKeyNum(freq) < targetNote.keyNum) { offset = -50; }
-        else if (getKeyNum(freq) > targetNote.keyNum) { offset = 50; }
-        else { offset = getCentDiff(freq); }
+        if (singing.keyNum < targetNote.keyNum) { offset = -50; }
+        else if (singing.keyNum > targetNote.keyNum) { offset = 50; }
+        else { offset = singing.centDiff; }
         const arrowValue = ((180 * ((offset + 50) / 100)) / 180);
         // define & set sungNote
         const sungNote = {
-          frequency: freq,
-          name: getNameAccidentalOctave(freq),
-          centDiff: getCentDiff(freq),
+          frequency: singing.fq,
+          name: singing.note,
+          centDiff: singing.centDiff,
           arrowValue,
         };
         dispatch(setSungNote(sungNote));
@@ -98,16 +97,25 @@ export default getUserMedia({ video: false, audio: true })
           }
         } else {
           const tuningSpecs = getState().tuningSpecsReducer;
-          if (greenWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.greenYellowBand)) {
+          if (singing.inTune) {
             dispatch(incrementGreenTime());
           } else {
-            // dispatch(resetGreenTime());
-            if (redWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand)) {
+            if (singing.somewhatInTune) {
+              dispatch(decrementScore(0.75));
+            } else if (singing.outOfTune) {
               dispatch(decrementScore(1.25));
-            } else if (yellowWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand, tuningSpecs.greenYellowBand)) {
-              dispatch(decrementScore(.75));
             }
           }
+          // if (greenWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.greenYellowBand)) {
+          //   dispatch(incrementGreenTime());
+          // } else {
+          //   // dispatch(resetGreenTime());
+          //   if (redWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand)) {
+          //     dispatch(decrementScore(1.25));
+          //   } else if (yellowWithParams(targetNoteName, sungNoteName, freq, tuningSpecs.redYellowBand, tuningSpecs.greenYellowBand)) {
+          //     dispatch(decrementScore(.75));
+          //   }
+          // }
         }
         // console.log(getPreciseNotePlusCentDiffPlusFreq(freq));
       }
