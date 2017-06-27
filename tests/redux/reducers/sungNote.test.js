@@ -1,7 +1,7 @@
 import sungNoteReducer from '../../../src/reducers/sungNote';
 import initialState from '../../../src/reducers/initialState';
 
-import { getNameAccidentalOctave, getCentDiff } from '../../../src/utils/teoria_helpers';
+import { getNameAccidentalOctave, getCentDiff } from '../../../src/utils/freq_conversion';
 
 const sN1 = () => {
   const freq = 441;

@@ -24,7 +24,7 @@ import { getName,
           yellowWithParams,
           redWithParams,
           FreqConversion,
-        } from './teoria_helpers';
+        } from './freq_conversion';
 import scorePostingUtility from './score_posting_utility';
 
 const getUserMedia = require('get-user-media-promise');
