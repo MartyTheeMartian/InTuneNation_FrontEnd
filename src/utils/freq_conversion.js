@@ -13,10 +13,10 @@ class FreqConversion {
     this.outOfTune = this.outOfTune(targetNote);
   }
 
-  fq() { return this.fq; }
-  note() { return this.note; }
-  keyNum() { return this.keyNum; }
-  centDiff() { return this.centDiff; }
+  getFq() { return this.fq; }
+  getNote() { return this.note; }
+  getKeyNum() { return this.keyNum; }
+  getCentDiff() { return this.centDiff; }
 
   green() {
     const notTooSharp = this.centDiff < this.tuningSpecs.greenYellowBand;
