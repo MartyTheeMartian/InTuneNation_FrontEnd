@@ -33,7 +33,7 @@ class SignUp extends Component {
 
   displayFailAlert = () => {
     if (this.props.success === false) {
-      return { display: 'none' };
+      return { display: 'block' };
     }
     else {
       return { display: 'none' };
