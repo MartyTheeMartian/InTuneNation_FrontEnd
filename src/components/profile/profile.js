@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => ({
   googleOauthState: state.googleOauthReducer,
   list: state.dashboardReducer,
   notesLine: state.graphDataReducer,
-  notesBar: state.barGraphgraphDataReducer
+  notesBar: state.barGraphgraphDataReducer,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -40,8 +40,7 @@ const mapDispatchToProps = (dispatch) => {
     postLogIn,
     renderNavBar,
     googleOauth,
-    startload,
-    averageArr
+    averageArr,
   }, dispatch);
 };
 
@@ -49,34 +48,34 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userID: ''
+      userID: '',
     };
     this.profilePic;
   }
 
   componentDidMount = () => {
-    let token = localStorage.getItem('token');
-    let id = localStorage.getItem('userId');
-    let firstName = localStorage.getItem('firstName');
-    let lastName = localStorage.getItem('lastName');
-    let email = localStorage.getItem('email');
+    const token = localStorage.getItem('token');
+    const id = localStorage.getItem('userId');
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const email = localStorage.getItem('email');
     this.profilePic = localStorage.getItem('profile_picture');
 
     if (this.profilePic === 'https://image.ibb.co/dnaRNk/bob_saget.jpg') { }
     else if (this.profilePic === '') {
       this.profilePic = profileImg;
     }
-    else if (this.profilePic !== "undefined") {
+    else if (this.profilePic !== 'undefined') {
       this.profilePic = this.profilePic.substring(0, localStorage.getItem('profile_picture').length - 2) + '200';
     }
 
     let obj = {
-      token: token,
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      profile_picture: this.profilePic.substring(0, this.profilePic.length - 2) + '200'
+      token,
+      id,
+      firstName,
+      lastName,
+      email,
+      profile_picture: this.profilePic.substring(0, this.profilePic.length - 2) + '200',
     }
     this.props.googleOauth(obj);
     this.props.loadPastExercisesData(obj.id);
