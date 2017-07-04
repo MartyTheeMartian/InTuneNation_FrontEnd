@@ -72,20 +72,6 @@ export const localStorageLogin = (user) => {
   }
 }
 
-export const localStorageSignUp = (user) => {
-  return (dispatch) => {
-    dispatch(postSignUp(user))
-    .then((data) => {
-      localStorage.setItem('token', data.action.payload.data.token);
-      localStorage.setItem('userId', data.action.payload.data.id);
-      localStorage.setItem('firstName', data.action.payload.data.firstName);
-      localStorage.setItem('lastName', data.action.payload.data.lastName);
-      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
->>>>>>> e18653ab7944506585cd54752cbbc5545b51c5a2
-    })
-  }
-}
-
 export const currentPianoNote = (note) => {
   return {
     type: 'CURRENT_PIANO_NOTE',

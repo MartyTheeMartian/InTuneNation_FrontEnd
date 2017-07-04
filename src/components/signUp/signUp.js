@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { postSignUp, localStorageSignUp } from '../../actions';
+import { postSignUp, localStorageSignUp, localStorageLogin } from '../../actions';
 import { Route, Redirect } from 'react-router-dom';
 import RedirectClose from './redirectClose';
 
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ postSignUp, localStorageSignUp }, dispatch);
+  return bindActionCreators({ postSignUp, localStorageSignUp, localStorageLogin }, dispatch);
 };
 
 class SignUp extends Component {
@@ -104,6 +104,9 @@ class SignUp extends Component {
                     <h5>Sign Up</h5>
                   </button>
                   <RedirectClose />
+                  <button type="button" className="btn btn-danger" onClick={() => { this.props.localStorageLogin({email:"bs@gmail.com", password:"youreawizard"})}} style={this.displaySubmit()}>
+                    <h5>Click me to try out</h5>
+                  </button>
                 </div>
 
               </form>
