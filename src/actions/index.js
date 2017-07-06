@@ -209,6 +209,16 @@ export const sendArray = (noteArr) => {
     payload: noteArr,
   };
 };
+
+export const loadUserData = () => {
+  let USER = "https://ppp-capstone-music.herokuapp.com/user";
+  let userData = axios.get(USER);
+  return {
+    type: 'ALL_USERS',
+    payload: userData
+  };
+};
+
 // export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
 //   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
 //   let data = axios.get(API_URL, config());

@@ -8,7 +8,7 @@
 @import url('profile.css');
 @import url('thumbnailSection.css');
 @import url('logout.css');
-
+@import url('community.css');
 /* fonts */
 @font-face { font-family: DDCHardwareCondensed; src: url('../../../public/assets/fonts/DDCHardware-Condensed.otf'); }
 @font-face { font-family: OpenSans; font-weight: normal; src: url('../../../public/assets/fonts/OpenSans-Regular.ttf') }

@@ -42,4 +42,5 @@ export default {
   graphData: null,
   dashboard: [],
   navBar: false,
+  community: [],
 };

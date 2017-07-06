@@ -22,6 +22,7 @@ import tuningSpecsReducer from './tuningSpecs';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
 import barGraphgraphDataReducer from './barGraphData';
+import  communityReducer  from './community';
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -47,7 +48,8 @@ const appReducer = combineReducers({
   tuningSpecsReducer,
   barGraphgraphDataReducer,
   loadSpecificExercisesIDwithAllNotesReducer,
-  sendArrayReducer
+  sendArrayReducer,
+  communityReducer,
 });
 
 const rootReducer = (state, action) => {
