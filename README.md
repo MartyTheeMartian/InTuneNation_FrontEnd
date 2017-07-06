@@ -63,6 +63,7 @@ Our app is currently built entirely with Javascript, and the front-end heavily r
 * [Teoria.js](https://github.com/saebekassebil/teoria) (for teaching music theory to JavaScript),
 * [Microphone-stream](https://github.com/saebekassebil/microphone-stream) (a node module inspired by Web Audio API for requesting access to a user’s microphone and receiving audio input),
 * [pitch.js](https://github.com/audiocogs/pitch.js) (for pitch-detection translated from frequency analysis during audio input)
+* [Google-Oauth](http://passportjs.org/docs)
 
 #### Room For Improvement
 

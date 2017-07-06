@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData }, dispatch); };
 
 class NavBar extends Component {
-  
+
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };
@@ -68,6 +68,10 @@ class NavBar extends Component {
 
             <LinkContainer to="/profile" style={this.displayTabs()}>
               <NavItem>Profile</NavItem>
+            </LinkContainer>
+
+            <LinkContainer to="/community">
+              <NavItem>Community</NavItem>
             </LinkContainer>
 
             <Nav className="githubLink">
