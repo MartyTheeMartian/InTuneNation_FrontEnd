@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   return { userData: state.communityReducer }
 };
 const mapDispatchToProps = (dispatch) => {
-  // return { loadUserData: () => { dispatch(loadUserData) }, };
-  return bindActionCreators({loadUserData}, dispatch)
+  return { loadUserData: () => { dispatch(loadUserData()) }, };
+  // return bindActionCreators({loadUserData}, dispatch)
 };
 
 
@@ -20,8 +20,9 @@ class Community extends Component {
   }
 
   componentDidMount() {
-    console.log('prop===',this.props.loadUserData)
+    // console.log('prop===',this.props.loadUserData)
     this.props.loadUserData();
+    // console.log('this.props.userData',this.props.userData)
   }
    render() {
     return (
@@ -31,7 +32,7 @@ class Community extends Component {
             <span>how are you</span>
           </div>
           <div className="col-md-8 col-xs-8">
-            <Board/>
+            <Board data={this.props.userData}/>
           </div>
           <div className="col-md-2 col-xs-2">
 
