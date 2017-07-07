@@ -1,3 +1,5 @@
+import { steps } from '../utils/intro_js_steps';
+
 export default {
   capture: {
     capture: false,
@@ -42,4 +44,8 @@ export default {
   graphData: null,
   dashboard: [],
   navBar: false,
+  // introJS state
+  stepsEnabled: false,
+  steps,
+  initialStep: 0,
 };

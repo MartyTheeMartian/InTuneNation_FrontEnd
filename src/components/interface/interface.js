@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Col, Grid, Row } from 'react-bootstrap';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
-import { loadPastExercisesData, postSignUp, postLogIn,googleOauth, startload,  renderNavBar } from '../../actions';
+import { loadPastExercisesData, postSignUp, postLogIn, googleOauth, startload, renderNavBar } from '../../actions';
 
 import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import TuningSpecButtons from './tuningSpecButtons';
 
-import { Col, Grid, Row } from 'react-bootstrap';
 
 const mapStateToProps = (state, ownProps) => ({ googleOauthState: state.googleOauthReducer });
 
@@ -21,12 +21,10 @@ const mapDispatchToProps = (dispatch) => {
     postSignUp,
     postLogIn,
     googleOauth,
-    startload,
     renderNavBar,
   }, dispatch);
 };
 
-let profilePicture;
 class Interface extends Component {
 
   componentDidMount = () => {
@@ -63,16 +61,6 @@ class Interface extends Component {
                 </Col>
               </Row>
             </Col>
-            {/* <Col mdHidden smHidden xsHidden lg={2}></Col> */}
-            {/* <Col lgHidden mdHidden sm={12}>
-              <Row className="show-grid">
-                <Col sm={8}><PianoButtons /></Col>
-                <Col sm={4}><SingButtons /></Col>
-              </Row>
-              <Row>
-                <Col sm={7}><Piano /></Col>
-              </Row>
-            </Col> */}
           </Row>
           <Row id="interface-bottom-row" className="show-grid">
             <Col lg={4} md={5} sm={6}><Indicators /></Col>
@@ -95,4 +83,4 @@ class Interface extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps )(Interface);
+export default connect(mapStateToProps, mapDispatchToProps)(Interface);
