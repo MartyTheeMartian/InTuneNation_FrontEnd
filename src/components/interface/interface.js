@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Col, Grid, Row } from 'react-bootstrap';
+import { Steps } from 'intro.js-react';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
-import { loadPastExercisesData, postSignUp, postLogIn, googleOauth, startload, renderNavBar } from '../../actions';
+import { loadPastExercisesData, postSignUp, postLogIn, googleOauth, startload, renderNavBar, toggleSteps, introTriggeredAction } from '../../actions';
 
 import SingButtons from './singButtons';
 import TargetNoteScoreTable from './targetNoteScoreTable';
 import TuningSpecButtons from './tuningSpecButtons';
 
-
-const mapStateToProps = (state, ownProps) => ({ googleOauthState: state.googleOauthReducer });
+const mapStateToProps = (state) => {
+  return {
+    googleOauthState: state.googleOauthReducer,
+    stepsEnabled: state.stepsEnabledReducer,
+    initialStep: state.initialStepReducer,
+    steps: state.stepsReducer,
+    introTriggered: state.introTriggeredReducer,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -21,7 +29,9 @@ const mapDispatchToProps = (dispatch) => {
     postSignUp,
     postLogIn,
     googleOauth,
-    renderNavBar,
+    renderNavBar, // this currently does NOTHING
+    toggleSteps,
+    introTriggeredAction,
   }, dispatch);
 };
 
@@ -29,7 +39,7 @@ class Interface extends Component {
 
   componentDidMount = () => {
     let returnObj;
-    this.props.renderNavBar();
+    this.props.renderNavBar(); // this currently does NOTHING
     if (window.location.href.indexOf('?') !== -1) {
       const temp = decodeURIComponent(window.location.href.substring(window.location.href.indexOf('?') + 1));
       const cutTemp = temp.substring(0, temp.length - 1);
@@ -44,11 +54,24 @@ class Interface extends Component {
     }
   }
 
+  onExit = () => {
+    if (!this.props.introTriggered) {
+      this.props.introTriggeredAction();
+      this.props.toggleSteps();
+    }
+  }
+
 
   render() {
     return (
       <div id="keyboardBackground">
         <Grid>
+          <Steps
+            enabled={this.props.stepsEnabled}
+            steps={this.props.steps}
+            initialStep={this.props.initialStep}
+            onExit={this.onExit}
+          />
           <Row id="interface-top-row" className="show-grid">
             <Col md={12} lg={12}>
               <Row className="show-grid">
@@ -57,21 +80,21 @@ class Interface extends Component {
                   <Piano />
                 </Col>
                 <Col lg={3} md={9}>
-                  <SingButtons />
+                  <SingButtons className="intro-interface-singButtons"/>
                 </Col>
               </Row>
             </Col>
           </Row>
           <Row id="interface-bottom-row" className="show-grid">
-            <Col lg={4} md={5} sm={6}><Indicators /></Col>
+            <Col lg={4} md={5} sm={6}><Indicators/></Col>
             <Col lg={8} md={7} sm={6}>
               <Row className="show-grid">
                 <Col lg={12} md={8} className="tableAndSliders">
-                  <TargetNoteScoreTable />
+                  <TargetNoteScoreTable className="intro-interface-targetTable"/>
                 </Col>
               </Row>
               <Row className="show-grid">
-                <Col lg={12} md={8} id="sliders" className="tableAndSliders">
+                <Col lg={12} md={8} id="sliders" className="tableAndSliders intro-interface-sliders">
                   <TuningSpecButtons />
                 </Col>
               </Row>

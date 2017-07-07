@@ -48,4 +48,5 @@ export default {
   stepsEnabled: false,
   steps,
   initialStep: 0,
+  introTriggered: false,
 };

@@ -288,3 +288,16 @@ export const repeatExercise = () => { // needs tests
     type: 'REPEAT_EXERCISE',
   };
 };
+
+export const toggleSteps = () => {
+  console.log('steps action activated');
+  return {
+    type: 'TOGGLE_STEPS',
+  };
+};
+
+export const introTriggeredAction = () => {
+  return {
+    type: 'INTRO_TRIGGERED',
+  };
+};

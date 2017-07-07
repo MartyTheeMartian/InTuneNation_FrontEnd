@@ -81,9 +81,9 @@ class TuningSpecButtons extends Component {
   render() {
     return (
 
-        <Row>
+        <Row className="intro-interface-sliders">
           <Col lg={12}>
-            <div id="accuracySlider">
+            <div id="accuracySlider" className="intro-interface-sliders-greenzone">
               <VolumeSlider
                 title={'Green Zone Width'}
                 id="accuracySlider"
@@ -91,7 +91,7 @@ class TuningSpecButtons extends Component {
                 changeTuningSpecs={(rYB, gYB) => { this.props.changeTuningSpecs(rYB, gYB); } }
               />
             </div>
-            <div id="timeDifficultySlider">
+            <div id="timeDifficultySlider" className="intro-interface-sliders-time">
               <VolumeSlider
                 id="timeSlider"
                 title={'Time Difficulty'}
