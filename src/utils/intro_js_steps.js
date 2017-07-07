@@ -79,9 +79,21 @@ const steps = [
     position: 'top',
   },
   {
+    element: '.intro-interface-repeatExercise',
+    intro: "You will know your exercise is complete when this button's text reads 'Repeat Ex'. When it does, click this button to easily repeat the same exercise again to go for a higher score.",
+  },
+  {
     element: '.intro-interface-profile',
     intro: 'After finishing your exercise, your scores are stored on your profile page, where you can see the history of your scores over time. This is the end of the tour for this page: enjoy your time on InTuneNation, and never stop singing!',
   },
 ];
+
+const introOptions = {
+  exitOnOverlayClick: false,
+  exitOnEsc: false,
+  showProgress: true,
+};
+
+
 // make hint for green time
-module.exports = { steps };
+module.exports = { steps, introOptions };

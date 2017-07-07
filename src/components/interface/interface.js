@@ -6,6 +6,7 @@ import { Steps } from 'intro.js-react';
 import PianoButtons from './pianoButtons';
 import Indicators from './indicators';
 import Piano from './piano';
+import { introOptions } from '../../utils/intro_js_steps';
 import { loadPastExercisesData, postSignUp, postLogIn, googleOauth, startload, renderNavBar, toggleSteps, introTriggeredAction } from '../../actions';
 
 import SingButtons from './singButtons';
@@ -71,6 +72,7 @@ class Interface extends Component {
             steps={this.props.steps}
             initialStep={this.props.initialStep}
             onExit={this.onExit}
+            options={introOptions}
           />
           <Row id="interface-top-row" className="show-grid">
             <Col md={12} lg={12}>

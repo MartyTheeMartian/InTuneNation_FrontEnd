@@ -78,7 +78,7 @@ class SingButtons extends Component {
         <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
           <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons intro-interface-startNoteButton" disabled={this.startingNoteDisable()}>START {String.fromCharCode(9834)}</button>
         </div>
-          <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
+          <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground intro-interface-repeatExercise">
             <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons intro-interface-singButton" disabled={this.getSingDisabled()}>{this.props.singText}</button>
           </div>
           <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
