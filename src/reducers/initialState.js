@@ -43,4 +43,5 @@ export default {
   dashboard: [],
   navBar: false,
   community: [],
+  averageScore: 0,
 };

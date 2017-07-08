@@ -22,7 +22,8 @@ import tuningSpecsReducer from './tuningSpecs';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
 import barGraphgraphDataReducer from './barGraphData';
-import  communityReducer  from './community';
+import communityReducer  from './community';
+import averageScoreReducer from './averageScoreReducer'
 
 const appReducer = combineReducers({
   form: formReducer,
@@ -50,6 +51,7 @@ const appReducer = combineReducers({
   loadSpecificExercisesIDwithAllNotesReducer,
   sendArrayReducer,
   communityReducer,
+  averageScoreReducer,
 });
 
 const rootReducer = (state, action) => {

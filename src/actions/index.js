@@ -34,6 +34,16 @@ export const postSignUp = (user) => {
   };
 };
 
+export const averageScore = (userId) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/averagelifetimescore`;
+  let data = axios.get(API_URL, config());
+  // console.log('what is data now',data);
+  return {
+    type: 'AVERAGE',
+    payload: data
+  }
+}
+
 export const localStorageSignUp = (user) => {
   return (dispatch) => {
     dispatch(postSignUp(user))

@@ -3,12 +3,13 @@ import { bindActionCreators } from 'redux';
 // import { compose, lifecycle } from 'recompose';
 import { connect } from 'react-redux';
 import Board from './championBoard.js'
-import { loadUserData } from '../../actions'
+import { averageScore } from '../../actions'
 const mapStateToProps = (state, ownProps) => {
-  return { userData: state.communityReducer }
+  return {  average: state.averageScoreReducer }
 };
 const mapDispatchToProps = (dispatch) => {
-  return { loadUserData: () => { dispatch(loadUserData()) }, };
+  return {
+    averageScore: () => { dispatch(averageScore())} };
   // return bindActionCreators({loadUserData}, dispatch)
 };
 
@@ -21,21 +22,16 @@ class Community extends Component {
 
   componentDidMount() {
     // console.log('prop===',this.props.loadUserData)
-    this.props.loadUserData();
+    this.props.averageScore();
+    // this.props.loadUserData();
     // console.log('this.props.userData',this.props.userData)
   }
    render() {
     return (
       <div className="container communityWrapper">
         <div className="row">
-          <div className="col-md-2 col-xs-2">
-            <span>how are you</span>
-          </div>
-          <div className="col-md-8 col-xs-8">
-            <Board data={this.props.userData}/>
-          </div>
-          <div className="col-md-2 col-xs-2">
-
+          <div className="col-md-offset-2 col-md-8 col-sm-8 col-sm-offset-2">
+            <Board data={this.props.average}/>
           </div>
         </div>
       </div>
