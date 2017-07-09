@@ -8,6 +8,8 @@
     "fft": "^0.2.1",
     "fft-js": "0.0.11",
     "get-user-media-promise": "^1.1.1",
+    "intro.js": "^2.5.0",
+    "intro.js-react": "^0.1.3",
     "microphone-stream": "^3.0.7",
     "query-string": "^4.3.4",
     "react": "^15.5.4",
