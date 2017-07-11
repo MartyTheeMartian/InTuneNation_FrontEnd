@@ -265,6 +265,27 @@ export const postExercise = (userId, body) => {
   });
 };
 
+export const demoLogIn = () => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  let data = axios.post(API_URL, { 'email':'bs@gmail.com', 'password':'youreawizard'});
+  return {
+    type: "USER_LOG_IN",
+    payload: data
+  }
+}
+
+export const demoPostLogin = () => {
+  return (dispatch) => {
+    dispatch(demoLogIn()).then( data => {
+      localStorage.setItem('token', data.action.payload.data.token);
+      localStorage.setItem('userId', data.action.payload.data.id);
+      localStorage.setItem('firstName', data.action.payload.data.firstName);
+      localStorage.setItem('lastName', data.action.payload.data.lastName);
+      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture)
+    });
+  }
+}
+
 export const googleOauth = (profile) => {
   return {
     type: 'LOAD_PROFILE',

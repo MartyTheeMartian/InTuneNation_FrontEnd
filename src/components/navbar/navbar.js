@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, NavItem, Nav } from 'react-bootstrap';
+import { Navbar, NavItem, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
-import { loadPastExercisesData } from '../../actions';
+import { loadPastExercisesData, demoPostLogin, renderNavBar } from '../../actions';
 
 
 const mapStateToProps = (state) => {
   return {
     renderNav: state.navBarReducer,
+    // loginSuccess: state.loginReducer
   };
 };
 
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData }, dispatch); };
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ loadPastExercisesData, demoPostLogin, renderNavBar }, dispatch);
+};
 
 class NavBar extends Component {
 
@@ -44,6 +48,10 @@ class NavBar extends Component {
     else {
       return { display: 'block' };
     }
+  }
+
+  demo = () => {
+    this.props.demoPostLogin();
   }
 
   render() {
@@ -80,8 +88,13 @@ class NavBar extends Component {
           </Nav>
 
           <Nav pullRight>
-              {/* <div className="fa fa-user-circle headIcon"></div> */}
-            <NavItem id="signUpButton" data-toggle="modal" data-target="#signUp" style={this.displaySignUpLogIn()} >
+            <NavItem>
+              <LinkContainer to="/interface" className="demoButton" onClick={this.demo} style={this.displaySignUpLogIn()}>
+                  <span className="buttonName">Try me !</span>
+              </LinkContainer>
+            </NavItem>
+
+            <NavItem id="signUpButton" data-toggle="modal"  data-target="#signUp" style={this.displaySignUpLogIn()} >
               <span className="navbar-right">Sign Up</span>
             </NavItem>
               <SignUp />

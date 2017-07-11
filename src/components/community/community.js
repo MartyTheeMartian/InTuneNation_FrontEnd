@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    averageScore: () => { dispatch(averageScore())} };
+    averageScore: () => { dispatch(averageScore()) },
+  };
   // return bindActionCreators({loadUserData}, dispatch)
 };
 
