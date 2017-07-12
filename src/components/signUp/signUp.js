@@ -104,9 +104,6 @@ class SignUp extends Component {
                     <h5>Sign Up</h5>
                   </button>
                   <RedirectClose />
-                  <button type="button" className="btn btn-danger" onClick={() => { this.props.localStorageLogin({email:"bs@gmail.com", password:"youreawizard"})}} style={this.displaySubmit()}>
-                    <h5>Click me to try out</h5>
-                  </button>
                 </div>
 
               </form>

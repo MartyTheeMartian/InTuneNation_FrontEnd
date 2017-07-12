@@ -32,17 +32,20 @@
 }
 
 .demoButton {
-  border: 1px solid !important;
-  border-radius: 5px  !important;
-  padding-top: 8px !important;
-  display: block;
-  padding-left:10px;
-  padding-right:10px;
-  padding-bottom: 8px !important;
-  margin-top: -9px;
+  border: 1px solid #808080 !important;
+  border-radius: 4px  !important;
+  color: gold;
+  padding-top: 13px !important;
+  padding-left:16px;
+  padding-right:16px;
+  padding-bottom: 10px !important;
+  margin-top: -10px;
   margin-bottom: -13px !important;
-  background-color: #ffb6c1 !important;
+  background-color: #177dd6 !important;
+  display: block;
+  justify-content: center !important;
 }
+
 
 .buttonName {
   color: black;

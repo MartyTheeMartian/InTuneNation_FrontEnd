@@ -282,7 +282,11 @@ export const demoPostLogin = () => {
       localStorage.setItem('firstName', data.action.payload.data.firstName);
       localStorage.setItem('lastName', data.action.payload.data.lastName);
       localStorage.setItem('profile_picture', data.action.payload.data.profile_picture)
-    });
+    }).then( () => {
+        dispatch({
+          type: 'RENDER_NAVBAR'
+        });
+      });
   }
 }
 

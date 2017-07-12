@@ -7,18 +7,17 @@ import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
-import { loadPastExercisesData, demoPostLogin, renderNavBar } from '../../actions';
+import { loadPastExercisesData, demoPostLogin } from '../../actions';
 
 
 const mapStateToProps = (state) => {
   return {
-    renderNav: state.navBarReducer,
-    // loginSuccess: state.loginReducer
+    renderNav: state.navBarReducer
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ loadPastExercisesData, demoPostLogin, renderNavBar }, dispatch);
+  return bindActionCreators({ loadPastExercisesData, demoPostLogin }, dispatch);
 };
 
 class NavBar extends Component {
@@ -90,7 +89,9 @@ class NavBar extends Component {
           <Nav pullRight>
             <NavItem>
               <LinkContainer to="/interface" className="demoButton" onClick={this.demo} style={this.displaySignUpLogIn()}>
-                  <span className="buttonName">Try me !</span>
+                  <span className="buttonName">
+                    Demo
+                  </span>
               </LinkContainer>
             </NavItem>
 

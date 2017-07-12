@@ -24,6 +24,7 @@ const Board = (props) => {
     </tr>
     );
   }) };
+
   return (
         <table className="table table-bordered table-hover">
           <thead>
@@ -35,7 +36,7 @@ const Board = (props) => {
             </tr>
           </thead>
           <tbody>
-            {renderList(props.data)}
+            {/* {renderList(props.data)} */}
           </tbody>
         </table>
   )
