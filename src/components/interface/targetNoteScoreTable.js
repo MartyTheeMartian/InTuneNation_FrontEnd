@@ -79,24 +79,24 @@ const renderScores = (keyEvents, exerciseScores, targetNoteIndex, currentScore, 
 class TargetNoteScoreTable extends Component {
   render() {
     return (
-      <div className="noteScoresTable">
+      <div className="noteScoresTable intro-interface-targetTable">
         <table className="table table-responsive">
           <thead>
-            <tr>
+            <tr className="intro-interface-targetTable-noteOrder">
               <th>Note #</th>
               {renderKeyEventIds(this.props.keyEvents, this.props.targetNoteIndex, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className="intro-interface-targetTable-targetNotes">
               <th>Target</th>
               {renderTargetNotes(this.props.keyEvents, this.props.targetNoteIndex, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>
-            <tr>
+            <tr className="intro-interface-targetTable-greentime">
               <th>Green Time</th>
               {renderGreenTime(this.props.keyEvents, this.props.targetNoteIndex, this.props.greenTime, this.props.recordingStatus)}
             </tr>
-            <tr>
+            <tr className="intro-interface-targetTable-scores">
               <th>Score</th>
               {renderScores(this.props.keyEvents, this.props.exerciseScores, this.props.targetNoteIndex, this.props.currentScore, this.props.captureIsDisabled, this.props.recordingStatus)}
             </tr>

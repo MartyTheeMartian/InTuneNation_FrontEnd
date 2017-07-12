@@ -20,7 +20,7 @@ import {
 } from '../../src/actions';
 
 import getKeyNum from '../../src/audio/keyNumGenerator';
-import { getNameAccidentalOctave, getCentDiff } from '../../src/utils/teoria_helpers';
+import { getNameAccidentalOctave, getCentDiff } from '../../src/utils/freq_conversion';
 
 const noteObj = () => {
   const note = 'C';

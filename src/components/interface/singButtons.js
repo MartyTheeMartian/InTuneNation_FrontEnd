@@ -76,13 +76,13 @@ class SingButtons extends Component {
           <button id="play-exercise-button" onClick={this.handlePlayExerciseClick} className="btn btn-lg active sing-buttons" disabled={this.getDisabled()}>PLAY EXERCISE</button>
         </div> */}
         <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
-          <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons" disabled={this.startingNoteDisable()}>START {String.fromCharCode(9834)}</button>
+          <button onClick={this.handleStartingNoteClick} id="starting-note-button" className="btn btn-lg active sing-buttons intro-interface-startNoteButton" disabled={this.startingNoteDisable()}>START {String.fromCharCode(9834)}</button>
         </div>
-          <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
-            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons" disabled={this.getSingDisabled()}>{this.props.singText}</button>
+          <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground intro-interface-repeatExercise">
+            <button id="sing-button" onClick={this.handleSingClick} className="btn btn-lg active sing-buttons intro-interface-singButton" disabled={this.getSingDisabled()}>{this.props.singText}</button>
           </div>
           <div className="col-lg-10 col-md-4 col-sm-4 col-xs-4 singButtonBackground">
-            <button onClick={this.handleResetClick} className="btn btn-lg active sing-buttons" disabled={this.props.resetDisabled} >RESET</button>
+            <button onClick={this.handleResetClick} className="btn btn-lg active sing-buttons intro-interface-resetButton" disabled={this.props.resetDisabled} >RESET</button>
           </div>
       </div>
     );

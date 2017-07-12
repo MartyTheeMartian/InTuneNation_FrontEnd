@@ -1,3 +1,5 @@
+import { steps } from '../utils/intro_js_steps';
+
 export default {
   capture: {
     capture: false,
@@ -44,4 +46,8 @@ export default {
   navBar: false,
   community: [],
   averageScore: 0,
+  stepsEnabled: false,
+  steps,
+  initialStep: 0,
+  introTriggered: false,
 };

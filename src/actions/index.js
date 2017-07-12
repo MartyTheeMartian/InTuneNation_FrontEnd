@@ -77,10 +77,11 @@ export const localStorageLogin = (user) => {
       localStorage.setItem('userId', data.action.payload.data.id);
       localStorage.setItem('firstName', data.action.payload.data.firstName);
       localStorage.setItem('lastName', data.action.payload.data.lastName);
-      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+      localStorage.setItem('profile_picture', data.action.payload.data.profilePicture);
     })
   }
 }
+
 
 export const currentPianoNote = (note) => {
   return {
@@ -331,5 +332,18 @@ export const exerciseFinished = () => { // needs tests
 export const repeatExercise = () => { // needs tests
   return {
     type: 'REPEAT_EXERCISE',
+  };
+};
+
+export const toggleSteps = () => {
+  console.log('steps action activated');
+  return {
+    type: 'TOGGLE_STEPS',
+  };
+};
+
+export const introTriggeredAction = () => {
+  return {
+    type: 'INTRO_TRIGGERED',
   };
 };

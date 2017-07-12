@@ -18,6 +18,7 @@ import loadSpecificExercisesIDwithAllNotesReducer from './loadSpecificExercisesI
 import googleOauthReducer from './googleOauth.js'
 import sendArrayReducer from './sendArrayReducer.js'
 import tuningSpecsReducer from './tuningSpecs';
+import { stepsEnabledReducer, initialStepReducer, stepsReducer, introTriggeredReducer } from './introjs';
 // import resetStateReducer from './resetState';
 import initialState from './initialState';
 import graphDataReducer from './graphData';
@@ -52,6 +53,10 @@ const appReducer = combineReducers({
   sendArrayReducer,
   communityReducer,
   averageScoreReducer,
+  stepsEnabledReducer,
+  initialStepReducer,
+  stepsReducer,
+  introTriggeredReducer,
 });
 
 const rootReducer = (state, action) => {

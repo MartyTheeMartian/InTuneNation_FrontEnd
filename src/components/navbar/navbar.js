@@ -7,11 +7,16 @@ import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
+<<<<<<< HEAD
 import { loadPastExercisesData, demoPostLogin } from '../../actions';
+=======
+import { loadPastExercisesData, toggleSteps, introTriggeredAction } from '../../actions';
+>>>>>>> e7edd34ee0400e7905eddb506d61cb4c7e155d99
 
 
 const mapStateToProps = (state) => {
   return {
+<<<<<<< HEAD
     renderNav: state.navBarReducer
   };
 };
@@ -22,6 +27,18 @@ const mapDispatchToProps = (dispatch) => {
 
 class NavBar extends Component {
 
+=======
+    renderNav: state.navBarReducer, // this currently does NOTHING
+  };
+};
+
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData, toggleSteps }, dispatch); };
+
+class NavBar extends Component {
+
+  handleIntro = () => { this.props.toggleSteps(); }
+
+>>>>>>> e7edd34ee0400e7905eddb506d61cb4c7e155d99
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };
@@ -58,7 +75,7 @@ class NavBar extends Component {
       <Navbar collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-          <span id="logo" className="navbar-left">InTuneNation</span>
+            <span id="logo" className="navbar-left">InTuneNation</span>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -84,6 +101,10 @@ class NavBar extends Component {
             <Nav className="githubLink">
               <a className="githubLink" href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md" target="_blank">GitHub</a>
             </Nav>
+
+            <Nav className="introJsStart githubLink" onClick={this.handleIntro}>
+              <a className="githubLink">Interface Intro</a>
+            </Nav>
           </Nav>
 
           <Nav pullRight>
@@ -98,15 +119,15 @@ class NavBar extends Component {
             <NavItem id="signUpButton" data-toggle="modal"  data-target="#signUp" style={this.displaySignUpLogIn()} >
               <span className="navbar-right">Sign Up</span>
             </NavItem>
-              <SignUp />
+            <SignUp />
             <NavItem id="logInButton" data-toggle="modal" data-target="#logIn" style={this.displaySignUpLogIn()}>
               <span className="navbar-right">Log In</span>
             </NavItem>
-              <LogIn />
+            <LogIn />
             <NavItem id="logOutButton" data-toggle="modal" data-target="#logOut" style={this.displayLogOut()}>
               <span className="navbar-right">Log Out</span>
             </NavItem>
-              <LogOut />
+            <LogOut />
 
           </Nav>
         </Navbar.Collapse>
