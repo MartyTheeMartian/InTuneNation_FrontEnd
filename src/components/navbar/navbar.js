@@ -7,38 +7,23 @@ import { Link } from 'react-router-dom';
 import LogIn from '../logIn/logIn.js';
 import SignUp from '../signUp/signUp.js';
 import LogOut from '../logOut/logOut.js';
-<<<<<<< HEAD
-import { loadPastExercisesData, demoPostLogin } from '../../actions';
-=======
-import { loadPastExercisesData, toggleSteps, introTriggeredAction } from '../../actions';
->>>>>>> e7edd34ee0400e7905eddb506d61cb4c7e155d99
+import { loadPastExercisesData, toggleSteps, introTriggeredAction, demoPostLogin } from '../../actions';
+
 
 
 const mapStateToProps = (state) => {
   return {
-<<<<<<< HEAD
     renderNav: state.navBarReducer
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ loadPastExercisesData, demoPostLogin }, dispatch);
-};
 
-class NavBar extends Component {
-
-=======
-    renderNav: state.navBarReducer, // this currently does NOTHING
-  };
-};
-
-const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData, toggleSteps }, dispatch); };
+const mapDispatchToProps = (dispatch) => { return bindActionCreators({ loadPastExercisesData, toggleSteps, demoPostLogin }, dispatch); };
 
 class NavBar extends Component {
 
   handleIntro = () => { this.props.toggleSteps(); }
 
->>>>>>> e7edd34ee0400e7905eddb506d61cb4c7e155d99
   displayTabs = () => {
     if (localStorage.length === 0) {
       return { display: 'none' };
