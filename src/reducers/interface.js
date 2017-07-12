@@ -61,7 +61,7 @@ export const octaveReducer = (state = initialState.octave, action) => {
 export const navBarReducer = (state = initialState.navBar, action) => {
   switch (action.type) {
     case 'RENDER_NAVBAR':
-      return true;
+      return !state;
     default:
       return state;
   }

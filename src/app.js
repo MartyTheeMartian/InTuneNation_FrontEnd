@@ -7,6 +7,7 @@ import NavBar from './components/navbar/navbar';
 import Home from './components/home/home';
 import Interface from './components/interface/interface';
 import Profile from './components/profile/profile';
+import Community from './components/community/community'
 import './app.css';
 
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/interface" component={Interface} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/community" component={Community} />
         </div>
       </Router>
     );

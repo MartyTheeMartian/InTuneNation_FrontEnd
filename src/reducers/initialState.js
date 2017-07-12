@@ -44,7 +44,8 @@ export default {
   graphData: null,
   dashboard: [],
   navBar: false,
-  // introJS state
+  community: [],
+  averageScore: 0,
   stepsEnabled: false,
   steps,
   initialStep: 0,

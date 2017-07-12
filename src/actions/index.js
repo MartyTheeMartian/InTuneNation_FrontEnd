@@ -34,6 +34,29 @@ export const postSignUp = (user) => {
   };
 };
 
+export const averageScore = (userId) => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/users/averagelifetimescore`;
+  let data = axios.get(API_URL, config());
+  // console.log('what is data now',data);
+  return {
+    type: 'AVERAGE',
+    payload: data
+  }
+}
+
+export const localStorageSignUp = (user) => {
+  return (dispatch) => {
+    dispatch(postSignUp(user))
+    .then((data) => {
+      localStorage.setItem('token', data.action.payload.data.token);
+     localStorage.setItem('userId', data.action.payload.data.id);
+     localStorage.setItem('firstName', data.action.payload.data.firstName);
+     localStorage.setItem('lastName', data.action.payload.data.lastName);
+     localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+    })
+  }
+}
+
 export const postLogIn = (user) => {
   user.password = user.password.trim();
   user.password.trim();
@@ -59,18 +82,6 @@ export const localStorageLogin = (user) => {
   }
 }
 
-export const localStorageSignUp = (user) => {
-  return (dispatch) => {
-    dispatch(postSignUp(user))
-    .then((data) => {
-      localStorage.setItem('token', data.action.payload.data.token);
-      localStorage.setItem('userId', data.action.payload.data.id);
-      localStorage.setItem('firstName', data.action.payload.data.firstName);
-      localStorage.setItem('lastName', data.action.payload.data.lastName);
-      localStorage.setItem('profile_picture', data.action.payload.data.profilePicture);
-    })
-  }
-}
 
 export const currentPianoNote = (note) => {
   return {
@@ -209,6 +220,16 @@ export const sendArray = (noteArr) => {
     payload: noteArr,
   };
 };
+
+export const loadUserData = () => {
+  let USER = "https://ppp-capstone-music.herokuapp.com/user";
+  let userData = axios.get(USER);
+  return {
+    type: 'ALL_USERS',
+    payload: userData
+  };
+};
+
 // export const loadSpecificExercisesIDwithAllScoresData_barGraph = (user_id, exercise_id) => {
 //   let API_URL = `https://ppp-capstone-music.herokuapp.com/users/${user_id}/exercises/${exercise_id}/scores`;
 //   let data = axios.get(API_URL, config());
@@ -244,6 +265,31 @@ export const postExercise = (userId, body) => {
     return response.data;
   });
 };
+
+export const demoLogIn = () => {
+  const API_URL = `https://ppp-capstone-music.herokuapp.com/user/login`;
+  let data = axios.post(API_URL, { 'email':'bs@gmail.com', 'password':'youreawizard'});
+  return {
+    type: "USER_LOG_IN",
+    payload: data
+  }
+}
+
+export const demoPostLogin = () => {
+  return (dispatch) => {
+    dispatch(demoLogIn()).then( data => {
+      localStorage.setItem('token', data.action.payload.data.token);
+      localStorage.setItem('userId', data.action.payload.data.id);
+      localStorage.setItem('firstName', data.action.payload.data.firstName);
+      localStorage.setItem('lastName', data.action.payload.data.lastName);
+      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture)
+    }).then( () => {
+        dispatch({
+          type: 'RENDER_NAVBAR'
+        });
+      });
+  }
+}
 
 export const googleOauth = (profile) => {
   return {
