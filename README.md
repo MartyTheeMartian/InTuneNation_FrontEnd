@@ -30,8 +30,8 @@ Our app is currently built entirely with Javascript, and the front-end heavily r
 ## App demo
 ![homepage](http://i.imgur.com/9BBZ1JK.png)
 ![sign in](http://i.imgur.com/J3Usdhu.png)
-![user profile](http://i.imgur.com/mrL7mra.png)
-![graph data](http://i.imgur.com/MAoI0lP.png)
+![user profile]([Imgur](http://i.imgur.com/Teq8ci7.png))
+![graph data](http://i.imgur.com/ysF1ud6.png)
 ![interface](http://i.imgur.com/CybOyoU.png)
 
 ## DESCRIPTION
