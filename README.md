@@ -28,7 +28,7 @@ Our app is currently built entirely with Javascript, and the front-end heavily r
 * [pitch.js](https://github.com/audiocogs/pitch.js) (For pitch-detection translated from frequency analysis during audio input)
 
 ## App demo
-![homepage](http://i.imgur.com/yrDER39.png)
+![homepage](http://i.imgur.com/9BBZ1JK.png)
 ![sign in](http://i.imgur.com/J3Usdhu.png)
 ![user profile](http://i.imgur.com/CzP8tVC.png)
 ![graph data](http://i.imgur.com/ho0yCz9.png)
