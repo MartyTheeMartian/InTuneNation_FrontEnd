@@ -51,6 +51,10 @@ class NavBar extends Component {
     }
   }
 
+  displayTutorial = () => {
+
+  }
+
   demo = () => {
     this.props.demoPostLogin();
   }
@@ -79,22 +83,23 @@ class NavBar extends Component {
               <NavItem>Profile</NavItem>
             </LinkContainer>
 
-            <LinkContainer to="/community">
+            {/* <LinkContainer to="/community">
               <NavItem>Community</NavItem>
-            </LinkContainer>
+            </LinkContainer> */}
 
             <Nav className="githubLink">
               <a className="githubLink" href="https://github.com/MartyTheeMartian/Intervalicity-FrontEnd/blob/master/README.md" target="_blank">GitHub</a>
             </Nav>
 
-            <Nav className="introJsStart githubLink" onClick={this.handleIntro}>
-              <a className="githubLink">Interface Intro</a>
-            </Nav>
+            <li id="tutorial" role="presentation" onClick={this.handleIntro} style={this.displayTabs()}>
+              <a>Tutorial</a>
+            </li>
+
           </Nav>
 
           <Nav pullRight>
-            <NavItem>
-              <LinkContainer to="/interface" className="demoButton" onClick={this.demo} style={this.displaySignUpLogIn()}>
+            <NavItem className="demoButton" style={this.displaySignUpLogIn()}>
+              <LinkContainer to="/interface" onClick={this.demo} >
                   <span className="buttonName">
                     Demo
                   </span>
