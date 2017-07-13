@@ -11,7 +11,6 @@
 }
 
 #profileBackground {
-
   background-image: url('../../../public/profile-page.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -27,7 +26,6 @@
   margin-top: 6px;
 }
 
-
 .static-popover {
   display: block !important;
   margin-right: 28px;
@@ -36,9 +34,9 @@
 .c3-title {
   font-size: 18px !important;
 }
+
 .profile-right {
   margin-top: 40px;
-  /*font-family: serif;*/
   font-size: 20px;
 }
 

@@ -21,14 +21,6 @@ body {
   font-family: sans-serif;
 }
 
-footer {
-  background-color: lightBlue;
-  position: static;
-  height: 20px;
-  bottom: 0;
-  width: 100%;
-}
-
 .badge {
   font-size: 120%;
 }
@@ -116,12 +108,3 @@ h2, h3, h4, h5 {
   background-color: #4aa4b2 !important;
   cursor: pointer;
 }
-
-/*#gauge {
-  background-color: white;
-  border: 3px solid #1cd1fc;
-  border-radius: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 8px 8px 8px 8px;
-}*/
