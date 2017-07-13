@@ -6,8 +6,6 @@
 
 Deployed App: https://intunenation.herokuapp.com/
 
-========================================
-
 ## FOR DEVELOPERS
 
 To utilize our repo, please do the following:
