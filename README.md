@@ -2,10 +2,10 @@
 
 # InTuneNation: An Ear-Training Coach for All Devices
 
-####Deployed Front-End####
+**Deployed Front-End**
  https://intunenation.herokuapp.com/
 
-####Back-End repo#### https://github.com/kvinzheng/InTuneNation_Backend
+**Back-End Repo** https://github.com/kvinzheng/InTuneNation_Backend
 
 ## FOR DEVELOPERS
 
