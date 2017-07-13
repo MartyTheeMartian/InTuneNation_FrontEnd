@@ -16,7 +16,7 @@ To utilize our repo, please do the following:
 We sincerely hope you enjoy coding along with our app:
 please feel free to send pull requests our way, we would love to see your contributions!
 
-#### Technologies Used
+## Technologies Used
 
 Our app is currently built entirely with Javascript, and the front-end heavily relies on Redux for state to dynamically render React components, as well as a very simple back-end for storing exercises and scores. We also rely on a few other pieces of technology, including but not limited to:
 * [Teoria.js](https://github.com/saebekassebil/teoria) (for teaching music theory to JavaScript),
