@@ -2,13 +2,12 @@
 
 # InTuneNation: An Ear-Training Coach for All Devices
 
-> Sing in the moment!
+**Deployed Front-End**
+ https://intunenation.herokuapp.com/
 
-Deployed App: https://intunenation.herokuapp.com/
+**Back-End Repo** https://github.com/kvinzheng/InTuneNation_Backend
 
-========================================
-
-#### FOR DEVELOPERS
+## FOR DEVELOPERS
 
 To utilize our repo, please do the following:
 1. Fork & clone this repository
@@ -17,6 +16,24 @@ To utilize our repo, please do the following:
 
 We sincerely hope you enjoy coding along with our app:
 please feel free to send pull requests our way, we would love to see your contributions!
+
+## Technologies Used
+
+Our app is currently built entirely with Javascript, and the front-end heavily relies on Redux for state to dynamically render React components, as well as a very simple back-end for storing exercises and scores. We also rely on a few other pieces of technology, including but not limited to:
+* [Google-Oauth](http://passportjs.org/docs) (Google Passport 2.0 OAuth Technologies allow user to sign in through google's account)
+* [C3](http://c3js.org/)(A charting library to display line graphs and bar graphs)
+* [React-Promise-Middleware](https://github.com/pburtchaell/redux-promise-middleware/blob/master/docs/introduction.md)(A middleware that will resolve a promise into one of the three results: FULFILLED, REJECTED or PENDING)
+* [Redux-Thunk](https://github.com/gaearon/redux-thunk)(A middleware allows you to write action creators that return a function instead of an action)
+* [Teoria.js](https://github.com/saebekassebil/teoria) (For teaching music theory to JavaScript),
+* [Microphone-stream](https://github.com/saebekassebil/microphone-stream) (A node module inspired by Web Audio API for requesting access to a user’s microphone and receiving audio input),
+* [pitch.js](https://github.com/audiocogs/pitch.js) (For pitch-detection translated from frequency analysis during audio input)
+
+## App demo
+![homepage](http://i.imgur.com/9BBZ1JK.png)
+![sign in](http://i.imgur.com/J3Usdhu.png)
+![interface](http://i.imgur.com/CybOyoU.png)
+![user profile](http://i.imgur.com/Teq8ci7.png)
+![graph data](http://i.imgur.com/ysF1ud6.png)
 
 ## DESCRIPTION
 
@@ -56,14 +73,6 @@ The user’s intonation score for any given note is based upon a system that is 
 When the user has finished performing all the notes within the scope of their exercise, their array of scores is finalized and stored in the back-end.
 
 The user can repeat the exercise as often as they desire to improve upon that exercise with better scores!
-
-#### Technologies Used
-
-Our app is currently built entirely with Javascript, and the front-end heavily relies on Redux for state to dynamically render React components, as well as a very simple back-end for storing exercises and scores. We also rely on a few other pieces of technology, including but not limited to:
-* [Teoria.js](https://github.com/saebekassebil/teoria) (for teaching music theory to JavaScript),
-* [Microphone-stream](https://github.com/saebekassebil/microphone-stream) (a node module inspired by Web Audio API for requesting access to a user’s microphone and receiving audio input),
-* [pitch.js](https://github.com/audiocogs/pitch.js) (for pitch-detection translated from frequency analysis during audio input)
-* [Google-Oauth](http://passportjs.org/docs)
 
 #### Room For Improvement
 
