@@ -52,7 +52,7 @@ export const localStorageSignUp = (user) => {
      localStorage.setItem('userId', data.action.payload.data.id);
      localStorage.setItem('firstName', data.action.payload.data.firstName);
      localStorage.setItem('lastName', data.action.payload.data.lastName);
-     localStorage.setItem('profile_picture', data.action.payload.data.profile_picture);
+     localStorage.setItem('profile_picture', data.action.payload.data.profilePicture);
     })
   }
 }
@@ -282,7 +282,7 @@ export const demoPostLogin = () => {
       localStorage.setItem('userId', data.action.payload.data.id);
       localStorage.setItem('firstName', data.action.payload.data.firstName);
       localStorage.setItem('lastName', data.action.payload.data.lastName);
-      localStorage.setItem('profile_picture', data.action.payload.data.profile_picture)
+      localStorage.setItem('profile_picture', data.action.payload.data.profilePicture);
     }).then( () => {
         dispatch({
           type: 'RENDER_NAVBAR'
