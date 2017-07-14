@@ -112,20 +112,15 @@
 
 .sing-buttons {
   border-radius: 8px;
-  /*background-color: #b94ad5;*/
-  /*background-color: #2fc5e0;*/
-  /*background-color: #86b2d8;*/
   background-color: #3776ad;
   font-family: DDCHardwareCondensed;
   font-size: 50px;
   color: white;
   float: right;
-  /*margin: 5px 0px 5px 0px;*/
   margin: 5px;
   width: 210px;
   height: 90px;
   padding: 0px;
-
 }
 
 .sing-button-collection {
@@ -181,7 +176,6 @@
   font-family: OpenSans-BoldItalic;
   font-weight: bold;
   color: white;
-  /*background-color: #b94ad5;*/
   background-color: #A855AA;
   border: 3px solid #27a9d1;
   border-radius: 8px;
@@ -236,6 +230,7 @@
 #displayNoteBorder {
   border: solid #1cd1fc 3px;
   border-radius: 15px 15px 0px 0px;
+  border-bottom-width: 0px;
   display: flex;
   justify-content: center;
   margin-right: 94px;
